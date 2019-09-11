@@ -41,3 +41,10 @@ export function formatDuration(seconds) {
 
   return out.join(" ");
 }
+
+export function formatSecondsSinceEpoch(sse) {
+  if(sse === undefined) {
+    return '-';
+  }
+  return dateFormatter.format(new Date(sse));
+}
