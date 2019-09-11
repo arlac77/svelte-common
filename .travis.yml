@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 12.10.0
+addons:
+  chrome: stable
+jobs:
+  include:
+    - stage: test
+      script:
+        - npm run test
+    - stage: release
+      node_js: lts/*
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: 'true'
+        script:
+          - npx xsemantic-release
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
