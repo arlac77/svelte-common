@@ -3,5 +3,5 @@
   import ActionButton from "./components/ActionButton.svelte";
   import { dateFormatter, formatBytes, formatDuration, formatSecondsSinceEpoch } from "./util.mjs";
   import { tooltip } from "./tooltip.mjs";
-  export { Menue, ActionButton, dateFormatter, formatBytes, formatDuration, formatSecondsSinceEpoch };
+  export { Menue, ActionButton, dateFormatter, formatBytes, formatDuration, formatSecondsSinceEpoch, tooltip };
 </script>
