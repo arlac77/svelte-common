@@ -3,17 +3,17 @@
 
   let active;
 
-  async function myAction() {
+  async function click() {
     try {
       active = true;
-      return action();
+      await action();
     } finally {
       active = false;
     }
   }
 </script>
 
-<button on:click={myAction}>
+<button on:click={click}>
   {#if active}
     <div class="spinner" />
   {/if}

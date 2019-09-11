@@ -1,8 +1,11 @@
 <script>
   import { ActionButton, Menue } from "../../src/index.svelte";
 
+  let actionExecuted = false;
+
   async function action() {
-    return new Promise((resolve, reject) => setTimeout(resolve, 2000));
+    actionExecuted = true;
+    return new Promise(resolve => setTimeout(resolve, 5000));
   }
 
   async function login() {}
@@ -11,7 +14,6 @@
 
 <nav>
   <a href="/">Example</a>
-
   <ul>
     <li>
       <Menue>
@@ -27,4 +29,6 @@
 </nav>
 <main>
   <ActionButton {action}>Long Running Action</ActionButton>
+
+  <div id="actionExecuted">{actionExecuted}</div>
 </main>
