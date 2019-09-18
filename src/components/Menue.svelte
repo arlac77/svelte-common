@@ -2,7 +2,7 @@
   let open = false;
 
   function hide() {
- //   open = false;
+    open = false;
   }
 
   function show() {
