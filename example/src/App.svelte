@@ -18,7 +18,7 @@
     <li>
       <Menue>
         <div slot="title" class="dropdown-trigger">User</div>
-        <ul class="dropdown-content">
+        <ul slot="content" class="dropdown-content">
           <li>
             <a href="#!" on:click|preventDefault={logout}>Logout</a>
           </li>

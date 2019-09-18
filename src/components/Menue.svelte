@@ -1,16 +1,20 @@
 <script>
   let open = false;
 
-  function toggleOpen() {
-    open = !open;
-    console.log(open);
+  function hide() {
+ //   open = false;
+  }
+
+  function show() {
+    open = true;
   }
 </script>
 
-<a href="/#"
-  on:click|preventDefault={toggleOpen}
-  on:mouseenter={toggleOpen}
-  on:mouseleave={toggleOpen}>
+<a
+  href="/#"
+  on:click|preventDefault={show}
+  on:mouseenter={show}
+  on:mouseleave={hide}>
   <slot name="title" />
   <svg width="14" height="14" viewBox="0 0 24 24" role="img">
     <path d="M6 7l6 6 6-6 2 2-8 8-8-8z" />

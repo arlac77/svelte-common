@@ -1,15 +1,15 @@
 {
   "name": "svelte-common",
   "version": "0.0.0-semantic-release",
-  "module": "src/index.svelte",
+  "module": "src/index.mjs",
   "svelte": "src/index.svelte",
   "description": "common components utils used in svelte apps",
   "keywords": [
     "svelte"
   ],
   "scripts": {
-    "docs": "documentation readme src/index.svelte --section=API",
-    "lint": "documentation lint src/index.svelte",
+    "docs": "documentation readme src/index.mjs --section=API",
+    "lint": "documentation lint src/index.mjs",
     "start": "rollup -c example/rollup.config.js -w",
     "test": "testcafe $BROWSER:headless tests/*-test.js -s test-results --app-init-delay 500 --app \"rollup -c example/rollup.config.js -w\""
   },

@@ -12,3 +12,29 @@
 [![docs](http://inch-ci.org/github/arlac77/svelte-common.svg?branch=master)](http://inch-ci.org/github/arlac77/svelte-common)
 [![downloads](http://img.shields.io/npm/dm/svelte-common.svg?style=flat-square)](https://npmjs.org/package/svelte-common)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+# svelte-common
+
+common components utils used in svelte apps
+
+# usage
+
+# API
+
+# install
+
+With [npm](http://npmjs.org) do:
+
+```shell
+npm install svelte-common
+```
+
+or with [yarn](https://yarnpkg.com)
+
+```shell
+yarn add svelte-common
+```
+
+# license
+
+BSD-2-Clause
