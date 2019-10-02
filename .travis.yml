@@ -1,6 +1,4 @@
 language: node_js
-node_js:
-  - 12.10.0
 addons:
   chrome: stable
 jobs:
@@ -8,6 +6,7 @@ jobs:
     - stage: test
       script:
         - npm run test
+      node_js: 12.11.1
     - stage: release
       node_js: lts/*
       script: skip
@@ -16,6 +15,7 @@ jobs:
         skip_cleanup: 'true'
         script:
           - npx xsemantic-release
+          - npx semantic-release
 branches:
   only:
     - master
