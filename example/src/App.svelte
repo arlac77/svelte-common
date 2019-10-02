@@ -9,7 +9,7 @@
   }
 
   async function login() {}
-  async function logout() {}
+  async function logout() { alert('logout'); }
 </script>
 
 <nav>
@@ -21,6 +21,15 @@
         <ul slot="content" class="dropdown-content">
           <li>
             <a href="#!" on:click|preventDefault={logout}>Logout</a>
+          </li>
+          <li>
+            <a href="#!">Profile</a>
+          </li>
+          <li>
+            <a href="#!">About</a>
+          </li>
+          <li>
+            <a href="#!">Setting 1</a>
           </li>
         </ul>
       </Menue>
