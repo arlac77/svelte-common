@@ -9,7 +9,9 @@
   }
 
   async function login() {}
-  async function logout() { alert('logout'); }
+  async function logout() {
+    alert("logout");
+  }
 </script>
 
 <nav>
@@ -18,20 +20,15 @@
     <li>
       <Menue>
         <div slot="title" class="dropdown-trigger">User</div>
-        <ul slot="content" class="dropdown-content">
-          <li>
-            <a href="#!" on:click|preventDefault={logout}>Logout</a>
-          </li>
-          <li>
-            <a href="#!">Profile</a>
-          </li>
-          <li>
-            <a href="#!">About</a>
-          </li>
-          <li>
-            <a href="#!">Setting 1</a>
-          </li>
-        </ul>
+        <div slot="content" class="dropdown-menu dropdown-menu-sw">
+          <a href="#!" class="dropdown-item" on:click|preventDefault={logout}>
+            Logout
+          </a>
+          <div role="none" class="dropdown-divider" />
+          <a href="#!" class="dropdown-item">Profile</a>
+          <a href="#!" class="dropdown-item">About</a>
+          <a href="#!" class="dropdown-item">Setting 1</a>
+        </div>
       </Menue>
     </li>
   </ul>
