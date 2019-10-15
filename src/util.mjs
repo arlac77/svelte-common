@@ -11,15 +11,15 @@ export const dateFormatter = new Intl.DateTimeFormat("default", {
 export function formatBytes(bytes, decimals = 2) {
   if (bytes === 0) return "0 Bytes";
 
-  const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
   const k = 1024;
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
   return (
-    parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + " " + sizes[i]
+    parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + " " + byteSizes[i]
   );
 }
+
+const byteSizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
 const durations = [
   [604800, "w"],
@@ -30,7 +30,7 @@ const durations = [
 ];
 
 export function formatDuration(seconds) {
-  let out = [];
+  const out = [];
   for (const d of durations) {
     const n = Math.floor(seconds / d[0]);
     if (n > 0) {
