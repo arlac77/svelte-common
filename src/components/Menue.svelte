@@ -16,7 +16,7 @@
   on:mouseenter={show}
   on:mouseleave={hide}>
   <slot name="title" />
-  <svg width="14" height="14" viewBox="0 0 24 24" role="img">
+  <svg width="14" height="14" viewBox="0 0 24 24">
     <path d="M6 7l6 6 6-6 2 2-8 8-8-8z" />
   </svg>
   {#if open}
