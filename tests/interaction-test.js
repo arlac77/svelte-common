@@ -12,3 +12,10 @@ test("action", async t => {
   await t.expect(Selector("#actionExecuted").innerText).eql("true");
 });
 
+
+test("failing action", async t => {
+  const s = Selector("button");
+
+  await t.click(s);
+});
+

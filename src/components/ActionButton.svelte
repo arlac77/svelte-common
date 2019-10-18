@@ -7,6 +7,8 @@
     try {
       active = true;
       await action();
+    } catch (e) {
+      console.log(e);
     } finally {
       active = false;
     }

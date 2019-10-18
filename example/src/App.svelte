@@ -8,6 +8,12 @@
     return new Promise(resolve => setTimeout(resolve, 5000));
   }
 
+  async function failingAction() {
+    return new Promise((resolve, reject) =>
+      setTimeout(() => reject("failed"), 5000)
+    );
+  }
+
   async function login() {}
   async function logout() {
     alert("logout");
@@ -16,6 +22,11 @@
 
 <nav>
   <a href="/">Example</a>
+  <ul>
+    <li>
+      <a href="/">Entry</a>
+    </li>
+  </ul>
   <ul>
     <li>
       <Menue>
@@ -37,4 +48,6 @@
   <ActionButton {action}>Long Running Action</ActionButton>
 
   <div id="actionExecuted">{actionExecuted}</div>
+
+  <ActionButton action={failingAction}>Failing Action</ActionButton>
 </main>
