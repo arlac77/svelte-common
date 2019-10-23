@@ -1,4 +1,6 @@
 :root {
+  --main-color:#6e3e81;
+
   --transition-time: 0.15s;
   --border-radius: 0.25rem;
   --nav-side-padding: 12px;
@@ -19,7 +21,7 @@
 
   --button-text-color: #fff;
 
-  --button-primary-color: #6e3e81;
+  --button-primary-color: var(--main-color);
 
   --input-color: #495057;
   --input-background-color: #ecebeb;
@@ -35,13 +37,14 @@
   --table-border-color: #dee2e6;
   --table-padding: 0.75rem;
 
-  --header-background-color: #764abc;
+  --nav-background-color: var(--main-color);
+  --nav-color: var(--nav-primary-color);
   --nav-primary-color:#fafafa;
   --nav-secondary-color:#aaaaaa;
   --nav-active-background-color: rgba(0, 0, 0, 0.2);
   --nav-active-color: var(--nav-primary-color);
 
-  --dropdown-hover-background-color: var(--header-background-color);
+  --dropdown-hover-background-color: var(--nav-background-color);
 }
 
 .left {
@@ -92,8 +95,8 @@ nav {
   padding: 0;
   display: flex;
   flex-flow: nowrap;
-  background-color: var(--header-background-color);
-  color: #fff
+  background-color: var(--nav-background-color);
+  color: var(--nav-color);
 }
 
 nav:after {
@@ -261,14 +264,7 @@ button:hover {
 }
 
 button:active {
-  filter: saturate(150%);
-
-  padding: 0.5rem 1rem;
-  border-radius: calc(var(--border-radius) * 1.5);
-
-  color: var(--active-color);
   background-color: var(--button-active-color);
-
   cursor: progress
 }
 
@@ -277,8 +273,12 @@ button:disabled {
   pointer-events: none
 }
 
+form {
+  margin: 0.5rem;
+}
+
 fieldset {
-  border: 0
+  border: 0;
 }
 
 label {
@@ -319,10 +319,10 @@ input:disabled {
   border: 3px solid #f3f3f3;
   border-top: 3px solid #15c03a;
   border-radius: 100%;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   animation: spin 1s linear infinite;
-  margin: 0 0 0 8px;
+  margin: 0 0 1px 8px;
   padding: 0;
   transition: all 0.2s ease
 }
@@ -345,7 +345,7 @@ input:disabled {
 }
 
 .item {
-  background-color: rgb(116, 95, 181);
+  background-color: var(--main-color);
   box-sizing: border-box;
 
   color: white;
@@ -420,17 +420,12 @@ input:disabled {
 
 .card-panel,
 .card {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2)
 }
 
 .card-panel {
-  -webkit-transition: -webkit-box-shadow 0.25s;
-  transition: -webkit-box-shadow 0.25s;
   transition: box-shadow 0.25s;
-  transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
@@ -441,10 +436,7 @@ input:disabled {
   position: relative;
   margin: 0.5rem 0 1rem 0;
   background-color: #fff;
-  -webkit-transition: -webkit-box-shadow 0.25s;
-  transition: -webkit-box-shadow 0.25s;
   transition: box-shadow 0.25s;
-  transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
   border-radius: 2px
 }
 
@@ -505,9 +497,6 @@ input:disabled {
 }
 
 .card.horizontal {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex
 }
 
@@ -536,26 +525,13 @@ input:disabled {
 }
 
 .card.horizontal .card-stacked {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   position: relative
 }
 
 .card.horizontal .card-stacked .card-content {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1
 }
 
@@ -625,13 +601,8 @@ input:disabled {
 .card .card-action {
   color: #ffab40;
   margin-right: 24px;
-  -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
   text-transform: uppercase
-}
-
-.card .card-action {
-  color: #ffd8a6
 }
 
 .card .card-reveal {
