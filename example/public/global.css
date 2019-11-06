@@ -337,35 +337,6 @@ input:disabled {
   }
 }
 
-.item-list {
-  box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none
-}
-
-.item {
-  background-color: var(--main-color);
-  box-sizing: border-box;
-
-  color: white;
-  cursor: default;
-  display: flex;
-  flex-basis: 40%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  line-height: 19px;
-  list-style-type: none;
-  margin: 4px 4px 4px 4px;
-  padding: 0 0 0 0;
-  text-align: left
-}
-
-.item a {
-  padding: 16px;
-  color: white
-}
-
 .error {
   color: var(--error-color)
 }

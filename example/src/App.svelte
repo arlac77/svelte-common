@@ -1,5 +1,5 @@
 <script>
-  import { ActionButton, Menue } from "../../src/index.svelte";
+  import { Expandable, ActionButton, Menue } from "../../src/index.svelte";
 
   let actionExecuted = false;
 
@@ -50,4 +50,12 @@
   <div id="actionExecuted">{actionExecuted}</div>
 
   <ActionButton action={failingAction}>Failing Action</ActionButton>
+
+  <Expandable>
+    show content
+    <ul slot="content">
+      <li>1st.</li>
+      <li>2nd.</li>
+    </ul>
+  </Expandable>
 </main>
