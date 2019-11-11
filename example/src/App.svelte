@@ -1,5 +1,7 @@
 <script>
-  import { Expandable, ActionButton, Menue } from "../../src/index.svelte";
+  import { Collapse, ActionButton, Menue } from "../../src/index.svelte";
+	import { fade } from 'svelte/transition';
+
 
   let actionExecuted = false;
 
@@ -51,11 +53,11 @@
 
   <ActionButton action={failingAction}>Failing Action</ActionButton>
 
-  <Expandable>
-    show content
-    <ul slot="content">
+  <Collapse>
+    Collapse
+    <ul id="collapse-content" slot="content" in:fade out:fade>
       <li>1st.</li>
       <li>2nd.</li>
     </ul>
-  </Expandable>
+  </Collapse>
 </main>

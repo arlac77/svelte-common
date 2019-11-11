@@ -5,7 +5,7 @@ const base = "http://localhost:5000";
 fixture`interactions`.page`${base}/base/index.html`;
 
 test("action", async t => {
-  const s = Selector("button");
+  const s = Selector("button").withText('Long Running Action');
 
   await t.click(s);
 
@@ -14,8 +14,21 @@ test("action", async t => {
 
 
 test("failing action", async t => {
-  const s = Selector("button");
+  const s = Selector("button").withText('Failing Action');
 
   await t.click(s);
+});
+
+
+test("collapse", async t => {
+  const s = Selector("button").withText('Collapse');
+
+  await t.click(s);
+
+  await t.expect(Selector("#collapse-content").visible).ok();
+
+  await t.click(s);
+
+  //await t.expect(Selector("#collapse-content").visible);
 });
 
