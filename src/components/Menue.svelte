@@ -11,7 +11,7 @@
 </script>
 
 <a
-  href="/#"
+  href=" "
   on:click|preventDefault={show}
   on:mouseenter={show}
   on:mouseleave={hide}>

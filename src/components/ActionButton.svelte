@@ -15,7 +15,7 @@
   }
 </script>
 
-<button on:click={click}>
+<button class:active on:click={click}>
   {#if active}
     <div class="spinner" />
   {/if}
