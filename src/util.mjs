@@ -48,3 +48,21 @@ export function formatSecondsSinceEpoch(sse) {
   }
   return dateFormatter.format(new Date(sse));
 }
+
+/*
+import { readable } from 'svelte/store';
+
+
+function liveDuration(seconds) {
+  const time = readable(new Date(), set => {
+    const interval = setInterval(() => {
+      set(seconds);
+    }, 1000);
+  
+    return () => clearInterval(interval);
+  });
+
+  return time;
+}
+
+*/
