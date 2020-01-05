@@ -1,5 +1,5 @@
 <script>
-  import { Duration, Collapse, ActionButton, Menue } from "../../src/index.svelte";
+  import { DateTime, Duration, Collapse, ActionButton, Menue } from "../../src/index.svelte";
 	import { fade } from 'svelte/transition';
 
   let actionExecuted = false;
@@ -63,5 +63,7 @@
   <div>
     Days <Duration seconds=1000000/>
     Hours <Duration seconds=5000/>
+
+    <DateTime date={new Date()}/>
   </div>
 </main>
