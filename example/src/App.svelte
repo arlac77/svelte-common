@@ -1,7 +1,6 @@
 <script>
-  import { Collapse, ActionButton, Menue } from "../../src/index.svelte";
+  import { Duration, Collapse, ActionButton, Menue } from "../../src/index.svelte";
 	import { fade } from 'svelte/transition';
-
 
   let actionExecuted = false;
 
@@ -60,4 +59,9 @@
       <li>2nd.</li>
     </ul>
   </Collapse>
+
+  <div>
+    Days <Duration seconds=1000000/>
+    Hours <Duration seconds=5000/>
+  </div>
 </main>

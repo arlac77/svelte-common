@@ -21,6 +21,33 @@ export function formatBytes(bytes, decimals = 2) {
 
 const byteSizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
+const durationsISO = [
+  [86400, "D"],
+  [3600, "H"],
+  [60, "M"],
+  [1, "S"]
+];
+
+export function formatDurationISO(seconds) {
+  let out = "P";
+  let t = false;
+
+  for (const d of durationsISO) {
+    if(seconds < 86400 && ! t) {
+      out += 'T';
+      t = true;
+    }
+
+    const n = Math.floor(seconds / d[0]);
+    if (n > 0) {
+      out += `${n}${d[1]}`;
+      seconds -= n * d[0];
+    }
+  }
+
+  return out;
+}
+
 const durations = [
   [604800, "w"],
   [86400, "d"],
@@ -43,8 +70,8 @@ export function formatDuration(seconds) {
 }
 
 export function formatSecondsSinceEpoch(sse) {
-  if(sse === undefined) {
-    return '-';
+  if (sse === undefined) {
+    return "-";
   }
   return dateFormatter.format(new Date(sse));
 }
