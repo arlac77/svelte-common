@@ -1,0 +1,10 @@
+{
+  "name": "svelte-common",
+  "description": "common components utils used in svelte apps",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}
