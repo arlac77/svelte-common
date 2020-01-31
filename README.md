@@ -1,7 +1,7 @@
-[![minified size](https://badgen.net/bundlephobia/min/svelte-common)](https://bundlephobia.com/result?p=svelte-common)
 [![Svelte v3](https://img.shields.io/badge/svelte-v3-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/svelte-common.svg)](https://www.npmjs.com/package/svelte-common)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![minified size](https://badgen.net/bundlephobia/min/svelte-common)](https://bundlephobia.com/result?p=svelte-common)
 [![downloads](http://img.shields.io/npm/dm/svelte-common.svg?style=flat-square)](https://npmjs.org/package/svelte-common)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/svelte-common.svg?style=flat-square)](https://github.com/arlac77/svelte-common/issues)
 [![Build Status](https://secure.travis-ci.org/arlac77/svelte-common.png)](http://travis-ci.org/arlac77/svelte-common)
