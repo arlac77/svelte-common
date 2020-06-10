@@ -12,6 +12,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.4.0
+      - uses: actions/setup-node@v1
+        with:
+          node-version:
+            - 14.4.0
       - run: npm install
       - run: npm run docs
       - name: pr
@@ -31,3 +35,4 @@ jobs:
           title: Sync API into README
           branch: readme-api
           commit-message: 'docs(README): sync API'
+      - uses: actions/checkout@v2
