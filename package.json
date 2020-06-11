@@ -4,8 +4,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "src/index.mjs",
-  "svelte": "src/index.svelte",
+  "main": "./src/index.mjs",
+  "svelte": "./src/index.svelte",
   "description": "common components utils used in svelte apps",
   "keywords": [
     "component",
@@ -34,9 +34,6 @@
     "semantic-release": "^17.0.8",
     "svelte": "^3.23.2",
     "testcafe": "^1.8.6"
-  },
-  "engines": {
-    "node": ">=14.3.0"
   },
   "repository": {
     "type": "git",
