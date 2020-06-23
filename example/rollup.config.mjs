@@ -11,19 +11,15 @@ export default {
     format: "esm",
     file: "example/public/bundle.mjs"
   },
-  plugins: [
-    dev({
-      port,
-      dirs: ["example/public"],
-      spa: "example/public/index.html",
-      basePath: "/base"
-    }),
-    resolve.nodeResolve({ browser: true }),
-    svelte(),
-    resolve.nodeResolve({
-      browser: true,
-      dedupe: importee =>
-        importee === "svelte" || importee.startsWith("svelte/")
-    })
-  ]
+  plugins: [dev({
+    port,
+    dirs: ["example/public"],
+    spa: "example/public/index.html",
+    basePath: "/base"
+  }), resolve.nodeResolve({ browser: true }), svelte(), resolve.nodeResolve({
+    browser: true,
+    dedupe: importee =>
+      importee === "svelte" || importee.startsWith("svelte/")
+  }), resolve({ browser: true,
+            dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/') })]
 };
