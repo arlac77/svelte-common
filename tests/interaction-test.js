@@ -2,7 +2,7 @@ import { Selector } from "testcafe";
 
 const base = "http://localhost:5000";
 
-fixture`interactions`.page`${base}/base/index.html`;
+fixture`interactions`.page`${base}/components/svelte-common/example/index.html`;
 
 test("action", async t => {
   const s = Selector("button").withText('Long Running Action');
