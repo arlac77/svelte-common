@@ -15,11 +15,9 @@ export default {
     port,
     dirs: ["example/public"],
     spa: "example/public/index.html",
-    basePath: "/base"
-  }), resolve.nodeResolve({ browser: true }), svelte(), resolve.nodeResolve({
-    browser: true,
-    dedupe: importee =>
-      importee === "svelte" || importee.startsWith("svelte/")
-  }), resolve({ browser: true,
-            dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/') })]
+    basePath: "/components/svelte-common/example"
+  }),
+    svelte(),
+    resolve({ browser: true,
+     dedupe: importee => importee === 'svelte' || importee.startsWith('svelte/') })]
 };
