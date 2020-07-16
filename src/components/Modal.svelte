@@ -1,12 +1,8 @@
 <script>
-  let component = null;
-  let props = null;
 
-  let background, wrap;
+  export let close;
 
-  function close() {
-    component = null;
-  }
+  let background;
 
   const handleKeyup = event => {
     if (event.key === "Escape") {
@@ -26,8 +22,5 @@
 <svelte:window on:keyup={handleKeyup} />
 
 <div on:click={handleOuterClick} bind:this={background}>
-  <div bind:this={wrap}>
-    <svelte:component this={component} {...props} />
-  </div>
+  <slot />
 </div>
-<slot />

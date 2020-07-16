@@ -1,6 +1,13 @@
 <script>
-  import { DateTime, Duration, Collapse, ActionButton, Menue } from "../../src/index.svelte";
-	import { fade } from 'svelte/transition';
+  import {
+    DateTime,
+    Duration,
+    Collapse,
+    ActionButton,
+    Menue,
+    Modal
+  } from "../../src/index.svelte";
+  import { fade } from "svelte/transition";
 
   let actionExecuted = false;
 
@@ -19,6 +26,10 @@
   async function logout() {
     alert("logout");
   }
+
+  let modal = true;
+
+  let close = () => {modal = false; }
 </script>
 
 <nav>
@@ -61,9 +72,45 @@
   </Collapse>
 
   <div>
-    Days <Duration seconds=1000000/>
-    Hours <Duration seconds=5000/>
+    Days
+    <Duration seconds="1000000" />
+    Hours
+    <Duration seconds="5000" />
 
-    <DateTime date={new Date()}/>
+    <DateTime date={new Date()} />
   </div>
+
+  {#if modal}
+    <Modal {close}>
+      <div class="modal center">
+        <form>
+          <fieldset>
+            <label for="username">
+              Username 1
+              <input
+                id="username"
+                type="text"
+                placeholder="Username"
+                name="username"
+                required
+                value="XXX"
+                size="10" />
+            </label>
+            <label for="password">
+              Password 1
+              <input
+                id="password"
+                type="password"
+                placeholder="Password"
+                name="password"
+                size="10"
+                required />
+            </label>
+          </fieldset>
+
+          <button id="submit" type="submit">Login</button>
+        </form>
+      </div>
+    </Modal>
+  {/if}
 </main>
