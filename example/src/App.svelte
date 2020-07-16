@@ -29,7 +29,9 @@
 
   let modal = true;
 
-  let close = () => {modal = false; }
+  let close = () => {
+    modal = false;
+  };
 </script>
 
 <nav>
@@ -82,35 +84,33 @@
 
   {#if modal}
     <Modal {close}>
-      <div class="modal center">
-        <form>
-          <fieldset>
-            <label for="username">
-              Username 1
-              <input
-                id="username"
-                type="text"
-                placeholder="Username"
-                name="username"
-                required
-                value="XXX"
-                size="10" />
-            </label>
-            <label for="password">
-              Password 1
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-                name="password"
-                size="10"
-                required />
-            </label>
-          </fieldset>
+      <form>
+        <fieldset>
+          <label for="username">
+            Username 1
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              name="username"
+              required
+              value="XXX"
+              size="10" />
+          </label>
+          <label for="password">
+            Password 1
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              name="password"
+              size="10"
+              required />
+          </label>
+        </fieldset>
 
-          <button id="submit" type="submit">Login</button>
-        </form>
-      </div>
+        <button id="submit" type="submit">Login</button>
+      </form>
     </Modal>
   {/if}
 </main>

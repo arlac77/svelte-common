@@ -1,5 +1,4 @@
 <script>
-
   export let close;
 
   let background;
@@ -22,5 +21,7 @@
 <svelte:window on:keyup={handleKeyup} />
 
 <div on:click={handleOuterClick} bind:this={background}>
-  <slot />
+  <div class="center modal">
+    <slot />
+  </div>
 </div>
