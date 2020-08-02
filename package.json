@@ -4,9 +4,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./src/index.mjs",
   "svelte": "./src/index.svelte",
-  "description": "common components utils used in svelte apps",
+  "description": "common components and utils used in svelte apps",
   "keywords": [
     "component",
     "svelte",

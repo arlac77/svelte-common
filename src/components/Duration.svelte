@@ -1,5 +1,5 @@
 <script>
-  import { formatDuration, formatDurationISO } from "../index.mjs";
+  import { formatDuration, formatDurationISO } from "../util.mjs";
   export let seconds;
 </script>
 

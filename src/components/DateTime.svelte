@@ -1,5 +1,5 @@
 <script>
-  import { dateFormatter } from "../index.mjs";
+  import { dateFormatter } from "../util.mjs";
   export let date;
 </script>
 
