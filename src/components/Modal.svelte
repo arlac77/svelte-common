@@ -22,6 +22,8 @@
 
 <div on:click={handleOuterClick} bind:this={background}>
   <div class="center modal">
-    <slot />
+    <div class="window">
+      <slot />
+    </div>
   </div>
 </div>
