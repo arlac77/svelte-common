@@ -1,7 +1,7 @@
 <script>
   export let name;
   export let version;
-  export let description;    
+  export let description;
 </script>
 
 <h2>{name}</h2>
@@ -12,6 +12,6 @@
       <td>Version</td>
       <td>{version}</td>
     </tr>
-    <slot/>
+    <slot />
   </tbody>
 </table>
