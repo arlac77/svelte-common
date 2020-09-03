@@ -5,7 +5,8 @@
     Collapse,
     ActionButton,
     Menue,
-    Modal
+    Modal,
+    About
   } from "../../src/index.svelte";
   import { fade } from "svelte/transition";
 
@@ -28,6 +29,7 @@
   }
 
   let modal = true;
+  let about = true;
 
   let close = () => {
     modal = false;
@@ -37,9 +39,7 @@
 <nav>
   <a href="/">Example</a>
   <ul>
-    <li>
-      <a href="/">Entry</a>
-    </li>
+    <li><a href="/">Entry</a></li>
   </ul>
   <ul>
     <li>
@@ -87,30 +87,24 @@
       <form>
         <fieldset>
           <label for="username">
-            Username 1
-            <input
-              id="username"
-              type="text"
-              placeholder="Username"
-              name="username"
-              required
-              value="XXX"
-              size="10" />
+            Username 1 <input id="username" type="text" placeholder="Username" name="username" required value="XXX" size="10" />
           </label>
           <label for="password">
-            Password 1
-            <input
-              id="password"
-              type="password"
-              placeholder="Password"
-              name="password"
-              size="10"
-              required />
+            Password 1 <input id="password" type="password" placeholder="Password" name="password" size="10" required />
           </label>
         </fieldset>
 
         <button id="submit" type="submit">Login</button>
       </form>
     </Modal>
+  {/if}
+
+  {#if about}
+    <About version="1.0" name="my title" description="a description">
+      <tr>
+        <td>a new entry</td>
+        <td>a value</td>
+      </tr>
+    </About>
   {/if}
 </main>
