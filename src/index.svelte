@@ -6,6 +6,7 @@
   import ActionButton from "./components/ActionButton.svelte";
   import Collapse from "./components/Collapse.svelte";
   import Modal from "./components/Modal.svelte";
+  import Entitlement from "./components/Entitlement.svelte";
   import {
     dateFormatter,
     formatBytes,
@@ -21,6 +22,7 @@
     ActionButton,
     Collapse,
     Modal,
+    Entitlement,
     dateFormatter,
     formatBytes,
     formatDuration,
