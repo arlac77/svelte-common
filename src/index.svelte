@@ -2,6 +2,7 @@
   import Duration from "./components/Duration.svelte";
   import DateTime from "./components/DateTime.svelte";
   import About from "./components/About.svelte";
+  import SessionDetails from "./components/SessionDetails.svelte";
   import Menue from "./components/Menue.svelte";
   import ActionButton from "./components/ActionButton.svelte";
   import Collapse from "./components/Collapse.svelte";
@@ -23,6 +24,7 @@
     Collapse,
     Modal,
     Entitlement,
+    SessionDetails,
     dateFormatter,
     formatBytes,
     formatDuration,

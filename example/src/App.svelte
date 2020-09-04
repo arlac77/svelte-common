@@ -6,7 +6,8 @@
     ActionButton,
     Menue,
     Modal,
-    About
+    About,
+    SessionDetails
   } from "../../src/index.svelte";
   import { fade } from "svelte/transition";
 
@@ -33,6 +34,12 @@
 
   let close = () => {
     modal = false;
+  };
+
+  const session = {
+    isValid: true,
+    entitlements: ["a", "b", "c"],
+    expirationDate: new Date()
   };
 </script>
 
@@ -105,6 +112,7 @@
         <td>a new entry</td>
         <td>a value</td>
       </tr>
+      <SessionDetails {session} />
     </About>
   {/if}
 </main>
