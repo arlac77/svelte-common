@@ -5,6 +5,10 @@
 </script>
 
 <tr>
+  <td>Username</td>
+  <td>{session.username}</td>
+</tr>
+<tr>
   <td>Session Expiration</td>
   <td class={session.isValid ? 'ok' : 'error'}>
     <DateTime date={session.expirationDate} />

@@ -38,6 +38,7 @@
 
   const session = {
     isValid: true,
+    username: "huho",
     entitlements: ["a", "b", "c"],
     expirationDate: new Date()
   };
