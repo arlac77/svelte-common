@@ -7,7 +7,8 @@
     Menue,
     Modal,
     About,
-    SessionDetails
+    SessionDetails,
+    ServerDetails
   } from "../../src/index.svelte";
   import { fade } from "svelte/transition";
 
