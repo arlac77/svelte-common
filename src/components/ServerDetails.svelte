@@ -23,3 +23,11 @@
   <td>Server Heap Used</td>
   <td>{formatBytes(server.memory.heapUsed)}</td>
 </tr>
+<tr>
+  <td>Server External</td>
+  <td>{formatBytes(server.memory.external)}</td>
+</tr>
+<tr>
+  <td>Server RSS</td>
+  <td>{formatBytes(server.memory.rss)}</td>
+</tr>

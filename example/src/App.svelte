@@ -47,7 +47,7 @@
   const server = {
     version: "1.2.3",
     uptime: 1000,
-    memory: {heapTotal : 1200000, heapUsed: 1000000 }
+    memory: { heapTotal: 1200000, heapUsed: 1000000, rss: 0, external: 0 }
   };
 </script>
 
