@@ -3,6 +3,7 @@
   import DateTime from "./components/DateTime.svelte";
   import About from "./components/About.svelte";
   import SessionDetails from "./components/SessionDetails.svelte";
+  import ServerDetails from "./components/ServerDetails.svelte";
   import Menue from "./components/Menue.svelte";
   import ActionButton from "./components/ActionButton.svelte";
   import Collapse from "./components/Collapse.svelte";
@@ -25,6 +26,7 @@
     Modal,
     Entitlement,
     SessionDetails,
+    ServerDetails,
     dateFormatter,
     formatBytes,
     formatDuration,

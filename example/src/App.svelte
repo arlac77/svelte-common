@@ -42,6 +42,12 @@
     entitlements: ["a", "b", "c"],
     expirationDate: new Date()
   };
+
+  const server = {
+    version: "1.2.3",
+    uptime: 1000,
+    memory: {heapTotal : 1200000, heapUsed: 1000000 }
+  };
 </script>
 
 <nav>
@@ -114,6 +120,7 @@
         <td>a value</td>
       </tr>
       <SessionDetails {session} />
+      <ServerDetails {server} />
     </About>
   {/if}
 </main>
