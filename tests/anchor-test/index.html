@@ -18,6 +18,7 @@
         visibility="visible"
       />
       <rect
+      draggable="true"
         id="content"
         fill="#ddd"
         x="10"
@@ -63,15 +64,18 @@
 
     calc();
 
-    content.draggable = true;
-    content.ondrag = () => {
-        console.log("drag");
+    content.setAttribute("draggable", "true");
+    content.ondragstart = event => {
+      console.log("dragstart");
+    };
+    content.ondrag = event => {
+      console.log("drag");
     };
 
-    content.onclick = () => {
+    content.onclick = event => {
       const contentBB = content.getBBox();
       content.setAttribute("x", contentBB.x + 5);
-      console.log(content);
+      //console.log(content);
       calc();
     };
   </script>
