@@ -3,9 +3,17 @@
   <head>
     <meta charset="utf8" />
     <title>Anchor test</title>
+    <script type="application/css">
+      .button {
+          color: green;
+      }
+    </script>
   </head>
   <body>
-    <svg width="400" height="400" viewBox="0 0 400 400">
+    <button id="a">Anchor</button>
+    <div id="c">Content</div>
+
+    <svg width="400" height="400" viewBox="0 0 400 400" style="z-index: 100">
       <rect
         id="anchor"
         fill="#ddd"
@@ -18,7 +26,7 @@
         visibility="visible"
       />
       <rect
-      draggable="true"
+        draggable="true"
         id="content"
         fill="#ddd"
         x="10"
@@ -64,19 +72,19 @@
 
     calc();
 
-    content.setAttribute("draggable", "true");
-    content.ondragstart = event => {
-      console.log("dragstart");
-    };
-    content.ondrag = event => {
-      console.log("drag");
-    };
+    function makeDraggable(elem, attached) {
+      elem.setAttribute("draggable", "true");
+      elem.ondrag = event => {
+        elem.setAttribute("x", event.x);
+        elem.setAttribute("y", event.y);
 
-    content.onclick = event => {
-      const contentBB = content.getBBox();
-      content.setAttribute("x", contentBB.x + 5);
-      //console.log(content);
-      calc();
-    };
+        attached.setAttribute("x", event.x);
+        attached.setAttribute("y", event.y);
+        calc();
+      };
+    }
+
+    makeDraggable(document.getElementById("a"), anchor);
+    makeDraggable(document.getElementById("c"), content);
   </script>
 </html>
