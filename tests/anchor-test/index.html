@@ -4,9 +4,6 @@
     <meta charset="utf8" />
     <title>Anchor test</title>
     <style>
-      button {
-      }
-
       #menu {
         color: green;
         border-width: 1px;
@@ -17,9 +14,11 @@
       li {
         display: block;
       }
-
       svg {
-        position: sticky;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
       }
     </style>
   </head>
@@ -34,36 +33,16 @@
       <li>FFF</li>
     </ul>
 
-    <svg
-      x="0"
-      y="0"
-      width="400"
-      height="400"
-      viewBox="0 0 400 400"
-      style="z-index: -1"
-    >
-      <rect
-        id="anchor"
-        fill="#ddd"
-        stroke="blue"
-        stroke-width="1"
-        visibility="visible"
-      />
+    <svg width="400" height="400" viewBox="0 0 400 400">
+      <rect id="anchor" fill="#ddd" stroke="blue" stroke-width="1" />
       <rect
         draggable="true"
         id="content"
         fill="#ddd"
         stroke="green"
         stroke-width="1"
-        visibility="visible"
       />
-      <path
-        id="path"
-        stroke="red"
-        fill="#eee7"
-        stroke-width="1"
-        visibility="visible"
-      />
+      <path id="path" stroke="red" fill="#eee7" stroke-width="1" />
     </svg>
   </body>
   <script>
