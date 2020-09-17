@@ -117,6 +117,7 @@
   {#if about}
     <About version="1.0" name="my title" description="a description">
       <tr>
+        <td></td>
         <td>a new entry</td>
         <td>a value</td>
       </tr>
