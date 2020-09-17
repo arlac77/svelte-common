@@ -8,7 +8,9 @@
     Modal,
     About,
     SessionDetails,
-    ServerDetails
+    ServerDetails,
+    PeerDetails,
+    ServiceWorkerDetails
   } from "../../src/index.svelte";
   import { fade } from "svelte/transition";
 
@@ -52,6 +54,9 @@
   };
 
   setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
+
+  const peers = [{host: "somewhere", port: 33}];
+  const serviceWorker = { state: "up" };
 </script>
 
 <nav>
@@ -126,6 +131,8 @@
       </tr>
       <SessionDetails {session} />
       <ServerDetails {server} />
+      <ServiceWorkerDetails {serviceWorker}/>
+      <PeerDetails {peers}/>
     </About>
   {/if}
 </main>
