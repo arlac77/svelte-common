@@ -19,6 +19,20 @@
         left: 0;
         top: 0;
         z-index: -1;
+        pointer-events: all;
+      }
+      svg path {
+        stroke: red;
+        fill: #eee7;
+        stroke-width: 1;
+        pointer-events: all;
+      }
+
+      svg rect {
+        stroke: green;
+        fill: #ddd;
+        stroke-width: 1;
+        pointer-events: all;
       }
     </style>
   </head>
@@ -34,15 +48,9 @@
     </ul>
 
     <svg width="400" height="400" viewBox="0 0 400 400">
-      <rect id="anchor" fill="#ddd" stroke="blue" stroke-width="1" />
-      <rect
-        draggable="true"
-        id="content"
-        fill="#ddd"
-        stroke="green"
-        stroke-width="1"
-      />
-      <path id="path" stroke="red" fill="#eee7" stroke-width="1" />
+      <rect id="anchor"/>
+      <rect id="content"/>
+      <path id="path"/>
     </svg>
   </body>
   <script>
@@ -50,12 +58,30 @@
     const content = document.getElementById("content");
     const path = document.getElementById("path");
 
+    content.addEventListener("click", e => {
+      console.log("content click");
+    });
+
+    path.addEventListener("click", e => {
+      console.log("path click");
+    });
+
+    path.addEventListener("mouseenter", e => {
+      console.log("enter");
+    });
+    path.addEventListener("mouseleave", e => {
+      console.log("leave");
+    });
+
     function calc() {
       const anchorBB = anchor.getBBox();
       const contentBB = content.getBBox();
 
       path.setAttribute(
         "d",
+    //    "M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"
+
+
         `M ${anchorBB.x} ${anchorBB.y}
        Q ${contentBB.x} ${anchorBB.y}
         ${contentBB.x} ${contentBB.y}
