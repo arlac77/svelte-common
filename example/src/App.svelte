@@ -44,11 +44,14 @@
     expirationDate: new Date()
   };
 
+  const start = Date.now();
+
   const server = {
     version: "1.2.3",
-    uptime: 1000,
     memory: { heapTotal: 1200000, heapUsed: 1000000, rss: 0, external: 0 }
   };
+
+  setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
 </script>
 
 <nav>
@@ -117,7 +120,7 @@
   {#if about}
     <About version="1.0" name="my title" description="a description">
       <tr>
-        <td></td>
+        <td />
         <td>a new entry</td>
         <td>a value</td>
       </tr>

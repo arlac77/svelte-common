@@ -17,7 +17,9 @@
   <td />
   <td>Uptime</td>
   <td>
-    <Duration seconds={server.uptime} />
+    {#if server.uptime >= 0}
+      <Duration seconds={server.uptime} />
+    {:else}<div class="error">down</div>{/if}
   </td>
 </tr>
 <tr>
