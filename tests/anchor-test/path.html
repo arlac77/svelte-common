@@ -8,12 +8,11 @@
         left: 0;
         top: 0;
         z-index: -1;
-        pointer-events: all;
       }
       svg:hover {
         stroke-width: 3;
       }
-      svg path {
+      path {
         stroke: red;
         fill: #eee7;
         pointer-events: all;
@@ -24,18 +23,28 @@
   <body>
     <svg width="400" height="400" viewBox="0 0 600 600">
       <path
+        id="path"
         d="M 100 100
-        H 180
-        V 140
+        h 80
+        v 40
 
-        L 200 200
-        V 300
-        H 90
-        V 200
+        l 40 40
+        v 200
+        h -140
+        v -200
 
-        L 100 140
+        l 20 -40
+        
         Z"
       ></path>
     </svg>
   </body>
+  <script>
+    const path = document.getElementById("path");
+
+    console.log(path);
+    path.addEventListener("click", e => {
+      console.log("path click");
+    });
+  </script>
 </html>
