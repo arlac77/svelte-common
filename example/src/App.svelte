@@ -7,6 +7,7 @@
     Menue,
     Modal,
     About,
+    ApplicationDetails,
     SessionDetails,
     ServerDetails,
     PeerDetails,
@@ -55,7 +56,7 @@
 
   setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
 
-  const peers = [{host: "somewhere", port: 33}];
+  const peers = [{ host: "somewhere", port: 33 }];
   const serviceWorker = { state: "up" };
 </script>
 
@@ -123,7 +124,11 @@
   {/if}
 
   {#if about}
-    <About version="1.0" name="my title" description="a description">
+    <About>
+      <ApplicationDetails
+        version="1.0"
+        name="my title"
+        description="a description" />
       <tr>
         <td />
         <td>a new entry</td>
@@ -131,8 +136,8 @@
       </tr>
       <SessionDetails {session} />
       <ServerDetails {server} />
-      <ServiceWorkerDetails {serviceWorker}/>
-      <PeerDetails {peers}/>
+      <ServiceWorkerDetails {serviceWorker} />
+      <PeerDetails {peers} />
     </About>
   {/if}
 </main>

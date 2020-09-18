@@ -2,6 +2,7 @@
   import Duration from "./components/Duration.svelte";
   import DateTime from "./components/DateTime.svelte";
   import About from "./components/About.svelte";
+  import ApplicationDetails from "./components/ApplicationDetails.svelte";
   import PeerDetails from "./components/PeerDetails.svelte";
   import SessionDetails from "./components/SessionDetails.svelte";
   import ServerDetails from "./components/ServerDetails.svelte";
@@ -22,13 +23,14 @@
   export {
     DateTime,
     Duration,
-    About,
     Menue,
     ActionButton,
     Collapse,
     Modal,
     Entitlement,
     Peer,
+    About,
+    ApplicationDetails,
     PeerDetails,
     SessionDetails,
     ServerDetails,
