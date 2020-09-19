@@ -1,12 +1,26 @@
-name: Auto approve
-'on': pull_request
+name: Merge me!
+
+on:
+  check_suite:
+    types:
+      - completed
+  pull_request:
+    types:
+      - edited
+      - labeled
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
+      - unlabeled
+      - unlocked
+
 jobs:
-  auto-approve:
+  merge-me:
+    name: Merge me!
     runs-on: ubuntu-latest
     steps:
-      - uses: hmarr/auto-approve-action@v2.0.0
-        if: >-
-          github.actor == 'dependabot[bot]' || github.actor ==
-          'dependabot-preview[bot]'
+      - name: Merge me!
+        uses: ridedott/merge-me-action@master
         with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
