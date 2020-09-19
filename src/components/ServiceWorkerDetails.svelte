@@ -3,6 +3,10 @@
 </script>
 
 <tr>
-  <td>Service Worker</td>
-  <td colspan="2">{serviceWorker.state}</td>
+  <td colspan="3">Service Worker</td>
+</tr>
+<tr>
+  <td></td>
+  <td>State</td>
+  <td>{serviceWorker.state}</td>
 </tr>

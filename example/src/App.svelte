@@ -57,7 +57,7 @@
   setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
 
   const peers = [{ host: "somewhere", port: 33 }];
-  const serviceWorker = { state: "up" };
+  const serviceWorker = { state: "up", "sw": {} };
 </script>
 
 <nav>
