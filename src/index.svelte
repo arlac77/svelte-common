@@ -20,6 +20,9 @@
     formatDurationISO,
     formatSecondsSinceEpoch
   } from "./util.mjs";
+
+  import { initializeServiceWorker } from "./service-worker.mjs";
+
   export {
     DateTime,
     Duration,
@@ -39,6 +42,7 @@
     formatBytes,
     formatDuration,
     formatDurationISO,
-    formatSecondsSinceEpoch
+    formatSecondsSinceEpoch,
+    initializeServiceWorker
   };
 </script>

@@ -11,6 +11,7 @@
   <td>{serviceWorker.state}</td>
 </tr>
 <tr>
+  <td></td>
   <td>scriptURL</td>
-  <td colspan="2">{serviceWorker.scriptURL}</td>
+  <td>{serviceWorker.scriptURL}</td>
 </tr>
