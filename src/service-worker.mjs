@@ -1,5 +1,10 @@
 import { readable } from "svelte/store";
 
+/**
+ * Create a store holding a service worker
+ * @param {string} script 
+ * @return {Readable} store holding the service worker
+ */
 export function initializeServiceWorker(script) {
     const serviceWorker = readable({ state: "unknown" }, set => {
       navigator.serviceWorker
