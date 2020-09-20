@@ -1,6 +1,5 @@
 name: Merge me!
-
-on:
+'on':
   check_suite:
     types:
       - completed
@@ -14,7 +13,6 @@ on:
       - synchronize
       - unlabeled
       - unlocked
-
 jobs:
   merge-me:
     name: Merge me!
@@ -23,4 +21,4 @@ jobs:
       - name: Merge me!
         uses: ridedott/merge-me-action@master
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
