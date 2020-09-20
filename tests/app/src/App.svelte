@@ -11,8 +11,9 @@
     SessionDetails,
     ServerDetails,
     PeerDetails,
-    ServiceWorkerDetails
-  } from "../../src/index.svelte";
+    ServiceWorkerDetails,
+    initializeServiceWorker
+  } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
 
   let actionExecuted = false;
@@ -57,7 +58,10 @@
   setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
 
   const peers = [{ host: "somewhere", port: 33 }];
-  const serviceWorker = { state: "up", scriptURL: "somewhere.mjs" };
+  //const serviceWorker = { state: "up", scriptURL: "somewhere.mjs" };
+
+  const serviceWorker = initializeServiceWorker('service-worker.mjs');
+
 </script>
 
 <nav>

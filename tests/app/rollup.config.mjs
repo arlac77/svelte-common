@@ -4,19 +4,21 @@ import svelte from "rollup-plugin-svelte";
 
 const port = 5000;
 
+const basedir = "tests/app";
+
 export default {
-  input: "example/src/index.mjs",
+  input: `${basedir}/src/index.mjs`,
   output: {
     sourcemap: true,
     format: "esm",
-    file: "example/public/bundle.mjs"
+    file: `${basedir}/public/bundle.main.mjs`
   },
   plugins: [
     dev({
       port,
-      dirs: ["example/public"],
-      spa: "example/public/index.html",
-      basePath: "/components/svelte-common/example"
+      dirs: [`${basedir}/public`],
+      spa: `${basedir}/public/index.html`,
+      basePath: `/components/svelte-common/${basedir}`
     }),
     svelte(),
     resolve({
