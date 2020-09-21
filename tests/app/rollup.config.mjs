@@ -2,9 +2,8 @@ import resolve from "@rollup/plugin-node-resolve";
 import dev from "rollup-plugin-dev";
 import svelte from "rollup-plugin-svelte";
 
-const port = 5000;
-
 const basedir = "tests/app";
+const port = 5000;
 
 export default {
   input: `${basedir}/src/index.mjs`,
