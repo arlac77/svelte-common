@@ -11,6 +11,24 @@ export function initializeServiceWorker(script, options) {
     navigator.serviceWorker
       .register(script, options)
       .then(serviceWorkerRegistration => {
+        console.log("scope", serviceWorkerRegistration.scope);
+        console.log(
+          "navigationPreload",
+          serviceWorkerRegistration.navigationPreload
+        );
+        console.log("index", serviceWorkerRegistration.index);
+        if (serviceWorkerRegistration.navigationPreload) {
+          serviceWorkerRegistration.navigationPreload.getState().then(state => {
+            console.log("navigationPreload state", state);
+          });
+        }
+
+        if (serviceWorkerRegistration.index) {
+          serviceWorkerRegistration.index.getAll().then(all => {
+            console.log(all);
+          });
+        }
+
         // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update
         for (const state of ["active", "waiting", "installing"]) {
           const sw = serviceWorkerRegistration[state];
