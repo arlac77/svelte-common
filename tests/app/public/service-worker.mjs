@@ -1,4 +1,4 @@
-const CURRENT_ASSET_CACHE = `assets-1`;
+const CURRENT_ASSET_CACHE = "assets-1";
 const RUNTIME_CACHE = "runtime";
 
 const currentCaches = [CURRENT_ASSET_CACHE, RUNTIME_CACHE];

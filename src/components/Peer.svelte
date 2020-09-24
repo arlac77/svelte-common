@@ -1,4 +1,5 @@
 <script>
+  import TCPSocket from "./TCPSocket.svelte";
   export let peer;
 </script>
 
@@ -13,7 +14,13 @@
 </style>
 
 <div class="peer">
-  {peer.host}:{peer.port}
-  {#if peer.referrer}(referrer {peer.referrer.host}:{peer.referrer.port}){/if}
-  {#if peer.to}(to {peer.to.host}:{peer.to.port}){/if}
+  <TCPSocket socket={peer} />
+  {#if peer.referrer}
+    (referrer
+    <TCPSocket socket={peer.referrer} />)
+  {/if}
+  {#if peer.to}
+    (to
+    <TCPSocket socket={peer.to} />)
+  {/if}
 </div>

@@ -57,11 +57,21 @@
 
   setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
 
-  const peers = [{ host: "somewhere", port: 33 }];
+  const to = { host: "1.2.3.4", port: 1234 };
+  const referrer = { host: "1.2.3.4", port: 1235 };
+  const peers = [
+    { host: "somewhere", port: 33 },
+    { host: "somewhere2", port: 33, to },
+    {
+      host: "somewhere3",
+      port: 33,
+      to,
+      referrer
+    }
+  ];
   //const serviceWorker = { state: "up", scriptURL: "somewhere.mjs" };
 
-  const serviceWorker = initializeServiceWorker('service-worker.mjs');
-
+  const serviceWorker = initializeServiceWorker("service-worker.mjs");
 </script>
 
 <nav>
