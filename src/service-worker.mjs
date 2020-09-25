@@ -7,6 +7,13 @@ import { readable } from "svelte/store";
  * @return {Readable} store holding the service worker
  */
 export function initializeServiceWorker(script, options) {
+
+  /*
+  const serviceWorkerRegistration = readable({ scope: "unknown" }, set => {
+    return () => {};
+  });
+*/
+
   const serviceWorker = readable({ state: "unknown" }, set => {
     navigator.serviceWorker
       .register(script, options)
@@ -43,5 +50,5 @@ export function initializeServiceWorker(script, options) {
     return () => {};
   });
 
-  return { serviceWorker };
+  return { serviceWorker, serviceWorkerRegistration };
 }
