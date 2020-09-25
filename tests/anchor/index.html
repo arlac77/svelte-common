@@ -33,7 +33,7 @@
       svg rect {
         stroke: green;
         fill: #ddd;
-        pointer-events: auto;
+        pointer-events: none;
       }
     </style>
   </head>
@@ -75,24 +75,20 @@
     });
 
     function calc() {
-      const anchorBB = anchor.getBBox();
-      const contentBB = content.getBBox();
+      const a = anchor.getBBox();
+      const c = content.getBBox();
 
       path.setAttribute(
         "d",
-    //    "M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"
-
-
-        `M ${anchorBB.x} ${anchorBB.y}
-       Q ${contentBB.x} ${anchorBB.y}
-        ${contentBB.x} ${contentBB.y}
-       v ${contentBB.height}
-       Q ${contentBB.x} ${anchorBB.y + anchorBB.height}
-        ${anchorBB.x} ${anchorBB.y + anchorBB.height}
-       h ${anchorBB.width}
-       v ${-anchorBB.height}
-       z
-      `
+        `M ${a.x} ${a.y}
+       Q ${c.x} ${a.y}
+        ${c.x} ${c.y}
+       v ${c.height}
+       Q ${c.x} ${a.y + a.height}
+        ${a.x} ${a.y + a.height}
+       h ${a.width}
+       v ${-a.height}
+       z`
       );
     }
 
