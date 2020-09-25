@@ -20,7 +20,7 @@
         left: 0;
         top: 0;
         z-index: -1;
-        pointer-events: all;
+        pointer-events: none;
       }
       svg:hover {
         stroke-width: 3;
@@ -28,12 +28,12 @@
       svg path {
         stroke: red;
         fill: #eee7;
-        pointer-events: all;
+        pointer-events: auto;
       }
       svg rect {
         stroke: green;
         fill: #ddd;
-        pointer-events: all;
+        pointer-events: auto;
       }
     </style>
   </head>
@@ -48,7 +48,7 @@
       <li>FFF</li>
     </ul>
 
-    <svg width="600" height="600" viewBox="0 0 600 600">
+    <svg width="600" height="600">
       <rect id="anchor"/>
       <rect id="content"/>
       <path id="path"/>
