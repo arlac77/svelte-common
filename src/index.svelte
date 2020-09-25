@@ -7,6 +7,7 @@
   import SessionDetails from "./components/SessionDetails.svelte";
   import ServerDetails from "./components/ServerDetails.svelte";
   import ServiceWorkerDetails from "./components/ServiceWorkerDetails.svelte";
+  import ServiceWorkerRegistrationDetails from "./components/ServiceWorkerRegistrationDetails.svelte";
   import Menue from "./components/Menue.svelte";
   import ActionButton from "./components/ActionButton.svelte";
   import Collapse from "./components/Collapse.svelte";
@@ -38,6 +39,7 @@
     SessionDetails,
     ServerDetails,
     ServiceWorkerDetails,
+    ServiceWorkerRegistrationDetails,
     dateFormatter,
     formatBytes,
     formatDuration,

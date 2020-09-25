@@ -1,6 +1,5 @@
 <script>
   export let serviceWorker;
-  export let serviceWorkerRegistration;
 </script>
 
 <tr>
@@ -15,9 +14,4 @@
   <td></td>
   <td>scriptURL</td>
   <td>{serviceWorker.scriptURL}</td>
-</tr>
-<tr>
-  <td></td>
-  <td>Scope</td>
-  <td id="serviceWorkerScope">{serviceWorkerRegistration.scope}</td>
 </tr>

@@ -12,7 +12,7 @@
     ServerDetails,
     PeerDetails,
     ServiceWorkerDetails,
-    initializeServiceWorker
+    ServiceWorkerRegistrationDetails,
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
@@ -71,8 +71,18 @@
     }
   ];
 
-  const serviceWorker = readable({ state: "up", scriptURL: "somewhere.mjs" }, set =>{ return () => {}});
-  const serviceWorkerRegistration = readable({ scope: "http://localhost:5000/components/svelte-common/tests/app/" }, set =>{ return () => {}});
+  const serviceWorker = readable(
+    { state: "up", scriptURL: "somewhere.mjs" },
+    set => {
+      return () => {};
+    }
+  );
+  const serviceWorkerRegistration = readable(
+    { scope: "http://localhost:5000/components/svelte-common/tests/app/" },
+    set => {
+      return () => {};
+    }
+  );
 
   /*
   const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
@@ -155,7 +165,9 @@
       </tr>
       <SessionDetails {session} />
       <ServerDetails {server} />
-      <ServiceWorkerDetails serviceWorker={$serviceWorker} serviceWorkerRegistration={$serviceWorkerRegistration}/>
+      <ServiceWorkerDetails serviceWorker={$serviceWorker} />
+      <ServiceWorkerRegistrationDetails
+        serviceWorkerRegistration={$serviceWorkerRegistration} />
       <PeerDetails {peers} />
     </About>
   {/if}
