@@ -15,6 +15,7 @@
     initializeServiceWorker
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
+  import { readable } from "svelte/store";
 
   let actionExecuted = false;
 
@@ -69,9 +70,13 @@
       referrer
     }
   ];
-  //const serviceWorker = { state: "up", scriptURL: "somewhere.mjs" };
 
-  const serviceWorker = initializeServiceWorker("service-worker.mjs");
+  const serviceWorker = readable({ state: "up", scriptURL: "somewhere.mjs" }, set =>{ return () => {}});
+  const serviceWorkerRegistration = readable({ scope: "http://localhost:5000/components/svelte-common/tests/app/" }, set =>{ return () => {}});
+
+  /*
+  const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
+  */
 </script>
 
 <nav>
@@ -150,7 +155,7 @@
       </tr>
       <SessionDetails {session} />
       <ServerDetails {server} />
-      <ServiceWorkerDetails {serviceWorker} />
+      <ServiceWorkerDetails serviceWorker={$serviceWorker} serviceWorkerRegistration={$serviceWorkerRegistration}/>
       <PeerDetails {peers} />
     </About>
   {/if}

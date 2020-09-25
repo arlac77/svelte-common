@@ -19,5 +19,5 @@
 <tr>
   <td></td>
   <td>Scope</td>
-  <td>{serviceWorkerRegistration.scope}</td>
+  <td id="serviceWorkerScope">{serviceWorkerRegistration.scope}</td>
 </tr>

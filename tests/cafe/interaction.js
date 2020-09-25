@@ -5,23 +5,21 @@ const base = "http://localhost:5000";
 fixture`interactions`.page`${base}/components/svelte-common/example/index.html`;
 
 test("action", async t => {
-  const s = Selector("button").withText('Long Running Action');
+  const s = Selector("button").withText("Long Running Action");
 
   await t.click(s);
 
   await t.expect(Selector("#actionExecuted").innerText).eql("true");
 });
 
-
 test("failing action", async t => {
-  const s = Selector("button").withText('Failing Action');
+  const s = Selector("button").withText("Failing Action");
 
   await t.click(s);
 });
 
-
 test("collapse", async t => {
-  const s = Selector("button").withText('Collapse');
+  const s = Selector("button").withText("Collapse");
 
   await t.click(s);
 
@@ -32,3 +30,8 @@ test("collapse", async t => {
   //await t.expect(Selector("#collapse-content").visible);
 });
 
+test("about service worker", async t => {
+  await t
+    .expect(Selector("#serviceWorkerScope").innerText)
+    .eql(`${base}/components/svelte-common/tests/app/`);
+});
