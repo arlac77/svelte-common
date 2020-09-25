@@ -49,45 +49,61 @@
     </ul>
 
     <svg width="600" height="600">
-      <rect id="anchor"/>
-      <rect id="content"/>
-      <path id="path"/>
+      <rect id="anchor" />
+      <rect id="content" />
+      <path id="path" />
     </svg>
   </body>
   <script>
     const anchor = document.getElementById("anchor");
     const content = document.getElementById("content");
     const path = document.getElementById("path");
-
-    content.addEventListener("click", e => {
-      console.log("content click");
-    });
-
-    path.addEventListener("click", e => {
-      console.log("path click");
-    });
-
-    path.addEventListener("mouseenter", e => {
-      console.log("enter");
-    });
+    
     path.addEventListener("mouseleave", e => {
-      console.log("leave");
+      content.style.stroke = 'white';
+      content.style.fill = 'none';
     });
 
     function calc() {
       const a = anchor.getBBox();
       const c = content.getBBox();
 
+      let ax1, ax2, aw, ay1, ay2, cx1;
+
+      ax1 = a.x;
+      aw = a.width;
+      ah = a.height;
+      ay1 = a.y;
+      ay2 = a.y + a.height;
+      cx1 = c.x;
+
+      if (a.x + a.width > c.x + c.width) {
+        ax1 = a.x + a.width;
+        aw = -a.width;
+        cx1 = c.x + c.width;
+      }
+
+      ax2 = ax1;
+
+      if (a.y < c.y) {
+        ax2 = a.x + a.width;
+      }
+
+      if (a.y + a.height > c.y + c.height) {
+        ax1 = a.x + a.width;
+        aw = 0;
+      }
+
       path.setAttribute(
         "d",
-        `M ${a.x} ${a.y}
-       Q ${c.x} ${a.y}
-        ${c.x} ${c.y}
+        `M ${ax2} ${ay1}
+       Q ${cx1} ${ay1}
+        ${cx1} ${c.y}
        v ${c.height}
-       Q ${c.x} ${a.y + a.height}
-        ${a.x} ${a.y + a.height}
-       h ${a.width}
-       v ${-a.height}
+       Q ${cx1} ${ay2}
+        ${ax1} ${ay2}
+       h ${aw}
+       v ${-ah}
        z`
       );
     }

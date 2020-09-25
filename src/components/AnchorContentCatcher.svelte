@@ -36,7 +36,7 @@
 <div bind:this={c}>
   <slot name="content" />
 </div>
-<svg width="100" height="100" viewBox="0 0 100 100">
+<svg width="100" height="100">
   <rect
     bind:this={anchorElem}
     fill="#ddd"
