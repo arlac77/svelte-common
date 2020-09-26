@@ -9,6 +9,8 @@
       }
       button {
         position: absolute;
+      top: 10px;
+        left: 20px;
       }
       #menu {
         position: absolute;
@@ -18,15 +20,13 @@
         padding: 0;
         margin: 0;
         max-width: 120px;
+        top: 100px;
+        left: 80px;
       }
       li {
         display: block;
       }
       svg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: -1;
         pointer-events: none;
       }
       svg:hover {
@@ -36,11 +36,6 @@
         stroke: red;
         fill: #eee7;
         pointer-events: auto;
-      }
-      svg rect {
-        stroke: green;
-        fill: #ddd;
-        pointer-events: none;
       }
     </style>
   </head>
@@ -56,14 +51,12 @@
     </ul>
 
     <svg width="10000" height="10000">
-      <rect id="anchor" />
-      <rect id="content" />
       <path id="path" />
     </svg>
   </body>
   <script>
-    const anchor = document.getElementById("anchor");
-    const content = document.getElementById("content");
+    const anchor = document.getElementById("a");
+    const content = document.getElementById("menu");
     const path = document.getElementById("path");
 
     path.addEventListener("mouseleave", e => {
@@ -71,11 +64,17 @@
       content.style.fill = "none";
     });
 
-    function calc() {
-      const a = anchor.getBBox();
-      const c = content.getBBox();
+    const OFFSET = 9;
 
-      let ax1, ax2, aw, ay1, ay2, cx1;
+    function layoutPath() {
+      const a = anchor.getBoundingClientRect();
+      const c = content.getBoundingClientRect();
+      a.x -= OFFSET;
+      a.y -= OFFSET;
+      c.x -= OFFSET;
+      c.y -= OFFSET;
+
+      let ax1, ax2, aw, ah, ay1, ay2, cx1;
 
       ax1 = a.x;
       aw = a.width;
@@ -115,35 +114,27 @@
       );
     }
 
-    function makeDraggable(elem, attached) {
+    function makeDraggable(elem) {
       const bb = elem.getBoundingClientRect();
-
-      attached.setAttribute("x", bb.x);
-      attached.setAttribute("y", bb.y);
-      attached.setAttribute("width", bb.width);
-      attached.setAttribute("height", bb.height);
-
       elem.setAttribute("draggable", "true");
 
       let dx, dy;
 
       elem.ondragstart = event => {
         const rect = elem.getBoundingClientRect();
-        dx = event.x - rect.x;
-        dy = event.y - rect.y;
+        dx = OFFSET + event.x - rect.x;
+        dy = OFFSET + event.y - rect.y;
       };
       elem.ondrag = event => {
         elem.style.top = `${event.y - dy}px`;
-        elem.style.left = `${event.x -dx}px`;
-        attached.setAttribute("x", event.x - dx);
-        attached.setAttribute("y", event.y - dy);
-        calc();
+        elem.style.left = `${event.x - dx}px`;
+        layoutPath();
       };
     }
 
-    makeDraggable(document.getElementById("a"), anchor);
-    makeDraggable(document.getElementById("menu"), content);
+    makeDraggable(anchor);
+    makeDraggable(content);
 
-    calc();
+    layoutPath();
   </script>
 </html>
