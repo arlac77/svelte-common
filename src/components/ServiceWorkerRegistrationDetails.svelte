@@ -1,4 +1,5 @@
 <script>
+  import ActionButton from "./ActionButton.svelte";
   export let serviceWorkerRegistration;
 </script>
 
@@ -6,4 +7,8 @@
   <td />
   <td>Scope</td>
   <td id="serviceWorkerScope">{serviceWorkerRegistration.scope}</td>
+</tr>
+<tr>
+  <td />
+  <td colspan="2"><ActionButton action={serviceWorkerRegistration.update()}>Update</ActionButton></td>
 </tr>
