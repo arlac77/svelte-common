@@ -10,5 +10,12 @@
 </tr>
 <tr>
   <td />
-  <td colspan="2"><ActionButton action={serviceWorkerRegistration.update()}>Update</ActionButton></td>
+  <td colspan="2">
+    <ActionButton action={() => serviceWorkerRegistration.update()}>
+      Update
+    </ActionButton>
+    <ActionButton action={() => serviceWorkerRegistration.unregister()}>
+      Unregister
+    </ActionButton>
+  </td>
 </tr>
