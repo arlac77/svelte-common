@@ -4,7 +4,14 @@
     <meta charset="utf8" />
     <title>Anchor test</title>
     <style>
+      body {
+        position: relative;
+      }
+      button {
+        position: absolute;
+      }
       #menu {
+        position: absolute;
         color: green;
         border-width: 1px;
         border-color: blue;
@@ -48,7 +55,7 @@
       <li>FFF</li>
     </ul>
 
-    <svg width="600" height="600">
+    <svg width="10000" height="10000">
       <rect id="anchor" />
       <rect id="content" />
       <path id="path" />
@@ -58,10 +65,10 @@
     const anchor = document.getElementById("anchor");
     const content = document.getElementById("content");
     const path = document.getElementById("path");
-    
+
     path.addEventListener("mouseleave", e => {
-      content.style.stroke = 'white';
-      content.style.fill = 'none';
+      content.style.stroke = "white";
+      content.style.fill = "none";
     });
 
     function calc() {
@@ -117,12 +124,19 @@
       attached.setAttribute("height", bb.height);
 
       elem.setAttribute("draggable", "true");
-      elem.ondrag = event => {
-        elem.setAttribute("x", event.x);
-        elem.setAttribute("y", event.y);
 
-        attached.setAttribute("x", event.x);
-        attached.setAttribute("y", event.y);
+      let dx, dy;
+
+      elem.ondragstart = event => {
+        const rect = elem.getBoundingClientRect();
+        dx = event.x - rect.x;
+        dy = event.y - rect.y;
+      };
+      elem.ondrag = event => {
+        elem.style.top = `${event.y - dy}px`;
+        elem.style.left = `${event.x -dx}px`;
+        attached.setAttribute("x", event.x - dx);
+        attached.setAttribute("y", event.y - dy);
         calc();
       };
     }
