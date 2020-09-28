@@ -1,7 +1,5 @@
-<script>
-</script>
 
-<table class="bordered striped hoverable">
+<table class="bordered striped">
   <tbody>
     <slot />
   </tbody>
