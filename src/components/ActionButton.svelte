@@ -1,6 +1,6 @@
 <script>
   export let action;
-
+  export let error = (e) => console.error(e);
   let active;
 
   async function click() {
@@ -8,7 +8,7 @@
       active = true;
       await action();
     } catch (e) {
-      console.log(e);
+      error(e);
     } finally {
       active = false;
     }
