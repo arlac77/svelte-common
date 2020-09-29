@@ -1,64 +1,100 @@
 <script>
   import { onMount } from "svelte";
 
-  let a, c;
+  export let close;
 
-  let anchorElem;
-  let contentElem;
-  let pathElem;
+  let anchor;
+  let content;
+  let path;
 
-  onMount(() => {
-    console.log(a.getBoundingClientRect(), c.getBoundingClientRect());
+  const OFFSET = 9;
 
-    const anchor = anchorElem.getBBox();
-    const content = contentElem.getBBox();
+  function layoutPath() {
+    const a = anchor.getBoundingClientRect();
+    const c = content.getBoundingClientRect();
 
-    console.log(anchor, content);
+    a.x -= OFFSET;
+    a.y -= OFFSET;
+    c.x -= OFFSET;
+    c.y -= OFFSET;
 
-    pathElem.setAttribute(
-      "d",
-      `M ${anchor.x} ${anchor.y}
-    Q ${content.x} ${anchor.y}
-      ${content.x} ${content.y}
-    v ${content.height}
-    Q ${content.x} ${anchor.y + anchor.height}
-      ${anchor.x} ${anchor.y + anchor.height}
-    h ${anchor.width}
-    v ${-anchor.height}
-    z`
-    );
-  });
+    let ax1, ax2, aw, ah, ay1, ay2, cx1;
+
+    ax1 = a.x;
+    aw = a.width;
+    ah = a.height;
+    ay1 = a.y;
+    ay2 = a.y + a.height;
+    cx1 = c.x;
+
+    if (a.x + a.width > c.x + c.width) {
+      ax1 = a.x + a.width;
+      aw = -a.width;
+      cx1 = c.x + c.width;
+    }
+
+    ax2 = ax1;
+
+    if (a.y < c.y) {
+      ax2 = a.x + a.width;
+    }
+
+    if (a.y + a.height > c.y + c.height) {
+      ax1 = a.x + a.width;
+      aw = 0;
+    }
+
+    const d = `M ${ax2} ${ay1}
+   Q ${cx1} ${ay1}
+    ${cx1} ${c.y}
+   v ${c.height}
+   Q ${cx1} ${ay2}
+    ${ax1} ${ay2}
+   h ${aw}
+   v ${-ah}
+   z`;
+
+    console.log(d);
+    path.setAttribute("d", d);
+  }
+
+  onMount(() => layoutPath());
 </script>
 
-<div bind:this={a}>
+<style>
+  svg {
+    position: absolute;
+    z-index: 99;
+    pointer-events: none;
+  }
+  svg:hover {
+    stroke-width: 6;
+  }
+  svg path {
+    stroke: red;
+    stroke-width: 2;
+    fill: #eee7;
+    pointer-events: auto;
+  }
+</style>
+
+<svg width="10000" height="10000">
+  <path bind:this={path}/>
+  <rect width="100" height="100" />
+
+  <!--<path d="M 10 9
+  Q 1700 14
+   1750 22
+  v 36
+  Q 1784 127
+   1734 127
+  h 50
+  v -36
+  z"/>-->
+</svg>
+<div bind:this={anchor} on:mouseleave={close}>
   <slot name="anchor" />
 </div>
-<div bind:this={c}>
+<div bind:this={content}>
   <slot name="content" />
 </div>
-<svg width="100" height="100">
-  <rect
-    bind:this={anchorElem}
-    fill="#ddd"
-    y="10"
-    width="100"
-    height="30"
-    stroke="green"
-    stroke-width="5"
-    visibility="visible" />
-  <rect
-    bind:this={contentElem}
-    fill="#ddd"
-    y="100"
-    width="120"
-    height="200"
-    stroke="green"
-    stroke-width="5"
-    visibility="visible" />
-  <path
-    bind:this={pathElem}
-    stroke="green"
-    fill="#ddd"
-    stroke-width="5"
-    visibility="visible" />
-</svg>
