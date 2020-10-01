@@ -1,4 +1,5 @@
 <script context="module">
+  import Bytes from "./components/Bytes.svelte";
   import Duration from "./components/Duration.svelte";
   import DateTime from "./components/DateTime.svelte";
   import About from "./components/About.svelte";
@@ -25,6 +26,7 @@
   import { initializeServiceWorker } from "./service-worker.mjs";
 
   export {
+    Bytes,
     DateTime,
     Duration,
     Menue,

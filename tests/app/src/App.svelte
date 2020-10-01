@@ -1,5 +1,6 @@
 <script>
   import {
+    Bytes,
     DateTime,
     Duration,
     Collapse,
@@ -136,6 +137,13 @@
 
     <DateTime date={new Date()} />
   </div>
+  <Bytes value="10"/>
+  <Bytes value="100"/>
+  <Bytes value="1000"/>
+  <Bytes value="10000"/>
+  <Bytes value="100000"/>
+  <Bytes value="1000000"/>
+  <Bytes value="10000000"/>
 
   {#if modal}
     <Modal {close}>
