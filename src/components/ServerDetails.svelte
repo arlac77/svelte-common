@@ -1,6 +1,6 @@
 <script>
   import Duration from "./Duration.svelte";
-  import { formatBytes } from "../util.mjs";
+  import Bytes from "./Bytes.svelte";
 
   export let server;
 </script>
@@ -25,20 +25,20 @@
 <tr>
   <td />
   <td>Heap Total</td>
-  <td>{formatBytes(server.memory.heapTotal)}</td>
+  <td><Bytes value={server.memory.heapTotal}/></td>
 </tr>
 <tr>
   <td />
   <td>Heap Used</td>
-  <td>{formatBytes(server.memory.heapUsed)}</td>
+  <td><Bytes value={server.memory.heapUsed}/></td>
 </tr>
 <tr>
   <td />
   <td>External</td>
-  <td>{formatBytes(server.memory.external)}</td>
+  <td><Bytes value={server.memory.external}/></td>
 </tr>
 <tr>
   <td />
   <td>RSS</td>
-  <td>{formatBytes(server.memory.rss)}</td>
+  <td><Bytes value={server.memory.rss}/></td>
 </tr>
