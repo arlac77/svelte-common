@@ -3,6 +3,7 @@
     Bytes,
     DateTime,
     Duration,
+    TopNav,
     Collapse,
     ActionButton,
     Menue,
@@ -90,7 +91,7 @@
   */
 </script>
 
-<nav>
+<TopNav offset={42}>
   <a href="/">Example</a>
   <ul>
     <li><a href="/">Entry</a></li>
@@ -111,7 +112,7 @@
       </Menue>
     </li>
   </ul>
-</nav>
+</TopNav>
 <main>
   <ActionButton {action}>Long Running Action</ActionButton>
 

@@ -9,6 +9,7 @@
   import ServerDetails from "./components/ServerDetails.svelte";
   import ServiceWorkerDetails from "./components/ServiceWorkerDetails.svelte";
   import ServiceWorkerRegistrationDetails from "./components/ServiceWorkerRegistrationDetails.svelte";
+  import TopNav from "./components/TopNav.svelte";
   import Menue from "./components/Menue.svelte";
   import ActionButton from "./components/ActionButton.svelte";
   import Collapse from "./components/Collapse.svelte";
@@ -29,6 +30,7 @@
     Bytes,
     DateTime,
     Duration,
+    TopNav,
     Menue,
     ActionButton,
     Collapse,
