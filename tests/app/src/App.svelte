@@ -1,5 +1,6 @@
 <script>
   import {
+    DataGrid,
     Bytes,
     DateTime,
     Duration,
@@ -18,6 +19,9 @@
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
+
+  const source = {
+  };
 
   let actionExecuted = false;
 
@@ -146,6 +150,9 @@
   <Bytes value="1000000"/>
   <Bytes value="10000000"/>
 
+  <DataGrid {source} columns={[{title:"col1"},{title:"col2"}]}>
+  </DataGrid>
+  
   {#if modal}
     <Modal {close}>
       <form>

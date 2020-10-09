@@ -9,6 +9,7 @@
   import ServerDetails from "./components/ServerDetails.svelte";
   import ServiceWorkerDetails from "./components/ServiceWorkerDetails.svelte";
   import ServiceWorkerRegistrationDetails from "./components/ServiceWorkerRegistrationDetails.svelte";
+  import DataGrid from "./components/DataGrid.svelte";
   import TopNav from "./components/TopNav.svelte";
   import Menue from "./components/Menue.svelte";
   import ActionButton from "./components/ActionButton.svelte";
@@ -32,6 +33,7 @@
     Duration,
     TopNav,
     Menue,
+    DataGrid,
     ActionButton,
     Collapse,
     Modal,
