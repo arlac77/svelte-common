@@ -20,7 +20,15 @@
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
 
+  const columns = [
+    { id: "col1", },
+    { id: "col2", title: "Title for col2" }
+  ];
   const source = {
+    entries: [
+      { col1: "a1", col2: "b1" },
+      { col1: "a2", col2: "b2" }
+    ]
   };
 
   let actionExecuted = false;
@@ -142,17 +150,16 @@
 
     <DateTime date={new Date()} />
   </div>
-  <Bytes value="10"/>
-  <Bytes value="100"/>
-  <Bytes value="1000"/>
-  <Bytes value="10000"/>
-  <Bytes value="100000"/>
-  <Bytes value="1000000"/>
-  <Bytes value="10000000"/>
+  <Bytes value="10" />
+  <Bytes value="100" />
+  <Bytes value="1000" />
+  <Bytes value="10000" />
+  <Bytes value="100000" />
+  <Bytes value="1000000" />
+  <Bytes value="10000000" />
 
-  <DataGrid {source} columns={[{title:"col1"},{title:"col2"}]}>
-  </DataGrid>
-  
+  <DataGrid {columns} {source} />
+
   {#if modal}
     <Modal {close}>
       <form>
