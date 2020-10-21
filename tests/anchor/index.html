@@ -39,7 +39,7 @@
       }
     </style>
   </head>
-  <body>
+  <body id="canvas">
     <button id="a">Anchor</button>
     <ul id="menu">
       <li>AAA</li>
@@ -58,6 +58,7 @@
     const anchor = document.getElementById("a");
     const content = document.getElementById("menu");
     const path = document.getElementById("path");
+    const canvas = document.getElementById("canvas");
 
     path.addEventListener("mouseleave", e => {
       content.style.stroke = "white";
@@ -135,6 +136,7 @@
     makeDraggable(anchor);
     makeDraggable(content);
 
+    canvas.ondragover = event => event.preventDefault();
     layoutPath();
   </script>
 </html>
