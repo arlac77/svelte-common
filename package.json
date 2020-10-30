@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-virtual": "^2.0.3",
     "documentation": "^13.0.2",
     "rollup": "^2.32.1",
     "rollup-plugin-dev": "^1.1.2",
