@@ -22,13 +22,14 @@
     "start": "rollup -c tests/app/rollup.config.mjs -w",
     "test": "npm run test:cafe",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --app-init-delay 1000 --app \"rollup -c tests/app/rollup.config.mjs -w\"",
-    "docs": "documentation readme ./src/index.mjs --section=API",
-    "lint": "documentation lint ./src/index.mjs"
+    "docs": "documentation readme ./src/index.mjs --section=API && documentation readme ./src/index.svelte --section=API",
+    "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
+    "lint:docs": "documentation lint ./src/index.svelte"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-virtual": "^2.0.3",
-    "documentation": "^13.0.2",
+    "documentation": "github:arlac77/documentation",
     "rollup": "^2.33.2",
     "rollup-plugin-dev": "^1.1.2",
     "rollup-plugin-svelte": "^6.1.1",
@@ -47,6 +48,7 @@
   "template": {
     "inheritFrom": [
       "arlac77/template-arlac77-github",
+      "arlac77/template-documentation",
       "arlac77/template-svelte-component"
     ]
   }
