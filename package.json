@@ -49,7 +49,6 @@
   "template": {
     "inheritFrom": [
       "arlac77/template-arlac77-github",
-      "arlac77/template-documentation",
       "arlac77/template-svelte-component"
     ]
   }
