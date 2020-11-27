@@ -51,5 +51,8 @@
       "arlac77/template-arlac77-github",
       "arlac77/template-svelte-component"
     ]
+  },
+  "dependencies": {
+    "svelte-entitlement": "^1.0.0"
   }
 }

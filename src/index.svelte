@@ -15,7 +15,6 @@
   import ActionButton from "./components/ActionButton.svelte";
   import Collapse from "./components/Collapse.svelte";
   import Modal from "./components/Modal.svelte";
-  import Entitlement from "./components/Entitlement.svelte";
   import Peer from "./components/Peer.svelte";
   import {
     dateFormatter,
@@ -37,7 +36,6 @@
     ActionButton,
     Collapse,
     Modal,
-    Entitlement,
     Peer,
     About,
     ApplicationDetails,

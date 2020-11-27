@@ -1,5 +1,5 @@
 <script>
-  import Entitlement from "./Entitlement.svelte";
+  import { EntitlementBadge, Entitlement} from "svelte-entitlement";
   import DateTime from "./DateTime.svelte";
   export let session;
 </script>
@@ -24,7 +24,7 @@
   <td>Entitlements</td>
   <td>
     {#each [...session.entitlements].sort() as name}
-      <Entitlement id={name} />
+      <EntitlementBadge entitlement={new Entitlement(name)} />
     {/each}
   </td>
 </tr>
