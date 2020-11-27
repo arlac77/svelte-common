@@ -1,5 +1,8 @@
 <script>
-  import { EntitlementBadge, Entitlement} from "svelte-entitlement";
+  import {
+    EntitlementBadges,
+    Entitlement
+  } from "svelte-entitlement";
   import DateTime from "./DateTime.svelte";
   export let session;
 </script>
@@ -23,8 +26,9 @@
   <td />
   <td>Entitlements</td>
   <td>
-    {#each [...session.entitlements].sort() as name}
-      <EntitlementBadge entitlement={new Entitlement(name)} />
-    {/each}
+    <EntitlementBadges
+      entitlements={[...session.entitlements]
+        .sort()
+        .map(name => new Entitlement(name))} />
   </td>
 </tr>
