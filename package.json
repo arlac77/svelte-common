@@ -27,7 +27,7 @@
     "lint:docs": "documentation lint ./src/index.mjs && documentation lint ./src/index.svelte"
   },
   "dependencies": {
-    "svelte-entitlement": "^1.1.1"
+    "svelte-entitlement": "^1.1.2"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^10.0.0",
