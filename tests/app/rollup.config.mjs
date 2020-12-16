@@ -1,3 +1,5 @@
+import postcssImport from "postcss-import";
+
 import virtual from "@rollup/plugin-virtual";
 import resolve from "@rollup/plugin-node-resolve";
 import dev from "rollup-plugin-dev";
