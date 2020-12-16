@@ -1,4 +1,6 @@
 <script>
+  import * as style from "./main.css";
+
   import {
     DataGrid,
     Bytes,
@@ -20,10 +22,7 @@
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
 
-  const columns = [
-    { id: "col1", },
-    { id: "col2", title: "Title for col2" }
-  ];
+  const columns = [{ id: "col1" }, { id: "col2", title: "Title for col2" }];
   const source = {
     entries: [
       { col1: "a1", col2: "b1" },
