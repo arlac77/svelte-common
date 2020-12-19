@@ -44,14 +44,14 @@
       aw = 0;
     }
 
-    const d = `M ${ax2} ${ay1}
-   Q ${cx1} ${ay1}
+    const d = `M${ax2} ${ay1}
+   Q${cx1} ${ay1}
     ${cx1} ${c.y}
-   v ${c.height}
-   Q ${cx1} ${ay2}
+   v${c.height}
+   Q${cx1} ${ay2}
     ${ax1} ${ay2}
-   h ${aw}
-   v ${-ah}
+   h${aw}
+   v${-ah}
    z`;
 
     console.log(d);
