@@ -125,7 +125,7 @@
     function createMenu() {
       const menu = document.createElement("X");
 
-      menu.innerHTML = `<ul class="menu" id="content">
+      menu.innerHTML = `<ul class="menu">
       <li>Item 1</li>
       <li>Item 2</li>
       <li>Item 3</li>
@@ -139,7 +139,7 @@
 
     function createSVG() {
       const path = document.createElement("Y");
-      path.innerHTML = `<svg width="10000" height="10000"><path/></svg>`;
+      path.innerHTML = '<svg width="10000" height="10000"><path/></svg>';
       return path.firstChild;
     }
 
@@ -155,7 +155,7 @@
       makeDraggable(menu, path, anchor, menu);
 
       path.onmouseout = e => {
-        canvas.removeChild(path);
+        canvas.removeChild(svg);
         canvas.removeChild(menu);
       };
 
