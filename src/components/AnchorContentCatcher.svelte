@@ -54,7 +54,6 @@
    v${-ah}
    z`;
 
-    console.log(d);
     path.setAttribute("d", d);
   }
 

@@ -38,34 +38,20 @@
     </style>
   </head>
   <body id="canvas">
-    <button  id="anchor">Anchor</button>
-    <ul class="menu" id="content">
-      <li>AAA</li>
-      <li>BBB</li>
-      <li>CCC</li>
-      <li>DDD</li>
-      <li>EEE</li>
-      <li>FFF</li>
-    </ul>
-
-    <svg width="10000" height="10000">
-      <path id="path" />
-    </svg>
+    <button id="anchor">Anchor</button>
   </body>
   <script>
     const anchor = document.getElementById("anchor");
-    const content = document.getElementById("content");
-    const path = document.getElementById("path");
-    const canvas = document.getElementById("canvas");
-
-    path.addEventListener("mouseleave", e => {
-      content.style.stroke = "white";
-      content.style.fill = "none";
+    anchor.addEventListener("click", e => {
+      openMenu();
     });
+
+    const canvas = document.getElementById("canvas");
+    canvas.ondragover = event => event.preventDefault();
 
     const OFFSET = 9;
 
-    function layoutPath() {
+    function layoutPath(path, anchor, content) {
       const a = anchor.getBoundingClientRect();
       const c = content.getBoundingClientRect();
       a.x -= OFFSET;
@@ -113,7 +99,7 @@
       );
     }
 
-    function makeDraggable(elem) {
+    function makeDraggable(elem, path, anchor, content) {
       const bb = elem.getBoundingClientRect();
       elem.setAttribute("draggable", "true");
 
@@ -124,17 +110,56 @@
         dx = OFFSET + event.x - rect.x;
         dy = OFFSET + event.y - rect.y;
       };
+
       elem.ondrag = event => {
         elem.style.top = `${event.y - dy}px`;
         elem.style.left = `${event.x - dx}px`;
-        layoutPath();
+        if (path) {
+          layoutPath(path, anchor, content);
+        }
       };
     }
 
     makeDraggable(anchor);
-    makeDraggable(content);
 
-    canvas.ondragover = event => event.preventDefault();
-    layoutPath();
+    function createMenu() {
+      const menu = document.createElement("X");
+
+      menu.innerHTML = `<ul class="menu" id="content">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+      <li>Item 4</li>
+      <li>Item 5</li>
+      <li>Item 6</li>
+    </ul>`;
+
+      return menu.firstChild;
+    }
+
+    function createSVG() {
+      const path = document.createElement("Y");
+      path.innerHTML = `<svg width="10000" height="10000"><path/></svg>`;
+      return path.firstChild;
+    }
+
+    function openMenu() {
+      const menu = createMenu();
+      canvas.appendChild(menu);
+
+      const svg = createSVG();
+      canvas.appendChild(svg);
+
+      const path = svg.firstChild;
+
+      makeDraggable(menu, path, anchor, menu);
+
+      path.onmouseout = e => {
+        canvas.removeChild(path);
+        canvas.removeChild(menu);
+      };
+
+      layoutPath(path, anchor, menu);
+    }
   </script>
 </html>
