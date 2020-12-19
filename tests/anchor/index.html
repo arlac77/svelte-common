@@ -12,9 +12,8 @@
         top: 10px;
         left: 20px;
       }
-      #menu {
+      .menu {
         position: absolute;
-        color: green;
         border-width: 1px;
         padding: 0;
         margin: 0;
@@ -39,8 +38,8 @@
     </style>
   </head>
   <body id="canvas">
-    <button id="a">Anchor</button>
-    <ul id="menu">
+    <button  id="anchor">Anchor</button>
+    <ul class="menu" id="content">
       <li>AAA</li>
       <li>BBB</li>
       <li>CCC</li>
@@ -54,8 +53,8 @@
     </svg>
   </body>
   <script>
-    const anchor = document.getElementById("a");
-    const content = document.getElementById("menu");
+    const anchor = document.getElementById("anchor");
+    const content = document.getElementById("content");
     const path = document.getElementById("path");
     const canvas = document.getElementById("canvas");
 
