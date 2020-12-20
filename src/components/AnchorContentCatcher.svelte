@@ -57,7 +57,11 @@
     path.setAttribute("d", d);
   }
 
-  onMount(() => layoutPath());
+  onMount(() => {
+    layoutPath();
+    path.onmouseout = e => { close(); };
+  });
+
 </script>
 
 <style>
@@ -79,17 +83,6 @@
 
 <svg width="10000" height="10000">
   <path bind:this={path}/>
-  <rect width="100" height="100" />
-
-  <!--<path d="M 10 9
-  Q 1700 14
-   1750 22
-  v 36
-  Q 1784 127
-   1734 127
-  h 50
-  v -36
-  z"/>-->
 </svg>
 <div bind:this={anchor} on:mouseleave={close}>
   <slot name="anchor" />
