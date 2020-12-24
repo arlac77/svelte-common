@@ -11,18 +11,12 @@
     open = true;
   }
 </script>
-<style>
-  .x {
-    position: absolute;
-    top: 100px;
-  }
-</style>
 {#if open}
   <AnchorContentCatcher close={hide}>
     <a href=" " slot="anchor">
       <slot name="title" />
     </a>
-    <div class="x" slot="content">
+    <div slot="content">
       <slot name="content" />
     </div>
   </AnchorContentCatcher>

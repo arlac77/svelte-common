@@ -5,3 +5,26 @@
 .hide {
   transform: translateY(-100%);
 }
+
+.peer {
+  display: inline-block;
+  background-color: var(--button-disabled-background-color);
+  border-radius: 0.5em;
+  padding: 0.2em;
+  margin: 0.2em;
+}
+
+.acc {
+  position: absolute;
+  z-index: 99;
+  pointer-events: none;
+}
+.acc:hover {
+  stroke-width: 6;
+}
+.acc path {
+  stroke: red;
+  stroke-width: 2;
+  fill: #eee7;
+  pointer-events: auto;
+}

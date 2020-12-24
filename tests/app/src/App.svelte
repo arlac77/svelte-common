@@ -105,9 +105,6 @@
 <TopNav offset={42}>
   <a href="/">Example</a>
   <ul>
-    <li><a href="/">Entry</a></li>
-  </ul>
-  <ul>
     <li>
       <Menue>
         <div slot="title" class="dropdown-trigger">User</div>
@@ -122,6 +119,9 @@
         </div>
       </Menue>
     </li>
+  </ul>
+  <ul>
+    <li><a href="/">Entry</a></li>
   </ul>
 </TopNav>
 <main>

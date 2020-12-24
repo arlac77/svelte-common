@@ -13,6 +13,9 @@
     const a = anchor.getBoundingClientRect();
     const c = content.getBoundingClientRect();
 
+    console.log("A",a);
+    console.log("C",c);
+    
     a.x -= OFFSET;
     a.y -= OFFSET;
     c.x -= OFFSET;
@@ -61,27 +64,9 @@
     layoutPath();
     path.onmouseout = e => { close(); };
   });
-
 </script>
 
-<style>
-  svg {
-    position: absolute;
-    z-index: 99;
-    pointer-events: none;
-  }
-  svg:hover {
-    stroke-width: 6;
-  }
-  svg path {
-    stroke: red;
-    stroke-width: 2;
-    fill: #eee7;
-    pointer-events: auto;
-  }
-</style>
-
-<svg width="10000" height="10000">
+<svg class="acc" width="10000" height="10000">
   <path bind:this={path}/>
 </svg>
 <div bind:this={anchor} on:mouseleave={close}>
