@@ -10,12 +10,15 @@ test("action", async t => {
   await t.click(s);
 
   await t.expect(Selector("#actionExecuted").innerText).eql("true");
+
+  await t.takeScreenshot();
 });
 
 test("failing action", async t => {
   const s = Selector("button").withText("Failing Action");
 
   await t.click(s);
+  await t.takeScreenshot();
 });
 
 test("collapse", async t => {
@@ -26,6 +29,7 @@ test("collapse", async t => {
   await t.expect(Selector("#collapse-content").visible).ok();
 
   await t.click(s);
+  await t.takeScreenshot();
 
   //await t.expect(Selector("#collapse-content").visible);
 });
