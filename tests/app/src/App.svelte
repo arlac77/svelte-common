@@ -9,6 +9,7 @@
     TopNav,
     Collapse,
     ActionButton,
+    Action,
     Menue,
     Modal,
     About,
@@ -34,17 +35,17 @@
 
   let disabled = false;
 
-  async function action() {
+  const action = new Action(
+    () => {
     disabled =! disabled;
     actionExecuted += 1;
     return new Promise(resolve => setTimeout(resolve, 5000));
   }
+  );
 
-  async function failingAction() {
-    return new Promise((resolve, reject) =>
-      setTimeout(() => reject("failed"), 5000)
-    );
-  }
+  const failingAction = new Action(() => new Promise((resolve, reject) =>
+      setTimeout(() => reject("failed"), 5000))
+  );
 
   async function login() {}
   async function logout() {
@@ -129,7 +130,7 @@
 </TopNav>
 <main>
   <ActionButton {action} shortcuts="enter">Long Running Action</ActionButton>
-  <ActionButton {disabled}>Sometimes Disabled</ActionButton>
+  <ActionButton {action} {disabled}>Sometimes Disabled</ActionButton>
   <ActionButton action={failingAction} error={e => alert(e)}>
     Failing Action
   </ActionButton>

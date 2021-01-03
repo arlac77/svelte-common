@@ -25,8 +25,12 @@
   } from "./util.mjs";
 
   import { initializeServiceWorker } from "./service-worker.mjs";
+  import { Action } from "./action.mjs";
+  import { FetchAction } from "./fetch-action.mjs";
 
   export {
+    Action,
+    FetchAction,
     Bytes,
     DateTime,
     Duration,

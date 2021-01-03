@@ -1,4 +1,5 @@
 <script>
+  import { Action } from "../action.mjs";
   import ActionButton from "./ActionButton.svelte";
   export let serviceWorkerRegistration;
 </script>
@@ -13,10 +14,11 @@
   <td colspan="2">
     <ActionButton
       shortcuts="Command+u"
-      action={() => serviceWorkerRegistration.update()}>
+      action={new Action(() => serviceWorkerRegistration.update())}>
       Update
     </ActionButton>
-    <ActionButton action={() => serviceWorkerRegistration.unregister()}>
+    <ActionButton
+      action={new Action(() => serviceWorkerRegistration.unregister())}>
       Unregister
     </ActionButton>
   </td>
