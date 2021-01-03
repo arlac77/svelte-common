@@ -30,10 +30,13 @@
     ]
   };
 
-  let actionExecuted = false;
+  let actionExecuted = 0;
+
+  let disabled = false;
 
   async function action() {
-    actionExecuted = true;
+    disabled =! disabled;
+    actionExecuted += 1;
     return new Promise(resolve => setTimeout(resolve, 5000));
   }
 
@@ -125,13 +128,12 @@
   </ul>
 </TopNav>
 <main>
-  <ActionButton {action}>Long Running Action</ActionButton>
-
-  <div id="actionExecuted">{actionExecuted}</div>
-
+  <ActionButton {action} shortcuts="enter">Long Running Action</ActionButton>
+  <ActionButton {disabled}>Sometimes Disabled</ActionButton>
   <ActionButton action={failingAction} error={e => alert(e)}>
     Failing Action
   </ActionButton>
+  <div id="actionExecuted">{actionExecuted}</div>
 
   <Collapse>
     Collapse

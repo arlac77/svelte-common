@@ -1,9 +1,16 @@
 <script>
   export let action;
   export let error = (e) => console.error(e);
+  export let shortcuts=""
+  export let disabled;
+
   let active;
 
   async function click() {
+    if(active) {
+      return;
+    }
+
     try {
       active = true;
       await action();
@@ -15,7 +22,7 @@
   }
 </script>
 
-<button class:active on:click|preventDefault={click}>
+<button {disabled} aria-keyshortcuts={shortcuts} class:active on:click|preventDefault={click}>
   {#if active}
     <div class="spinner" />
   {/if}
