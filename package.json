@@ -20,8 +20,9 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "start": "rollup -c tests/app/rollup.config.mjs -w",
-    "test": "npm run test:cafe",
+    "test": "npm run test:cafe && npm run test:ava",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --app-init-delay 1000 --app \"rollup -c tests/app/rollup.config.mjs -w\"",
+    "test:ava": "ava --timeout 2m tests/*.mjs",
     "docs": "documentation readme ./src/index.mjs --section=API && documentation readme ./src/index.svelte --section=API",
     "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
     "lint:docs": "documentation lint ./src/index.mjs && documentation lint ./src/index.svelte"
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@rollup/plugin-virtual": "^2.0.3",
+    "ava": "^3.15.0",
     "documentation": "github:arlac77/documentation",
     "mf-styling": "arlac77/mf-styling",
     "postcss": "^8.2.2",
@@ -55,6 +57,7 @@
   "template": {
     "inheritFrom": [
       "arlac77/template-arlac77-github",
+      "arlac77/template-ava",
       "arlac77/template-svelte-component"
     ]
   }
