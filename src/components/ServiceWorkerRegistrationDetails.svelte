@@ -11,7 +11,9 @@
 <tr>
   <td />
   <td colspan="2">
-    <ActionButton action={() => serviceWorkerRegistration.update()}>
+    <ActionButton
+      shortcuts="Command+u"
+      action={() => serviceWorkerRegistration.update()}>
       Update
     </ActionButton>
     <ActionButton action={() => serviceWorkerRegistration.unregister()}>
