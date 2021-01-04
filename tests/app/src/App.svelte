@@ -33,15 +33,20 @@
 
   let actionExecuted = 0;
 
-  let disabled = false;
+  const action2 = new Action(
+    () => {
+    return new Promise(resolve => setTimeout(resolve, 5000));
+  }
+  );
 
   const action = new Action(
     () => {
-    disabled =! disabled;
+    action2.disabled = !action2.disabled;
     actionExecuted += 1;
     return new Promise(resolve => setTimeout(resolve, 5000));
   }
   );
+
 
   const failingAction = new Action(() => new Promise((resolve, reject) =>
       setTimeout(() => reject("failed"), 5000))
@@ -130,7 +135,7 @@
 </TopNav>
 <main>
   <ActionButton {action} shortcuts="enter">Long Running Action</ActionButton>
-  <ActionButton {action} {disabled}>Sometimes Disabled</ActionButton>
+  <ActionButton action={action2}>Sometimes Disabled</ActionButton>
   <ActionButton action={failingAction} error={e => alert(e)}>
     Failing Action
   </ActionButton>

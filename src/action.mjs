@@ -2,10 +2,21 @@ export class Action {
   constructor(createPromise, cancelPromise = () => {}) {
     this.createPromise = createPromise;
     this.cancelPromise = cancelPromise;
-    this.subscriptions = new Set();
     this.failed = false;
     this.completed = false;
     this.canceled = false;
+
+    let disabled = false;
+    Object.defineProperties(this, {
+      subscriptions: { value: new Set() },
+      disabled: {
+        get: () => disabled,
+        set: value => {
+          disabled = value;
+          this.emit();
+        }
+      }
+    });
   }
 
   /**
@@ -22,14 +33,14 @@ export class Action {
   }
 
   async start() {
-    if (this.active) {
+    if (this.active || this.disabled) {
       return;
     }
 
     this.timer = setTimeout(() => this.cancel(), this.timeout);
     this.promise = this.createPromise();
 
-    this.emit();
+    this.disabled = true;
 
     try {
       await this.promise;
@@ -37,10 +48,10 @@ export class Action {
     } catch (e) {
       this.error = e;
       this.failed = true;
+    } finally {
+      delete this.promise;
+      this.disabled = false;
     }
-
-    delete this.promise;
-    this.emit();
   }
 
   async cancel() {
@@ -62,9 +73,5 @@ export class Action {
 
   get active() {
     return this.promise ? true : false;
-  }
-
-  get finished() {
-    return this.promise;
   }
 }

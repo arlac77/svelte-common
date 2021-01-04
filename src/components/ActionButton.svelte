@@ -1,19 +1,14 @@
 <script>
   export let action;
   export let shortcuts = "";
-  export let disabled;
-
-  let active;
-
-  $: active = $action.active;
 </script>
 
 <button
-  {disabled}
+  disabled={$action.disabled}
   aria-keyshortcuts={shortcuts}
-  class:active
+  class:active={$action.active}
   on:click|preventDefault={() => action.start()}>
-  {#if active}
+  {#if $action.active}
     <div class="spinner" />
   {/if}
   <slot />
