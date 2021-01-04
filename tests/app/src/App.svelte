@@ -10,6 +10,7 @@
     Collapse,
     ActionButton,
     Action,
+    FetchAction,
     Menue,
     Modal,
     About,
@@ -31,7 +32,15 @@
     ]
   };
 
-  let actionExecuted = 0;
+  const fetchAction = new FetchAction(
+    "http://slowwly.robertomurray.co.uk/delay/3000/url/https://www.google.com",
+    {},
+    {
+      title: "Fetch Data",
+      shortcuts: "Command+F",
+      responseHandler: async response => {}
+    }
+  );
 
   const action2 = new Action(
     () => new Promise(resolve => setTimeout(resolve, 5000)),
@@ -40,6 +49,8 @@
       shortcuts: "Command+A"
     }
   );
+
+  let actionExecuted = 0;
 
   const action = new Action(() => {
     action2.disabled = !action2.disabled;
@@ -135,10 +146,9 @@
 </TopNav>
 <main>
   <ActionButton {action}>Long Running Action</ActionButton>
+  <ActionButton action={fetchAction} />
   <ActionButton action={action2} />
-  <ActionButton action={failingAction}>
-    Failing Action
-  </ActionButton>
+  <ActionButton action={failingAction}>Failing Action</ActionButton>
   <div id="actionExecuted">{actionExecuted}</div>
 
   <Collapse>
