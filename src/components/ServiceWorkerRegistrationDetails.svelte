@@ -13,13 +13,13 @@
   <td />
   <td colspan="2">
     <ActionButton
-      shortcuts="Command+u"
-      action={new Action(() => serviceWorkerRegistration.update())}>
-      Update
-    </ActionButton>
+      action={new Action(() => serviceWorkerRegistration.update(), {
+        title: 'Update',
+        shortcuts: 'Command+u'
+      })} />
     <ActionButton
-      action={new Action(() => serviceWorkerRegistration.unregister())}>
-      Unregister
-    </ActionButton>
+      action={new Action(() => serviceWorkerRegistration.unregister(), {
+        title: 'Unregister'
+      })} />
   </td>
 </tr>
