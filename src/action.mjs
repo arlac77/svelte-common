@@ -3,9 +3,11 @@ export class Action {
     this.failed = false;
     this.completed = false;
     this.canceled = false;
-
+    this.timeout = options.timeout || 1000 * 30;
+  
     let disabled = options.disabled || false;
     let title = options.title;
+    let description = options.description;
     let shortcuts = options.shortcuts;
 
     Object.defineProperties(this, {
@@ -30,6 +32,15 @@ export class Action {
           }
         }
       },
+      description: {
+        get: () => description,
+        set: value => {
+          if (description !== value) {
+            description = value;
+            this.emit();
+          }
+        }
+      },
       shortcuts: {
         get: () => shortcuts,
         set: value => {
@@ -39,7 +50,6 @@ export class Action {
           }
         }
       }
-
     });
   }
 
@@ -91,9 +101,6 @@ export class Action {
     this.emit();
   }
 
-  get timeout() {
-    return 1000 * 30;
-  }
 
   get active() {
     return this.promise ? true : false;

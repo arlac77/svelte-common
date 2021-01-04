@@ -33,7 +33,7 @@
   };
 
   const fetchAction = new FetchAction(
-    "http://slowwly.robertomurray.co.uk/delay/3000/url/https://www.google.com",
+    "http://slowwly.robertomurray.co.uk/delay/3000/url/https://api.github.com",
     {},
     {
       title: "Fetch Data",
@@ -41,6 +41,17 @@
       responseHandler: async response => {}
     }
   );
+
+  const fetchActionTimeout = new FetchAction(
+    "http://slowwly.robertomurray.co.uk/delay/3000/url/https://api.github.com",
+    {},
+    {
+      title: "Fetch Data Timeout",
+      shortcuts: "Command+F",
+      timeout: 1000
+    }
+  );
+
 
   const action2 = new Action(
     () => new Promise(resolve => setTimeout(resolve, 5000)),
@@ -147,6 +158,7 @@
 <main>
   <ActionButton {action}>Long Running Action</ActionButton>
   <ActionButton action={fetchAction} />
+  <ActionButton action={fetchActionTimeout} />
   <ActionButton action={action2} />
   <ActionButton action={failingAction}>Failing Action</ActionButton>
   <div id="actionExecuted">{actionExecuted}</div>
