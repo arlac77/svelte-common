@@ -1,7 +1,7 @@
 import { Action } from "./action.mjs";
 
 export class FetchAction extends Action {
-  constructor(url, fetchOptions, responseHandler = async () => {}) {
+  constructor(url, fetchOptions, options = {}) {
     const controller = new AbortController();
     super(
       async () => {
@@ -17,11 +17,13 @@ export class FetchAction extends Action {
           );
 
           if (!response.ok) {
-            await handleFailedResponse(response);
+            this.message = await handleFailedResponse(response);
             throw response;
           }
 
-          await responseHandler(response);
+          if (options.responseHandler) {
+            await options.responseHandler(response);
+          }
         } catch (err) {
           if (err.name === "AbortError") {
           } else {
@@ -29,11 +31,13 @@ export class FetchAction extends Action {
           }
         }
       },
-      () => controller.abort()
+      {
+        ...options,
+        cancel: () => controller.abort()
+      }
     );
   }
 }
-
 
 /**
  * Extract error description from response
@@ -65,8 +69,6 @@ export async function handleFailedResponse(response) {
         break;
     }
   }
-
-  console.log(message);
 
   return message;
 }

@@ -34,22 +34,22 @@
   let actionExecuted = 0;
 
   const action2 = new Action(
-    () => {
-    return new Promise(resolve => setTimeout(resolve, 5000));
-  }
+    () => new Promise(resolve => setTimeout(resolve, 5000)),
+    {
+      title: "Sometimes Disabled",
+      shortcuts: "Command+A"
+    }
   );
 
-  const action = new Action(
-    () => {
+  const action = new Action(() => {
     action2.disabled = !action2.disabled;
     actionExecuted += 1;
     return new Promise(resolve => setTimeout(resolve, 5000));
-  }
-  );
+  });
 
-
-  const failingAction = new Action(() => new Promise((resolve, reject) =>
-      setTimeout(() => reject("failed"), 5000))
+  const failingAction = new Action(
+    () =>
+      new Promise((resolve, reject) => setTimeout(() => reject("failed"), 5000))
   );
 
   async function login() {}
@@ -134,9 +134,9 @@
   </ul>
 </TopNav>
 <main>
-  <ActionButton {action} shortcuts="enter">Long Running Action</ActionButton>
-  <ActionButton action={action2}>Sometimes Disabled</ActionButton>
-  <ActionButton action={failingAction} error={e => alert(e)}>
+  <ActionButton {action}>Long Running Action</ActionButton>
+  <ActionButton action={action2} />
+  <ActionButton action={failingAction}>
     Failing Action
   </ActionButton>
   <div id="actionExecuted">{actionExecuted}</div>

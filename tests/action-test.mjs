@@ -2,8 +2,10 @@ import test from "ava";
 import { Action } from "../src/action.mjs";
 
 test("Action resolve", async t => {
-  const action = new Action(() => Promise.resolve());
+  const action = new Action(() => Promise.resolve(), { title: "hallo", shortcuts: "Command+A" });
 
+  t.is(action.title, "hallo");
+  t.is(action.shortcuts, "Command+A");
   t.false(action.active);
   t.false(action.failed);
   t.false(action.canceled);
@@ -26,6 +28,9 @@ test("Action resolve", async t => {
 
 test("Action disabled", async t => {
   const action = new Action(() => Promise.resolve());
+
+  t.is(action.title, undefined);
+  t.is(action.shortcuts, undefined);
 
   let sDisabled = 77;
 

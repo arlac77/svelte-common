@@ -1,21 +1,45 @@
 export class Action {
-  constructor(createPromise, cancelPromise = () => {}) {
-    this.createPromise = createPromise;
-    this.cancelPromise = cancelPromise;
+  constructor(_start, options = {}) {
     this.failed = false;
     this.completed = false;
     this.canceled = false;
 
-    let disabled = false;
+    let disabled = options.disabled || false;
+    let title = options.title;
+    let shortcuts = options.shortcuts;
+
     Object.defineProperties(this, {
+      _start: { value: _start },
+      _cancel: { value: options.cancel || (() => {}) },
       subscriptions: { value: new Set() },
       disabled: {
         get: () => disabled,
         set: value => {
-          disabled = value;
-          this.emit();
+          if (disabled !== value) {
+            disabled = value;
+            this.emit();
+          }
+        }
+      },
+      title: {
+        get: () => title,
+        set: value => {
+          if (title !== value) {
+            title = value;
+            this.emit();
+          }
+        }
+      },
+      shortcuts: {
+        get: () => shortcuts,
+        set: value => {
+          if (shortcuts !== value) {
+            shortcuts = value;
+            this.emit();
+          }
         }
       }
+
     });
   }
 
@@ -38,7 +62,7 @@ export class Action {
     }
 
     this.timer = setTimeout(() => this.cancel(), this.timeout);
-    this.promise = this.createPromise();
+    this.promise = this._start();
 
     this.disabled = true;
 
@@ -62,7 +86,7 @@ export class Action {
       delete this.timer;
     }
 
-    await this.cancelPromise();
+    await this._cancel();
     delete this.promise;
     this.emit();
   }
