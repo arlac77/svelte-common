@@ -1,10 +1,8 @@
 export class Action {
   constructor(_start, options = {}) {
-    this.failed = false;
-    this.completed = false;
-    this.canceled = false;
+    this.reset();
+
     this.timeout = options.timeout || 1000 * 30;
-  
     let disabled = options.disabled || false;
     let title = options.title;
     let description = options.description;
@@ -53,6 +51,13 @@ export class Action {
     });
   }
 
+  reset()
+  {
+    this.failed = false;
+    this.completed = false;
+    this.canceled = false;
+  }
+
   /**
    * @param {Function} subscription
    */
@@ -70,7 +75,8 @@ export class Action {
     if (this.active || this.disabled) {
       return;
     }
-
+    this.reset();
+    
     this.timer = setTimeout(() => this.cancel(), this.timeout);
     this.promise = this._start();
 
