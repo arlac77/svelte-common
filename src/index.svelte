@@ -26,11 +26,13 @@
 
   import { initializeServiceWorker } from "./service-worker.mjs";
   import { Action } from "./action.mjs";
+  import { ConfirmAction } from "./confirm-action.mjs";
   import { FetchAction } from "./fetch-action.mjs";
 
   export {
     Action,
     FetchAction,
+    ConfirmAction,
     Bytes,
     DateTime,
     Duration,

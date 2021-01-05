@@ -11,6 +11,7 @@
     ActionButton,
     Action,
     FetchAction,
+    ConfirmAction,
     Menue,
     Modal,
     About,
@@ -19,7 +20,7 @@
     ServerDetails,
     PeerDetails,
     ServiceWorkerDetails,
-    ServiceWorkerRegistrationDetails
+    ServiceWorkerRegistrationDetails,
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
@@ -160,6 +161,7 @@
   <ActionButton action={fetchAction} />
   <ActionButton action={fetchActionTimeout} />
   <ActionButton action={action2} />
+  <ActionButton action={new ConfirmAction(action2)}/>
   <ActionButton action={failingAction}>Failing Action</ActionButton>
   <div id="actionExecuted">{actionExecuted}</div>
 
