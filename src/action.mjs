@@ -1,6 +1,6 @@
 export class BasicAction {
   constructor(_start, properties, options = {}) {
-    if (options.timeout) {
+    if (options.timeout !== undefined) {
       properties.timeout = { value: options.timeout };
     }
 

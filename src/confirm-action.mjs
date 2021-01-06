@@ -1,7 +1,7 @@
 import { BasicAction } from "./action.mjs";
 
 /**
- *
+ * Ask for confirmation befor esxecution a given Action.
  */
 export class ConfirmAction extends BasicAction {
   constructor(action) {
