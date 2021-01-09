@@ -9,8 +9,8 @@
   class:failed={$action.failed}
   on:click|preventDefault={() => action.start()}>
   {#if $action.title !== undefined}{$action.title}{/if}
+  <slot />
   {#if $action.active}
     <div class="spinner" />
   {/if}
-  <slot />
 </button>
