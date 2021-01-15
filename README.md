@@ -9,6 +9,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/svelte-common/badge.svg)](https://snyk.io/test/github/arlac77/svelte-common)
 [![Coverage Status](https://coveralls.io/repos/arlac77/svelte-common/badge.svg)](https://coveralls.io/github/arlac77/svelte-common)
+[![Tested with TestCafe](https://img.shields.io/badge/tested%20with-TestCafe-2fa4cf.svg)](https://github.com/DevExpress/testcafe)
 
 # svelte-common
 
