@@ -23,9 +23,9 @@
     "test": "npm run test:ava && npm run test:cafe",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --app-init-delay 1000 --app \"rollup -c tests/app/rollup.config.mjs -w\"",
     "test:ava": "ava --timeout 2m tests/*.mjs",
-    "docs": "documentation readme ./src/index.mjs --section=API && documentation readme ./src/index.svelte --section=API",
+    "docs": "documentation readme --section=API ./src/**/*.mjs",
     "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
-    "lint:docs": "documentation lint ./src/index.mjs && documentation lint ./src/index.svelte",
+    "lint:docs": "documentation lint ./src/**/*.mjs",
     "build": "rollup -c tests/app/rollup.config.mjs"
   },
   "dependencies": {
