@@ -10,6 +10,7 @@ export const dateFormatter = new Intl.DateTimeFormat("default", {
 
 export function formatBytes(bytes, decimals = 2) {
   if (bytes === 0) return "0 Bytes";
+  if (bytes === 1) return "1 Byte";
 
   const k = 1024;
   const i = Math.floor(Math.log(bytes) / Math.log(k));

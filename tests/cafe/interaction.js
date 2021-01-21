@@ -4,24 +4,6 @@ const base = "http://localhost:5000";
 
 fixture`interactions`.page`${base}/components/svelte-common/example/index.html`;
 
-test("action", async t => {
-  const s = Selector("button").withText("Long Running Action");
-
-  await t.click(s);
-  await t.expect(Selector("#actionExecuted").innerText).eql("1");
-  //await t.click(s);
-  //await t.expect(Selector("#actionExecuted").innerText).eql("1");
-
-  await t.takeScreenshot();
-});
-
-test("failing action", async t => {
-  const s = Selector("button").withText("Failing Action");
-
-  await t.click(s);
-  await t.takeScreenshot();
-});
-
 test("collapse", async t => {
   const s = Selector("button").withText("Collapse");
 

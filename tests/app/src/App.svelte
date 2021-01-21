@@ -8,10 +8,6 @@
     Duration,
     TopNav,
     Collapse,
-    ActionButton,
-    Action,
-    FetchAction,
-    ConfirmAction,
     Menue,
     Modal,
     About,
@@ -32,48 +28,6 @@
       { col1: "a2", col2: "b2" }
     ]
   };
-
-  const fetchAction = new FetchAction(
-    "http://slowwly.robertomurray.co.uk/delay/3000/url/https://api.github.com",
-    {},
-    {
-      title: "Fetch Data",
-      shortcuts: "Command+F",
-      responseHandler: async response => {}
-    }
-  );
-
-  const fetchActionTimeout = new FetchAction(
-    "http://slowwly.robertomurray.co.uk/delay/3000/url/https://api.github.com",
-    {},
-    {
-      title: "Fetch Data Timeout",
-      shortcuts: "Command+F",
-      timeout: 1000
-    }
-  );
-
-
-  const action2 = new Action(
-    () => new Promise(resolve => setTimeout(resolve, 5000)),
-    {
-      title: "Sometimes Disabled",
-      shortcuts: "Command+A"
-    }
-  );
-
-  let actionExecuted = 0;
-
-  const action = new Action(() => {
-    action2.disabled = !action2.disabled;
-    actionExecuted += 1;
-    return new Promise(resolve => setTimeout(resolve, 5000));
-  });
-
-  const failingAction = new Action(
-    () =>
-      new Promise((resolve, reject) => setTimeout(() => reject("failed"), 5000))
-  );
 
   async function login() {}
   async function logout() {
@@ -157,14 +111,6 @@
   </ul>
 </TopNav>
 <main>
-  <ActionButton {action}>Long Running Action</ActionButton>
-  <ActionButton action={fetchAction} />
-  <ActionButton action={fetchActionTimeout} />
-  <ActionButton action={action2} />
-  <ActionButton action={new ConfirmAction(action2)}/>
-  <ActionButton action={failingAction}>Failing Action</ActionButton>
-  <div id="actionExecuted">{actionExecuted}</div>
-
   <Collapse>
     Collapse
     <ul id="collapse-content" slot="content" in:fade out:fade>
