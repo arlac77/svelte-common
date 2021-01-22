@@ -26,40 +26,8 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
 
 ### Table of Contents
 
--   [subscribe](#subscribe)
-    -   [Parameters](#parameters)
--   [ConfirmAction](#confirmaction)
-    -   [Parameters](#parameters-1)
--   [handleFailedResponse](#handlefailedresponse)
-    -   [Parameters](#parameters-2)
 -   [initializeServiceWorker](#initializeserviceworker)
-    -   [Parameters](#parameters-3)
-
-## subscribe
-
-### Parameters
-
--   `subscription` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** 
-
-## ConfirmAction
-
-**Extends BasicAction**
-
-Ask for confirmation befor esxecution a given Action.
-
-### Parameters
-
--   `action`  
-
-## handleFailedResponse
-
-Extract error description from response
-
-### Parameters
-
--   `response` **FetchResponse** 
-
-Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+    -   [Parameters](#parameters)
 
 ## initializeServiceWorker
 
