@@ -38,7 +38,7 @@
     "ava": "^3.15.0",
     "documentation": "^13.2.5",
     "mf-styling": "arlac77/mf-styling",
-    "postcss": "^8.3.1",
+    "postcss": "^8.3.2",
     "postcss-import": "^14.0.2",
     "rollup": "^2.51.2",
     "rollup-plugin-dev": "^1.1.3",
