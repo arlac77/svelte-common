@@ -15,15 +15,6 @@
   import Collapse from "./components/Collapse.svelte";
   import Modal from "./components/Modal.svelte";
   import Peer from "./components/Peer.svelte";
-  import {
-    dateFormatter,
-    formatBytes,
-    formatDuration,
-    formatDurationISO,
-    formatSecondsSinceEpoch
-  } from "./util.mjs";
-
-  import { initializeServiceWorker } from "./service-worker.mjs";
 
   export {
     Bytes,
@@ -41,12 +32,16 @@
     SessionDetails,
     ServerDetails,
     ServiceWorkerDetails,
-    ServiceWorkerRegistrationDetails,
+    ServiceWorkerRegistrationDetails
+  };
+
+  export {
     dateFormatter,
     formatBytes,
     formatDuration,
     formatDurationISO,
-    formatSecondsSinceEpoch,
-    initializeServiceWorker
-  };
+    formatSecondsSinceEpoch
+  } from "./util.mjs";
+  export { initializeServiceWorker } from "./service-worker.mjs";
+
 </script>
