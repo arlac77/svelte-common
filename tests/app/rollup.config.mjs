@@ -43,8 +43,7 @@ export default {
     dev({
       port,
       dirs: [`${basedir}/public`],
-      spa: `${basedir}/public/index.html`,
-      basePath: "/"
+      spa: true
     })
   ]
 };
