@@ -3,6 +3,8 @@
   import Bytes from "./Bytes.svelte";
 
   export let server;
+
+  const memory = { ...server.memory };
 </script>
 
 <tr>
@@ -25,20 +27,20 @@
 <tr>
   <td />
   <td>Heap Total</td>
-  <td><Bytes value={server.memory.heapTotal}/></td>
+  <td><Bytes value={memory.heapTotal}/></td>
 </tr>
 <tr>
   <td />
   <td>Heap Used</td>
-  <td><Bytes value={server.memory.heapUsed}/></td>
+  <td><Bytes value={memory.heapUsed}/></td>
 </tr>
 <tr>
   <td />
   <td>External</td>
-  <td><Bytes value={server.memory.external}/></td>
+  <td><Bytes value={memory.external}/></td>
 </tr>
 <tr>
   <td />
   <td>RSS</td>
-  <td><Bytes value={server.memory.rss}/></td>
+  <td><Bytes value={memory.rss}/></td>
 </tr>
