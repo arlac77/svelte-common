@@ -55,6 +55,8 @@
     memory: { heapTotal: 1200000, heapUsed: 1000000, rss: 0, external: 0 }
   };
 
+  const serverWithoutMemory = {};
+
   setInterval(() => (server.uptime = (Date.now() - start) / 1000), 5000);
 
   const to = { host: "1.2.3.4", port: 1234 };
@@ -182,6 +184,7 @@
       </tr>
       <SessionDetails {session} />
       <ServerDetails {server} />
+      <ServerDetails server={serverWithoutMemory} />
       <ServiceWorkerDetails serviceWorker={$serviceWorker} />
       <ServiceWorkerRegistrationDetails
         serviceWorkerRegistration={$serviceWorkerRegistration} />
