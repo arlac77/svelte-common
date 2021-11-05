@@ -4,6 +4,7 @@
 
   export let server;
 
+  if(!server) { server = {}; }
   const memory = { ...server.memory };
 </script>
 
