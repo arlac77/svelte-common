@@ -5,7 +5,7 @@
   export let server;
 
   if(!server) { server = {}; }
-  const memory = { ...server.memory };
+  const memory = server.memory || { heapTotal: 0, heapUsed: 0, external: 0, rss: 0 };
 </script>
 
 <tr>
