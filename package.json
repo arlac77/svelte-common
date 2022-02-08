@@ -29,7 +29,7 @@
     "build": "rollup -c tests/app/rollup.config.mjs"
   },
   "dependencies": {
-    "svelte-command": "^1.1.5",
+    "svelte-command": "^1.1.6",
     "svelte-entitlement": "^1.2.12"
   },
   "devDependencies": {
