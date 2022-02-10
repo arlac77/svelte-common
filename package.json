@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "svelte-command": "^1.1.6",
-    "svelte-entitlement": "^1.2.12"
+    "svelte-entitlement": "^1.2.13"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.3",
