@@ -29,8 +29,8 @@
     "build": "rollup -c tests/app/rollup.config.mjs"
   },
   "dependencies": {
-    "svelte-command": "^1.1.6",
-    "svelte-entitlement": "^1.2.18"
+    "svelte-command": "^1.1.9",
+    "svelte-entitlement": "^1.2.19"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.3",
