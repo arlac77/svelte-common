@@ -18,7 +18,7 @@ export default defineConfig(async ({ command, mode }) => {
   process.env["VITE_DESCRIPTION"] = pkg.description;
   process.env["VITE_VERSION"] = pkg.version;
 
-  const base = '/components/svelte-common/example/';
+  const base = `/components/${pkg.name}/example/`;
 
   return {
     base,
@@ -36,7 +36,7 @@ export default defineConfig(async ({ command, mode }) => {
         ...Object.keys(pkg.dependencies).filter(d => d.startsWith("svelte"))
       ]
     },
-
+    server: { host: true },
     build: {
       outDir: "../build",
       target: "esnext",

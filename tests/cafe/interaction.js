@@ -1,8 +1,8 @@
 import { Selector } from "testcafe";
 
-const base = "http://localhost:3000";
+const base = "http://localhost:3000/components/svelte-common/example/";
 
-fixture`interactions`.page`${base}/components/svelte-common/example/index.html`;
+fixture`interactions`.page`${base}index.html`;
 
 test("collapse", async t => {
   const s = Selector("button").withText("Collapse");
@@ -20,5 +20,5 @@ test("collapse", async t => {
 test("about service worker", async t => {
   await t
     .expect(Selector("#serviceWorkerScope").innerText)
-    .eql(`${base}/components/svelte-common/tests/app/`);
+    .eql(`${base}tests/app/`);
 });
