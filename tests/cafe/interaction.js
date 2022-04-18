@@ -1,6 +1,6 @@
 import { Selector } from "testcafe";
 
-const base = "http://localhost:5000";
+const base = "http://localhost:3000";
 
 fixture`interactions`.page`${base}/components/svelte-common/example/index.html`;
 

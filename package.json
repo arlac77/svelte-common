@@ -19,34 +19,27 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "start": "rollup -c tests/app/rollup.config.mjs -w",
+    "start": "vite dev",
     "test": "npm run test:ava && npm run test:cafe",
-    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"rollup -c tests/app/rollup.config.mjs -w\"",
+    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"vite dev\"",
     "test:ava": "ava --timeout 2m tests/*.mjs",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
     "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
-    "lint:docs": "documentation lint ./src/**/*.mjs",
-    "build": "rollup -c tests/app/rollup.config.mjs"
+    "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "dependencies": {
     "svelte-command": "^1.1.9",
     "svelte-entitlement": "^1.2.19"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.2.1",
-    "@rollup/plugin-virtual": "^2.1.0",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.41",
     "ava": "^4.2.0",
     "documentation": "^13.2.5",
     "mf-styling": "^1.0.6",
-    "postcss": "^8.4.12",
-    "postcss-import": "^14.1.0",
-    "rollup": "^2.70.2",
-    "rollup-plugin-dev": "^2.0.0",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-svelte": "^7.1.0",
     "semantic-release": "^19.0.2",
     "svelte": "^3.47.0",
-    "testcafe": "^1.18.5"
+    "testcafe": "^1.18.5",
+    "vite": "^2.9.5"
   },
   "repository": {
     "type": "git",
@@ -61,7 +54,7 @@
       "arlac77/template-arlac77-github",
       "arlac77/template-ava",
       "arlac77/template-cloudflare",
-      "arlac77/template-svelte-component"
+      "arlac77/template-svelte-component#next"
     ]
   }
 }
