@@ -29,7 +29,7 @@
     "build": "rollup -c tests/app/rollup.config.mjs"
   },
   "dependencies": {
-    "svelte-command": "^1.1.10",
+    "svelte-command": "^1.1.11",
     "svelte-entitlement": "^1.2.20"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "@rollup/plugin-virtual": "^2.1.0",
     "ava": "^4.3.0",
     "documentation": "^13.2.5",
-    "mf-styling": "^1.2.20",
+    "mf-styling": "^1.2.21",
     "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",
     "rollup": "^2.75.4",
