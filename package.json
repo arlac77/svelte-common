@@ -28,18 +28,18 @@
     "lint:docs": "documentation lint ./src/**/*.mjs"
   },
   "dependencies": {
-    "svelte-command": "^1.1.9",
-    "svelte-entitlement": "^1.2.19"
+    "svelte-command": "^1.1.12",
+    "svelte-entitlement": "^1.2.22"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.44",
-    "ava": "^4.2.0",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
+    "ava": "^4.3.0",
     "documentation": "^13.2.5",
-    "mf-styling": "^1.2.18",
-    "semantic-release": "^19.0.2",
+    "mf-styling": "^1.2.22",
+    "semantic-release": "^19.0.3",
     "svelte": "^3.48.0",
-    "testcafe": "^1.18.5",
-    "vite": "^2.9.9"
+    "testcafe": "^1.19.0",
+    "vite": "^2.9.12"
   },
   "repository": {
     "type": "git",
