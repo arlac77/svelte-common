@@ -137,8 +137,9 @@
   <Bytes value="1000000" />
   <Bytes value="10000000" />
 
-  <DataGrid {columns} {source} />
-
+  <DataGrid {columns} {source}>
+  </DataGrid>
+  
   {#if modal}
     <Modal {close}>
       <form>
