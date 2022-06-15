@@ -79,7 +79,7 @@
     }
   );
   const serviceWorkerRegistration = readable(
-    { scope: "http://localhost:5000/components/svelte-common/tests/app/" },
+    { scope: "http://localhost:3000/components/svelte-common/tests/app/" },
     set => {
       return () => {};
     }
