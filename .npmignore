@@ -1,6 +1,5 @@
 build
 tests
-rollup.config.*
 doc
 *.log
 *.tmp
@@ -9,4 +8,4 @@ doc
 .node-version
 .vscode
 .github
-netlify.toml
+.stylelint.json
