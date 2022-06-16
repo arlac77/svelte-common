@@ -10,6 +10,7 @@
   import ServiceWorkerDetails from "./components/ServiceWorkerDetails.svelte";
   import ServiceWorkerRegistrationDetails from "./components/ServiceWorkerRegistrationDetails.svelte";
   import DataGrid from "./components/DataGrid.svelte";
+  import DataGridColumn from "./components/DataGridColumn.svelte";
   import TopNav from "./components/TopNav.svelte";
   import Menue from "./components/Menue.svelte";
   import Collapse from "./components/Collapse.svelte";
@@ -23,6 +24,7 @@
     TopNav,
     Menue,
     DataGrid,
+    DataGridColumn,
     Collapse,
     Modal,
     Peer,

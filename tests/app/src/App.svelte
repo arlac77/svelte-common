@@ -3,6 +3,7 @@
 
   import {
     DataGrid,
+    DataGridColumn,
     Bytes,
     DateTime,
     Duration,
@@ -21,7 +22,7 @@
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
 
-  const columns = [{ id: "col1" }, { id: "col2", title: "Title for col2" }];
+  //const columns = [{ id: "col1" }, { id: "col2", title: "Title for col2" }];
   const source = {
     entries: [
       { col1: "a1", col2: "b1" },
@@ -137,7 +138,13 @@
   <Bytes value="1000000" />
   <Bytes value="10000000" />
 
-  <DataGrid {columns} {source}>
+  <DataGrid {source}>
+    <DataGridColumn id="col1">
+      COL1
+    </DataGridColumn>
+    <DataGridColumn id="col2">
+      COL2
+    </DataGridColumn>
   </DataGrid>
   
   {#if modal}

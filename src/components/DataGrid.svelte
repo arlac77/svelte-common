@@ -1,12 +1,24 @@
 <script>
+  import { setContext } from "svelte";
+
   export let columns = [];
+  const dataGrid = {
+    columns,
+    addColumn: c => {
+      console.log("addColumn", c);
+      columns.push(c);
+    }
+  };
+
+  setContext("DATA_GRID", dataGrid);
+
   export let source = { entries: [] };
 </script>
 
 <table>
   <thead>
     {#each columns as column}
-      <th>{column.title||column.id}</th>
+      <svelte:component this={column.component} />
     {/each}
   </thead>
   <tbody>
