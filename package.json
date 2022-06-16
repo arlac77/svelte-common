@@ -9,6 +9,7 @@
   "keywords": [
     "component",
     "svelte",
+    "vite",
     "web"
   ],
   "contributors": [
@@ -19,24 +20,50 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "start": "vite dev",
+    "prepare": "vite build",
+    "start": "vite dev && vite",
     "test": "npm run test:ava && npm run test:cafe",
-    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"vite dev\"",
+    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"rollup -c  -w\"",
     "test:ava": "ava --timeout 2m tests/*.mjs",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
-    "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
-    "lint:docs": "documentation lint ./src/**/*.mjs"
+    "lint": "documentation lint ./src/index.mjs && npm run lint:docs && npm run lint:css",
+    "lint:docs": "documentation lint ./src/**/*.mjs",
+    "lint:css": "stylelint ./src/*.css",
+    "preview": "vite preview"
   },
   "dependencies": {
     "svelte-command": "^1.1.12",
     "svelte-entitlement": "^1.2.22"
   },
   "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.9",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-inject": "^4.0.3",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@rollup/plugin-virtual": "^2.1.0",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
     "ava": "^4.3.0",
     "documentation": "^13.2.5",
     "mf-styling": "^1.2.22",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "rollup": "^2.75.6",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-consts": "^1.1.0",
+    "rollup-plugin-dev": "^1.1.3",
+    "rollup-plugin-executable": "^1.6.3",
+    "rollup-plugin-gzip": "^3.0.1",
+    "rollup-plugin-native": "^1.2.16",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
     "semantic-release": "^19.0.3",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard": "^26.0.0",
     "svelte": "^3.48.0",
     "testcafe": "^1.19.0",
     "vite": "^2.9.12"
@@ -54,6 +81,7 @@
       "arlac77/template-arlac77-github",
       "arlac77/template-ava",
       "arlac77/template-cloudflare",
+      "arlac77/template-css",
       "arlac77/template-svelte-component#next"
     ]
   }
