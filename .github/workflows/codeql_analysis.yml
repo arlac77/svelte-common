@@ -16,13 +16,13 @@ jobs:
       - run: git checkout
         if: ${{ github.event_name == 'pull_request' }}
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
           languages: javascript
-      - uses: actions/setup-node@v3.1.1
+      - uses: actions/setup-node@v3.3.0
         with:
-          node-version: 16.14.2
+          node-version: 18.3.0
           cache: npm
-      - run: npm install
+      - run: npm ci
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
