@@ -13,12 +13,14 @@
   <td colspan="2">
     <CommandButton
       command={new Command(() => serviceWorkerRegistration.update(), {
-        title: 'Update',
-        shortcuts: 'Command+u'
-      })} />
+        title: "Update",
+        shortcuts: "Command+u"
+      })}
+    />
     <CommandButton
-    command={new Command(() => serviceWorkerRegistration.unregister(), {
-        title: 'Unregister'
-      })} />
+      command={new Command(() => serviceWorkerRegistration.unregister(), {
+        title: "Unregister"
+      })}
+    />
   </td>
 </tr>

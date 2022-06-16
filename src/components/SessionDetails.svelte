@@ -1,8 +1,5 @@
 <script>
-  import {
-    EntitlementBadges,
-    Entitlement
-  } from "svelte-entitlement";
+  import { EntitlementBadges, Entitlement } from "svelte-entitlement";
   import DateTime from "./DateTime.svelte";
   export let session;
 </script>
@@ -18,7 +15,7 @@
 <tr>
   <td />
   <td>Expiration</td>
-  <td class={session.isValid ? 'ok' : 'error'}>
+  <td class={session.isValid ? "ok" : "error"}>
     <DateTime date={session.expirationDate} />
   </td>
 </tr>
@@ -29,6 +26,7 @@
     <EntitlementBadges
       entitlements={[...session.entitlements]
         .sort()
-        .map(name => new Entitlement(name))} />
+        .map(name => new Entitlement(name))}
+    />
   </td>
 </tr>

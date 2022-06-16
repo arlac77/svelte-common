@@ -4,8 +4,15 @@
 
   export let server;
 
-  if(!server) { server = {}; }
-  const memory = server.memory || { heapTotal: 0, heapUsed: 0, external: 0, rss: 0 };
+  if (!server) {
+    server = {};
+  }
+  const memory = server.memory || {
+    heapTotal: 0,
+    heapUsed: 0,
+    external: 0,
+    rss: 0
+  };
 </script>
 
 <tr>
@@ -28,20 +35,20 @@
 <tr>
   <td />
   <td>Heap Total</td>
-  <td><Bytes value={memory.heapTotal}/></td>
+  <td><Bytes value={memory.heapTotal} /></td>
 </tr>
 <tr>
   <td />
   <td>Heap Used</td>
-  <td><Bytes value={memory.heapUsed}/></td>
+  <td><Bytes value={memory.heapUsed} /></td>
 </tr>
 <tr>
   <td />
   <td>External</td>
-  <td><Bytes value={memory.external}/></td>
+  <td><Bytes value={memory.external} /></td>
 </tr>
 <tr>
   <td />
   <td>RSS</td>
-  <td><Bytes value={memory.rss}/></td>
+  <td><Bytes value={memory.rss} /></td>
 </tr>

@@ -43,5 +43,4 @@
     formatSecondsSinceEpoch
   } from "./util.mjs";
   export { initializeServiceWorker } from "./service-worker.mjs";
-
 </script>

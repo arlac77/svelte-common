@@ -1,4 +1,3 @@
-
 <table class="bordered striped">
   <tbody>
     <slot />

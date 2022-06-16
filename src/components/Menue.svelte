@@ -11,6 +11,7 @@
     open = true;
   }
 </script>
+
 {#if open}
   <AnchorContentCatcher close={hide}>
     <a href=" " slot="anchor">

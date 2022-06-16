@@ -34,8 +34,8 @@ export function formatDurationISO(seconds) {
   let t = false;
 
   for (const d of durationsISO) {
-    if(seconds < 86400 && ! t) {
-      out += 'T';
+    if (seconds < 86400 && !t) {
+      out += "T";
       t = true;
     }
 
