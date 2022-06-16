@@ -12,6 +12,9 @@ jobs:
         browser:
           - chrome
           - firefox
+        include:
+          - os: macos-latest
+          browser: safari
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.3.0
