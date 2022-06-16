@@ -26,8 +26,9 @@
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"vite\"",
     "test:ava": "ava --timeout 2m tests/*.mjs",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
-    "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
+    "lint": "documentation lint ./src/index.mjs && npm run lint:docs && npm run lint:css",
     "lint:docs": "documentation lint ./src/**/*.mjs",
+    "lint:css": "stylelint ./src/*.css",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -40,6 +41,8 @@
     "documentation": "^13.2.5",
     "mf-styling": "^1.2.22",
     "semantic-release": "^19.0.3",
+    "stylelint": "^14.9.1",
+    "stylelint-config-standard": "^26.0.0",
     "svelte": "^3.48.0",
     "testcafe": "^1.19.0",
     "vite": "^2.9.12"
@@ -57,6 +60,7 @@
       "arlac77/template-arlac77-github",
       "arlac77/template-ava",
       "arlac77/template-cloudflare",
+      "arlac77/template-css",
       "arlac77/template-svelte-component#next"
     ]
   }
