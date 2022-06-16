@@ -1,7 +1,7 @@
 <script>
     import { formatBytes } from "../util.mjs";
     export let value;
-  </script>
+</script>
   
-  <span>{formatBytes(value)}</span>
+<span>{formatBytes(value)}</span>
   
