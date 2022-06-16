@@ -26,7 +26,7 @@
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"vite\"",
     "test:ava": "ava --timeout 2m tests/*.mjs",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
-    "lint": "documentation lint ./src/index.mjs && npm run lint:docs && npm run lint:css",
+    "lint": "npm run lint:css && npm run lint:docs && documentation lint ./src/index.mjs",
     "lint:docs": "documentation lint ./src/**/*.mjs",
     "lint:css": "stylelint ./src/*.css",
     "preview": "vite preview"
