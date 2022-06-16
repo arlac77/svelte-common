@@ -22,10 +22,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: npm
-      - run: npm cit
-        env:
-          BROWSER: ${{ matrix.browser }}
-      - uses: actions/upload-artifact@v3
         with:
           path: ${{ github.workspace }}/build/test/**/*
           retention-days: 3
