@@ -9,6 +9,7 @@
   "keywords": [
     "component",
     "svelte",
+    "vite",
     "web"
   ],
   "contributors": [
@@ -19,13 +20,15 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "start": "vite dev",
+    "prepare": "vite build",
+    "start": "vite dev && vite",
     "test": "npm run test:ava && npm run test:cafe",
-    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"vite dev\"",
+    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*.js -s build/test --page-request-timeout 9000 --app-init-delay 3000 --app \"vite\"",
     "test:ava": "ava --timeout 2m tests/*.mjs",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
     "lint": "documentation lint ./src/index.mjs && npm run lint:docs",
-    "lint:docs": "documentation lint ./src/**/*.mjs"
+    "lint:docs": "documentation lint ./src/**/*.mjs",
+    "preview": "vite preview"
   },
   "dependencies": {
     "svelte-command": "^1.1.12",
