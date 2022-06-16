@@ -36,10 +36,14 @@
     "svelte-entitlement": "^1.2.22"
   },
   "devDependencies": {
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.3",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
     "ava": "^4.3.0",
     "documentation": "^13.2.5",
     "mf-styling": "^1.2.22",
+    "npm-pkgbuild": "^10.7.10",
     "semantic-release": "^19.0.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0",
@@ -55,12 +59,30 @@
     "url": "https://github.com/arlac77/svelte-common/issues"
   },
   "homepage": "https://github.com/arlac77/svelte-common#readme",
+  "pkgbuild": {
+    "content": {}
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "npx npm-pkgbuild --available --verbose"
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
   "template": {
     "inheritFrom": [
       "arlac77/template-arlac77-github",
       "arlac77/template-ava",
       "arlac77/template-cloudflare",
       "arlac77/template-css",
+      "arlac77/template-pacman",
       "arlac77/template-svelte-component#next"
     ]
   }
