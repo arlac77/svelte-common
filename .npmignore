@@ -9,3 +9,5 @@ doc
 .vscode
 .github
 .stylelint.json
+pkg
+.stylelintrc.json
