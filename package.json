@@ -43,7 +43,7 @@
     "ava": "^4.3.0",
     "documentation": "^13.2.5",
     "mf-styling": "^1.2.22",
-    "npm-pkgbuild": "^10.8.0",
+    "npm-pkgbuild": "^10.9.0",
     "semantic-release": "^19.0.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0",
