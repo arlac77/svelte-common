@@ -22,8 +22,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'npm'
-      - run: --delete-- npm ci
-      - run: --delete-- npm test
       - run: npm cit
         env:
           BROWSER: ${{ matrix.browser }}
