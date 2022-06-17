@@ -1,12 +1,14 @@
 <script>
-  import { setContext, getContext } from "svelte";
+  import { getContext } from "svelte";
 
   const dataGrid = getContext("DATA_GRID");
 
-  dataGrid.addColumn({ id, component: this});
+  let component;
+
+  dataGrid.addColumn({ id, component });
   export let id;
 </script>
 
-<th {id}>
+<th {id} bind:this={component}>
   <slot />
 </th>
