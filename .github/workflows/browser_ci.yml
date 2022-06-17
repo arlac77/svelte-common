@@ -1,5 +1,5 @@
 name: CI
-"on": push
+'on': push
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -12,16 +12,12 @@ jobs:
         browser:
           - chrome
           - firefox
-      #  include:
-      #    - os: macos-12
-      #      browser: safari
-      #      node: 18.3.0
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3.3.0
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
+          cache: npm
       - run: npm cit
         env:
           BROWSER: ${{ matrix.browser }}
@@ -54,7 +50,7 @@ jobs:
       - run: npm ci
       - run: npx semantic-release
         env:
-          CI: "true"
+          CI: 'true'
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PKGBUILD_PUBLISH: ${{ secrets.PKGBUILD_PUBLISH }}
