@@ -43,7 +43,7 @@
     "ava": "^4.3.0",
     "documentation": "^13.2.5",
     "mf-styling": "^1.2.22",
-    "npm-pkgbuild": "^10.9.0",
+    "npm-pkgbuild": "^10.9.1",
     "semantic-release": "^19.0.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0",
@@ -64,9 +64,7 @@
   "homepage": "https://github.com/arlac77/svelte-common#readme",
   "pkgbuild": {
     "content": {
-      "${install.dir}": {
-        "base": "build"
-      },
+      "${install.dir}": "build",
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
     "hooks": "pkg/hooks.sh",
@@ -80,7 +78,7 @@
       [
         "@semantic-release/exec",
         {
-          "publishCmd": "npx npm-pkgbuild --available --verbose"
+          "publishCmd": "npx npm-pkgbuild --available --continue --verbose"
         }
       ],
       "@semantic-release/github"

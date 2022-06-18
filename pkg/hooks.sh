@@ -1,4 +1,3 @@
-
 post_install() {
 	systemctl reload nginx
 }
