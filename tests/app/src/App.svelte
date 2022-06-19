@@ -29,16 +29,26 @@
     ]
   };
 
-  async function login() {}
   async function logout() {
     alert("logout");
   }
 
-  let modal = true;
-  let about = true;
+  let modal = false;
+  let about = false;
+
+  function showModal()
+  {
+    modal = true;
+  }
+
+  function showAbout()
+  {
+    about = true;
+  }
 
   let close = () => {
     modal = false;
+    about = false;
   };
 
   const session = {
@@ -109,7 +119,8 @@
     </li>
   </ul>
   <ul>
-    <li><a href="/">Entry</a></li>
+    <li><a on:click={showModal}>Modal</a></li>
+    <li><a on:click={showAbout}>About</a></li>
   </ul>
 </TopNav>
 <main>
