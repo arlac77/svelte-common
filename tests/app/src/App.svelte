@@ -122,8 +122,12 @@
   </Collapse>
 
   <div>
-    Days <Duration seconds="1000000" />
-    Hours <Duration seconds="5000" />
+    <div>
+      Days <Duration seconds="1000000" />
+    </div>
+    <div>
+      Hours <Duration seconds="5000" />
+    </div>
     <DateTime date={new Date()} />
   </div>
   <div>
