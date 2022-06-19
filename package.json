@@ -64,7 +64,7 @@
   "homepage": "https://github.com/arlac77/svelte-common#readme",
   "pkgbuild": {
     "content": {
-      "${install.dir}": "build",
+      "${install.dir}": { "base": "build" },
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
     "hooks": "pkg/hooks.sh",
