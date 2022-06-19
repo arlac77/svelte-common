@@ -10,5 +10,7 @@
 </script>
 
 <th {id} bind:this={component}>
-  <slot />
+  <slot>
+    {id}
+  </slot>
 </th>

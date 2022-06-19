@@ -22,7 +22,6 @@
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
 
-  //const columns = [{ id: "col1" }, { id: "col2", title: "Title for col2" }];
   const source = {
     entries: [
       { col1: "a1", col2: "b1" },
@@ -123,30 +122,27 @@
   </Collapse>
 
   <div>
-    Days
-    <Duration seconds="1000000" />
-    Hours
-    <Duration seconds="5000" />
-
+    Days <Duration seconds="1000000" />
+    Hours <Duration seconds="5000" />
     <DateTime date={new Date()} />
   </div>
-  <Bytes value="10" />
-  <Bytes value="100" />
-  <Bytes value="1000" />
-  <Bytes value="10000" />
-  <Bytes value="100000" />
-  <Bytes value="1000000" />
-  <Bytes value="10000000" />
-
+  <div>
+    <Bytes value="10" />
+    <Bytes value="100" />
+    <Bytes value="1000" />
+    <Bytes value="10000" />
+    <Bytes value="100000" />
+    <Bytes value="1000000" />
+    <Bytes value="10000000" />
+  </div>
+  
   <DataGrid {source}>
     <DataGridColumn id="col1">
       COL1
     </DataGridColumn>
-    <DataGridColumn id="col2">
-      COL2
-    </DataGridColumn>
+    <DataGridColumn id="col2"/>
   </DataGrid>
-  
+
   {#if modal}
     <Modal {close}>
       <form>
