@@ -17,7 +17,7 @@
     ServerDetails,
     PeerDetails,
     ServiceWorkerDetails,
-    ServiceWorkerRegistrationDetails,
+    ServiceWorkerRegistrationDetails
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
@@ -36,13 +36,11 @@
   let modal = false;
   let about = false;
 
-  function showModal()
-  {
+  function showModal() {
     modal = true;
   }
 
-  function showAbout()
-  {
+  function showAbout() {
     about = true;
   }
 
@@ -142,20 +140,18 @@
     <DateTime date={new Date()} />
   </div>
   <div>
-    <Bytes value="10" />
-    <Bytes value="100" />
-    <Bytes value="1000" />
-    <Bytes value="10000" />
-    <Bytes value="100000" />
-    <Bytes value="1000000" />
+    <Bytes value="10" /> <br />
+    <Bytes value="100" /> <br />
+    <Bytes value="1000" /> <br />
+    <Bytes value="10000" /> <br />
+    <Bytes value="100000" /> <br />
+    <Bytes value="1000000" /> <br />
     <Bytes value="10000000" />
   </div>
-  
+
   <DataGrid {source}>
-    <DataGridColumn id="col1">
-      COL1
-    </DataGridColumn>
-    <DataGridColumn id="col2"/>
+    <DataGridColumn id="col1">COL1</DataGridColumn>
+    <DataGridColumn id="col2" />
   </DataGrid>
 
   {#if modal}
@@ -171,7 +167,8 @@
               name="username"
               required
               value="XXX"
-              size="10" />
+              size="10"
+            />
           </label>
           <label for="password">
             Password 1
@@ -181,7 +178,8 @@
               placeholder="Password"
               name="password"
               size="10"
-              required />
+              required
+            />
           </label>
         </fieldset>
 
@@ -195,7 +193,8 @@
       <ApplicationDetails
         version="1.0"
         name="my title"
-        description="a description" />
+        description="a description"
+      />
       <tr>
         <td />
         <td>a new entry</td>
@@ -206,7 +205,8 @@
       <ServerDetails server={serverWithoutMemory} />
       <ServiceWorkerDetails serviceWorker={$serviceWorker} />
       <ServiceWorkerRegistrationDetails
-        serviceWorkerRegistration={$serviceWorkerRegistration} />
+        serviceWorkerRegistration={$serviceWorkerRegistration}
+      />
       <PeerDetails {peers} />
     </About>
   {/if}

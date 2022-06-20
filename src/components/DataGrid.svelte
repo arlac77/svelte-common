@@ -2,6 +2,8 @@
   import { setContext } from "svelte";
 
   export let columns = [];
+  export let source = { entries: [] };
+
   const dataGrid = {
     columns,
     addColumn: c => {
@@ -12,7 +14,6 @@
 
   setContext("DATA_GRID", dataGrid);
 
-  export let source = { entries: [] };
 </script>
 
 <table>
