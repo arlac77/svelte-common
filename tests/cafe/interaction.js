@@ -18,7 +18,6 @@ test("collapse", async t => {
 });
 
 test("about service worker", async t => {
-
   const s = Selector("a").withText("About");
 
   await t.click(s);
