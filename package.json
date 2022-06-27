@@ -67,7 +67,8 @@
       "${install.dir}": "build/",
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
-    "groups": "web"
+    "groups": "web",
+    "http.base.path": "/examples"
   },
   "release": {
     "plugins": [
