@@ -1,31 +1,25 @@
 <script>
   import { setContext } from "svelte";
+  import { DataGrid, DATA_GRID} from "../data-grid.mjs";
 
-  export let columns = [];
   export let source = { entries: [] };
 
-  const dataGrid = {
-    columns,
-    addColumn: c => {
-      console.log("addColumn", c);
-      columns.push(c);
-    }
-  };
-
-  setContext("DATA_GRID", dataGrid);
-
+  const dataGrid = new DataGrid();
+  setContext(DATA_GRID, dataGrid);
 </script>
 
 <table>
+  <!--<slot/>-->
   <thead>
-    {#each columns as column}
-      <svelte:component this={column.component} />
+    {#each dataGrid.columns as column}
+     {column.id} {column.headerComponent}
+      <svelte:component this={column.headerComponent} />
     {/each}
   </thead>
   <tbody>
     {#each source.entries as entry}
       <tr>
-        {#each columns as column}
+        {#each dataGrid.columns as column}
           <td>{entry[column.id]}</td>
         {/each}
       </tr>

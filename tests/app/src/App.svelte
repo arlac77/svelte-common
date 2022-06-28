@@ -148,7 +148,7 @@
   </div>
 
   <DataGrid {source}>
-    <DataGridColumn id="col1">COL1</DataGridColumn>
+    <DataGridColumn id="col1"><div slot="header">COL1</div></DataGridColumn>
     <DataGridColumn id="col2" />
   </DataGrid>
 
