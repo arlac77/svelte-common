@@ -40,7 +40,7 @@
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
-    "ava": "^4.3.0",
+    "ava": "^4.3.1",
     "documentation": "^13.2.5",
     "mf-styling": "^1.2.25",
     "npm-pkgbuild": "^10.11.1",
