@@ -11,7 +11,8 @@
     heapTotal: 0,
     heapUsed: 0,
     external: 0,
-    rss: 0
+    rss: 0,
+    arrayBuffers: 0
   };
 </script>
 
@@ -51,4 +52,9 @@
   <td />
   <td>RSS</td>
   <td><Bytes value={memory.rss} /></td>
+</tr>
+<tr>
+  <td />
+  <td>Array buffers</td>
+  <td><Bytes value={memory.arrayBuffers} /></td>
 </tr>
