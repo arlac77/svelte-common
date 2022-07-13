@@ -14,6 +14,14 @@
     rss: 0,
     arrayBuffers: 0
   };
+
+  const memSlots = [
+    { key: "external", title: "External" },
+    { key: "heapTotal", title: "Heap Total" },
+    { key: "heapUsed", title: "Heap Used" },
+    { key: "arrayBuffers", title: "Array Buffers" },
+    { key: "rss", title: "RSS" }
+  ];
 </script>
 
 <tr>
@@ -33,28 +41,11 @@
     {:else}<div class="error">down</div>{/if}
   </td>
 </tr>
-<tr>
-  <td />
-  <td>Heap Total</td>
-  <td><Bytes value={memory.heapTotal} /></td>
-</tr>
-<tr>
-  <td />
-  <td>Heap Used</td>
-  <td><Bytes value={memory.heapUsed} /></td>
-</tr>
-<tr>
-  <td />
-  <td>External</td>
-  <td><Bytes value={memory.external} /></td>
-</tr>
-<tr>
-  <td />
-  <td>RSS</td>
-  <td><Bytes value={memory.rss} /></td>
-</tr>
-<tr>
-  <td />
-  <td>Array buffers</td>
-  <td><Bytes value={memory.arrayBuffers} /></td>
-</tr>
+
+{#each memSlots as { key, title }}
+  <tr>
+    <td />
+    <td>{title}</td>
+    <td><Bytes value={memory[key]} /></td>
+  </tr>
+{/each}
