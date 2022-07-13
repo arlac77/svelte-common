@@ -58,7 +58,13 @@
 
   const server = {
     version: "1.2.3",
-    memory: { heapTotal: 1200000, heapUsed: 1000000, rss: 0, external: 0 }
+    memory: {
+      heapTotal: 1200000,
+      heapUsed: 1000000,
+      rss: 0,
+      external: 0,
+      arrayBuffers: 1000
+    }
   };
 
   const serverWithoutMemory = {};
@@ -85,7 +91,7 @@
     }
   );
   const serviceWorkerRegistration = readable(
-    { scope: "http://localhost:3000/services/svelte-common/" },
+    { scope: "http://localhost:5173/examples/svelte-common/" },
     set => {
       return () => {};
     }
