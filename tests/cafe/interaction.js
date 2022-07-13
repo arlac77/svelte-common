@@ -2,7 +2,7 @@ import { Selector } from "testcafe";
 
 const base = "http://localhost:5173/examples/svelte-common/";
 
-fixture`interactions`.page`${base}index.html`;
+fixture`interactions`.page`${base}`;
 
 test("collapse", async t => {
   const s = Selector("button").withText("Collapse");
