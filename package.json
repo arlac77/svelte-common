@@ -32,8 +32,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "svelte-command": "^1.1.19",
-    "svelte-entitlement": "^1.2.25"
+    "svelte-command": "^1.1.20",
+    "svelte-entitlement": "^1.2.26"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
@@ -42,7 +42,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "ava": "^4.3.1",
     "documentation": "^13.2.5",
-    "mf-styling": "^1.2.26",
+    "mf-styling": "^1.2.29",
     "npm-pkgbuild": "^10.11.3",
     "semantic-release": "^19.0.3",
     "stylelint": "^14.9.1",
