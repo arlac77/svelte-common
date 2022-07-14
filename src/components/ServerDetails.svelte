@@ -4,17 +4,6 @@
 
   export let server;
 
-  if (!server) {
-    server = {};
-  }
-  const memory = server.memory || {
-    heapTotal: 0,
-    heapUsed: 0,
-    external: 0,
-    rss: 0,
-    arrayBuffers: 0
-  };
-
   const memSlots = [
     { key: "external", title: "External" },
     { key: "heapTotal", title: "Heap Total" },
@@ -30,22 +19,21 @@
 <tr>
   <td />
   <td>Version</td>
-  <td>{server.version}</td>
+  <td>{#if server && server.version}{server.version}{:else}<div class="error">down</div>{/if}</td>
 </tr>
 <tr>
   <td />
   <td>Uptime</td>
   <td>
-    {#if server.uptime >= 0}
+    {#if server && server.uptime >= 0}
       <Duration seconds={server.uptime} />
     {:else}<div class="error">down</div>{/if}
   </td>
 </tr>
-
 {#each memSlots as { key, title }}
   <tr>
     <td />
     <td>{title}</td>
-    <td><Bytes value={memory[key]} /></td>
+    <td>{#if server && server.memory}<Bytes value={server.memory[key]}/>{:else}<div class="error">down</div>{/if}</td>
   </tr>
 {/each}
