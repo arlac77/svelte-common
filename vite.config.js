@@ -1,5 +1,4 @@
 import { svelte } from "@sveltejs/vite-plugin-svelte";
-//import { extractFromPackage } from "npm-pkgbuild/src/module.mjs";
 import { defineConfig } from "vite";
 
 export default defineConfig(async ({ command, mode }) => {
@@ -30,7 +29,7 @@ export default defineConfig(async ({ command, mode }) => {
         }
       })
     ],
-    server: { host: true },
+    server: { host: true, open: base },
     build: {
       outDir: "../../../build",
       target: "esnext",
