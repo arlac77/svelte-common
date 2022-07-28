@@ -168,12 +168,17 @@
 
     <div role="tabpanel" aria-labelledby="date-formatters" hidden>
       <div>
-        Days <Duration seconds="1000000" />
+        <label for="days">Days</label>
+        <b><Duration id="days" seconds="1000000" /></b>
       </div>
       <div>
-        Hours <Duration seconds="5000" />
+        <label for="hours">Hours</label>
+        <b><Duration id="hours" seconds="5000" /></b>
       </div>
-      <DateTime date={new Date()} />
+      <div>
+        <label for="datetime">DateTime</label>
+        <b><DateTime id="datetime" date={new Date()} /></b>
+      </div>
     </div>
   </tab-container>
 
