@@ -141,10 +141,10 @@
       <button id="datagrid" role="tab" tabindex="0" aria-selected="true">
         Data Grid
       </button>
-      <button id="byte-formatters" role="tab" tabindex="-1">
+      <button id="byte-formatters" role="tab" tabindex="0">
         Byte Formatters
       </button>
-      <button id="date-formatters" role="tab" tabindex="-1">
+      <button id="date-formatters" role="tab" tabindex="0">
         Date Formatters
       </button>
     </div>
