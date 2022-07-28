@@ -3,4 +3,4 @@
   export let seconds;
 </script>
 
-<time localtime={formatDurationISO(seconds)}>{formatDuration(seconds)}</time>
+<time datetime={formatDurationISO(seconds)}>{formatDuration(seconds)}</time>

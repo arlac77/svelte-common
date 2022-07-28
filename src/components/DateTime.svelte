@@ -3,4 +3,4 @@
   export let date;
 </script>
 
-<time localtime={date.toISOString()}>{dateFormatter.format(date)}</time>
+<time datetime={date.toISOString()}>{dateFormatter.format(date)}</time>
