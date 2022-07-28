@@ -103,7 +103,7 @@
 </script>
 
 <TopNav offset={42}>
-  <a href="/">Example</a>
+  <a href="..">Examples</a>
   <ul>
     <li>
       <Menue>
@@ -149,7 +149,7 @@
       </button>
     </div>
 
-    <div role="tabpanel" aria-labelledby="datagrid" hidden>
+    <div role="tabpanel" aria-labelledby="datagrid">
       <DataGrid {source}>
         <DataGridColumn id="col1"><div slot="header">COL1</div></DataGridColumn>
         <DataGridColumn id="col2" />
