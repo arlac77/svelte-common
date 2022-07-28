@@ -134,29 +134,48 @@
     </ul>
   </Collapse>
 
-  <div>
-    <div>
-      Days <Duration seconds="1000000" />
-    </div>
-    <div>
-      Hours <Duration seconds="5000" />
-    </div>
-    <DateTime date={new Date()} />
-  </div>
-  <div>
-    <Bytes value="10" /> <br />
-    <Bytes value="100" /> <br />
-    <Bytes value="1000" /> <br />
-    <Bytes value="10000" /> <br />
-    <Bytes value="100000" /> <br />
-    <Bytes value="1000000" /> <br />
-    <Bytes value="10000000" />
-  </div>
+  <div />
 
-  <DataGrid {source}>
-    <DataGridColumn id="col1"><div slot="header">COL1</div></DataGridColumn>
-    <DataGridColumn id="col2" />
-  </DataGrid>
+  <tab-container>
+    <div role="tablist">
+      <button id="datagrid" role="tab" tabindex="0" aria-selected="true">
+        Data Grid
+      </button>
+      <button id="byte-formatters" role="tab" tabindex="-1">
+        Byte Formatters
+      </button>
+      <button id="date-formatters" role="tab" tabindex="-1">
+        Date Formatters
+      </button>
+    </div>
+
+    <div role="tabpanel" aria-labelledby="datagrid" hidden>
+      <DataGrid {source}>
+        <DataGridColumn id="col1"><div slot="header">COL1</div></DataGridColumn>
+        <DataGridColumn id="col2" />
+      </DataGrid>
+    </div>
+
+    <div role="tabpanel" aria-labelledby="byte-formatters" hidden>
+      <Bytes value="10" /> <br />
+      <Bytes value="100" /> <br />
+      <Bytes value="1000" /> <br />
+      <Bytes value="10000" /> <br />
+      <Bytes value="100000" /> <br />
+      <Bytes value="1000000" /> <br />
+      <Bytes value="10000000" />
+    </div>
+
+    <div role="tabpanel" aria-labelledby="date-formatters" hidden>
+      <div>
+        Days <Duration seconds="1000000" />
+      </div>
+      <div>
+        Hours <Duration seconds="5000" />
+      </div>
+      <DateTime date={new Date()} />
+    </div>
+  </tab-container>
 
   {#if modal}
     <Modal {close}>
