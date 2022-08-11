@@ -11,4 +11,4 @@ doc
 .stylelint.json
 pkg
 .stylelintrc.json
-vite.config.js
+vite.config.mts
