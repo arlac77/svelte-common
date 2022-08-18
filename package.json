@@ -32,7 +32,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "svelte-command": "^1.1.22",
+    "svelte-command": "^1.1.23",
     "svelte-entitlement": "^1.2.30"
   },
   "devDependencies": {
