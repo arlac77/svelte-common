@@ -19,6 +19,7 @@
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
+  import { base } from "./constants.mjs";
 
   const source = {
     entries: [
@@ -91,7 +92,7 @@
     }
   );
   const serviceWorkerRegistration = readable(
-    { scope: "http://localhost:5173/examples/svelte-common/" },
+    { scope: base },
     set => {
       return () => {};
     }
