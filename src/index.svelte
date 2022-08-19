@@ -44,5 +44,12 @@
     formatDurationISO,
     formatSecondsSinceEpoch
   } from "./util.mjs";
+  export {
+    toggleOrdeBy,
+    orderByCycle,
+    SORT_NONE,
+    SORT_ASCENDING,
+    SORT_DESCENDING
+  } from "./sorting.mjs";
   export { initializeServiceWorker } from "./service-worker.mjs";
 </script>
