@@ -28,6 +28,8 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
 
 *   [initializeServiceWorker](#initializeserviceworker)
     *   [Parameters](#parameters)
+*   [toggleOrdeBy](#toggleordeby)
+    *   [Parameters](#parameters-1)
 
 ## initializeServiceWorker
 
@@ -39,6 +41,16 @@ Create a store holding a service worker
 *   `options` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** An object containing registration options
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** store holding the service worker
+
+## toggleOrdeBy
+
+Deliver next value in the order by cycle.
+
+### Parameters
+
+*   `orderBy` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** new order either SORT_NONE, SORT_ASCENDING or SORT_DESCENDING
 
 # install
 
