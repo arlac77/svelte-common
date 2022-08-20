@@ -46,8 +46,8 @@
   } from "./util.mjs";
   export {
     sortable,
-    toggleOrdeBy,
-    orderByCycle, 
+    toggleOrderBy,
+    orderByCycle,
     SORT_NONE,
     SORT_ASCENDING,
     SORT_DESCENDING

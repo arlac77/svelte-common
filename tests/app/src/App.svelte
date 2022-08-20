@@ -15,7 +15,8 @@
     ServerDetails,
     PeerDetails,
     ServiceWorkerDetails,
-    ServiceWorkerRegistrationDetails
+    ServiceWorkerRegistrationDetails,
+    sortable
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
@@ -91,12 +92,9 @@
       return () => {};
     }
   );
-  const serviceWorkerRegistration = readable(
-    { scope: base },
-    set => {
-      return () => {};
-    }
-  );
+  const serviceWorkerRegistration = readable({ scope: base }, set => {
+    return () => {};
+  });
 
   /*
   const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
@@ -135,8 +133,6 @@
     </ul>
   </Collapse>
 
-  <div />
-
   <tab-container>
     <div role="tablist">
       <button id="datagrid" role="tab" tabindex="0" aria-selected="true">
@@ -155,6 +151,18 @@
         <DataGridColumn id="col1"><div slot="header">COL1</div></DataGridColumn>
         <DataGridColumn id="col2" />
       </DataGrid>
+
+      <table>
+        <thead>
+          <th id="col1" use:sortable>col 1</th>
+          <th id="col2" use:sortable>col 2</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div role="tabpanel" aria-labelledby="byte-formatters" hidden>
