@@ -15,3 +15,12 @@ export const orderByCycle = {
  * @returns {string} new order either SORT_NONE, SORT_ASCENDING or SORT_DESCENDING
  */
 export function toggleOrdeBy(orderBy) { return orderByCycle[orderBy] || "none"; }
+
+
+/**
+ * Add sortable toggle to a node.
+ * @param {Node} node
+ */
+export function sortable(node) {
+  node.click = () => { node.sortable = toggleOrderBy(node.sortable); };
+}
