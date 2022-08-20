@@ -28,8 +28,10 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
 
 *   [initializeServiceWorker](#initializeserviceworker)
     *   [Parameters](#parameters)
-*   [toggleOrdeBy](#toggleordeby)
+*   [toggleOrderBy](#toggleorderby)
     *   [Parameters](#parameters-1)
+*   [sortable](#sortable)
+    *   [Parameters](#parameters-2)
 
 ## initializeServiceWorker
 
@@ -42,15 +44,25 @@ Create a store holding a service worker
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** store holding the service worker
 
-## toggleOrdeBy
+## toggleOrderBy
 
 Deliver next value in the order by cycle.
+SORT\_NONE -> SORT\_ASCENDING -> SORT\_DESCENDING -> SORT\_NONE ...
 
 ### Parameters
 
-*   `orderBy` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `orderBy` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
-Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** new order either SORT_NONE, SORT_ASCENDING or SORT_DESCENDING
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** new order either SORT\_NONE, SORT\_ASCENDING or SORT\_DESCENDING
+
+## sortable
+
+Add sortable toggle to a node.
+cycles "aria-sort" though orderByCycle.
+
+### Parameters
+
+*   `node` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)**&#x20;
 
 # install
 
