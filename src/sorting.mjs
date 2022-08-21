@@ -16,7 +16,7 @@ export const orderByCycle = {
  * @returns {string} new order either SORT_NONE, SORT_ASCENDING or SORT_DESCENDING
  */
 export function toggleOrderBy(orderBy) {
-  return orderByCycle[orderBy] || "none";
+  return orderByCycle[orderBy] || SORT_NONE;
 }
 
 /**
@@ -28,6 +28,9 @@ export function sortable(node) {
   node.setAttribute("aria-sort", SORT_NONE);
 
   node.onclick = () => {
-    node.setAttribute("aria-sort", toggleOrderBy(node.getAttribute("aria-sort")));
+    node.setAttribute(
+      "aria-sort",
+      toggleOrderBy(node.getAttribute("aria-sort"))
+    );
   };
 }
