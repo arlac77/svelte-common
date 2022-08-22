@@ -16,7 +16,8 @@
     PeerDetails,
     ServiceWorkerDetails,
     ServiceWorkerRegistrationDetails,
-    sortable
+    sortable,
+    sortableStore
   } from "../../../src/index.svelte";
   import { fade } from "svelte/transition";
   import { readable } from "svelte/store";
@@ -99,6 +100,12 @@
   /*
   const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
   */
+
+  const tableSort = sortableStore();
+
+  tableSort.subscribe(value => {
+    console.log("SORT", value);
+  });
 </script>
 
 <TopNav offset={42}>
@@ -154,8 +161,8 @@
 
       <table>
         <thead>
-          <th id="col1" use:sortable>col 1</th>
-          <th id="col2" use:sortable>col 2</th>
+          <th id="col1" use:sortable={tableSort}>col 1</th>
+          <th id="col2" use:sortable={tableSort}>col 2</th>
         </thead>
         <tbody>
           <tr>

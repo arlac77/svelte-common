@@ -23,14 +23,45 @@ export function toggleOrderBy(orderBy) {
  * Add sortable toggle to a node.
  * cycles "aria-sort" though orderByCycle.
  * @param {Node} node
+ * @param {Store} where to put sorting info into
  */
-export function sortable(node) {
+export function sortable(node, store) {
   node.setAttribute("aria-sort", SORT_NONE);
 
   node.onclick = () => {
+    const orderBy = {};
     node.setAttribute(
       "aria-sort",
       toggleOrderBy(node.getAttribute("aria-sort"))
     );
+
+    for (const peer of node.parentElement.children) {
+      if (peer !== node) {
+        if (peer.getAttribute("aria-sort") !== SORT_NONE) {
+          peer.setAttribute("aria-sort", SORT_NONE);
+        }
+      }
+
+      orderBy[peer.id] = peer.getAttribute("aria-sort");
+    }
+    store.set(orderBy);
+  };
+}
+
+export function sortableStore() {
+  const subscriptions = new Set();
+
+  let value = {};
+
+  return {
+    subscribe: cb => {
+      subscriptions.add(cb);
+      cb(value);
+      return () => subscriptions.delete(cb);
+    },
+    set(v) {
+      value = v;
+      subscriptions.forEach(subscription => subscription(value));
+    }
   };
 }
