@@ -1,9 +1,9 @@
 import test from "ava";
-import { toggleOrdeBy } from "../src/sorting.mjs";
+import { toggleOrderBy } from "../src/sorting.mjs";
 
-test("toggleOrdeBy", t => {
-  t.is(toggleOrdeBy(), "none");
-  t.is(toggleOrdeBy("none"), "ascending");
-  t.is(toggleOrdeBy("ascending"), "descending");
-  t.is(toggleOrdeBy("descending"), "none");
+test("toggleOrderBy", t => {
+  t.is(toggleOrderBy(), "none");
+  t.is(toggleOrderBy("none"), "ascending");
+  t.is(toggleOrderBy("ascending"), "descending");
+  t.is(toggleOrderBy("descending"), "none");
 });
