@@ -21,13 +21,19 @@ export function toggleOrderBy(orderBy) {
 
 /**
  * Add sortable toggle to a node.
- * cycles "aria-sort" though orderByCycle.
+ * Synchronizes store value with node sortable attribute.
  * @param {Node} node
- * @param {Store} where to put sorting info into
+ * @param {Store} where to keep in sync with sorting properties
  */
 export function sortable(node, store) {
   node.setAttribute("aria-sort", SORT_NONE);
 
+  store.subscribe(orderBy => {
+    for (const peer of node.parentElement.children) {
+      peer.getAttribute("aria-sort") = orderBy[peer.id] || SORT_NONE;
+    }
+  });
+  
   node.onclick = () => {
     const orderBy = {};
     node.setAttribute(
