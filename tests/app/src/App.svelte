@@ -26,9 +26,11 @@
 
   const source = {
     entries: [
-      { a1: "1.1", a2: "1.2" },
-      { a1: "2.1", a2: "2.2" },
-      { a1: "3.1", a2: "3.2" }
+      { a1: "1.1", a2: "1.2", a3: "1.3" },
+      { a1: "2.1", a2: "2.2", a3: "2.3" },
+      { a1: "3.1", a2: "3.2", a3: "3.3" },
+      { a1: "4.1", a2: "4.2", a3: "4.3" },
+      { a1: "5.1", a2: "5.2", a3: "5.3" }
     ]
   };
 
@@ -168,10 +170,11 @@
         </thead>
         <tbody>
           {#each source.entries.sort(sorter($sortBy)) as row (row.a1)}
-          <tr>
-            <td>{row.a1}</td>
-            <td>{row.a2}</td>
-          </tr>
+            <tr>
+              <td>{row.a1}</td>
+              <td>{row.a2}</td>
+              <td>{row.a3}</td>
+            </tr>
           {/each}
         </tbody>
       </table>
