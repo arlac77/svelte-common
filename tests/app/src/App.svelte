@@ -19,14 +19,16 @@
     PeerDetails,
     ServiceWorkerDetails,
     ServiceWorkerRegistrationDetails,
-    sortable
+    sortable,
+    sorter
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
   const source = {
     entries: [
-      { col1: "a1", col2: "b1" },
-      { col1: "a2", col2: "b2" }
+      { a1: "1.1", a2: "1.2" },
+      { a1: "2.1", a2: "2.2" },
+      { a1: "3.1", a2: "3.2" }
     ]
   };
 
@@ -101,7 +103,7 @@
   const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
   */
 
-  const tableSort = writable({});
+  const sortBy = writable({});
 </script>
 
 <TopNav offset={42}>
@@ -155,28 +157,22 @@
         <DataGridColumn id="col2" />
       </DataGrid>
 
-      <input bind:value={$tableSort.col1} placeholder="sorting" />
-      <input bind:value={$tableSort.col2} placeholder="sorting" />
+      <input bind:value={$sortBy.a1} placeholder="sorting" />
+      <input bind:value={$sortBy.a2} placeholder="sorting" />
 
       <table>
         <thead>
-          <th id="col1" use:sortable={tableSort}>col 1</th>
-          <th id="col2" use:sortable={tableSort}>col 2</th>
-          <th id="col3">col 3</th>
+          <th id="a1" use:sortable={sortBy}>col 1</th>
+          <th id="a2" use:sortable={sortBy}>col 2</th>
+          <th id="a3">col 3</th>
         </thead>
         <tbody>
+          {#each source.entries.sort(sorter($sortBy)) as row (row.a1)}
           <tr>
-            <td>1</td>
+            <td>{row.a1}</td>
+            <td>{row.a2}</td>
           </tr>
-          <tr>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>4</td>
-          </tr>
+          {/each}
         </tbody>
       </table>
     </div>

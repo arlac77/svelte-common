@@ -45,6 +45,7 @@
     formatSecondsSinceEpoch
   } from "./util.mjs";
   export {
+    sorter,
     sortable,
     toggleOrderBy,
     orderByCycle,

@@ -21,9 +21,9 @@ export function toggleOrderBy(orderBy) {
 
 /**
  * Add sortable toggle to a node.
- * Synchronizes store value with node sortable attribute.
+ * Synchronizes store value with node "aria-sort" attribute.
  * @param {Node} node
- * @param {Store} where to keep in sync with sorting properties
+ * @param {Store} to keep in sync with sorting properties
  */
 export function sortable(node, store) {
   node.setAttribute("aria-sort", SORT_NONE);
@@ -59,4 +59,21 @@ export function sortable(node, store) {
     }
     store.set(orderBy);
   };
+}
+
+/**
+ * Generate a sort function for a given sort by set.
+ * @param {Object} sortBy
+ * @return {Function} sorter
+ */
+export function sorter(sortBy)
+{
+  for(const [key,value] of Object.entries(sortBy)) {
+    switch(value) {
+      case SORT_ASCENDING: 
+        return (a,b) => a[key].localeCompare(b[key]);
+      case SORT_DESCENDING:
+        return (b,a) => a[key].localeCompare(b[key]);
+    }
+  }
 }
