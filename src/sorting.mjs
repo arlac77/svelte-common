@@ -64,15 +64,24 @@ export function sortable(node, store) {
 /**
  * Generate a sort function for a given sort by set.
  * @param {Object} sortBy
+ * @param {Object} getters
  * @return {Function} sorter
  */
-export function sorter(sortBy) {
+export function sorter(sortBy, getters = {}) {
   if (sortBy) {
     for (const [key, value] of Object.entries(sortBy)) {
+      const getter = getters[key];
+
       switch (value) {
         case SORT_ASCENDING:
+          if (getter) {
+            return (a, b) => getter(a).localeCompare(getter(b));
+          }
           return (a, b) => a[key].localeCompare(b[key]);
         case SORT_DESCENDING:
+          if (getter) {
+            return (b, a) => getter(a).localeCompare(getter(b));
+          }
           return (b, a) => a[key].localeCompare(b[key]);
       }
     }
