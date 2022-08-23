@@ -23,7 +23,7 @@ export function toggleOrderBy(orderBy) {
  * Add sortable toggle to a node.
  * Synchronizes store value with node "aria-sort" attribute.
  * @param {Node} node
- * @param {Store} to keep in sync with sorting properties
+ * @param {WritableStore} to keep in sync with sorting properties
  */
 export function sortable(node, store) {
   node.setAttribute("aria-sort", SORT_NONE);
