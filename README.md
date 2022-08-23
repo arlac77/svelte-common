@@ -58,11 +58,13 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ## sortable
 
 Add sortable toggle to a node.
-cycles "aria-sort" though orderByCycle.
+Synchronizes store value with node sortable attribute.
 
 ### Parameters
 
 *   `node` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)**&#x20;
+*   `store` &#x20;
+*   `where` **Store** to keep in sync with sorting properties
 
 # install
 
