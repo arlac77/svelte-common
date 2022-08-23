@@ -45,12 +45,13 @@ export function sortable(node, store) {
     );
 
     for (const peer of node.parentElement.children) {
-      const sort = peer.getAttribute("aria-sort");
+      let sort = peer.getAttribute("aria-sort");
 
       if (sort) {
         if (peer !== node) {
           if (sort !== SORT_NONE) {
-            peer.setAttribute("aria-sort", SORT_NONE);
+            sort = SORT_NONE;
+            peer.setAttribute("aria-sort", sort);
           }
         }
 
