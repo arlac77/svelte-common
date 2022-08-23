@@ -66,14 +66,15 @@ export function sortable(node, store) {
  * @param {Object} sortBy
  * @return {Function} sorter
  */
-export function sorter(sortBy)
-{
-  for(const [key,value] of Object.entries(sortBy)) {
-    switch(value) {
-      case SORT_ASCENDING: 
-        return (a,b) => a[key].localeCompare(b[key]);
-      case SORT_DESCENDING:
-        return (b,a) => a[key].localeCompare(b[key]);
+export function sorter(sortBy) {
+  if (sortBy) {
+    for (const [key, value] of Object.entries(sortBy)) {
+      switch (value) {
+        case SORT_ASCENDING:
+          return (a, b) => a[key].localeCompare(b[key]);
+        case SORT_DESCENDING:
+          return (b, a) => a[key].localeCompare(b[key]);
+      }
     }
   }
 }
