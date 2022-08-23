@@ -60,21 +60,3 @@ export function sortable(node, store) {
     store.set(orderBy);
   };
 }
-
-export function sortableStore() {
-  const subscriptions = new Set();
-
-  let value = {};
-
-  return {
-    subscribe: cb => {
-      subscriptions.add(cb);
-      cb(value);
-      return () => subscriptions.delete(cb);
-    },
-    set(v) {
-      value = v;
-      subscriptions.forEach(subscription => subscription(value));
-    }
-  };
-}

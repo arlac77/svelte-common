@@ -1,4 +1,7 @@
 <script>
+  import { fade } from "svelte/transition";
+  import { readable, writable } from "svelte/store";
+
   import {
     DataGrid,
     DataGridColumn,
@@ -16,11 +19,8 @@
     PeerDetails,
     ServiceWorkerDetails,
     ServiceWorkerRegistrationDetails,
-    sortable,
-    sortableStore
+    sortable
   } from "../../../src/index.svelte";
-  import { fade } from "svelte/transition";
-  import { readable } from "svelte/store";
   import { base } from "./constants.mjs";
 
   const source = {
@@ -101,11 +101,7 @@
   const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
   */
 
-  const tableSort = sortableStore();
-
-  tableSort.subscribe(value => {
-    console.log("SORT", value);
-  });
+  const tableSort = writable({});
 </script>
 
 <TopNav offset={42}>
@@ -159,9 +155,9 @@
         <DataGridColumn id="col2" />
       </DataGrid>
 
-      
-      <input bind:value={$tableSort.col1} placeholder="sorting"/>
-      
+      <input bind:value={$tableSort.col1} placeholder="sorting" />
+      <input bind:value={$tableSort.col2} placeholder="sorting" />
+
       <table>
         <thead>
           <th id="col1" use:sortable={tableSort}>col 1</th>
