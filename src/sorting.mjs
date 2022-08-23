@@ -30,25 +30,32 @@ export function sortable(node, store) {
 
   store.subscribe(orderBy => {
     for (const peer of node.parentElement.children) {
-      peer.getAttribute("aria-sort") = orderBy[peer.id] || SORT_NONE;
+      if (peer.getAttribute("aria-sort")) {
+        peer.setAttribute("aria-sort", orderBy[peer.id] || SORT_NONE);
+      }
     }
   });
-  
+
   node.onclick = () => {
     const orderBy = {};
+
     node.setAttribute(
       "aria-sort",
       toggleOrderBy(node.getAttribute("aria-sort"))
     );
 
     for (const peer of node.parentElement.children) {
-      if (peer !== node) {
-        if (peer.getAttribute("aria-sort") !== SORT_NONE) {
-          peer.setAttribute("aria-sort", SORT_NONE);
-        }
-      }
+      const sort = peer.getAttribute("aria-sort");
 
-      orderBy[peer.id] = peer.getAttribute("aria-sort");
+      if (sort) {
+        if (peer !== node) {
+          if (sort !== SORT_NONE) {
+            peer.setAttribute("aria-sort", SORT_NONE);
+          }
+        }
+
+        orderBy[peer.id] = sort;
+      }
     }
     store.set(orderBy);
   };

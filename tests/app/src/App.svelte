@@ -159,14 +159,27 @@
         <DataGridColumn id="col2" />
       </DataGrid>
 
+      
+      <input bind:value={$tableSort.col1} placeholder="sorting"/>
+      
       <table>
         <thead>
           <th id="col1" use:sortable={tableSort}>col 1</th>
           <th id="col2" use:sortable={tableSort}>col 2</th>
+          <th id="col3">col 3</th>
         </thead>
         <tbody>
           <tr>
             <td>1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>4</td>
           </tr>
         </tbody>
       </table>
