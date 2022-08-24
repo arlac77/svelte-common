@@ -77,21 +77,47 @@ export function sorter(sortBy, getters = {}) {
         case SORT_ASCENDING:
           return (a, b) => {
             const av = getter(a);
+            const bv = getter(b);
+            if (av === undefined) {
+              return -1;
+            }
+            if (bv === undefined) {
+              return 1;
+            }
+
             if (typeof av === "string") {
-              const bv = getter(b);
               return typeof bv === "string" ? av.localeCompare(bv) : 1;
             }
-            return -1;
+            if (av instanceof Date) {
+              const avt = av.getTime();
+              const bvt = bv.getTime();
+              return avt > bvt ? 1 : avt === bvt ? 0 : -1;
+            }
+
+            return av > bv ? 1 : av == bv ? 0 : -1;
           };
 
         case SORT_DESCENDING:
           return (b, a) => {
             const av = getter(a);
+            const bv = getter(b);
+            if (av === undefined) {
+              return -1;
+            }
+            if (bv === undefined) {
+              return 1;
+            }
+
             if (typeof av === "string") {
-              const bv = getter(b);
               return typeof bv === "string" ? av.localeCompare(bv) : 1;
             }
-            return -1;
+            if (av instanceof Date) {
+              const avt = av.getTime();
+              const bvt = bv.getTime();
+              return avt > bvt ? 1 : avt === bvt ? 0 : -1;
+            }
+
+            return av > bv ? 1 : av == bv ? 0 : -1;
           };
       }
     }
