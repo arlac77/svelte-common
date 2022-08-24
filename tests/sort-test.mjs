@@ -16,6 +16,13 @@ test("sorter", t => {
   t.is(sort({ a: "b" }, { a: "a" }), 1);
 });
 
+test("sorter missing values", t => {
+  const sort = sorter({ a: "ascending" });
+  t.is(sort({ a: "a" }, {}), -1);
+  t.is(sort({}, { a: "a" }), -1);
+  t.is(sort({}, {}), -1);
+});
+
 test("sorter with getter", t => {
   const sort = sorter(
     { a: "ascending" },

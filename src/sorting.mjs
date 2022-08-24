@@ -71,19 +71,22 @@ export function sortable(node, store) {
 export function sorter(sortBy, getters = {}) {
   if (sortBy) {
     for (const [key, value] of Object.entries(sortBy)) {
-      const getter = getters[key];
+      const getter = getters[key] || (object => object[key]);
 
       switch (value) {
         case SORT_ASCENDING:
-          if (getter) {
-            return (a, b) => getter(a).localeCompare(getter(b));
-          }
-          return (a, b) => a[key].localeCompare(b[key]);
+          return (a, b) => {
+            const av = getter(a);
+            const bv = getter(b);
+            return av === undefined ? -1 : av.localeCompare(bv);
+          };
+
         case SORT_DESCENDING:
-          if (getter) {
-            return (b, a) => getter(a).localeCompare(getter(b));
-          }
-          return (b, a) => a[key].localeCompare(b[key]);
+          return (b, a) => {
+            const av = getter(a);
+            const bv = getter(b);
+            return av === undefined ? -1 : av.localeCompare(bv);
+          };
       }
     }
   }
