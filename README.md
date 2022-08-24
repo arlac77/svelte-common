@@ -32,6 +32,8 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
     *   [Parameters](#parameters-1)
 *   [sortable](#sortable)
     *   [Parameters](#parameters-2)
+*   [sorter](#sorter)
+    *   [Parameters](#parameters-3)
 
 ## initializeServiceWorker
 
@@ -58,13 +60,24 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ## sortable
 
 Add sortable toggle to a node.
-Synchronizes store value with node sortable attribute.
+Synchronizes store value with node "aria-sort" attribute.
 
 ### Parameters
 
 *   `node` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)**&#x20;
 *   `store` &#x20;
-*   `where` **Store** to keep in sync with sorting properties
+*   `to` **WritableStore** keep in sync with sorting properties
+
+## sorter
+
+Generate a sort function for a given sort by set.
+
+### Parameters
+
+*   `sortBy` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `getters` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** sorter
 
 # install
 
