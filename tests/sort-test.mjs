@@ -18,9 +18,12 @@ test("sorter", t => {
 
 test("sorter missing values", t => {
   const sort = sorter({ a: "ascending" });
-  t.is(sort({ a: "a" }, {}), -1);
+  t.is(sort({ a: "a" }, {}), 1);
+  t.is(sort({ a: "a" }, { a: 77 }), 1);
   t.is(sort({}, { a: "a" }), -1);
+  t.is(sort({ a: 77 }, { a: "a" }), -1);
   t.is(sort({}, {}), -1);
+  t.is(sort({ a: 77 }, { a: 77 }), -1);
 });
 
 test("sorter with getter", t => {

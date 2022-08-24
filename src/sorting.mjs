@@ -77,15 +77,21 @@ export function sorter(sortBy, getters = {}) {
         case SORT_ASCENDING:
           return (a, b) => {
             const av = getter(a);
-            const bv = getter(b);
-            return av === undefined ? -1 : av.localeCompare(bv);
+            if (typeof av === "string") {
+              const bv = getter(b);
+              return typeof bv === "string" ? av.localeCompare(bv) : 1;
+            }
+            return -1;
           };
 
         case SORT_DESCENDING:
-          return (b, a) => {
+          return (a, b) => {
             const av = getter(a);
-            const bv = getter(b);
-            return av === undefined ? -1 : av.localeCompare(bv);
+            if (typeof av === "string") {
+              const bv = getter(b);
+              return typeof bv === "string" ? av.localeCompare(bv) : 1;
+            }
+            return -1;
           };
       }
     }
