@@ -159,8 +159,8 @@
         <DataGridColumn id="col2" />
       </DataGrid>
 
-      <input bind:value={$sortBy.a1} placeholder="sorting" />
-      <input bind:value={$sortBy.a2} placeholder="sorting" />
+      <input id="a1-sort" bind:value={$sortBy.a1} placeholder="sorting" />
+      <input id="a2-sort" bind:value={$sortBy.a2} placeholder="sorting" />
 
       <table>
         <thead>
