@@ -5,7 +5,7 @@ test("toggleOrderBy", t => {
   t.is(toggleOrderBy(), "none");
   t.is(toggleOrderBy("none"), "ascending");
   t.is(toggleOrderBy("ascending"), "descending");
-  t.is(toggleOrderBy("descending"), "none");
+  t.is(toggleOrderBy("descending"), "ascending");
 });
 
 test("sorter string", t => {

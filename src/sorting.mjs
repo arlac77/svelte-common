@@ -6,7 +6,7 @@ export const SORT_OTHER = "other";
 export const orderByCycle = {
   [SORT_NONE]: SORT_ASCENDING,
   [SORT_ASCENDING]: SORT_DESCENDING,
-  [SORT_DESCENDING]: SORT_NONE
+  [SORT_DESCENDING]: SORT_ASCENDING
 };
 
 /**
