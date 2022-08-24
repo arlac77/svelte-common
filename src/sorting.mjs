@@ -85,7 +85,7 @@ export function sorter(sortBy, getters = {}) {
           };
 
         case SORT_DESCENDING:
-          return (a, b) => {
+          return (b, a) => {
             const av = getter(a);
             if (typeof av === "string") {
               const bv = getter(b);
