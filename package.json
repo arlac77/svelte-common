@@ -42,7 +42,7 @@
     "@sveltejs/vite-plugin-svelte": "^1.0.2",
     "ava": "^4.3.1",
     "documentation": "^14.0.0",
-    "mf-styling": "^1.5.0",
+    "mf-styling": "^1.5.5",
     "npm-pkgbuild": "^10.14.8",
     "semantic-release": "^19.0.5",
     "stylelint": "^14.11.0",

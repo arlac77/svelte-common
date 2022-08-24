@@ -20,7 +20,8 @@
     ServiceWorkerDetails,
     ServiceWorkerRegistrationDetails,
     sortable,
-    sorter
+    sorter,
+    SORT_ASCENDING
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
@@ -105,7 +106,7 @@
   const {serviceWorker, serviceWorkerRegistration } = initializeServiceWorker("service-worker.mjs");
   */
 
-  const sortBy = writable({});
+  const sortBy = writable({ a2: SORT_ASCENDING });
 </script>
 
 <TopNav offset={42}>

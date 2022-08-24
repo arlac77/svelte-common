@@ -20,35 +20,30 @@ export function toggleOrderBy(orderBy) {
 }
 
 /**
- * Add sortable toggle to a node.
+ * Add sortable toggle button to a node.
  * Synchronizes store value with node "aria-sort" attribute.
- * @param {Node} node
+ * @param {Node} th header node
  * @param {WritableStore} to keep in sync with sorting properties
  */
-export function sortable(node, store) {
-  node.setAttribute("aria-sort", SORT_NONE);
+export function sortable(th, store) {
+  const button = document.createElement("button");
+  const img = document.createElement("img");
+  button.appendChild(img);
 
-  store.subscribe(orderBy => {
-    for (const peer of node.parentElement.children) {
-      if (peer.getAttribute("aria-sort")) {
-        peer.setAttribute("aria-sort", orderBy[peer.id] || SORT_NONE);
-      }
-    }
-  });
+  store.subscribe(orderBy =>
+    th.setAttribute("aria-sort", orderBy[th.id] || SORT_NONE)
+  );
 
-  node.onclick = () => {
+  button.onclick = () => {
     const orderBy = {};
 
-    node.setAttribute(
-      "aria-sort",
-      toggleOrderBy(node.getAttribute("aria-sort"))
-    );
+    th.setAttribute("aria-sort", toggleOrderBy(th.getAttribute("aria-sort")));
 
-    for (const peer of node.parentElement.children) {
+    for (const peer of th.parentElement.children) {
       let sort = peer.getAttribute("aria-sort");
 
       if (sort) {
-        if (peer !== node) {
+        if (peer !== th) {
           if (sort !== SORT_NONE) {
             sort = SORT_NONE;
             peer.setAttribute("aria-sort", sort);
@@ -60,6 +55,8 @@ export function sortable(node, store) {
     }
     store.set(orderBy);
   };
+
+  th.appendChild(button);
 }
 
 /**
