@@ -53,5 +53,7 @@
     SORT_ASCENDING,
     SORT_DESCENDING
   } from "./sorting.mjs";
+  export { filter } from "./filter.mjs";
+  
   export { initializeServiceWorker } from "./service-worker.mjs";
 </script>
