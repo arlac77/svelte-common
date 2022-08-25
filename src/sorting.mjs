@@ -20,19 +20,20 @@ export function toggleOrderBy(orderBy) {
 }
 
 /**
- * Add sortable toggle button to a node.
+ * Add sortable toggle button with img element to a node.
  * Synchronizes store value with node "aria-sort" attribute.
  * @param {Node} th header node
  * @param {WritableStore} to keep in sync with sorting properties
  */
 export function sortable(th, store) {
-  const button = document.createElement("button");
-  const img = document.createElement("img");
-  button.appendChild(img);
-
+  
   store.subscribe(orderBy =>
     th.setAttribute("aria-sort", orderBy[th.id] || SORT_NONE)
   );
+
+  const button = document.createElement("button");
+  const img = document.createElement("img");
+  button.appendChild(img);
 
   button.onclick = () => {
     const orderBy = {};
