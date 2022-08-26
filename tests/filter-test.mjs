@@ -6,6 +6,7 @@ test("filter string", t => {
 
   t.truthy(f({ a: "abc" }));
   t.falsy(f({ a: "x" }));
+  t.falsy(f({ a: 1 }));
   t.falsy(f({ b: "abc" }));
   t.falsy(f({}));
   t.falsy(f());
