@@ -4,8 +4,13 @@ export function filter(filterBy, getters = {}) {
       const getter = getters[key] || (object => object && object[key]);
       return a => {
         const av = getter(a);
-        if (typeof av === "string") {
-          return av.match(value);
+
+        switch (typeof av) {
+          case "string":
+            return av.match(value);
+          case "number":
+          case "boolean":
+            return av == value;
         }
         return false;
       };
