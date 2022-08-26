@@ -21,7 +21,8 @@
     ServiceWorkerRegistrationDetails,
     sortable,
     sorter,
-    SORT_ASCENDING
+    SORT_ASCENDING,
+    filter
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
@@ -107,6 +108,7 @@
   */
 
   const sortBy = writable({ a2: SORT_ASCENDING });
+  const filterBy = writable({ a1: "" });
 </script>
 
 <TopNav offset={42}>
@@ -160,17 +162,25 @@
         <DataGridColumn id="col2" />
       </DataGrid>
 
-      <input id="a1-sort" bind:value={$sortBy.a1} placeholder="sorting" />
-      <input id="a2-sort" bind:value={$sortBy.a2} placeholder="sorting" />
+      <input id="sort-a1" bind:value={$sortBy.a1} placeholder="sorting" />
+      <input id="sort-a2" bind:value={$sortBy.a2} placeholder="sorting" />
 
       <table>
         <thead>
-          <th id="a1" use:sortable={sortBy}>col 1</th>
+          <th id="a1" use:sortable={sortBy}
+            >col 1<input
+              id="filter-a1"
+              bind:value={$filterBy.a1}
+              placeholder="filter"
+            /></th
+          >
           <th id="a2" use:sortable={sortBy}>col 2</th>
           <th id="a3">col 3</th>
         </thead>
         <tbody>
-          {#each source.entries.sort(sorter($sortBy)) as row (row.a1)}
+          {#each source.entries
+            .filter(filter($filterBy))
+            .sort(sorter($sortBy)) as row (row.a1)}
             <tr>
               <td>{row.a1}</td>
               <td>{row.a2}</td>
