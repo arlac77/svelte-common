@@ -1,9 +1,11 @@
-export function filter(filterBy) {
+export function filter(filterBy, getters = {}) {
   if (filterBy) {
     for (const [key, value] of Object.entries(filterBy)) {
-      return (a) => a && a[key]?.match(value)
+      const getter = getters[key] || (object => object && object[key]);
+
+      return a => getter(a)?.match(value);
     }
   }
- 
+
   return () => true;
 }

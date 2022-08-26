@@ -72,13 +72,15 @@ test("sorter with getter", t => {
   const sort = sorter(
     { a: "ascending" },
     {
-      a: object => object.a.b
+      a: object => object?.a?.b
     }
   );
 
   t.is(sort({ a: { b: "a" } }, { a: { b: "b" } }), -1);
   t.is(sort({ a: { b: "a" } }, { a: { b: "a" } }), 0);
   t.is(sort({ a: { b: "b" } }, { a: { b: "a" } }), 1);
+
+  t.is(sort({ a: { b: "b" } }, { }), 1);
 });
 
 test("sorter null", t => {
