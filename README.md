@@ -59,12 +59,12 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 ## sortable
 
-Add sortable toggle to a node.
+Add sortable toggle button with img element to a node.
 Synchronizes store value with node "aria-sort" attribute.
 
 ### Parameters
 
-*   `node` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)**&#x20;
+*   `th` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)** header node
 *   `store` &#x20;
 *   `to` **WritableStore** keep in sync with sorting properties
 
