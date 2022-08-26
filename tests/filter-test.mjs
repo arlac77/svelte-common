@@ -11,6 +11,20 @@ test("filter string", t => {
   t.falsy(f());
 });
 
+test("filter and ", t => {
+  const f = filter({ a: "a", b: "b" });
+
+  t.truthy(f({ a: "abc", b: "abc" }));
+  t.falsy(f({ a: "abc", b: "x" }));
+  t.falsy(f({ a: "x", b: "abc" }));
+
+  t.falsy(f({ a: "x" }));
+  t.falsy(f({ b: "abc" }));
+  t.falsy(f({}));
+  t.falsy(f());
+});
+
+
 test("filter with getter", t => {
   const f = filter(
     { a: { b: "a" } },
