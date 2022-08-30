@@ -26,13 +26,15 @@ export function toggleOrderBy(orderBy) {
  * @param {WritableStore} to keep in sync with sorting properties
  */
 export function sortable(th, store) {
-  
   store.subscribe(orderBy =>
     th.setAttribute("aria-sort", orderBy[th.id] || SORT_NONE)
   );
 
   const button = document.createElement("button");
+  button.setAttribute("aria-label", `sortable ${th.id}`);
   const img = document.createElement("img");
+  img.setAttribute("alt", "sorting order indicator");
+
   button.appendChild(img);
 
   button.onclick = () => {
