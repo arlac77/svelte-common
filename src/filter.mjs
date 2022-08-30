@@ -6,6 +6,8 @@ export function filter(filterBy, getters = {}) {
         const av = getter(a);
 
         switch (typeof av) {
+          case "object":
+            return av.toString().match(value);
           case "string":
             return av.match(value);
           case "number":
