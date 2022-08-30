@@ -9,8 +9,6 @@
   import ServerDetails from "./components/ServerDetails.svelte";
   import ServiceWorkerDetails from "./components/ServiceWorkerDetails.svelte";
   import ServiceWorkerRegistrationDetails from "./components/ServiceWorkerRegistrationDetails.svelte";
-  import DataGrid from "./components/DataGrid.svelte";
-  import DataGridColumn from "./components/DataGridColumn.svelte";
   import TopNav from "./components/TopNav.svelte";
   import Menue from "./components/Menue.svelte";
   import Collapse from "./components/Collapse.svelte";
@@ -23,8 +21,6 @@
     Duration,
     TopNav,
     Menue,
-    DataGrid,
-    DataGridColumn,
     Collapse,
     Modal,
     Peer,
@@ -53,7 +49,6 @@
     SORT_ASCENDING,
     SORT_DESCENDING
   } from "./sorting.mjs";
-  export { filter } from "./filter.mjs";
-  
+  export { filter } from "./filter.mjs";  
   export { initializeServiceWorker } from "./service-worker.mjs";
 </script>

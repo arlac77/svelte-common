@@ -3,8 +3,6 @@
   import { readable, writable } from "svelte/store";
 
   import {
-    DataGrid,
-    DataGridColumn,
     Bytes,
     DateTime,
     Duration,
@@ -26,15 +24,13 @@
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
-  const source = {
-    entries: [
-      { a1: "1.1", a2: new Date("July 20, 69 01:17:41 GMT+00:00"), a3: "1.3" },
-      { a1: "2.1", a2: new Date("July 20, 69 02:17:41 GMT+00:00"), a3: "2.3" },
-      { a1: "3.1", a2: new Date("July 20, 69 03:17:41 GMT+00:00"), a3: "3.3" },
-      { a1: "4.1", /*                                           */ a3: "4.3" },
-      { a1: "5.1", a2: new Date("July 20, 69 05:17:41 GMT+00:00"), a3: "5.3" }
-    ]
-  };
+  const entries = [
+    { a1: "1.1", a2: new Date("July 20, 69 01:17:41 GMT+00:00"), a3: "1.3" },
+    { a1: "2.1", a2: new Date("July 20, 69 02:17:41 GMT+00:00"), a3: "2.3" },
+    { a1: "3.1", a2: new Date("July 20, 69 03:17:41 GMT+00:00"), a3: "3.3" },
+    { a1: "4.1", /*                                           */ a3: "4.3" },
+    { a1: "5.1", a2: new Date("July 20, 69 05:17:41 GMT+00:00"), a3: "5.3" }
+  ];
 
   async function logout() {
     alert("logout");
@@ -145,8 +141,8 @@
 
   <tab-container>
     <div role="tablist">
-      <button id="datagrid" role="tab" tabindex="0" aria-selected="true">
-        Data Grid
+      <button id="table" role="tab" tabindex="0" aria-selected="true">
+        Table
       </button>
       <button id="byte-formatters" role="tab" tabindex="0">
         Byte Formatters
@@ -156,12 +152,7 @@
       </button>
     </div>
 
-    <div role="tabpanel" aria-labelledby="datagrid">
-      <DataGrid {source}>
-        <DataGridColumn id="col1"><div slot="header">COL1</div></DataGridColumn>
-        <DataGridColumn id="col2" />
-      </DataGrid>
-
+    <div role="tabpanel" aria-labelledby="table">
       <input id="sort-a1" bind:value={$sortBy.a1} placeholder="sorting" />
       <input id="sort-a2" bind:value={$sortBy.a2} placeholder="sorting" />
 
@@ -178,7 +169,7 @@
           <th id="a3">col 3</th>
         </thead>
         <tbody>
-          {#each source.entries
+          {#each entries
             .filter(filter($filterBy))
             .sort(sorter($sortBy)) as row (row.a1)}
             <tr>
