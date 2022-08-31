@@ -63,7 +63,7 @@ export function sortable(th, store) {
 }
 
 /**
- * Generate a sort function for a given sort by set.
+ * Generate a sort function for a given sort-by set.
  * @param {Object} sortBy
  * @param {Object} getters
  * @return {Function} sorter
@@ -76,12 +76,13 @@ export function sorter(sortBy, getters = {}) {
       let rev = 1;
 
       switch (value) {
-        case SORT_DESCENDING: rev = -1;
-        
+        case SORT_DESCENDING:
+          rev = -1;
+
         case SORT_ASCENDING:
           return (a, b) => {
-            const av = getter(a);
-            const bv = getter(b);
+            let av = getter(a);
+            let bv = getter(b);
             if (av === undefined) {
               return -rev;
             }
@@ -89,13 +90,14 @@ export function sorter(sortBy, getters = {}) {
               return rev;
             }
 
-            if (typeof av === "string") {
-              return typeof bv === "string" ? av.localeCompare(bv) : rev;
+            switch (typeof av) {
+              case "string":
+                return typeof bv === "string" ? av.localeCompare(bv) : rev;
             }
+
             if (av instanceof Date) {
-              const avt = av.getTime();
-              const bvt = bv.getTime();
-              return avt > bvt ? rev : avt === bvt ? 0 : -rev;
+              av = av.getTime();
+              bv = bv.getTime();
             }
 
             return av > bv ? rev : av == bv ? 0 : -rev;
