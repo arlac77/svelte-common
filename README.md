@@ -70,7 +70,7 @@ Synchronizes store value with node "aria-sort" attribute.
 
 ## sorter
 
-Generate a sort function for a given sort by set.
+Generate a sort function for a given sort-by set.
 
 ### Parameters
 
