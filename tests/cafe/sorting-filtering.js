@@ -9,9 +9,7 @@ test("sorting", async t => {
   const sortb = Selector("#sort-b");
   const bb = Selector("#b > button");
 
-  await t.click(ab);
   await t.expect(sorta.value).eql("ascending");
-  await t.expect(sortb.value).eql("none");
 
   await t.click(ab);
   await t.expect(sorta.value).eql("descending");
@@ -22,6 +20,6 @@ test("sorting", async t => {
   await t.expect(sortb.value).eql("none");
 
   await t.click(bb);
-  await t.expect(sorta.value).eql("ascending");
-  await t.expect(sortb.value).eql("none");
+  await t.expect(sorta.value).eql("none");
+  await t.expect(sortb.value).eql("ascending");
 });
