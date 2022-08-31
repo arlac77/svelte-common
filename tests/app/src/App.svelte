@@ -162,7 +162,7 @@
             >col 1<input
               id="filter-a"
               bind:value={$filterBy.a}
-              placeholder="filter"
+              placeholder="filter a"
             /></th
           >
           <th id="b" use:sortable={sortBy}>col 2</th>
@@ -171,11 +171,11 @@
         <tbody>
           {#each entries
             .filter(filter($filterBy))
-            .sort(sorter($sortBy)) as row (row.a)}
+            .sort(sorter($sortBy)) as row, i (row.a)}
             <tr>
-              <td>{row.a}</td>
-              <td>{row.b}</td>
-              <td>{row.c}</td>
+              <td id="a{i}">{row.a}</td>
+              <td id="b{i}">{row.b}</td>
+              <td id="c{i}">{row.c}</td>
             </tr>
           {/each}
         </tbody>
