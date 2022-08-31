@@ -44,7 +44,7 @@ function ft(t, fv, pv, expected) {
   t.falsy(f());
 }
 
-ft.title = (providedTitle = "", fv, pv, expected) =>
+ft.title = (providedTitle = "filter", fv, pv, expected) =>
   `${providedTitle} ${JSON.stringify(fv)} ${JSON.stringify(
     pv
   )} ${expected}`.trim();
