@@ -53,7 +53,11 @@ export function sortable(th, store) {
           }
         }
 
-        orderBy[peer.id] = sort;
+        if (sort == SORT_NONE) {
+          delete orderBy[peer.id];
+        } else {
+          orderBy[peer.id] = sort;
+        }
       }
     }
     store.set(orderBy);

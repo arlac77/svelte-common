@@ -16,14 +16,14 @@ test("sorting", async t => {
 
   await t.click(ab);
   await t.expect(sorta.value).eql("descending");
-  await t.expect(sortb.value).eql("none");
+  await t.expect(sortb.value).eql("");
 
   await t.click(ab);
   await t.expect(sorta.value).eql("ascending");
-  await t.expect(sortb.value).eql("none");
+  await t.expect(sortb.value).eql("");
 
   await t.click(bb);
-  await t.expect(sorta.value).eql("none");
+  await t.expect(sorta.value).eql("");
   await t.expect(sortb.value).eql("ascending");
 });
 
