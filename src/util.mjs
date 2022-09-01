@@ -105,12 +105,14 @@ export function keyPrefixStore(store, prefix) {
   const subscriptions = new Set();
 
   store.subscribe(prefixedKeyObject => {
-    const object = Object.fromEntries(
-      Object.entries(prefixedKeyObject).map(([k, v]) => [
-        k.substring(prefix.length),
-        v
-      ])
-    );
+    const object =
+      prefixedKeyObject === undefined
+        ? {}
+        : Object.fromEntries(
+            Object.entries(prefixedKeyObject)
+              .filter(([k, v]) => k.startsWith(prefix))
+              .map(([k, v]) => [k.substring(prefix.length), v])
+          );
 
     subscriptions.forEach(subscription => subscription(object));
   });
