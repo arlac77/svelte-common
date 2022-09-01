@@ -94,3 +94,38 @@ function liveDuration(seconds) {
 }
 
 */
+
+/**
+ * Create a store where al the object keys are prefixed
+ * @param {WriteableStore} store
+ * @param {string} prefix
+ * @returns {WriteableStore}
+ */
+export function keyPrefixStore(store, prefix) {
+  const subscriptions = new Set();
+
+  store.subscribe(prefixedKeyObject => {
+    const object = Object.fromEntries(
+      Object.entries(prefixedKeyObject).map(([k, v]) => [
+        k.substring(prefix.length),
+        v
+      ])
+    );
+
+    subscriptions.forEach(subscription => subscription(object));
+  });
+
+  return {
+    set: object => {
+      const prefixedKeyObject = Object.fromEntries(
+        Object.entries(object).map(([k, v]) => [prefix + k, v])
+      );
+      store.set(prefixedKeyObject);
+    },
+
+    subscribe: s => {
+      subscriptions.add(s);
+      return () => subscriptions.delete(s);
+    }
+  };
+}

@@ -38,7 +38,8 @@
     formatBytes,
     formatDuration,
     formatDurationISO,
-    formatSecondsSinceEpoch
+    formatSecondsSinceEpoch,
+    keyPrefixStore
   } from "./util.mjs";
   export {
     sorter,
