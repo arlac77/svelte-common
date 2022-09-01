@@ -34,6 +34,8 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
     *   [Parameters](#parameters-2)
 *   [sorter](#sorter)
     *   [Parameters](#parameters-3)
+*   [keyPrefixStore](#keyprefixstore)
+    *   [Parameters](#parameters-4)
 
 ## initializeServiceWorker
 
@@ -78,6 +80,17 @@ Generate a sort function for a given sort-by set.
 *   `getters` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
 
 Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** sorter
+
+## keyPrefixStore
+
+Create a store where all the object keys are prefixed.
+
+### Parameters
+
+*   `store` **WriteableStore**&#x20;
+*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+
+Returns **WriteableStore**&#x20;
 
 # install
 
