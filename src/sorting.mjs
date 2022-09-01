@@ -22,7 +22,7 @@ export function toggleOrderBy(orderBy) {
 /**
  * Add sortable toggle button with img element to a node.
  * Synchronizes store value with node "aria-sort" attribute.
- * @param {Node} th header node
+ * @param {Node} the header node
  * @param {WritableStore} to keep in sync with sorting properties
  */
 export function sortable(th, store) {
@@ -33,7 +33,7 @@ export function sortable(th, store) {
   const button = document.createElement("button");
   button.setAttribute("aria-label", `sortable ${th.id}`);
   const img = document.createElement("img");
-  img.setAttribute("alt", "sorting order indicator");
+  //img.setAttribute("alt", "sorting order indicator");
 
   button.appendChild(img);
 
@@ -53,7 +53,7 @@ export function sortable(th, store) {
           }
         }
 
-        if (sort == SORT_NONE) {
+        if (sort === SORT_NONE) {
           delete orderBy[peer.id];
         } else {
           orderBy[peer.id] = sort;
