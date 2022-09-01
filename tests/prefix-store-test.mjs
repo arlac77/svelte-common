@@ -25,10 +25,12 @@ test("keyPrefixStore set/get", t => {
 
   t.deepEqual(kpso, { a: "3" });
 
+  kps.set({ a: "4" });
+  t.deepEqual(wso, { "sort:a": "4", "filter:b": 4 });
 
   subscription();
-  ws.set({ "sort:a": "4" });
-  t.deepEqual(kpso, { a: "3" });
+  ws.set({ "sort:a": "5" });
+  t.deepEqual(kpso, { a: "4" });
 });
 
 test("keyPrefixStore initial empty", t => {

@@ -96,7 +96,7 @@ function liveDuration(seconds) {
 */
 
 /**
- * Create a store where al the object keys are prefixed
+ * Create a store where all the object keys are prefixed.
  * @param {WriteableStore} store
  * @param {string} prefix
  * @returns {WriteableStore}
@@ -105,12 +105,16 @@ export function keyPrefixStore(store, prefix) {
   const subscriptions = new Set();
 
   let forwardSubscription;
+  let forwardObject;
 
   return {
     set: object =>
       store.set(
-        Object.fromEntries(
-          Object.entries(object).map(([k, v]) => [prefix + k, v])
+        Object.assign(
+          forwardObject,
+          Object.fromEntries(
+            Object.entries(object).map(([k, v]) => [prefix + k, v])
+          )
         )
       ),
 
@@ -118,12 +122,13 @@ export function keyPrefixStore(store, prefix) {
       subscriptions.add(s);
 
       if (!forwardSubscription) {
-        forwardSubscription = store.subscribe(prefixedKeyObject => {
+        forwardSubscription = store.subscribe(o => {
+          forwardObject = o;
           const object =
-            prefixedKeyObject === undefined
+            forwardObject === undefined
               ? {}
               : Object.fromEntries(
-                  Object.entries(prefixedKeyObject)
+                  Object.entries(forwardObject)
                     .filter(([k, v]) => k.startsWith(prefix))
                     .map(([k, v]) => [k.substring(prefix.length), v])
                 );
