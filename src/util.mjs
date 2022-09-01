@@ -104,30 +104,41 @@ function liveDuration(seconds) {
 export function keyPrefixStore(store, prefix) {
   const subscriptions = new Set();
 
-  store.subscribe(prefixedKeyObject => {
-    const object =
-      prefixedKeyObject === undefined
-        ? {}
-        : Object.fromEntries(
-            Object.entries(prefixedKeyObject)
-              .filter(([k, v]) => k.startsWith(prefix))
-              .map(([k, v]) => [k.substring(prefix.length), v])
-          );
-
-    subscriptions.forEach(subscription => subscription(object));
-  });
+  let forwardSubscription;
 
   return {
-    set: object => {
-      const prefixedKeyObject = Object.fromEntries(
-        Object.entries(object).map(([k, v]) => [prefix + k, v])
-      );
-      store.set(prefixedKeyObject);
-    },
+    set: object =>
+      store.set(
+        Object.fromEntries(
+          Object.entries(object).map(([k, v]) => [prefix + k, v])
+        )
+      ),
 
     subscribe: s => {
       subscriptions.add(s);
-      return () => subscriptions.delete(s);
+
+      if (!forwardSubscription) {
+        forwardSubscription = store.subscribe(prefixedKeyObject => {
+          const object =
+            prefixedKeyObject === undefined
+              ? {}
+              : Object.fromEntries(
+                  Object.entries(prefixedKeyObject)
+                    .filter(([k, v]) => k.startsWith(prefix))
+                    .map(([k, v]) => [k.substring(prefix.length), v])
+                );
+
+          subscriptions.forEach(subscription => subscription(object));
+        });
+      }
+
+      return () => {
+        subscriptions.delete(s);
+        if (subscriptions.size === 0) {
+          forwardSubscription();
+          forwardSubscription = undefined;
+        }
+      };
     }
   };
 }
