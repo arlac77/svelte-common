@@ -31,7 +31,7 @@ export function sortable(th, store) {
   );
 
   const button = document.createElement("button");
-  button.setAttribute("aria-label", `sortable ${th.id}`);
+  button.setAttribute("aria-label", `toggle sort of ${th.id}`);
   const img = document.createElement("img");
   //img.setAttribute("alt", "sorting order indicator");
 
@@ -87,6 +87,7 @@ export function sorter(sortBy, getters = {}) {
           return (a, b) => {
             let av = getter(a);
             let bv = getter(b);
+
             if (av === undefined) {
               return -rev;
             }
@@ -96,11 +97,17 @@ export function sorter(sortBy, getters = {}) {
 
             switch (typeof av) {
               case "string":
-                return typeof bv === "string" ? av.localeCompare(bv) : rev;
+                switch (typeof bv) {
+                  case "number":
+                  case "string":
+                    return av.localeCompare(bv);
+                }
             }
 
             if (av instanceof Date) {
               av = av.getTime();
+            }
+            if (bv instanceof Date) {
               bv = bv.getTime();
             }
 
