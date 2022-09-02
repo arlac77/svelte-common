@@ -66,8 +66,9 @@ Synchronizes store value with node "aria-sort" attribute.
 
 ### Parameters
 
-*   `th` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)** header node
+*   `th` &#x20;
 *   `store` &#x20;
+*   `the` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)** header node
 *   `to` **WritableStore** keep in sync with sorting properties
 
 ## sorter
