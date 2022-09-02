@@ -14,6 +14,8 @@
   import Collapse from "./components/Collapse.svelte";
   import Modal from "./components/Modal.svelte";
   import Peer from "./components/Peer.svelte";
+  import Tabs from "./components/Tabs.svelte";
+  import Tab from "./components/Tab.svelte";
 
   export {
     Bytes,
@@ -30,7 +32,9 @@
     SessionDetails,
     ServerDetails,
     ServiceWorkerDetails,
-    ServiceWorkerRegistrationDetails
+    ServiceWorkerRegistrationDetails,
+    Tabs,
+    Tab
   };
 
   export {
@@ -50,6 +54,6 @@
     SORT_ASCENDING,
     SORT_DESCENDING
   } from "./sorting.mjs";
-  export { filter } from "./filter.mjs";  
+  export { filter } from "./filter.mjs";
   export { initializeServiceWorker } from "./service-worker.mjs";
 </script>
