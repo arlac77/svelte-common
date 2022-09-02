@@ -165,7 +165,11 @@
               placeholder="filter a"
             /></th
           >
-          <th id="b" use:sortable={sortBy}>col 2</th>
+          <th id="b" use:sortable={sortBy}>col 2<input
+            id="filter-a"
+            bind:value={$filterBy.b}
+            placeholder="filter b"
+          /></th>
           <th id="c">col 3</th>
         </thead>
         <tbody>
