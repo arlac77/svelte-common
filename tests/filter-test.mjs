@@ -6,7 +6,7 @@ test("filter string", t => {
   t.falsy(f({ b: "abc" }));
 });
 
-test("filter and ", t => {
+test("filter and", t => {
   const f = filter({ a: "a", b: "b" });
 
   t.truthy(f({ a: "abc", b: "abc" }));
