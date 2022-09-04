@@ -20,7 +20,7 @@ export function toggleOrderBy(orderBy) {
 }
 
 /**
- * Add sortable toggle button with img element to a node.
+ * Add sortable toggle button to a node.
  * Synchronizes store value with node "aria-sort" attribute.
  * @param {Node} the header node
  * @param {WritableStore} to keep in sync with sorting properties
@@ -32,10 +32,7 @@ export function sortable(th, store) {
 
   const button = document.createElement("button");
   button.setAttribute("aria-label", `toggle sort of ${th.id}`);
-  const img = document.createElement("img");
-  //img.setAttribute("alt", "sorting order indicator");
-
-  button.appendChild(img);
+  button.setAttribute("class", "alter-sorting");
 
   button.onclick = () => {
     const orderBy = {};
