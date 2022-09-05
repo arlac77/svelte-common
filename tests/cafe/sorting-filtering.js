@@ -18,10 +18,12 @@ test("sorting", async t => {
   await t.click(ab);
   await t.expect(sorta.value).eql("descending");
   await t.expect(sortb.value).eql("");
+  //await t.expect(a0.innerText).eql("5.1");
 
   await t.click(ab);
   await t.expect(sorta.value).eql("ascending");
   await t.expect(sortb.value).eql("");
+  await t.expect(a0.innerText).eql("1.1");
 
   await t.click(bb);
   await t.expect(sorta.value).eql("");
@@ -31,7 +33,7 @@ test("sorting", async t => {
   await t.click(bb);
   await t.expect(sorta.value).eql("");
   await t.expect(sortb.value).eql("descending");
-  await t.expect(b0.innerText).eql("Sun Jul 20 1969 06:17:41 GMT+0100 (CET)");
+  await t.expect(b0.innerText).contains("Sun Jul 20 1969");
 });
 
 
