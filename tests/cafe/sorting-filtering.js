@@ -27,6 +27,11 @@ test("sorting", async t => {
   await t.expect(sorta.value).eql("");
   await t.expect(sortb.value).eql("ascending");
   await t.expect(b0.innerText).eql("");
+
+  await t.click(bb);
+  await t.expect(sorta.value).eql("");
+  await t.expect(sortb.value).eql("descending");
+  await t.expect(b0.innerText).eql("Sun Jul 20 1969 06:17:41 GMT+0100 (CET)");
 });
 
 
