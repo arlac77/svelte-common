@@ -30,6 +30,10 @@ export function sortable(th, store) {
     th.setAttribute("aria-sort", orderBy[th.id] || SORT_NONE)
   );
 
+  if (!th.getAttribute("aria-sort")) {
+    th.setAttribute("aria-sort", SORT_NONE);
+  }
+
   const button = document.createElement("button");
   button.setAttribute("aria-label", `toggle sort of ${th.id}`);
   button.setAttribute("class", "alter-sorting");
