@@ -178,7 +178,7 @@
             .sort(sorter($sortBy)) as row, i (row.a)}
             <tr>
               <td id="a{i}">{row.a}</td>
-              <td id="b{i}">{row.b}</td>
+              <td id="b{i}">{row.b || ""}</td>
               <td id="c{i}">{row.c}</td>
             </tr>
           {/each}
