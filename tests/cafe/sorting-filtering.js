@@ -36,9 +36,12 @@ test("sorting", async t => {
   await t.expect(b0.innerText).contains("Sun Jul 20 1969");
 });
 
-
 test("filtering", async t => {
   const a0 = Selector("#a0");
-  await t.typeText("#filter-a", "2");
+
+  await t.typeText("#filter-a", "1");
+  await t.expect(a0.innerText).eql("1.1");
+
+  await t.typeText("#filter-a", "2", { replace: true });
   await t.expect(a0.innerText).eql("2.1");
 });
