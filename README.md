@@ -61,7 +61,7 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 ## sortable
 
-Add sortable toggle button with img element to a node.
+Add sortable toggle button to a node.
 Synchronizes store value with node "aria-sort" attribute.
 
 ### Parameters
