@@ -20,8 +20,8 @@ export function toggleOrderBy(orderBy) {
 }
 
 /**
- * Add sortable toggle button to a node.
- * Synchronizes store value with node "aria-sort" attribute.
+ * Add sortable toggle button to a th node.
+ * Synchronizes store value with th nodes "aria-sort" attribute.
  * @param {Node} the header node
  * @param {WritableStore} to keep in sync with sorting properties
  */
@@ -37,7 +37,6 @@ export function sortable(th, store) {
   const button = document.createElement("button");
   button.setAttribute("aria-label", `toggle sort of ${th.id}`);
   button.setAttribute("class", "alter-sorting");
-
   button.onclick = () => {
     const orderBy = {};
 
