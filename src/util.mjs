@@ -96,7 +96,10 @@ function liveDuration(seconds) {
 */
 
 /**
- * Create a store where all the object keys are prefixed.
+ * Create a derived store where all the object keys are prefixed.
+ * ```
+ * { a: 1, b: 2 } -> { prefix_a: 1 prefix_b: 2 }
+ * ```
  * @param {WriteableStore} store
  * @param {string} prefix
  * @returns {WriteableStore}
