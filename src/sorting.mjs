@@ -54,9 +54,7 @@ export function sortable(th, store) {
           }
         }
 
-        if (sort === SORT_NONE) {
-          delete orderBy[peer.id];
-        } else {
+        if (sort !== SORT_NONE) {
           orderBy[peer.id] = sort;
         }
       }
