@@ -20,7 +20,9 @@
     sortable,
     sorter,
     SORT_ASCENDING,
-    filter
+    filter,
+    Tabs,
+    Tab
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
@@ -139,6 +141,12 @@
     </ul>
   </Collapse>
 
+  <Tabs>
+    <Tab id="t1"><div slot="header">Tab 1</div>content tab 1</Tab>
+    <Tab id="t2"><div slot="header">Tab 2</div>content tab 2</Tab>
+    <Tab id="t3"><div slot="header">Tab 3</div>content tab 3</Tab>
+  </Tabs>
+
   <tab-container>
     <div role="tablist">
       <button id="table" role="tab" tabindex="0" aria-selected="true">
@@ -165,11 +173,13 @@
               placeholder="filter a"
             /></th
           >
-          <th id="b" use:sortable={sortBy}>col 2<input
-            id="filter-a"
-            bind:value={$filterBy.b}
-            placeholder="filter b"
-          /></th>
+          <th id="b" use:sortable={sortBy}
+            >col 2<input
+              id="filter-a"
+              bind:value={$filterBy.b}
+              placeholder="filter b"
+            /></th
+          >
           <th id="c">col 3</th>
         </thead>
         <tbody>
@@ -178,7 +188,7 @@
             .sort(sorter($sortBy)) as row, i (row.a)}
             <tr>
               <td id="a{i}">{row.a}</td>
-              <td id="b{i}">{row.b || ""}</td>
+              <td id="b{i}">{row.b || ""}</td>
               <td id="c{i}">{row.c}</td>
             </tr>
           {/each}
