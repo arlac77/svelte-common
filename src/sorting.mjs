@@ -26,7 +26,7 @@ export function toggleOrderBy(orderBy) {
  * @param {WritableStore} to keep in sync with sorting properties
  */
 export function sortable(th, store) {
-  store.subscribe(orderBy =>
+  const storeSubscription = store.subscribe(orderBy =>
     th.setAttribute("aria-sort", orderBy[th.id] || SORT_NONE)
   );
 
@@ -62,6 +62,12 @@ export function sortable(th, store) {
   };
 
   th.appendChild(button);
+
+  return {
+    destroy() {
+      storeSubscription();
+    }
+  };
 }
 
 /**
