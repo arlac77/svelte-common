@@ -10,7 +10,7 @@
 <tr>
   <td />
   <td>Username</td>
-  <td>{session.username}</td>
+  <td>{session.username ? session.username : ""}</td>
 </tr>
 <tr>
   <td />
