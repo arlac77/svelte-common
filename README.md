@@ -61,8 +61,8 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 ## sortable
 
-Add sortable toggle button to a node.
-Synchronizes store value with node "aria-sort" attribute.
+Add sortable toggle button to a th node.
+Synchronizes store value with th nodes "aria-sort" attribute.
 
 ### Parameters
 
@@ -84,7 +84,9 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ## keyPrefixStore
 
-Create a store where all the object keys are prefixed.
+Create a derived store where all the object keys are prefixed.
+
+    { a: 1, b: 2 } -> { prefix_a: 1 prefix_b: 2 }
 
 ### Parameters
 
