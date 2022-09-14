@@ -94,6 +94,12 @@
             }
           ]
         }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "assets": []
+        }
       ]
     ]
   },
