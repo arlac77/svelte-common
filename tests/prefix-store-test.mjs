@@ -3,13 +3,13 @@ import { writable } from "svelte/store";
 import { keyPrefixStore } from "../src/util.mjs";
 
 test("keyPrefixStore set/get", t => {
-  let wso, kpso;
+  let wso, kpso, kpfo;
 
   const ws = writable({ "sort:a": "1" });
   ws.subscribe(s => (wso = s));
 
   const kps = keyPrefixStore(ws, "sort:");
-  let subscription = kps.subscribe(s => (kpso = s));
+  const unsubscribeKps = kps.subscribe(s => (kpso = s));
 
   t.deepEqual(wso, { "sort:a": "1" });
   t.deepEqual(kpso, { a: "1" });
@@ -28,7 +28,14 @@ test("keyPrefixStore set/get", t => {
   kps.set({ a: "4" });
   t.deepEqual(wso, { "sort:a": "4", "filter:b": 4 });
 
-  subscription();
+  const fps = keyPrefixStore(ws, "filter:");
+  const unsubscribeFps = fps.subscribe(s => (kpfo = s));
+  t.deepEqual(kpfo, { b: 4 });
+
+  unsubscribeFps();
+  t.deepEqual(kpfo, { b: 4 });
+
+  unsubscribeKps();
   ws.set({ "sort:a": "5" });
   t.deepEqual(kpso, { a: "4" });
 });
