@@ -43,13 +43,13 @@
     "ava": "^5.0.1",
     "documentation": "^14.0.0",
     "mf-styling": "^1.7.23",
-    "npm-pkgbuild": "^10.15.12",
+    "npm-pkgbuild": "^10.15.13",
     "semantic-release": "^19.0.5",
-    "stylelint": "^14.14.0",
+    "stylelint": "^14.14.1",
     "stylelint-config-standard": "^29.0.0",
     "svelte": "^3.52.0",
     "testcafe": "^2.0.2",
-    "vite": "^3.2.2"
+    "vite": "^3.2.3"
   },
   "optionalDependencies": {
     "mf-hosting": "^1.7.5"
