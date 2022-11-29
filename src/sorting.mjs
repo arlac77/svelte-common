@@ -9,6 +9,8 @@ export const orderByCycle = {
   [SORT_DESCENDING]: SORT_ASCENDING
 };
 
+const ARIA_SORT = "aria-sort";
+
 /**
  * Deliver next value in the order by cycle.
  * SORT_NONE -> SORT_ASCENDING -> SORT_DESCENDING -> SORT_NONE ...
@@ -21,17 +23,17 @@ export function toggleOrderBy(orderBy) {
 
 /**
  * Add sortable toggle button to a th node.
- * Synchronizes store value with th nodes "aria-sort" attribute.
+ * Synchronizes store value with the nodes "aria-sort" attribute.
  * @param {Node} the header node
  * @param {WritableStore} to keep in sync with sorting properties
  */
 export function sortable(th, store) {
   const storeSubscription = store.subscribe(orderBy =>
-    th.setAttribute("aria-sort", orderBy[th.id] || SORT_NONE)
+    th.setAttribute(ARIA_SORT, orderBy[th.id] || SORT_NONE)
   );
 
-  if (!th.getAttribute("aria-sort")) {
-    th.setAttribute("aria-sort", SORT_NONE);
+  if (!th.getAttribute(ARIA_SORT)) {
+    th.setAttribute(ARIA_SORT, SORT_NONE);
   }
 
   const button = document.createElement("button");
@@ -40,16 +42,16 @@ export function sortable(th, store) {
   button.onclick = () => {
     const orderBy = {};
 
-    th.setAttribute("aria-sort", toggleOrderBy(th.getAttribute("aria-sort")));
+    th.setAttribute(ARIA_SORT, toggleOrderBy(th.getAttribute(ARIA_SORT)));
 
     for (const peer of th.parentElement.children) {
-      let sort = peer.getAttribute("aria-sort");
+      let sort = peer.getAttribute(ARIA_SORT);
 
       if (sort) {
         if (peer !== th) {
           if (sort !== SORT_NONE) {
             sort = SORT_NONE;
-            peer.setAttribute("aria-sort", sort);
+            peer.setAttribute(ARIA_SORT, sort);
           }
         }
 
@@ -93,7 +95,7 @@ export function sorter(sortBy, getters = {}) {
             let bv = getter(b);
 
             if (av === undefined) {
-              return -rev;
+              return bv === undefined ? 0 : -rev;
             }
             if (bv === undefined) {
               return rev;
