@@ -11,7 +11,7 @@ test("collapse", async t => {
   await t.expect(Selector("#collapse-content").visible).ok();
 
   await t.click(s);
-  await t.takeScreenshot();
+  //await t.takeScreenshot();
 
   //await t.expect(Selector("#collapse-content").visible);
 });
