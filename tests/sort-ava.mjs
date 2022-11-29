@@ -24,7 +24,7 @@ test("sorter string descending", t => {
   t.is(sort({ a: "b" }, { a: "a" }), -1);
 });
 
-test("sorter date", t => {
+test("sorter date ascending", t => {
   const sort = sorter({ a: "ascending" });
 
   t.is(
@@ -67,12 +67,20 @@ test("sorter number descending", t => {
   t.is(sort({ a: 77 }, { a: 78 }), 1);
 });
 
-test("sorter bigint", t => {
+test("sorter bigint ascending", t => {
   const sort = sorter({ a: "ascending" });
 
-  t.is(sort({ a: 77n }, { a: 77n }), 0);
-  t.is(sort({ a: 78n }, { a: 77n }), 1);
-  t.is(sort({ a: 77n }, { a: 78n }), -1);
+  t.is(sort({ a: 7700000000000n }, { a: 7700000000000n }), 0);
+  t.is(sort({ a: 7800000000000n }, { a: 7700000000000n }), 1);
+  t.is(sort({ a: 7700000000000n }, { a: 7800000000000n }), -1);
+});
+
+test("sorter bigint descending", t => {
+  const sort = sorter({ a: "descending" });
+
+  t.is(sort({ a: 7700000000000n }, { a: 7700000000000n }), 0);
+  t.is(sort({ a: 7800000000000n }, { a: 7700000000000n }), -1);
+  t.is(sort({ a: 7700000000000n }, { a: 7800000000000n }), 1);
 });
 
 test("sorter missing values", t => {
