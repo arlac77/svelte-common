@@ -33,7 +33,7 @@ test("sorting", async t => {
   await t.click(bb);
   await t.expect(sorta.value).eql("");
   await t.expect(sortb.value).eql("descending");
-  await t.expect(b0.innerText).contains("20.7.1969");
+  await t.expect(b0.innerText).contains("1969");
 });
 
 test("filtering", async t => {
