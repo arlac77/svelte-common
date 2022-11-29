@@ -8,12 +8,20 @@ test("toggleOrderBy", t => {
   t.is(toggleOrderBy("descending"), "ascending");
 });
 
-test("sorter string", t => {
+test("sorter string ascending", t => {
   const sort = sorter({ a: "ascending" });
 
   t.is(sort({ a: "a" }, { a: "b" }), -1);
   t.is(sort({ a: "a" }, { a: "a" }), 0);
   t.is(sort({ a: "b" }, { a: "a" }), 1);
+});
+
+test("sorter string descending", t => {
+  const sort = sorter({ a: "descending" });
+
+  t.is(sort({ a: "a" }, { a: "b" }), 1);
+  t.is(sort({ a: "a" }, { a: "a" }), 0);
+  t.is(sort({ a: "b" }, { a: "a" }), -1);
 });
 
 test("sorter date", t => {
@@ -43,12 +51,28 @@ test("sorter date", t => {
   );
 });
 
-test("sorter number", t => {
+test("sorter number ascending", t => {
   const sort = sorter({ a: "ascending" });
 
   t.is(sort({ a: 77 }, { a: 77 }), 0);
   t.is(sort({ a: 78 }, { a: 77 }), 1);
   t.is(sort({ a: 77 }, { a: 78 }), -1);
+});
+
+test("sorter number descending", t => {
+  const sort = sorter({ a: "descending" });
+
+  t.is(sort({ a: 77 }, { a: 77 }), 0);
+  t.is(sort({ a: 78 }, { a: 77 }), -1);
+  t.is(sort({ a: 77 }, { a: 78 }), 1);
+});
+
+test("sorter bigint", t => {
+  const sort = sorter({ a: "ascending" });
+
+  t.is(sort({ a: 77n }, { a: 77n }), 0);
+  t.is(sort({ a: 78n }, { a: 77n }), 1);
+  t.is(sort({ a: 77n }, { a: 78n }), -1);
 });
 
 test("sorter missing values", t => {

@@ -90,6 +90,7 @@ export function sorter(sortBy, getters = {}) {
           rev = -1;
 
         case SORT_ASCENDING:
+
           return (a, b) => {
             let av = getter(a);
             let bv = getter(b);
@@ -106,7 +107,8 @@ export function sorter(sortBy, getters = {}) {
                 switch (typeof bv) {
                   case "number":
                   case "string":
-                    return av.localeCompare(bv);
+                    const r = av.localeCompare(bv);
+                    return r ? r * rev : r;
                 }
             }
 
