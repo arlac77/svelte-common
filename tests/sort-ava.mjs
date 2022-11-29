@@ -56,16 +56,17 @@ test("sorter missing values", t => {
 
   t.is(sort({}, {}), -1);
 
-  t.is(sort({ a: new Date(0) }, {}), 1);
-  t.is(sort({ a: "a" }, {}), 1);
-  t.is(sort({ a: 77 }, {}), 1);
-
+  t.is(sort({ a: "a" }, { a: 77 }), 1);
   t.is(sort({ a: 77 }, { a: "a" }), -1);
 
-  t.is(sort({ a: "a" }, { a: 77 }), 1);
+  t.is(sort({ a: 77 }, {}), 1);
   t.is(sort({}, { a: 77 }), -1);
 
+  t.is(sort({ a: "a" }, {}), 1);
   t.is(sort({}, { a: "a" }), -1);
+
+  t.is(sort({ a: new Date(0) }, {}), 1);
+  t.is(sort({}, { a: new Date(0) }), -1);
 });
 
 test("sorter with getter", t => {
@@ -80,7 +81,7 @@ test("sorter with getter", t => {
   t.is(sort({ a: { b: "a" } }, { a: { b: "a" } }), 0);
   t.is(sort({ a: { b: "b" } }, { a: { b: "a" } }), 1);
 
-  t.is(sort({ a: { b: "b" } }, { }), 1);
+  t.is(sort({ a: { b: "b" } }, {}), 1);
 });
 
 test("sorter null", t => {
