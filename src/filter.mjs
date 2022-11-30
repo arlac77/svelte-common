@@ -14,6 +14,17 @@ export function filter(filterBy, getters = {}) {
         if (value instanceof RegExp) {
           return value.test(av);
         }
+        if (value instanceof Date) {
+          switch (typeof av) {
+            case "object":
+              if (av instanceof Date) {
+                return av.getTime() == value.getTime();
+              }
+              break;
+            case "string":
+              return value.toString().match(av);
+          }
+        }
 
         switch (typeof av) {
           case "object":

@@ -73,10 +73,11 @@ test(ft, 47, new Date(0), false);
 test(ft, false, new Date(0), false);
 test(ft, /1970/, new Date(0), true);
 test(ft, "1970", new Date(0), true);
+test(ft, "Jan 01 1970", new Date(0), true);
+test(ft, new Date(0), new Date(0), true);
 
 /*
 test(ft, new Date(0), "1970-01-01T00:00:00.000Z", true);
-test(ft, "1970-01-01T00:00:1.000Z", new Date(1000), true);
 */
 
 test(ft, true, true, true);
