@@ -110,8 +110,27 @@ export function keyPrefixStore(store, prefix) {
   let forwardSubscription;
   let forwardObject;
 
+  function subscribeMyself() {
+    if (!forwardSubscription) {
+      forwardSubscription = store.subscribe(o => {
+        forwardObject = o;
+        const object =
+          forwardObject === undefined
+            ? {}
+            : Object.fromEntries(
+                Object.entries(forwardObject)
+                  .filter(([k, v]) => k.startsWith(prefix))
+                  .map(([k, v]) => [k.substring(prefix.length), v])
+              );
+
+        subscriptions.forEach(subscription => subscription(object));
+      });
+    }
+  }
+
   return {
-    set: object =>
+    set: object => {
+      subscribeMyself();
       store.set(
         Object.assign(
           forwardObject,
@@ -119,26 +138,12 @@ export function keyPrefixStore(store, prefix) {
             Object.entries(object).map(([k, v]) => [prefix + k, v])
           )
         )
-      ),
+      ); },
 
     subscribe: s => {
       subscriptions.add(s);
 
-      if (!forwardSubscription) {
-        forwardSubscription = store.subscribe(o => {
-          forwardObject = o;
-          const object =
-            forwardObject === undefined
-              ? {}
-              : Object.fromEntries(
-                  Object.entries(forwardObject)
-                    .filter(([k, v]) => k.startsWith(prefix))
-                    .map(([k, v]) => [k.substring(prefix.length), v])
-                );
-
-          subscriptions.forEach(subscription => subscription(object));
-        });
-      }
+      subscribeMyself();
 
       return () => {
         subscriptions.delete(s);
