@@ -43,24 +43,22 @@ test("keyPrefixStore set/get", t => {
 test("keyPrefixStore serveral on one base", t => {
   let wso;
 
-  const ws = writable({ "x": "1" });
+  const ws = writable({ x: "1" });
   ws.subscribe(s => (wso = s));
-  t.deepEqual(wso, { "x": "1" });
+  t.deepEqual(wso, { x: "1" });
 
   const sps = keyPrefixStore(ws, "sort:");
   const fps = keyPrefixStore(ws, "filter:");
-  t.deepEqual(wso, { "x": "1" });
+  t.deepEqual(wso, { x: "1" });
 
   sps.set({ a: "2" });
-  t.deepEqual(wso, { "x": "1", "sort:a": "2" });
+  t.deepEqual(wso, { x: "1", "sort:a": "2" });
 
   fps.set({ a: "2" });
-  t.deepEqual(wso, { "x": "1", "sort:a": "2", "filter:a": "2" });
+  t.deepEqual(wso, { x: "1", "sort:a": "2", "filter:a": "2" });
 
-  /*
-  sps.set({ });
-  t.deepEqual(wso, { "x": "1", "filter:a": "2" });
-*/
+  sps.set({ b: "3"});
+  t.deepEqual(wso, { x: "1", "sort:a": "2", "sort:b": "3", "filter:a": "2" });
 });
 
 test("keyPrefixStore initial empty", t => {
