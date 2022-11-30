@@ -1,3 +1,10 @@
+
+/**
+ * Generate filter function
+ * @param {Object} filterBy 
+ * @param {Object} getters 
+ * @returns {Function}
+ */
 export function filter(filterBy, getters = {}) {
   if (filterBy) {
     const filters = Object.entries(filterBy).map(([key, value]) => {
@@ -10,6 +17,7 @@ export function filter(filterBy, getters = {}) {
             return av.toString().match(value);
           case "string":
             return av.match(value);
+          case "bigint":
           case "number":
           case "boolean":
             return av == value;

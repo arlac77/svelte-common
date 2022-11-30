@@ -45,9 +45,7 @@ function ft(t, fv, pv, expected) {
 }
 
 ft.title = (providedTitle = "filter", fv, pv, expected) =>
-  `${providedTitle} ${JSON.stringify(fv)} ${JSON.stringify(
-    pv
-  )} ${expected}`.trim();
+  `${providedTitle} ${fv} ${pv} ${expected}`.trim();
 
 test(ft, /a/, "abc", true);
 test(ft, /a/, "b", false);
@@ -56,8 +54,12 @@ test(ft, "a", "b", false);
 test(ft, "a", 1, false);
 test(ft, 1, 1, true);
 test(ft, 1, 2, false);
-test(ft, 1, "1", true);
-test(ft, "1", 1, true);
+test(ft, 2, "2", true);
+test(ft, "3", 3, true);
+test(ft, 4n, 4n, true);
+test(ft, 4n, 5n, false);
+test(ft, 6n, 6, true);
+test(ft, 7, 7n, true);
 
 test(ft, new Date(0), "xyz", false);
 test(ft, new Date(0), 0, false);
