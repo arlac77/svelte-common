@@ -180,13 +180,17 @@
           >
           <th id="b" use:sortable={sortBy}
             >col 2<input
-              id="filter-a"
+              id="filter-b"
               bind:value={$filterBy.b}
               placeholder="filter b"
             /></th
           >
           <th id="c" use:sortable={sortBy}>col 3</th>
-          <th>col 4</th>
+          <th>col 4<input
+            id="filter-d"
+            bind:value={$filterBy.d}
+            placeholder="filter d"
+          /></th>
           <th id="e" use:sortable={sortBy}>col 5</th>
         </thead>
         <tbody>
