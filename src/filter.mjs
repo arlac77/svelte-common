@@ -1,8 +1,7 @@
-
 /**
  * Generate filter function
- * @param {Object} filterBy 
- * @param {Object} getters 
+ * @param {Object} filterBy
+ * @param {Object} getters
  * @returns {Function}
  */
 export function filter(filterBy, getters = {}) {
@@ -11,6 +10,10 @@ export function filter(filterBy, getters = {}) {
       const getter = getters[key] || (object => object && object[key]);
       return a => {
         const av = getter(a);
+
+        if (value instanceof RegExp) {
+          return value.test(av);
+        }
 
         switch (typeof av) {
           case "object":

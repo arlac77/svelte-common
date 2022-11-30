@@ -53,11 +53,16 @@ test(ft, "a", "abc", true);
 test(ft, "a", "b", false);
 test(ft, "a", 1, false);
 test(ft, 1, 1, true);
+test(ft, /1/, 1, true);
 test(ft, 1, 2, false);
+test(ft, /1/, 2, false);
 test(ft, 2, "2", true);
+test(ft, /2/, "2", true);
 test(ft, "3", 3, true);
 test(ft, 4n, 4n, true);
+test(ft, /4/, 4n, true);
 test(ft, 4n, 5n, false);
+test(ft, /4/, 5n, false);
 test(ft, 6n, 6, true);
 test(ft, 7, 7n, true);
 
@@ -66,6 +71,8 @@ test(ft, new Date(0), 0, false);
 test(ft, new Date(0), true, false);
 test(ft, 47, new Date(0), false);
 test(ft, false, new Date(0), false);
+test(ft, /1970/, new Date(0), true);
+test(ft, "1970", new Date(0), true);
 
 /*
 test(ft, new Date(0), "1970-01-01T00:00:00.000Z", true);
