@@ -98,10 +98,10 @@ function liveDuration(seconds) {
 /**
  * Create a derived store where all the object keys are prefixed.
  * ```
- * { a: 1, b: 2 } -> { prefix_a: 1 prefix_b: 2 }
+ * { a: 1, b: 2 } -> { foo_a: 1 foo_b: 2 } // prefix: foo_
  * ```
- * @param {WriteableStore} store
- * @param {string} prefix
+ * @param {WriteableStore} store we derive from
+ * @param {string} prefix for each key
  * @returns {WriteableStore}
  */
 export function keyPrefixStore(store, prefix) {
