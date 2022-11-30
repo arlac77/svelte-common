@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "svelte-command": "^1.1.24",
-    "svelte-entitlement": "^1.2.36"
+    "svelte-entitlement": "^1.2.37"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
@@ -52,7 +52,7 @@
     "vite": "^3.2.4"
   },
   "optionalDependencies": {
-    "mf-hosting": "^1.7.8"
+    "mf-hosting": "^1.7.9"
   },
   "repository": {
     "type": "git",
