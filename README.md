@@ -26,16 +26,29 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
 
 ### Table of Contents
 
-*   [initializeServiceWorker](#initializeserviceworker)
+*   [filter](#filter)
     *   [Parameters](#parameters)
-*   [toggleOrderBy](#toggleorderby)
+*   [initializeServiceWorker](#initializeserviceworker)
     *   [Parameters](#parameters-1)
-*   [sortable](#sortable)
+*   [toggleOrderBy](#toggleorderby)
     *   [Parameters](#parameters-2)
-*   [sorter](#sorter)
+*   [sortable](#sortable)
     *   [Parameters](#parameters-3)
-*   [keyPrefixStore](#keyprefixstore)
+*   [sorter](#sorter)
     *   [Parameters](#parameters-4)
+*   [keyPrefixStore](#keyprefixstore)
+    *   [Parameters](#parameters-5)
+
+## filter
+
+Generate filter function
+
+### Parameters
+
+*   `filterBy` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `getters` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**  (optional, default `{}`)
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)**&#x20;
 
 ## initializeServiceWorker
 
@@ -62,7 +75,7 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 ## sortable
 
 Add sortable toggle button to a th node.
-Synchronizes store value with th nodes "aria-sort" attribute.
+Synchronizes store value with the nodes "aria-sort" attribute.
 
 ### Parameters
 
@@ -86,12 +99,12 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 Create a derived store where all the object keys are prefixed.
 
-    { a: 1, b: 2 } -> { prefix_a: 1 prefix_b: 2 }
+    { a: 1, b: 2 } -> { foo_a: 1 foo_b: 2 } // prefix: foo_
 
 ### Parameters
 
-*   `store` **WriteableStore**&#x20;
-*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+*   `store` **WriteableStore** we derive from
+*   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** for each key
 
 Returns **WriteableStore**&#x20;
 
