@@ -57,7 +57,7 @@ test("keyPrefixStore serveral on one base", t => {
   fps.set({ a: "2" });
   t.deepEqual(wso, { x: "1", "sort:a": "2", "filter:a": "2" });
 
-  sps.set({ b: "3"});
+  sps.set({ b: "3" });
   t.deepEqual(wso, { x: "1", "sort:a": "2", "sort:b": "3", "filter:a": "2" });
 });
 
@@ -67,4 +67,12 @@ test("keyPrefixStore initial empty", t => {
   const kps = keyPrefixStore(writable(), "sort:");
   kps.subscribe(s => (kpso = s));
   t.deepEqual(kpso, {});
+});
+
+test("keyPrefixStore initial values", t => {
+  let kpso;
+
+  const kps = keyPrefixStore(writable({ "sort:a": 1, "other" : 2}), "sort:");
+  kps.subscribe(s => (kpso = s));
+  t.deepEqual(kpso, { a: 1 });
 });
