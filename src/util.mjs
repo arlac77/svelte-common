@@ -131,14 +131,23 @@ export function keyPrefixStore(store, prefix) {
   return {
     set: object => {
       subscribeMyself();
+
+      for(const [k,v] of Object.entries(forwardObject)) {
+        if(k.startsWith(prefix)) {
+          delete forwardObject[k];
+        }
+      }
+
       store.set(
         Object.assign(
           forwardObject,
           Object.fromEntries(
-            Object.entries(object).map(([k, v]) => [prefix + k, v])
+            Object.entries(object)
+              .map(([k, v]) => [prefix + k, v])
           )
         )
-      ); },
+      );
+    },
 
     subscribe: s => {
       subscriptions.add(s);

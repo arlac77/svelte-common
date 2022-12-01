@@ -58,7 +58,7 @@ test("keyPrefixStore serveral on one base", t => {
   t.deepEqual(wso, { x: "1", "sort:a": "2", "filter:a": "2" });
 
   sps.set({ b: "3" });
-  t.deepEqual(wso, { x: "1", "sort:a": "2", "sort:b": "3", "filter:a": "2" });
+  t.deepEqual(wso, { x: "1", "sort:b": "3", "filter:a": "2" });
 });
 
 test("keyPrefixStore initial empty", t => {
