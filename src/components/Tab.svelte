@@ -8,11 +8,10 @@
   tabs.tab[id] = { header, content };
 </script>
 
-{#if false}
   <div bind:this={header}>
     <slot name="header" />
   </div>
-
+  {#if tabs.current === id}
   <div bind:this={content}>
     <slot />
   </div>

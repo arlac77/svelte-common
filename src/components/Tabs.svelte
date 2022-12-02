@@ -1,14 +1,16 @@
 <script>
   import { setContext } from "svelte";
 
-  const tabs = { tab: {} };
+  const tabs = { current: "t5", tab: {} };
 
   setContext("TABS", tabs);
 </script>
 
 <slot />
 
-{#each Object.entries(tabs.tab) as t}
-  {t[0]}
-  <svelte:component this={t[1].header} />
+<!---
+{#each Object.entries(tabs.tab) as tab}
+  {JSON.stringify(tab)}
+  <svelte:component this={tab[1].header} />
 {/each}
+-->

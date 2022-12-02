@@ -145,9 +145,9 @@
   </Collapse>
 
   <Tabs>
-    <Tab id="t1"><div slot="header">Tab 1</div>content tab 1</Tab>
-    <Tab id="t2"><div slot="header">Tab 2</div>content tab 2</Tab>
-    <Tab id="t3"><div slot="header">Tab 3</div>content tab 3</Tab>
+    <Tab id="t1"><button slot="header">Tab 1</button>content tab 1</Tab>
+    <Tab id="t2"><button slot="header">Tab 2</button>content tab 2</Tab>
+    <Tab id="t3"><button slot="header">Tab 3</button>content tab 3</Tab>
   </Tabs>
 
   <tab-container>
