@@ -27,14 +27,61 @@
   import { base } from "./constants.mjs";
 
   const entries = [
-    { a: "1.1", b: new Date("July 20, 69 01:17:41 GMT+00:00"), c: "ca", d: "1.3", e: 10000000000000n },
-    { a: "2.1", b: new Date("July 20, 70 02:17:41 GMT+00:00"), c: "cb", d: "2.3", e: 20000000000000n },
-    { a: "3.1", b: new Date("July 20, 71 03:17:41 GMT+00:00"), c: "cc", d: "3.3", e: 30000000000000n },
-    { a: "4.1", /*                                          */ c: "cd", d: "4.3", e: 40000000000000n },
-    { a: "5.1", b: new Date("July 20, 72 05:17:41 GMT+00:00"), c: "ce", d: "5.3", e: 50000000000000n },
-    { a: "6.1", b: new Date("July 20, 73 05:17:41 GMT+00:00"), c: "cf", d: "6.3", e: 60000000000000n },
-    { a: "7.1", b: new Date("July 20, 74 05:17:41 GMT+00:00"), c: "cg", d: "7.3", e: 70000000000000n },
-    { a: "8.1", b: new Date("July 20, 75 05:17:41 GMT+00:00"), c: "ch", d: "8.3", e: 80000000000000n }
+    {
+      a: "1.1",
+      b: new Date("July 20, 69 01:17:41 GMT+00:00"),
+      c: "ca",
+      d: "1.3",
+      e: { f: 10000000000000n }
+    },
+    {
+      a: "2.1",
+      b: new Date("July 20, 70 02:17:41 GMT+00:00"),
+      c: "cb",
+      d: "2.3",
+      e: { f: 20000000000000n }
+    },
+    {
+      a: "3.1",
+      b: new Date("July 20, 71 03:17:41 GMT+00:00"),
+      c: "cc",
+      d: "3.3",
+      e: { f: 30000000000000n }
+    },
+    {
+      a: "4.1",
+      c: "cd",
+      d: "4.3",
+      e: { f: 40000000000000n }
+    },
+    {
+      a: "5.1",
+      b: new Date("July 20, 72 05:17:41 GMT+00:00"),
+      c: "ce",
+      d: "5.3",
+      e: { f: 50000000000000n }
+    },
+    {
+      a: "6.1",
+      b: new Date("July 20, 73 05:17:41 GMT+00:00"),
+      c: "cf",
+      d: "6.3",
+      e: { f: 60000000000000n }
+    },
+    {
+      a: "7.1",
+      b: new Date("July 20, 74 05:17:41 GMT+00:00"),
+      c: "cg",
+      d: "7.3",
+      e: { f: 70000000000000n }
+    },
+    {
+      a: "8.1",
+      b: new Date("July 20, 75 05:17:41 GMT+00:00"),
+      c: "ch",
+      d: "8.3",
+      e: { f: 80000000000000n }
+    }
   ];
 
   async function logout() {
@@ -167,7 +214,11 @@
       <input id="sort-a" bind:value={$sortBy.a} placeholder="sorting a" />
       <input id="sort-b" bind:value={$sortBy.b} placeholder="sorting b" />
       <input id="sort-c" bind:value={$sortBy.c} placeholder="sorting c" />
-      <input id="sort-e" bind:value={$sortBy.e} placeholder="sorting e" />
+      <input
+        id="sort-e"
+        bind:value={$sortBy["e.f"]}
+        placeholder="sorting e.f"
+      />
 
       <table>
         <thead>
@@ -186,12 +237,14 @@
             /></th
           >
           <th id="c" use:sortable={sortBy}>col 3</th>
-          <th>col 4<input
-            id="filter-d"
-            bind:value={$filterBy.d}
-            placeholder="filter d"
-          /></th>
-          <th id="e" use:sortable={sortBy}>col 5</th>
+          <th
+            >col 4<input
+              id="filter-d"
+              bind:value={$filterBy.d}
+              placeholder="filter d"
+            /></th
+          >
+          <th id="e.f" use:sortable={sortBy}>col 5</th>
         </thead>
         <tbody>
           {#each entries
@@ -202,7 +255,7 @@
               <td id="b{i}"><DateTime id="datetime" date={row.b} /></td>
               <td id="c{i}">{row.c}</td>
               <td id="d{i}">{row.d}</td>
-              <td id="e{i}">{row.e}</td>
+              <td id="e{i}">{row.e.f}</td>
             </tr>
           {/each}
         </tbody>
