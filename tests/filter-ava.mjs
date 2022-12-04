@@ -32,6 +32,12 @@ test("filter with getter", t => {
   t.falsy(f({ b: "abc" }));
 });
 
+test("filter property path", t => {
+  const f = filter({ "a.b.c": 1 });
+  t.truthy(f({ a: { b: { c: 1 } } }));
+  t.falsy(f({ a: { b: 0 } }));
+});
+
 function ft(t, fv, pv, expected) {
   const f = filter({ a: fv });
   if (expected) {

@@ -164,3 +164,25 @@ export function keyPrefixStore(store, prefix) {
     }
   };
 }
+
+/**
+ * Deliver attribute value.
+ * The name may be a property path like 'a.b.c'.
+ * @param {Object} object
+ * @param {string} name
+ * @returns {any} value associated with the given property name
+ */
+ export function getAttribute(object, name) {
+  if (object && object[name] !== undefined) {
+    return object[name];
+  }
+
+  for (const p of name.split(/\./)) {
+    if (object === undefined) {
+      break;
+    }
+    object = object[p];
+  }
+
+  return object;
+}

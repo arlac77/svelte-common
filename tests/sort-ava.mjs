@@ -101,6 +101,17 @@ test("sorter missing values", t => {
   t.is(sort({}, { a: new Date(0) }), -1);
 });
 
+test("sorter with property path", t => {
+  const sort = sorter(
+    { "a.b": "ascending" }
+  );
+
+  t.is(sort({ a: { b: "a" } }, { a: { b: "b" } }), -1);
+  t.is(sort({ a: { b: "a" } }, { a: { b: "a" } }), 0);
+  t.is(sort({ a: { b: "b" } }, { a: { b: "a" } }), 1);
+  t.is(sort({ a: { b: "b" } }, {}), 1);
+});
+
 test("sorter with getter", t => {
   const sort = sorter(
     { a: "ascending" },

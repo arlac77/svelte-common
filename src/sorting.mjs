@@ -1,3 +1,5 @@
+import { getAttribute } from "./util.mjs";
+
 export const SORT_NONE = "none";
 export const SORT_ASCENDING = "ascending";
 export const SORT_DESCENDING = "descending";
@@ -81,7 +83,7 @@ export function sortable(th, store) {
 export function sorter(sortBy, getters = {}) {
   if (sortBy) {
     for (const [key, value] of Object.entries(sortBy)) {
-      const getter = getters[key] || (object => object[key]);
+      const getter = getters[key] || getAttribute;
 
       let rev = 1;
 
@@ -90,10 +92,9 @@ export function sorter(sortBy, getters = {}) {
           rev = -1;
 
         case SORT_ASCENDING:
-
           return (a, b) => {
-            let av = getter(a);
-            let bv = getter(b);
+            let av = getter(a, key);
+            let bv = getter(b, key);
 
             if (av === undefined) {
               return bv === undefined ? 0 : -rev;

@@ -1,3 +1,5 @@
+import { getAttribute } from "./util.mjs";
+
 /**
  * Generate filter function
  * @param {Object} filterBy
@@ -7,9 +9,9 @@
 export function filter(filterBy, getters = {}) {
   if (filterBy) {
     const filters = Object.entries(filterBy).map(([key, value]) => {
-      const getter = getters[key] || (object => object && object[key]);
+      const getter = getters[key] || getAttribute;
       return a => {
-        const av = getter(a);
+        const av = getter(a, key);
 
         if (value instanceof RegExp) {
           return value.test(av);
