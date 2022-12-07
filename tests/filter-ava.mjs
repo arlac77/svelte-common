@@ -38,6 +38,12 @@ test("filter property path", t => {
   t.falsy(f({ a: { b: 0 } }));
 });
 
+test("filter property path []", t => {
+  const f = filter({ "a[2].c": 1 });
+  t.truthy(f({ a: [0, 1, { c: 1 }] }));
+  t.falsy(f({ a: [0, 1]}));
+});
+
 function ft(t, fv, pv, expected) {
   const f = filter({ a: fv });
   if (expected) {
