@@ -38,8 +38,10 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
     *   [Parameters](#parameters-4)
 *   [keyPrefixStore](#keyprefixstore)
     *   [Parameters](#parameters-5)
-*   [getAttribute](#getattribute)
+*   [tokens](#tokens)
     *   [Parameters](#parameters-6)
+*   [getAttribute](#getattribute)
+    *   [Parameters](#parameters-7)
 
 ## filter
 
@@ -109,6 +111,16 @@ Create a derived store where all the object keys are prefixed.
 *   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** for each key
 
 Returns **WriteableStore**&#x20;
+
+## tokens
+
+Split property path into tokens
+
+### Parameters
+
+*   `string` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+
+Returns **Iterator<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**&#x20;
 
 ## getAttribute
 
