@@ -39,7 +39,7 @@ test("filter property path", t => {
 });
 
 test("filter property path []", t => {
-  const f = filter({ "a[2].c": 1 });
+  const f = filter({ "a[2] .c": 1 });
   t.truthy(f({ a: [0, 1, { c: 1 }] }));
   t.falsy(f({ a: [0, 1]}));
 });

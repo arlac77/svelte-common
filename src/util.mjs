@@ -175,6 +175,8 @@ export function keyPrefixStore(store, prefix) {
 
   for (const c of string) {
     switch (c) {
+      case "\t":
+      case " ": break;
       case ".":
       case "[":
       case "]":
