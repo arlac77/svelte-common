@@ -100,7 +100,7 @@
   "template": {
     "inheritFrom": [
       "arlac77/template-arlac77-github",
-      "arlac77/template-ava",
+      "arlac77/template-ava-coverage",
       "arlac77/template-cloudflare",
       "arlac77/template-css",
       "arlac77/template-pacman",
