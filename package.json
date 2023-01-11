@@ -55,7 +55,7 @@
   },
   "optionalDependencies": {
     "mf-hosting": "^1.8.2",
-    "mf-hosting-cloudflare": "^1.0.2",
+    "mf-hosting-cloudflare": "^1.0.3",
     "mf-hosting-frontend": "^1.0.0"
   },
   "repository": {
