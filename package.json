@@ -55,7 +55,7 @@
   },
   "optionalDependencies": {
     "mf-hosting-cloudflare": "^1.0.3",
-    "mf-hosting-frontend": "^1.0.1"
+    "mf-hosting-frontend": "^1.0.2"
   },
   "repository": {
     "type": "git",
@@ -70,7 +70,6 @@
       "${install.dir}": "build/",
       "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
     },
-    "groups": "examples",
     "example": true,
     "frontend": true
   },
