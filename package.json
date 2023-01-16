@@ -54,7 +54,7 @@
     "vite": "^4.0.4"
   },
   "optionalDependencies": {
-    "mf-hosting-cloudflare": "^1.0.3",
+    "mf-hosting-cloudflare": "^1.0.4",
     "mf-hosting-frontend": "^1.0.3"
   },
   "repository": {
