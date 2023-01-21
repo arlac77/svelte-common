@@ -55,7 +55,7 @@
   },
   "optionalDependencies": {
     "mf-hosting-cloudflare": "^1.0.5",
-    "mf-hosting-frontend": "^1.1.0"
+    "mf-hosting-frontend": "^1.2.0"
   },
   "repository": {
     "type": "git",
@@ -67,8 +67,7 @@
   "homepage": "https://github.com/arlac77/svelte-common#readme",
   "pkgbuild": {
     "content": {
-      "${install.dir}": "build/",
-      "${nginx.sites.dir}${name}.conf": "pkg/nginx.conf"
+      "${install.dir}": "build/"
     },
     "example": true,
     "frontend": true
