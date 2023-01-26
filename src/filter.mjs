@@ -1,7 +1,7 @@
 import { getAttribute } from "./util.mjs";
 
 /**
- * Generate filter function
+ * Generate filter function.
  * @param {Object} filterBy
  * @param {Object} getters
  * @returns {Function}

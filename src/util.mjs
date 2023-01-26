@@ -166,7 +166,7 @@ export function keyPrefixStore(store, prefix) {
 }
 
 /**
- * Split property path into tokens
+ * Split property path into tokens.
  * @param {string} string 
  * @return {Iterator<string>}
  */
