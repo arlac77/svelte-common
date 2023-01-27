@@ -67,7 +67,8 @@
   "homepage": "https://github.com/arlac77/svelte-common#readme",
   "pkgbuild": {
     "content": {
-      "${install.dir}": "build/"
+      "${install.dir}": "build/",
+      "${install.dir}/anchor/" : "tests/anchor/"
     },
     "csp.script-src": "script-src https://unpkg.com/;",
     "example": true,
