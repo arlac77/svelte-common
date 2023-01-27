@@ -70,7 +70,7 @@
       "${install.dir}": "build/",
       "${install.dir}/anchor/" : "tests/anchor/"
     },
-    "csp.script-src": "script-src https://unpkg.com/;",
+    "csp.script-src-elem": "script-src https://unpkg.com/ 'self';",
     "example": true,
     "frontend": true
   },
