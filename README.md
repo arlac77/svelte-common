@@ -45,7 +45,7 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
 
 ## filter
 
-Generate filter function
+Generate filter function.
 
 ### Parameters
 
@@ -114,7 +114,7 @@ Returns **WriteableStore**&#x20;
 
 ## tokens
 
-Split property path into tokens
+Split property path into tokens.
 
 ### Parameters
 
