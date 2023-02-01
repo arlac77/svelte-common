@@ -1,1 +1,1 @@
-export const base = "http://localhost:4173/examples/svelte-common/";
+export const base = "http://localhost:5173/";
