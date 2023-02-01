@@ -1,4 +1,4 @@
-import { getAttribute } from "./util.mjs";
+import { getAttribute } from "./attribute.mjs";
 
 /**
  * Generate filter function.

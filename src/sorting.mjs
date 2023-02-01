@@ -1,4 +1,4 @@
-import { getAttribute } from "./util.mjs";
+import { getAttribute } from "./attribute.mjs";
 
 export const SORT_NONE = "none";
 export const SORT_ASCENDING = "ascending";
