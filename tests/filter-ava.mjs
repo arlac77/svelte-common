@@ -6,7 +6,7 @@ test("filter string", t => {
   t.falsy(f({ b: "abc" }));
 });
 
-test("filter and", t => {
+test("filter combine by and", t => {
   const f = filter({ a: "a", b: "b" });
 
   t.truthy(f({ a: "abc", b: "abc" }));
@@ -30,6 +30,12 @@ test("filter with getter", t => {
   t.truthy(f({ a: { b: "abc" } }));
   t.falsy(f({ a: "x" }));
   t.falsy(f({ b: "abc" }));
+});
+
+test.skip("filter number greater than", t => {
+  const f = filter({ "a>": 1 });
+  t.truthy(f({ a: 2 }));
+  t.falsy(f({ a: 1 }));
 });
 
 test("filter property path", t => {
