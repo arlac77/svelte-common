@@ -1,5 +1,16 @@
 import { getAttributeAndOperator } from "./attribute.mjs";
 
+function dateOp(a, b, op) {
+  switch (op) {
+    case "=":
+      return a.getTime() === b.getTime();
+    case ">":
+      return a.getTime() > b.getTime();
+    case "<":
+      return a.getTime() < b.getTime();
+  }
+}
+
 /**
  * Generate filter function.
  * @param {Object} filterBy
@@ -14,7 +25,7 @@ export function filter(filterBy, getters = {}) {
       return a => {
         const [av, op] = getAttributeAndOperator(a, key);
 
-       // console.log("KEY", key, op, value, av);
+        // console.log("KEY", key, op, value, av);
 
         switch (typeof value) {
           case "number":
@@ -26,6 +37,13 @@ export function filter(filterBy, getters = {}) {
               case "<":
                 return av < value;
             }
+            break;
+          case "string":
+            if (av instanceof Date) {
+              return dateOp(av, new Date(value), op);
+            }
+
+            break;
           case "object":
             if (value instanceof RegExp) {
               return value.test(av);
@@ -34,18 +52,11 @@ export function filter(filterBy, getters = {}) {
               switch (typeof av) {
                 case "object":
                   if (av instanceof Date) {
-                    switch (op) {
-                      case "=":
-                        return av.getTime() == value.getTime();
-                      case ">":
-                        return av.getTime() > value.getTime();
-                      case "<":
-                        return av.getTime() < value.getTime();
-                    }
+                    return dateOp(av, value, op);
                   }
                   break;
                 case "string":
-                  return value.toString().match(av);
+                  return dateOp(new Date(av), value, op);
               }
             }
         }

@@ -232,7 +232,8 @@
           <th id="b" use:sortable={sortBy}
             >col 2<input
               id="filter-b"
-              bind:value={$filterBy.b}
+              type="date"
+              bind:value={$filterBy["b<"]}
               placeholder="filter b"
             /></th
           >
