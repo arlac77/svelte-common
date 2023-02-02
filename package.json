@@ -51,7 +51,7 @@
     "stylelint-config-standard": "^29.0.0",
     "svelte": "^3.55.1",
     "testcafe": "^2.3.0",
-    "vite": "^4.1.0"
+    "vite": "^4.1.1"
   },
   "optionalDependencies": {
     "mf-hosting-cloudflare": "^1.0.5",
