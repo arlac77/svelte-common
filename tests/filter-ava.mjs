@@ -35,13 +35,41 @@ test("filter with getter", t => {
 test("filter number greater than", t => {
   const f = filter({ "a>": 1 });
   t.truthy(f({ a: 2 }));
+  t.truthy(f({ a: 2n }));
   t.falsy(f({ a: 1 }));
 });
 
 test("filter number less than", t => {
   const f = filter({ "a<": 3 });
   t.truthy(f({ a: 2 }));
+  t.truthy(f({ a: 2n }));
   t.falsy(f({ a: 5 }));
+});
+
+test("filter big number greater than", t => {
+  const f = filter({ "a >": 1n });
+  t.truthy(f({ a: 2 }));
+  t.truthy(f({ a: 2n }));
+  t.falsy(f({ a: 1n }));
+});
+
+test("filter big number less than", t => {
+  const f = filter({ "a <": 3n });
+  t.truthy(f({ a: 2 }));
+  t.truthy(f({ a: 2n }));
+  t.falsy(f({ a: 5n }));
+});
+
+test("filter date greater than", t => {
+  const f = filter({ "a >": new Date("1995-12-17T03:24:00") });
+  t.truthy(f({ a: new Date("1995-12-18T03:24:00") }));
+  t.falsy(f({ a: new Date("1995-12-16T03:24:00") }));
+});
+
+test("filter date less than", t => {
+  const f = filter({ "a <": new Date("1995-12-17T03:24:00") });
+  t.truthy(f({ a: new Date("1995-12-16T03:24:00") }));
+  t.falsy(f({ a: new Date("1995-12-18T03:24:00") }));
 });
 
 test("filter property path", t => {
@@ -53,7 +81,7 @@ test("filter property path", t => {
 test("filter property path []", t => {
   const f = filter({ "a[2] .c": 1 });
   t.truthy(f({ a: [0, 1, { c: 1 }] }));
-  t.falsy(f({ a: [0, 1]}));
+  t.falsy(f({ a: [0, 1] }));
 });
 
 function ft(t, fv, pv, expected) {

@@ -240,8 +240,9 @@
           <th
             >col 4<input
               id="filter-d"
-              bind:value={$filterBy.d}
-              placeholder="filter d"
+              type="number"
+              bind:value={$filterBy["d>"]}
+              placeholder="filter d>"
             /></th
           >
           <th id="e.f" use:sortable={sortBy}>col 5</th>

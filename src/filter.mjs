@@ -14,28 +14,40 @@ export function filter(filterBy, getters = {}) {
       return a => {
         const [av, op] = getAttributeAndOperator(a, key);
 
-        //console.log("KEY", key, op, value, av);
+       // console.log("KEY", key, op, value, av);
 
-        if (value instanceof RegExp) {
-          return value.test(av);
-        }
-        if (value instanceof Date) {
-          switch (typeof av) {
-            case "object":
-              if (av instanceof Date) {
-                switch (op) {
-                  case "=":
-                    return av.getTime() == value.getTime();
-                  case ">":
-                    return av.getTime() > value.getTime();
-                  case "<":
-                    return av.getTime() < value.getTime();
-                }
+        switch (typeof value) {
+          case "number":
+            switch (op) {
+              case "=":
+                return av == value;
+              case ">":
+                return av > value;
+              case "<":
+                return av < value;
+            }
+          case "object":
+            if (value instanceof RegExp) {
+              return value.test(av);
+            }
+            if (value instanceof Date) {
+              switch (typeof av) {
+                case "object":
+                  if (av instanceof Date) {
+                    switch (op) {
+                      case "=":
+                        return av.getTime() == value.getTime();
+                      case ">":
+                        return av.getTime() > value.getTime();
+                      case "<":
+                        return av.getTime() < value.getTime();
+                    }
+                  }
+                  break;
+                case "string":
+                  return value.toString().match(av);
               }
-              break;
-            case "string":
-              return value.toString().match(av);
-          }
+            }
         }
 
         switch (typeof av) {
@@ -46,8 +58,8 @@ export function filter(filterBy, getters = {}) {
           case "bigint":
           case "number":
             switch (op) {
-            /*  case "=":
-                return av == value;*/
+              case "=":
+                return av == value;
               case ">":
                 return av > value;
               case "<":
