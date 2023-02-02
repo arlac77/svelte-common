@@ -12,6 +12,8 @@ function* tokens(string) {
       case " ":
         break;
 
+      case "!":
+      case "=":
       case ">":
       case "<":
 
@@ -114,8 +116,12 @@ export function getAttributeAndOperator(object, name) {
 
   for (const token of tokens(name)) {
     switch (token) {
+      case ">=":
+      case "<=":
       case ">":
       case "<":
+      case "=":
+      case "!=":
         op = token;
         break;
       case ".":

@@ -1,13 +1,23 @@
 import { getAttributeAndOperator } from "./attribute.mjs";
 
 function dateOp(a, b, op) {
+  return numberOp(a.getTime(), b.getTime(), op);
+}
+
+function numberOp(a, b, op) {
   switch (op) {
+    case "!=":
+      return a !== b;
     case "=":
-      return a.getTime() === b.getTime();
+      return a === b;
     case ">":
-      return a.getTime() > b.getTime();
+      return a > b;
     case "<":
-      return a.getTime() < b.getTime();
+      return a < b;
+    case ">=":
+      return a >= b;
+    case "<=":
+      return a <= b;
   }
 }
 
@@ -29,20 +39,12 @@ export function filter(filterBy, getters = {}) {
 
         switch (typeof value) {
           case "number":
-            switch (op) {
-              case "=":
-                return av == value;
-              case ">":
-                return av > value;
-              case "<":
-                return av < value;
-            }
+            return numberOp(av, value, op);
             break;
           case "string":
             if (av instanceof Date) {
               return dateOp(av, new Date(value), op);
             }
-
             break;
           case "object":
             if (value instanceof RegExp) {
@@ -68,14 +70,7 @@ export function filter(filterBy, getters = {}) {
             return av.match(value);
           case "bigint":
           case "number":
-            switch (op) {
-              case "=":
-                return av == value;
-              case ">":
-                return av > value;
-              case "<":
-                return av < value;
-            }
+            return numberOp(av, value, op);
           case "boolean":
             return av == value;
         }
