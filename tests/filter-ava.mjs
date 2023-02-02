@@ -32,10 +32,16 @@ test("filter with getter", t => {
   t.falsy(f({ b: "abc" }));
 });
 
-test.skip("filter number greater than", t => {
+test("filter number greater than", t => {
   const f = filter({ "a>": 1 });
   t.truthy(f({ a: 2 }));
   t.falsy(f({ a: 1 }));
+});
+
+test("filter number less than", t => {
+  const f = filter({ "a<": 3 });
+  t.truthy(f({ a: 2 }));
+  t.falsy(f({ a: 5 }));
 });
 
 test("filter property path", t => {

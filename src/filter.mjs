@@ -1,4 +1,4 @@
-import { getAttribute } from "./attribute.mjs";
+import { getAttributeAndOperator } from "./attribute.mjs";
 
 /**
  * Generate filter function.
@@ -9,9 +9,12 @@ import { getAttribute } from "./attribute.mjs";
 export function filter(filterBy, getters = {}) {
   if (filterBy) {
     const filters = Object.entries(filterBy).map(([key, value]) => {
-      const getter = getters[key] || getAttribute;
+      const getter = () => [getters[key], "="] || getAttributeAndOperator;
+
       return a => {
-        const av = getter(a, key);
+        const [av, op] = getAttributeAndOperator(a, key);
+
+        //console.log("KEY", key, op, value, av);
 
         if (value instanceof RegExp) {
           return value.test(av);
@@ -20,7 +23,14 @@ export function filter(filterBy, getters = {}) {
           switch (typeof av) {
             case "object":
               if (av instanceof Date) {
-                return av.getTime() == value.getTime();
+                switch (op) {
+                  case "=":
+                    return av.getTime() == value.getTime();
+                  case ">":
+                    return av.getTime() > value.getTime();
+                  case "<":
+                    return av.getTime() < value.getTime();
+                }
               }
               break;
             case "string":
@@ -35,6 +45,14 @@ export function filter(filterBy, getters = {}) {
             return av.match(value);
           case "bigint":
           case "number":
+            switch (op) {
+            /*  case "=":
+                return av == value;*/
+              case ">":
+                return av > value;
+              case "<":
+                return av < value;
+            }
           case "boolean":
             return av == value;
         }

@@ -1,4 +1,3 @@
-
 /**
  * Split property path into tokens
  * @param {string} string
@@ -101,4 +100,37 @@ export function getAttribute(object, name) {
   }
 
   return object;
+}
+
+/**
+ * Deliver attribute value.
+ * The name may be a property path like 'a.b.c'.
+ * @param {Object} object
+ * @param {string} name
+ * @returns {any} value associated with the given property name
+ */
+export function getAttributeAndOperator(object, name) {
+  let op = "=";
+
+  for (const token of tokens(name)) {
+    switch (token) {
+      case ">":
+      case "<":
+        op = token;
+        break;
+      case ".":
+      case "[":
+      case "]":
+        break;
+
+      default:
+        if (object === undefined) {
+          break;
+        }
+
+        object = object[token];
+    }
+  }
+
+  return [object, op];
 }
