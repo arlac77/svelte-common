@@ -40,7 +40,6 @@ export function filter(filterBy, getters = {}) {
         switch (typeof value) {
           case "number":
             return numberOp(av, value, op);
-            break;
           case "string":
             if (av instanceof Date) {
               return dateOp(av, new Date(value), op);

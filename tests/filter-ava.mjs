@@ -60,18 +60,6 @@ test("filter big number less than", t => {
   t.falsy(f({ a: 5n }));
 });
 
-test("filter date greater than", t => {
-  const f = filter({ "a >": new Date("1995-12-17T03:24:00") });
-  t.truthy(f({ a: new Date("1995-12-18T03:24:00") }));
-  t.falsy(f({ a: new Date("1995-12-16T03:24:00") }));
-});
-
-test("filter date less than", t => {
-  const f = filter({ "a <": new Date("1995-12-17T03:24:00") });
-  t.truthy(f({ a: new Date("1995-12-16T03:24:00") }));
-  t.falsy(f({ a: new Date("1995-12-18T03:24:00") }));
-});
-
 test("filter property path", t => {
   const f = filter({ "a.b.c": 1 });
   t.truthy(f({ a: { b: { c: 1 } } }));
@@ -95,7 +83,6 @@ function ft(t, fv, pv, expected) {
   t.falsy(f({}));
   t.falsy(f());
 }
-
 ft.title = (providedTitle = "filter", fv, pv, expected) =>
   `${providedTitle} ${fv} ${pv} ${expected}`.trim();
 
@@ -137,3 +124,21 @@ test(ft, new Date(0), "1970-01-01T00:00:00.000Z", true);
 test(ft, true, true, true);
 test(ft, false, false, true);
 test(ft, false, true, false);
+
+function fopt(t, l, m) {
+  let key = "key";
+
+  t.truthy(filter({ [key]: l })({ [key]: l }), `${l} = ${l}`);
+  t.truthy(filter({ [key + "="]: l })({ [key]: l }), `${l} = ${l}`);
+  t.truthy(filter({ [key + "<"]: l })({ [key]: m }), `${l} < ${m}`);
+  t.truthy(filter({ [key + ">"]: m })({ [key]: l }), `${m} > ${l}`);
+}
+
+fopt.title = (providedTitle = "filter op", l, m) =>
+  `${providedTitle} ${l} < ${m}`.trim();
+
+test(fopt, new Date("1995-12-17T03:24:00"), new Date("1995-12-16T03:24:00"));
+test(fopt, "1995-12-17T03:24:00", new Date("1995-12-16T03:24:00"));
+test(fopt, new Date("1995-12-17T03:24:00"), "1995-12-16T03:24:00");
+
+test.skip(fopt, 1.0, 2.0);
