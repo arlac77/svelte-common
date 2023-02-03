@@ -26,22 +26,71 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
 
 ### Table of Contents
 
-*   [filter](#filter)
-    *   [Parameters](#parameters)
-*   [initializeServiceWorker](#initializeserviceworker)
-    *   [Parameters](#parameters-1)
-*   [toggleOrderBy](#toggleorderby)
-    *   [Parameters](#parameters-2)
-*   [sortable](#sortable)
-    *   [Parameters](#parameters-3)
-*   [sorter](#sorter)
-    *   [Parameters](#parameters-4)
-*   [keyPrefixStore](#keyprefixstore)
-    *   [Parameters](#parameters-5)
 *   [tokens](#tokens)
-    *   [Parameters](#parameters-6)
+    *   [Parameters](#parameters)
+*   [setAttribute](#setattribute)
+    *   [Parameters](#parameters-1)
 *   [getAttribute](#getattribute)
+    *   [Parameters](#parameters-2)
+*   [getAttributeAndOperator](#getattributeandoperator)
+    *   [Parameters](#parameters-3)
+*   [filter](#filter)
+    *   [Parameters](#parameters-4)
+*   [initializeServiceWorker](#initializeserviceworker)
+    *   [Parameters](#parameters-5)
+*   [toggleOrderBy](#toggleorderby)
+    *   [Parameters](#parameters-6)
+*   [sortable](#sortable)
     *   [Parameters](#parameters-7)
+*   [sorter](#sorter)
+    *   [Parameters](#parameters-8)
+*   [keyPrefixStore](#keyprefixstore)
+    *   [Parameters](#parameters-9)
+
+## tokens
+
+Split property path into tokens
+
+### Parameters
+
+*   `string` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+
+Returns **Iterator<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**&#x20;
+
+## setAttribute
+
+Set Object attribute.
+The name may be a property path like 'a.b.c'.
+
+### Parameters
+
+*   `object` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+*   `value` **any**&#x20;
+
+## getAttribute
+
+Deliver attribute value.
+The name may be a property path like 'a.b.c'.
+
+### Parameters
+
+*   `object` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+
+Returns **any** value associated with the given property name
+
+## getAttributeAndOperator
+
+Deliver attribute value.
+The name may be a property path like 'a.b.c'.
+
+### Parameters
+
+*   `object` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+
+Returns **any** value associated with the given property name
 
 ## filter
 
@@ -111,28 +160,6 @@ Create a derived store where all the object keys are prefixed.
 *   `prefix` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** for each key
 
 Returns **WriteableStore**&#x20;
-
-## tokens
-
-Split property path into tokens.
-
-### Parameters
-
-*   `string` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-
-Returns **Iterator<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>**&#x20;
-
-## getAttribute
-
-Deliver attribute value.
-The name may be a property path like 'a.b.c'.
-
-### Parameters
-
-*   `object` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
-*   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-
-Returns **any** value associated with the given property name
 
 # install
 
