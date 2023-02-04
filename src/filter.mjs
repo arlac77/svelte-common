@@ -38,6 +38,7 @@ export function filter(filterBy, getters = {}) {
         // console.log("KEY", key, op, value, av);
 
         switch (typeof value) {
+          case "bigint":
           case "number":
             return numberOp(av, value, op);
           case "string":

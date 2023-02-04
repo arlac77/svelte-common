@@ -113,5 +113,5 @@ test(fopt, 3, 4n);
 test(fopt, 5n, 6);
 test(fopt, "7", 8);
 test(fopt, 9, "10");
-test.skip(fopt, 11n, "12");
-test.skip(fopt, "13", 14n);
+test(fopt, 11n, "12");
+test(fopt, "13", 14n);
