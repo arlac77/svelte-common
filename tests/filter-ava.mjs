@@ -32,34 +32,6 @@ test("filter with getter", t => {
   t.falsy(f({ b: "abc" }));
 });
 
-test("filter number greater than", t => {
-  const f = filter({ "a>": 1 });
-  t.truthy(f({ a: 2 }));
-  t.truthy(f({ a: 2n }));
-  t.falsy(f({ a: 1 }));
-});
-
-test("filter number less than", t => {
-  const f = filter({ "a<": 3 });
-  t.truthy(f({ a: 2 }));
-  t.truthy(f({ a: 2n }));
-  t.falsy(f({ a: 5 }));
-});
-
-test("filter big number greater than", t => {
-  const f = filter({ "a >": 1n });
-  t.truthy(f({ a: 2 }));
-  t.truthy(f({ a: 2n }));
-  t.falsy(f({ a: 1n }));
-});
-
-test("filter big number less than", t => {
-  const f = filter({ "a <": 3n });
-  t.truthy(f({ a: 2 }));
-  t.truthy(f({ a: 2n }));
-  t.falsy(f({ a: 5n }));
-});
-
 test("filter property path", t => {
   const f = filter({ "a.b.c": 1 });
   t.truthy(f({ a: { b: { c: 1 } } }));
@@ -116,11 +88,6 @@ test(ft, /1970/, new Date(0), true);
 test(ft, "1970", new Date(0), true);
 test(ft, new Date(0), new Date(0), true);
 
-/*
-test(ft, "1970-01-01T01:00:00", new Date(0), true);
-test(ft, new Date(0), "1970-01-01T00:00:00.000Z", true);
-*/
-
 test(ft, true, true, true);
 test(ft, false, false, true);
 test(ft, false, true, false);
@@ -128,17 +95,19 @@ test(ft, false, true, false);
 function fopt(t, l, m) {
   let key = "key";
 
-  t.truthy(filter({ [key]: l })({ [key]: l }), `${l} = ${l}`);
+  t.truthy(filter({ [key]: l })({ [key]: l }), `${l} ${l}`);
   t.truthy(filter({ [key + "="]: l })({ [key]: l }), `${l} = ${l}`);
-  t.truthy(filter({ [key + "<"]: l })({ [key]: m }), `${l} < ${m}`);
-  t.truthy(filter({ [key + ">"]: m })({ [key]: l }), `${m} > ${l}`);
+  t.truthy(filter({ [key + "<"]: m })({ [key]: l }), `${m} < ${l}`);
+  t.truthy(filter({ [key + ">"]: l })({ [key]: m }), `${l} > ${m}`);
 }
 
 fopt.title = (providedTitle = "filter op", l, m) =>
-  `${providedTitle} ${l} < ${m}`.trim();
+  `${providedTitle} ${l}<${m} ${l}=${l} ${m}>${l}`.trim();
 
-test(fopt, new Date("1995-12-17T03:24:00"), new Date("1995-12-16T03:24:00"));
-test(fopt, "1995-12-17T03:24:00", new Date("1995-12-16T03:24:00"));
-test(fopt, new Date("1995-12-17T03:24:00"), "1995-12-16T03:24:00");
+test(fopt, new Date("1995-12-15T03:24:00"), new Date("1995-12-16T03:24:00"));
+test(fopt, "1995-12-15T03:24:00", new Date("1995-12-16T03:24:00"));
+test(fopt, new Date("1995-12-15T03:24:00"), "1995-12-16T03:24:00");
 
-test.skip(fopt, 1.0, 2.0);
+test(fopt, 1.0, 2.0);
+test(fopt, 3, 4n);
+test(fopt, 5n, 6);

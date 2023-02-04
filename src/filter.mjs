@@ -71,7 +71,7 @@ export function filter(filterBy, getters = {}) {
           case "number":
             return numberOp(av, value, op);
           case "boolean":
-            return av == value;
+            return value == av;
         }
         return false;
       };
