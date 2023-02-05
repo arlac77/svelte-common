@@ -3,19 +3,32 @@
  * @param {string} string
  * @return {Iterator<string>}
  */
-function* tokens(string) {
+export function* tokens(string) {
   let identifier = "";
+  let last;
 
   for (const c of string) {
     switch (c) {
       case "\t":
       case " ":
+        if (identifier.length) {
+          yield identifier;
+          identifier = "";
+        }      
         break;
 
       case "!":
-      case "=":
       case ">":
-      case "<":
+      case "<": last = c;
+      break;
+
+      case "=":
+        if(last) {
+          yield last + c;
+          last = undefined;
+//          delete last;
+          break;
+        }
 
       case ".":
       case "[":
@@ -28,6 +41,12 @@ function* tokens(string) {
         break;
       default:
         identifier += c;
+    }
+
+    if(last) {
+      yield last;
+      last = undefined;
+//      delete last;
     }
   }
 
