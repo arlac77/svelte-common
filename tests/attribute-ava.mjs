@@ -12,4 +12,7 @@ function tt(t, input, expected) {
 tt.title = (providedTitle = "token",input) =>
   `${providedTitle} ${input}`.trim();
 
-test(tt, "a123 <> b.c", ["a123", "<", ">", "b", ".", "c"]);
+test(tt, "a< <= >= b>",["a", "<", "<=", ">=", "b", ">"]);
+
+test(tt, "a123 <= >= a = <> +-[ ] ( ) b.c",
+        ["a123", "<=", ">=","a", "=", "<", ">", "+", "-", "[", "]", "(", ")", "b", ".", "c"]);

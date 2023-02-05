@@ -14,25 +14,40 @@ export function* tokens(string) {
         if (identifier.length) {
           yield identifier;
           identifier = "";
+        }
+        if(last) {
+        	yield last;
+        	last = undefined;
         }      
         break;
 
       case "!":
       case ">":
-      case "<": last = c;
+      case "<":
+        if(last) {
+        	yield last;
+        }
+        last = c;
       break;
 
       case "=":
         if(last) {
           yield last + c;
           last = undefined;
-//          delete last;
           break;
         }
 
+      case "+":
+      case "-":
       case ".":
+      case "(":
+      case ")":
       case "[":
       case "]":
+        if(last) {
+        	yield last;
+        	last = undefined;
+        }
         if (identifier.length) {
           yield identifier;
           identifier = "";
@@ -40,19 +55,20 @@ export function* tokens(string) {
         yield c;
         break;
       default:
+        if(last) {
+        	yield last;
+        	last = undefined;
+        }
         identifier += c;
-    }
-
-    if(last) {
-      yield last;
-      last = undefined;
-//      delete last;
     }
   }
 
   if (identifier.length) {
     yield identifier;
   }
+  if(last) {
+  	yield last;
+  }  
 }
 
 /**

@@ -99,7 +99,8 @@ function fopt(t, l, m) {
   t.truthy(filter({ [key + "="]: l })({ [key]: l }), `${l} = ${l}`);
   t.truthy(filter({ [key + "<"]: m })({ [key]: l }), `${m} < ${l}`);
   t.truthy(filter({ [key + ">"]: l })({ [key]: m }), `${l} > ${m}`);
-//  t.truthy(filter({ [key + ">="]: l })({ [key]: m }), `${l} >= ${m}`);
+  t.truthy(filter({ [key + ">="]: l })({ [key]: m }), `${l} >= ${m}`);
+//  t.truthy(filter({ [key + "<="]: l })({ [key]: m }), `${m} <= ${l}`);
 }
 
 fopt.title = (providedTitle = "filter op", l, m) =>
