@@ -168,12 +168,13 @@ export function getAttributeAndOperator(object, expression, getters = {}) {
         if (object === undefined) {
           break;
         }
-        if (object[token] !== undefined) {
-          object = object[token];
+
+        const g = getters[token];
+        if (g) {
+          object = g(object);
         } else {
-          const g = getters[token];
-          if(g) {
-            object = g(object);
+          if (object[token] !== undefined) {
+            object = object[token];
           }
         }
     }
