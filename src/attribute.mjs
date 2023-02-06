@@ -171,7 +171,10 @@ export function getAttributeAndOperator(object, expression, getters = {}) {
         if (object[token] !== undefined) {
           object = object[token];
         } else {
-          object = getters[token];
+          const g = getters[token];
+          if(g) {
+            object = g(object);
+          }
         }
     }
   }
