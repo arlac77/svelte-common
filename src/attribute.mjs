@@ -15,23 +15,23 @@ export function* tokens(string) {
           yield identifier;
           identifier = "";
         }
-        if(last) {
-        	yield last;
-        	last = undefined;
-        }      
+        if (last) {
+          yield last;
+          last = undefined;
+        }
         break;
 
       case "!":
       case ">":
       case "<":
-        if(last) {
-        	yield last;
+        if (last) {
+          yield last;
         }
         last = c;
-      break;
+        break;
 
       case "=":
-        if(last) {
+        if (last) {
           yield last + c;
           last = undefined;
           break;
@@ -44,9 +44,9 @@ export function* tokens(string) {
       case ")":
       case "[":
       case "]":
-        if(last) {
-        	yield last;
-        	last = undefined;
+        if (last) {
+          yield last;
+          last = undefined;
         }
         if (identifier.length) {
           yield identifier;
@@ -55,9 +55,9 @@ export function* tokens(string) {
         yield c;
         break;
       default:
-        if(last) {
-        	yield last;
-        	last = undefined;
+        if (last) {
+          yield last;
+          last = undefined;
         }
         identifier += c;
     }
@@ -66,9 +66,9 @@ export function* tokens(string) {
   if (identifier.length) {
     yield identifier;
   }
-  if(last) {
-  	yield last;
-  }  
+  if (last) {
+    yield last;
+  }
 }
 
 /**
@@ -140,16 +140,16 @@ export function getAttribute(object, name) {
 }
 
 /**
- * Deliver attribute value.
- * The name may be a property path like 'a.b.c'.
+ * Deliver attribute value and operator.
+ * The name may be a property path like 'a.b.c <='.
  * @param {Object} object
- * @param {string} name
- * @returns {any} value associated with the given property name
+ * @param {string} expression
+ * @returns {[any,string]} value associated with the given property name
  */
-export function getAttributeAndOperator(object, name) {
+export function getAttributeAndOperator(object, expression, getters = {}) {
   let op = "=";
 
-  for (const token of tokens(name)) {
+  for (const token of tokens(expression)) {
     switch (token) {
       case ">=":
       case "<=":
@@ -168,8 +168,11 @@ export function getAttributeAndOperator(object, name) {
         if (object === undefined) {
           break;
         }
-
-        object = object[token];
+        if (object[token] !== undefined) {
+          object = object[token];
+        } else {
+          object = getters[token];
+        }
     }
   }
 

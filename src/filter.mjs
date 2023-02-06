@@ -27,13 +27,11 @@ function numberOp(a, b, op) {
  * @param {Object} getters
  * @returns {Function}
  */
-export function filter(filterBy, getters = {}) {
+export function filter(filterBy, getters) {
   if (filterBy) {
     const filters = Object.entries(filterBy).map(([key, value]) => {
-      const getter = () => [getters[key], "="] || getAttributeAndOperator;
-
       return a => {
-        const [av, op] = getAttributeAndOperator(a, key);
+        const [av, op] = getAttributeAndOperator(a, key, getters);
 
         // console.log("KEY", key, op, value, av);
 
