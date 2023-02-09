@@ -50,7 +50,7 @@
     "stylelint": "^15.0.0",
     "stylelint-config-standard": "^30.0.1",
     "svelte": "^3.55.1",
-    "testcafe": "^2.3.0",
+    "testcafe": "^2.3.1",
     "vite": "^4.1.1"
   },
   "optionalDependencies": {
