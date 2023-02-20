@@ -1,5 +1,5 @@
 import { Selector } from "testcafe";
-import { base } from "./constants.js";
+import { base } from "./constants.mjs";
 
 fixture`sorting and filtering`.page`${base}`;
 
