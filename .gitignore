@@ -1,6 +1,7 @@
 /node_modules/**
 *.log
 *.dump
+bun.lockb
 build
 .DS_Store
 *.node
