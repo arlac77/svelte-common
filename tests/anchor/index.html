@@ -42,9 +42,7 @@
   </body>
   <script>
     const anchor = document.getElementById("anchor");
-    anchor.addEventListener("click", e => {
-      openMenu();
-    });
+    anchor.addEventListener("click", e => openMenu());
 
     const canvas = document.getElementById("canvas");
     canvas.ondragover = event => event.preventDefault();
