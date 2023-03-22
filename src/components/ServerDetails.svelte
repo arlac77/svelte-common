@@ -19,13 +19,13 @@
 <tr>
   <td />
   <td>Version</td>
-  <td>{#if server && server.version}{server.version}{:else}<div class="error">down</div>{/if}</td>
+  <td>{#if server?.version}{server.version}{:else}<div class="error">down</div>{/if}</td>
 </tr>
 <tr>
   <td />
   <td>Uptime</td>
   <td>
-    {#if server && server.uptime >= 0}
+    {#if server?.uptime >= 0}
       <Duration seconds={server.uptime} />
     {:else}<div class="error">down</div>{/if}
   </td>
@@ -34,6 +34,6 @@
   <tr>
     <td />
     <td>{title}</td>
-    <td>{#if server && server.memory}<Bytes value={server.memory[key]}/>{:else}<div class="error">down</div>{/if}</td>
+    <td>{#if server?.memory}<Bytes value={server.memory[key]}/>{:else}<div class="error">down</div>{/if}</td>
   </tr>
 {/each}
