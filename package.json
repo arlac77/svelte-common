@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "svelte-command": "^1.1.39",
-    "svelte-entitlement": "^1.2.49"
+    "svelte-entitlement": "^1.2.50"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
@@ -44,7 +44,7 @@
     "ava": "^5.2.0",
     "c8": "^7.13.0",
     "documentation": "^14.0.1",
-    "mf-styling": "^1.7.52",
+    "mf-styling": "^1.7.53",
     "npm-pkgbuild": "^11.7.13",
     "semantic-release": "^21.0.1",
     "stylelint": "^15.5.0",
