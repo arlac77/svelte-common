@@ -1,4 +1,19 @@
 /**
+ * @typedef {Object} AttributeDefinition
+ *
+ * @property {string} type
+ * @property {boolean} writable
+ * @property {boolean} [private] should the value be shown
+ * @property {string} [depends] name of an attribute we depend on
+ * @property {string[]} additionalAttributes extra attributes that are present in case our attribute is set
+ * @property {string} description
+ * @property {any} [default] the default value
+ * @property {Function} [set] set the value
+ * @property {Function} [get] get the value can be used to calculate default values
+ * @property {string|string[]} [env] environment variable use to provide the value
+ */
+
+/**
  * Split property path into tokens
  * @param {string} string
  * @return {Iterator<string>}
@@ -114,7 +129,7 @@ export function setAttribute(object, name, value) {
  * @returns {any} value associated with the given property name
  */
 export function getAttribute(object, name) {
-  if (object && object[name] !== undefined) {
+  if (object?.[name] !== undefined) {
     return object[name];
   }
 
