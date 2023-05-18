@@ -23,8 +23,8 @@ function numberOp(a, b, op) {
 
 /**
  * Generate filter function.
- * @param {Object} filterBy
- * @param {Object} getters
+ * @param {Object} [filterBy]
+ * @param {Object} [getters]
  * @returns {Function}
  */
 export function filter(filterBy, getters) {
