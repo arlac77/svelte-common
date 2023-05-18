@@ -26,8 +26,8 @@ export function toggleOrderBy(orderBy) {
 /**
  * Add sortable toggle button to a th node.
  * Synchronizes store value with the nodes "aria-sort" attribute.
- * @param {Node} the header node
- * @param {WritableStore} to keep in sync with sorting properties
+ * @param {Node} th the header node
+ * @param {WritableStore} store keep in sync with sorting properties
  */
 export function sortable(th, store) {
   const storeSubscription = store.subscribe(orderBy =>
