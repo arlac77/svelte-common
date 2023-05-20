@@ -118,8 +118,8 @@ Generate filter function.
 
 ### Parameters
 
-*   `filterBy` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
-*   `getters` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)**&#x20;
+*   `filterBy` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?**&#x20;
+*   `getters` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?**&#x20;
 
 Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)**&#x20;
 
@@ -152,10 +152,8 @@ Synchronizes store value with the nodes "aria-sort" attribute.
 
 ### Parameters
 
-*   `th` &#x20;
-*   `store` &#x20;
-*   `the` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)** header node
-*   `to` **WritableStore** keep in sync with sorting properties
+*   `th` **[Node](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)** the header node
+*   `store` **WritableStore** keep in sync with sorting properties
 
 ## sorter
 
