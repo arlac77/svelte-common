@@ -15,8 +15,9 @@
 
 /**
  * Split property path into tokens
+ * @generator
  * @param {string} string
- * @return {Iterator<string>}
+ * @yields {string}
  */
 export function* tokens(string) {
   let identifier = "";
