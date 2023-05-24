@@ -26,7 +26,7 @@ export function toggleOrderBy(orderBy) {
 /**
  * Add sortable toggle button to a th node.
  * Synchronizes store value with the nodes "aria-sort" attribute.
- * @param {Node} th the header node
+ * @param {Element} th the header node
  * @param {WritableStore} store keep in sync with sorting properties
  */
 export function sortable(th, store) {
@@ -76,14 +76,14 @@ export function sortable(th, store) {
 
 /**
  * Generate a sort function for a given sort-by set.
- * @param {Object} sortBy
- * @param {Object} getters
- * @return {Function} sorter
+ * @param {Object|undefined} [sortBy]
+ * @param {Object} [getters]
+ * @return {Function|undefined} sorter
  */
-export function sorter(sortBy, getters = {}) {
+export function sorter(sortBy, getters) {
   if (sortBy) {
     for (const [key, value] of Object.entries(sortBy)) {
-      const getter = getters[key] || getAttribute;
+      const getter = getters && getters[key] || getAttribute;
 
       let rev = 1;
 
