@@ -223,28 +223,34 @@
       <table>
         <thead>
           <th id="a" use:sortable={sortBy}
-            >col 1<input
-              id="filter-a"
-              bind:value={$filterBy.a}
-              placeholder="filter a"
-            /></th
+            >col 1<label>
+              <input
+                id="filter-a"
+                bind:value={$filterBy.a}
+                placeholder="filter a"
+              /></label
+            ></th
           >
           <th id="b" use:sortable={sortBy}
-            >col 2<input
-              id="filter-b"
-              type="date"
-              bind:value={$filterBy["b<"]}
-              placeholder="filter b"
-            /></th
+            >col 2<label
+              ><input
+                id="filter-b"
+                type="date"
+                bind:value={$filterBy["b<"]}
+                placeholder="filter b"
+              /></label
+            ></th
           >
           <th id="c" use:sortable={sortBy}>col 3</th>
           <th
-            >col 4<input
-              id="filter-d"
-              type="number"
-              bind:value={$filterBy["d>"]}
-              placeholder="filter d>"
-            /></th
+            >col 4<label
+              ><input
+                id="filter-d"
+                type="number"
+                bind:value={$filterBy["d>"]}
+                placeholder="filter d>"
+              /></label
+            ></th
           >
           <th id="e.f" use:sortable={sortBy}>col 5</th>
         </thead>
@@ -276,16 +282,22 @@
 
     <div role="tabpanel" aria-labelledby="date-formatters" hidden>
       <div>
-        <label for="days">Days</label>
-        <b><Duration id="days" seconds="1000000" /></b>
+        <label
+          >days
+          <b><Duration id="days" seconds="1000000" /></b>
+        </label>
       </div>
       <div>
-        <label for="hours">Hours</label>
-        <b><Duration id="hours" seconds="5000" /></b>
+        <label>
+          hours
+          <b><Duration id="hours" seconds="5000" /></b>
+        </label>
       </div>
       <div>
-        <label for="datetime">DateTime</label>
-        <b><DateTime id="datetime" date={new Date()} /></b>
+        <label
+          >datetime
+          <b><DateTime id="datetime" date={new Date()} /></b>
+        </label>
       </div>
     </div>
   </tab-container>
@@ -294,7 +306,7 @@
     <Modal {close}>
       <form>
         <fieldset>
-          <label for="username">
+          <label>
             Username 1
             <input
               id="username"
@@ -306,7 +318,7 @@
               size="10"
             />
           </label>
-          <label for="password">
+          <label>
             Password 1
             <input
               id="password"
