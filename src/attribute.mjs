@@ -119,7 +119,9 @@ export function setAttribute(object, name, value) {
     }
   }
 
-  lastObject[lastKey] = value;
+  if (lastKey) {
+    lastObject[lastKey] = value;
+  }
 }
 
 /**
