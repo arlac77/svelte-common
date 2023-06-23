@@ -22,7 +22,8 @@
     SORT_ASCENDING,
     filter,
     Tabs,
-    Tab
+    Tab,
+    Pagination
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
@@ -83,6 +84,8 @@
       e: { f: 80000000000000n }
     }
   ];
+
+  const pg = new Pagination(entries,8);
 
   async function logout() {
     alert("logout");
@@ -255,7 +258,7 @@
           <th id="e.f" use:sortable={sortBy}>col 5</th>
         </thead>
         <tbody>
-          {#each entries
+          {#each [...pg.items()]
             .filter(filter($filterBy))
             .sort(sorter($sortBy)) as row, i (row.a)}
             <tr>
@@ -267,6 +270,9 @@
             </tr>
           {/each}
         </tbody>
+        <tfoot>
+          <tr></tr>
+        </tfoot>
       </table>
     </div>
 
