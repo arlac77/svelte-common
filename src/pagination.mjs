@@ -1,6 +1,6 @@
 
 /**
- * Pagination support store
+ * Pagination support store.
  */
 export class Pagination {
   subscriptions = new Set();
@@ -54,11 +54,12 @@ export class Pagination {
     }
   }
 
-  get pageSelector() {
-    const div = document.createElement("div");
+  get pageNavigationElement() {
+    const nav = document.createElement("nav");
+    nav.setAttribute("aria-label", "pagination");
 
     this.subscribe(pg => {
-      const buttons = [];
+      const items = [];
 
       for (let n = 1; n < this.numberOfPages; n++) {
         if (
@@ -68,18 +69,20 @@ export class Pagination {
             n % 10 === 0 ||
             (n < this.page + 3 && n > this.page - 3))
         ) {
-          const button = document.createElement("button");
-          button.innerText = String(n);
-          button.onclick = event => (this.page = n);
+          const a = document.createElement("a");
+          a.setAttribute("href", "#");
+
+          a.innerText = String(n);
+          a.onclick = event => (this.page = n);
           if (n === this.page) {
-            button.classList.add("active");
+            a.setAttribute("aria-current", "page");
           }
-          buttons.push(button);
+          items.push(a);
         }
       }
-      div.replaceChildren(...buttons);
+      nav.replaceChildren(...items);
     });
 
-    return div;
+    return nav;
   }
 }
