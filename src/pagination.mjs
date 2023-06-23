@@ -54,6 +54,9 @@ export class Pagination {
     }
   }
 
+  /**
+   * @see @link https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination
+   */
   get pageNavigationElement() {
     const nav = document.createElement("nav");
     nav.setAttribute("aria-label", "pagination");
