@@ -38,16 +38,21 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
     *   [Parameters](#parameters-3)
 *   [filter](#filter)
     *   [Parameters](#parameters-4)
-*   [initializeServiceWorker](#initializeserviceworker)
+*   [Pagination](#pagination)
     *   [Parameters](#parameters-5)
-*   [toggleOrderBy](#toggleorderby)
-    *   [Parameters](#parameters-6)
-*   [sortable](#sortable)
+    *   [page](#page)
+        *   [Parameters](#parameters-6)
+    *   [page](#page-1)
+*   [initializeServiceWorker](#initializeserviceworker)
     *   [Parameters](#parameters-7)
-*   [sorter](#sorter)
+*   [toggleOrderBy](#toggleorderby)
     *   [Parameters](#parameters-8)
-*   [keyPrefixStore](#keyprefixstore)
+*   [sortable](#sortable)
     *   [Parameters](#parameters-9)
+*   [sorter](#sorter)
+    *   [Parameters](#parameters-10)
+*   [keyPrefixStore](#keyprefixstore)
+    *   [Parameters](#parameters-11)
 
 ## AttributeDefinition
 
@@ -120,6 +125,27 @@ Generate filter function.
 *   `getters` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?**&#x20;
 
 Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)**&#x20;
+
+## Pagination
+
+Pagination support store
+
+### Parameters
+
+*   `source` &#x20;
+*   `itemsPerPage`   (optional, default `10`)
+
+### page
+
+Set current page
+
+#### Parameters
+
+*   `n` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)**&#x20;
+
+### page
+
+Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** current page
 
 ## initializeServiceWorker
 
