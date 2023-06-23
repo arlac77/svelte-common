@@ -53,9 +53,11 @@ export function* tokens(string) {
           break;
         }
 
+      case ".":
       case "+":
       case "-":
-      case ".":
+      case "*":
+      case "/":
       case "(":
       case ")":
       case "[":
