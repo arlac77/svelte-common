@@ -1,4 +1,3 @@
-
 /**
  * Pagination support store.
  */
@@ -55,6 +54,7 @@ export class Pagination {
   }
 
   /**
+   * @see @link https://getbootstrap.com/docs/4.0/components/pagination
    * @see @link https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination
    */
   get pageNavigationElement() {
@@ -88,4 +88,8 @@ export class Pagination {
 
     return nav;
   }
+}
+
+export function pageNavigation(elem, pg) {
+  elem.replaceChildren(pg.pageNavigationElement);
 }

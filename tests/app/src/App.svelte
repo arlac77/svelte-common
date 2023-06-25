@@ -23,7 +23,8 @@
     filter,
     Tabs,
     Tab,
-    Pagination
+    Pagination,
+    pageNavigation
   } from "../../../src/index.svelte";
   import { base } from "./constants.mjs";
 
@@ -85,7 +86,7 @@
     }
   ];
 
-  const pg = new Pagination(entries,8);
+  const pg = new Pagination(entries, 8);
 
   async function logout() {
     alert("logout");
@@ -271,7 +272,10 @@
           {/each}
         </tbody>
         <tfoot>
-          <tr></tr>
+          <tr>
+           <td colspan="5" use:pageNavigation={pg}/>
+           <td>Hallo</td>
+          </tr>
         </tfoot>
       </table>
     </div>
