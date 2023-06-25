@@ -20,6 +20,7 @@
  * @yields {string}
  */
 export function* tokens(string) {
+  let isString = false;
   let identifier = "";
   let last;
 
@@ -27,16 +28,30 @@ export function* tokens(string) {
     switch (c) {
       case "\t":
       case " ":
-        if (identifier.length) {
-          yield identifier;
-          identifier = "";
-        }
-        if (last) {
-          yield last;
-          last = undefined;
+        if (isString) {
+          identifier += c;
+        } else {
+          if (identifier.length) {
+            yield identifier;
+            identifier = "";
+          }
+          if (last) {
+            yield last;
+            last = undefined;
+          }
         }
         break;
 
+      case '"':
+      case "'":
+        if (isString) {
+          yield identifier;
+          identifier = "";
+          isString = false;
+        } else {
+          isString = true;
+        }
+        break;
       case "!":
       case ">":
       case "<":
