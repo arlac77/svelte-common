@@ -43,6 +43,7 @@ or the [live example](https://arlac77.github.io/components/svelte-common/example
     *   [page](#page)
         *   [Parameters](#parameters-6)
     *   [page](#page-1)
+    *   [pageNavigationElement](#pagenavigationelement)
 *   [initializeServiceWorker](#initializeserviceworker)
     *   [Parameters](#parameters-7)
 *   [toggleOrderBy](#toggleorderby)
@@ -128,7 +129,7 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ## Pagination
 
-Pagination support store
+Pagination support store.
 
 ### Parameters
 
@@ -146,6 +147,11 @@ Set current page
 ### page
 
 Returns **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** current page
+
+### pageNavigationElement
+
+*   **See**: @link <https://getbootstrap.com/docs/4.0/components/pagination>
+*   **See**: @link <https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination>
 
 ## initializeServiceWorker
 
