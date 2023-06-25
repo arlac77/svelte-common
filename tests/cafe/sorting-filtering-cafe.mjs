@@ -1,5 +1,6 @@
 import { Selector } from "testcafe";
-import { base } from "./constants.mjs";
+
+export const base = "http://localhost:5173/";
 
 fixture`sorting and filtering`.page`${base}`;
 
