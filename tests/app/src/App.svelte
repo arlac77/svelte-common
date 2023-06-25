@@ -274,7 +274,6 @@
         <tfoot>
           <tr>
            <td colspan="5" use:pageNavigation={pg}/>
-           <td>Hallo</td>
           </tr>
         </tfoot>
       </table>

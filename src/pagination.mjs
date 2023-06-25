@@ -17,7 +17,7 @@ export class Pagination {
    * @param {number} n
    */
   set page(n) {
-    if (this.#page !== n) {
+    if (this.#page !== n && n > 0 && n <= this.numberOfPages) {
       this.#page = n;
       this.subscriptions.forEach(subscription => subscription(this));
     }
@@ -64,6 +64,18 @@ export class Pagination {
     this.subscribe(pg => {
       const items = [];
 
+      function add(innerText, eh) {
+        const a = document.createElement("a");
+        a.setAttribute("href", "#");
+        a.innerText = innerText;
+        a.onclick = eh;
+        items.push(a);
+        return a;
+      }
+
+      add("<<", event => (this.page = 1));
+      add("<", event => (this.page = this.page - 1));
+
       for (let n = 1; n < this.numberOfPages; n++) {
         if (
           this.numberOfPages > 10 &&
@@ -72,17 +84,16 @@ export class Pagination {
             n % 10 === 0 ||
             (n < this.page + 3 && n > this.page - 3))
         ) {
-          const a = document.createElement("a");
-          a.setAttribute("href", "#");
-
-          a.innerText = String(n);
-          a.onclick = event => (this.page = n);
+          const a = add(String(n), event => (this.page = n));
           if (n === this.page) {
             a.setAttribute("aria-current", "page");
           }
-          items.push(a);
         }
       }
+
+      add(">", event => (this.page = this.page + 1));
+      add(">>", event => (this.page = this.numberOfPages));
+
       nav.replaceChildren(...items);
     });
 
