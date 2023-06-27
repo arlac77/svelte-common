@@ -130,6 +130,7 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 ## Pagination
 
 Pagination support store.
+Pages go from 1 ... numberOfPages
 
 ### Parameters
 
