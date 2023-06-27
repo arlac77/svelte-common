@@ -1,11 +1,12 @@
 /**
  * Pagination support store.
+ * Pages go from 1 ... numberOfPages
  */
 export class Pagination {
   subscriptions = new Set();
   data;
   itemsPerPage;
-  #page = 0;
+  #page = 1;
 
   constructor(source, itemsPerPage = 10) {
     this.data = [...source];
@@ -17,7 +18,7 @@ export class Pagination {
    * @param {number} n
    */
   set page(n) {
-    if (this.#page !== n && n > 0 && n <= this.numberOfPages) {
+    if (this.#page !== n && n >= 1 && n <= this.numberOfPages) {
       this.#page = n;
       this.subscriptions.forEach(subscription => subscription(this));
     }
@@ -43,7 +44,7 @@ export class Pagination {
   }
 
   *items() {
-    const n = this.page;
+    const n = this.page -1;
 
     for (const item of this.data.slice(
       n * this.itemsPerPage,
