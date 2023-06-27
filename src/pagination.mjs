@@ -44,7 +44,7 @@ export class Pagination {
   }
 
   *items() {
-    const n = this.page -1;
+    const n = this.page - 1;
 
     for (const item of this.data.slice(
       n * this.itemsPerPage,
@@ -65,17 +65,25 @@ export class Pagination {
     this.subscribe(pg => {
       const items = [];
 
-      function add(innerText, eh) {
+      const add = (innerText, targetPage, label) => {
         const a = document.createElement("a");
         a.setAttribute("href", "#");
+        if (label) {
+          a.setAttribute("aria-label", label);
+        }
         a.innerText = innerText;
-        a.onclick = eh;
+        if (targetPage === this.page) {
+          a.disabled = true;
+          a.setAttribute("aria-current", "page");
+        } else {
+          a.onclick = () => (this.page = targetPage);
+        }
         items.push(a);
         return a;
-      }
+      };
 
-      add("<<", event => (this.page = 1));
-      add("<", event => (this.page = this.page - 1));
+      add("<<", 1, "First Page");
+      add("<", this.page - 1, "Previous Page");
 
       for (let n = 1; n < this.numberOfPages; n++) {
         if (
@@ -85,15 +93,12 @@ export class Pagination {
             n % 10 === 0 ||
             (n < this.page + 3 && n > this.page - 3))
         ) {
-          const a = add(String(n), event => (this.page = n));
-          if (n === this.page) {
-            a.setAttribute("aria-current", "page");
-          }
+          add(String(n), n);
         }
       }
 
-      add(">", event => (this.page = this.page + 1));
-      add(">>", event => (this.page = this.numberOfPages));
+      add(">", this.page + 1, "Next Page");
+      add(">>", this.numberOfPages, "Last Page");
 
       nav.replaceChildren(...items);
     });
