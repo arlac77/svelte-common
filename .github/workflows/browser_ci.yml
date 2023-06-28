@@ -21,7 +21,7 @@ jobs:
         node-version:
           - 18.16.1
         firefox:
-          - latest
+          - 114.0.2
     steps:
       - uses: browser-actions/setup-firefox@latest
         with:
