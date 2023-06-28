@@ -134,7 +134,7 @@ Pages go from 1 ... numberOfPages
 
 ### Parameters
 
-*   `source` &#x20;
+*   `data` &#x20;
 *   `itemsPerPage`   (optional, default `10`)
 
 ### page
