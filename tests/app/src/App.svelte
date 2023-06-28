@@ -273,7 +273,7 @@
         </tbody>
         <tfoot>
           <tr>
-           <td colspan="5" use:pageNavigation={pg}/>
+            <td colspan="2" use:pageNavigation={pg} />
           </tr>
         </tfoot>
       </table>

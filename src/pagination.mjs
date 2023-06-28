@@ -3,14 +3,28 @@
  * Pages go from 1 ... numberOfPages
  */
 export class Pagination {
-  subscriptions = new Set();
-  data;
-  itemsPerPage;
+  #subscriptions = new Set();
+  #data;
+  #itemsPerPage = 1;
   #page = 1;
 
   constructor(data, itemsPerPage = 10) {
-    this.data = data;
+    this.#data = data;
     this.itemsPerPage = itemsPerPage;
+  }
+
+  set data(data) {
+    this.#data = data;
+    this.#subscriptions.forEach(subscription => subscription(this));
+  }
+
+  get itemsPerPage() {
+    return this.#itemsPerPage;
+  }
+
+  set itemsPerPage(n) {
+    this.#itemsPerPage = n;
+    this.#subscriptions.forEach(subscription => subscription(this));
   }
 
   /**
@@ -20,7 +34,7 @@ export class Pagination {
   set page(n) {
     if (this.#page !== n && n >= 1 && n <= this.numberOfPages) {
       this.#page = n;
-      this.subscriptions.forEach(subscription => subscription(this));
+      this.#subscriptions.forEach(subscription => subscription(this));
     }
   }
 
@@ -32,16 +46,16 @@ export class Pagination {
   }
 
   subscribe(s) {
-    this.subscriptions.add(s);
+    this.#subscriptions.add(s);
 
     s(this);
 
-    return () => this.subscriptions.delete(s);
+    return () => this.#subscriptions.delete(s);
   }
 
   get numberOfPages() {
     return (
-      (Array.isArray(this.data) ? this.data.length : this.data.size) /
+      (Array.isArray(this.#data) ? this.#data.length : this.#data.size) /
       this.itemsPerPage
     );
   }
@@ -49,7 +63,7 @@ export class Pagination {
   *items() {
     const n = this.page - 1;
 
-    const data = Array.isArray(this.data) ? this.data : [...this.data.values()];
+    const data = Array.isArray(this.data) ? this.#data : [...this.#data.values()];
 
     for (const item of data.slice(
       n * this.itemsPerPage,
