@@ -8,8 +8,8 @@ export class Pagination {
   itemsPerPage;
   #page = 1;
 
-  constructor(source, itemsPerPage = 10) {
-    this.data = [...source];
+  constructor(data, itemsPerPage = 10) {
+    this.data = data;
     this.itemsPerPage = itemsPerPage;
   }
 
@@ -40,13 +40,18 @@ export class Pagination {
   }
 
   get numberOfPages() {
-    return this.data.length / this.itemsPerPage;
+    return (
+      (Array.isArray(this.data) ? this.data.length : this.data.size) /
+      this.itemsPerPage
+    );
   }
 
   *items() {
     const n = this.page - 1;
 
-    for (const item of this.data.slice(
+    const data = Array.isArray(this.data) ? this.data : [...this.data.values()];
+
+    for (const item of data.slice(
       n * this.itemsPerPage,
       (n + 1) * this.itemsPerPage
     )) {

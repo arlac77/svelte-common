@@ -26,7 +26,6 @@ test("Pagination set/get", t => {
   t.is(x, 2);
 });
 
-
 test("Pagination set out of range", t => {
   const pg = new Pagination([1, 2, 3, 4], 2);
 
@@ -35,4 +34,24 @@ test("Pagination set out of range", t => {
 
   pg.page = 77;
   t.is(pg.page, 1);
+});
+
+test("Pagination Array source", t => {
+  const pg = new Pagination([1, 2, 3, 4], 2);
+  t.is(pg.numberOfPages, 2);
+  t.deepEqual([...pg.items()], [1, 2]);
+});
+
+test("Pagination Map source", t => {
+  const pg = new Pagination(
+    new Map([
+      [0, 1],
+      [1, 2],
+      [2, 3],
+      [3, 4]
+    ]),
+    2
+  );
+  t.is(pg.numberOfPages, 2);
+  t.deepEqual([...pg.items()], [1, 2]);
 });
