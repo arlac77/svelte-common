@@ -79,7 +79,6 @@ export class Pagination {
           a.onclick = () => (this.page = targetPage);
         }
         items.push(a);
-        return a;
       };
 
       add("<<", 1, "First Page");
