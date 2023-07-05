@@ -4,7 +4,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "svelte": "./src/index.svelte",
+  "exports": {
+    ".": {
+      "svelte": "./src/index.svelte"
+    }
+  },
   "description": "common components and utils used in svelte apps",
   "keywords": [
     "component",
