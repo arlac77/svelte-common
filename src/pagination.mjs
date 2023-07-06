@@ -32,8 +32,6 @@ export class Pagination {
     this.#subscriptions.forEach(subscription => subscription(this));
   }
 
-  
-
   get itemsPerPage() {
     return this.#itemsPerPage;
   }
@@ -72,7 +70,7 @@ export class Pagination {
   get numberOfPages() {
     return Math.ceil(
       (Array.isArray(this.#data) ? this.#data.length : this.#data.size) /
-      this.itemsPerPage
+        this.itemsPerPage
     );
   }
 
@@ -81,7 +79,7 @@ export class Pagination {
   }
 
   *[Symbol.iterator]() {
-    const n = this.page - 1;  
+    const n = this.page - 1;
 
     const data = Array.isArray(this.data)
       ? this.#data
@@ -99,7 +97,7 @@ export class Pagination {
    * @deprecated
    */
   *items() {
-    const n = this.page - 1;  
+    const n = this.page - 1;
 
     const data = Array.isArray(this.data)
       ? this.#data
@@ -131,12 +129,17 @@ export class Pagination {
           a.setAttribute("aria-label", label);
         }
         a.innerText = innerText;
-        if (targetPage === this.page) {
+
+        if (targetPage < 1 || targetPage > this.numberOfPages) {
           a.disabled = true;
-          a.classList.add("active");
-          a.setAttribute("aria-current", "page");
         } else {
-          a.onclick = () => (this.page = targetPage);
+          if (targetPage === this.page) {
+            a.disabled = true;
+            a.classList.add("active");
+            a.setAttribute("aria-current", "page");
+          } else {
+            a.onclick = () => (this.page = targetPage);
+          }
         }
         items.push(a);
       };
