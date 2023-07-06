@@ -3,10 +3,12 @@ import { writable } from "svelte/store";
 import { Pagination } from "../src/pagination.mjs";
 
 test("Pagination set/get", t => {
-  const pg = new Pagination([1, 2, 3, 4], 2);
+  const pg = new Pagination([1, 2, 3, 4, 5], 2);
 
   t.is(pg.page, 1);
-  t.is(pg.numberOfPages, 2);
+  t.is(pg.itemsPerPage, 2);
+  t.is(pg.length, 2);
+  t.is(pg.numberOfPages, 3);
   t.deepEqual([...pg.items()], [1, 2]);
   let x;
 

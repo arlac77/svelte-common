@@ -10,7 +10,7 @@ export class Pagination {
   #itemsPerPage = 1;
   #page = 1;
 
-  constructor(data, itemsPerPage = 10) {
+  constructor(data, itemsPerPage = 20) {
     this.data = data;
     this.itemsPerPage = itemsPerPage;
   }
@@ -31,6 +31,8 @@ export class Pagination {
 
     this.#subscriptions.forEach(subscription => subscription(this));
   }
+
+  
 
   get itemsPerPage() {
     return this.#itemsPerPage;
@@ -68,14 +70,18 @@ export class Pagination {
   }
 
   get numberOfPages() {
-    return (
+    return Math.ceil(
       (Array.isArray(this.#data) ? this.#data.length : this.#data.size) /
       this.itemsPerPage
     );
   }
 
+  get length() {
+    return this.#itemsPerPage;
+  }
+
   *items() {
-    const n = this.page - 1;
+    const n = this.page - 1;  
 
     const data = Array.isArray(this.data)
       ? this.#data
