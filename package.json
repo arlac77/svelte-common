@@ -37,7 +37,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "svelte-command": "^1.1.43",
+    "svelte-command": "^1.1.44",
     "svelte-entitlement": "^1.2.56"
   },
   "devDependencies": {
@@ -49,13 +49,13 @@
     "c8": "^8.0.0",
     "documentation": "^14.0.2",
     "mf-styling": "^2.0.1",
-    "npm-pkgbuild": "^11.8.11",
+    "npm-pkgbuild": "^11.8.12",
     "semantic-release": "^21.0.7",
-    "stylelint": "^15.10.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^34.0.0",
     "svelte": "^4.0.4",
     "testcafe": "^3.0.1",
-    "vite": "^4.3.9"
+    "vite": "^4.4.0"
   },
   "optionalDependencies": {
     "mf-hosting-cloudflare": "^1.0.5",
