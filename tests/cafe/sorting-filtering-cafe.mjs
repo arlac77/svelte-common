@@ -52,9 +52,9 @@ test("sorting", async t => {
 });
 
 test("filtering", async t => {
-  const a0 = Selector("#a0");
-
   await t.typeText("#filter-a", "1");
+
+  const a0 = Selector("#a0");
   await t.expect(a0.innerText).eql("1.1");
 
   await t.typeText("#filter-a", "2", { replace: true });
