@@ -9,7 +9,7 @@ test("Pagination set/get", t => {
   t.is(pg.itemsPerPage, 2);
   t.is(pg.length, 2);
   t.is(pg.numberOfPages, 3);
-  t.deepEqual([...pg.items()], [1, 2]);
+  t.deepEqual([...pg], [1, 2]);
   let x;
 
   const unsubscribe = pg.subscribe(p => (x = p.page));
@@ -17,7 +17,7 @@ test("Pagination set/get", t => {
   t.is(x, 1);
 
   pg.page = 2;
-  t.deepEqual([...pg.items()], [3, 4]);
+  t.deepEqual([...pg], [3, 4]);
 
   t.is(x, 2);
 
@@ -41,7 +41,7 @@ test("Pagination set out of range", t => {
 test("Pagination Array source", t => {
   const pg = new Pagination([1, 2, 3, 4], 2);
   t.is(pg.numberOfPages, 2);
-  t.deepEqual([...pg.items()], [1, 2]);
+  t.deepEqual([...pg], [1, 2]);
 });
 
 test("Pagination Map source", t => {
@@ -55,7 +55,7 @@ test("Pagination Map source", t => {
     2
   );
   t.is(pg.numberOfPages, 2);
-  t.deepEqual([...pg.items()], [1, 2]);
+  t.deepEqual([...pg], [1, 2]);
 });
 
 test("Pagination subscription source", t => {
@@ -74,5 +74,5 @@ test("Pagination subscription source", t => {
   const pg = new Pagination(source, 2);
 
   t.is(pg.numberOfPages, 2);
-  t.deepEqual([...pg.items()], [1, 2]);
+  t.deepEqual([...pg], [1, 2]);
 });

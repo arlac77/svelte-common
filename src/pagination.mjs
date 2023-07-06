@@ -80,6 +80,24 @@ export class Pagination {
     return this.#itemsPerPage;
   }
 
+  *[Symbol.iterator]() {
+    const n = this.page - 1;  
+
+    const data = Array.isArray(this.data)
+      ? this.#data
+      : [...this.#data.values()];
+
+    for (const item of data.slice(
+      n * this.itemsPerPage,
+      (n + 1) * this.itemsPerPage
+    )) {
+      yield item;
+    }
+  }
+
+  /**
+   * @deprecated
+   */
   *items() {
     const n = this.page - 1;  
 

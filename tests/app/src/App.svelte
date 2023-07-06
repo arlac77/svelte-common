@@ -259,7 +259,7 @@
           <th id="e.f" use:sortable={sortBy}>col 5</th>
         </thead>
         <tbody>
-          {#each [...pg.items()]
+          {#each [...pg]
             .filter(filter($filterBy))
             .sort(sorter($sortBy)) as row, i (row.a)}
             <tr>
