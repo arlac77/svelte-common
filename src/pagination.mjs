@@ -5,16 +5,30 @@
 export class Pagination {
   #subscriptions = new Set();
   #data;
+  #unsubscribeData;
+
   #itemsPerPage = 1;
   #page = 1;
 
   constructor(data, itemsPerPage = 10) {
-    this.#data = data;
+    this.data = data;
     this.itemsPerPage = itemsPerPage;
   }
 
   set data(data) {
-    this.#data = data;
+    if (this.#unsubscribeData) {
+      this.#unsubscribeData();
+      this.#unsubscribeData = undefined;
+    }
+
+    if (data?.subscribe) {
+      this.#unsubscribeData = data.subscribe(newData => {
+        this.#data = newData;
+      });
+    } else {
+      this.#data = data;
+    }
+
     this.#subscriptions.forEach(subscription => subscription(this));
   }
 
@@ -63,7 +77,9 @@ export class Pagination {
   *items() {
     const n = this.page - 1;
 
-    const data = Array.isArray(this.data) ? this.#data : [...this.#data.values()];
+    const data = Array.isArray(this.data)
+      ? this.#data
+      : [...this.#data.values()];
 
     for (const item of data.slice(
       n * this.itemsPerPage,

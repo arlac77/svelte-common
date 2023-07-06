@@ -55,3 +55,22 @@ test("Pagination Map source", t => {
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg.items()], [1, 2]);
 });
+
+test("Pagination subscription source", t => {
+  const source = {
+    subscribe(s) {
+      const data = new Map([
+        [0, 1],
+        [1, 2],
+        [2, 3],
+        [3, 4]
+      ]);
+      s(data);
+      return () => {};
+    }
+  };
+  const pg = new Pagination(source, 2);
+
+  t.is(pg.numberOfPages, 2);
+  t.deepEqual([...pg.items()], [1, 2]);
+});
