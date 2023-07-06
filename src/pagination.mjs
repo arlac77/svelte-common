@@ -133,6 +133,7 @@ export class Pagination {
         a.innerText = innerText;
         if (targetPage === this.page) {
           a.disabled = true;
+          a.classList.add("active");
           a.setAttribute("aria-current", "page");
         } else {
           a.onclick = () => (this.page = targetPage);
@@ -167,4 +168,6 @@ export class Pagination {
 
 export function pageNavigation(elem, pg) {
   elem.replaceChildren(pg.pageNavigationElement);
+
+  // TODO destroy
 }
