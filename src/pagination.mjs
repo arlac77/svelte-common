@@ -94,24 +94,6 @@ export class Pagination {
   }
 
   /**
-   * @deprecated
-   */
-  *items() {
-    const n = this.page - 1;
-
-    const data = Array.isArray(this.data)
-      ? this.#data
-      : [...this.#data.values()];
-
-    for (const item of data.slice(
-      n * this.itemsPerPage,
-      (n + 1) * this.itemsPerPage
-    )) {
-      yield item;
-    }
-  }
-
-  /**
    * @see @link https://getbootstrap.com/docs/4.0/components/pagination
    * @see @link https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination
    */
@@ -121,6 +103,7 @@ export class Pagination {
 
     this.subscribe(pg => {
       const items = [];
+      const np = this.numberOfPages;
 
       const add = (innerText, targetPage, label) => {
         const a = document.createElement("a");
@@ -130,7 +113,7 @@ export class Pagination {
         }
         a.innerText = innerText;
 
-        if (targetPage < 1 || targetPage > this.numberOfPages) {
+        if (targetPage < 1 || targetPage > np) {
           a.disabled = true;
         } else {
           if (targetPage === this.page) {
@@ -147,20 +130,12 @@ export class Pagination {
       add("<<", 1, "First Page");
       add("<", this.page - 1, "Previous Page");
 
-      for (let n = 1; n < this.numberOfPages; n++) {
-        if (
-          this.numberOfPages > 10 &&
-          (n <= 3 ||
-            n > this.numberOfPages - 3 ||
-            n % 10 === 0 ||
-            (n < this.page + 3 && n > this.page - 3))
-        ) {
-          add(String(n), n);
-        }
+      for (const n of navigationItems(np, this.page)) {
+        add(String(n), n);
       }
 
       add(">", this.page + 1, "Next Page");
-      add(">>", this.numberOfPages, "Last Page");
+      add(">>", np, "Last Page");
 
       nav.replaceChildren(...items);
     });
@@ -173,4 +148,36 @@ export function pageNavigation(elem, pg) {
   elem.replaceChildren(pg.pageNavigationElement);
 
   // TODO destroy
+}
+
+/**
+ * Generade actual sequence of page numbers to navigate to
+ * @param {number} nunmberOfPages
+ * @param {number} currentPage
+ * @return {Iterator<number>}
+ */
+export function* navigationItems(nunmberOfPages, currentPage) {
+  const pageJumps = [
+    { maxPages: 10, side: 1, edge: 2 },
+    { maxPages: 100, side: 1, edge: 2, step: 10 },
+    { maxPages: 1000, side: 1, edge: 2, step: 100 },
+    { maxPages: 10000000, side: 1, edge: 2, step: 10000 }
+  ];
+
+  for (const j of pageJumps) {
+    if (nunmberOfPages <= j.maxPages) {
+      for (let n = 1; n <= nunmberOfPages; n++) {
+        if (
+          n <= j.edge ||
+          n > nunmberOfPages - j.edge ||
+          n % j.step === 0 ||
+          (n < currentPage + j.side && n > currentPage - j.side)
+        ) {
+          yield n;
+        }
+      }    
+      break;
+    }
+  }
+
 }

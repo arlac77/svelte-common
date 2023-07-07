@@ -1,6 +1,6 @@
 import test from "ava";
 import { writable } from "svelte/store";
-import { Pagination } from "../src/pagination.mjs";
+import { Pagination, navigationItems } from "../src/pagination.mjs";
 
 test("Pagination set/get", t => {
   const pg = new Pagination([1, 2, 3, 4, 5], 2);
@@ -76,3 +76,14 @@ test("Pagination subscription source", t => {
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg], [1, 2]);
 });
+
+function nit(t, np, cp, expected) {
+  t.deepEqual([...navigationItems(np, cp)], expected);
+}
+nit.title = (providedTitle = "navigationItems", np, cp, expected) =>
+  `${providedTitle} ${np} ${cp} [${expected}]`.trim();
+
+test(nit, 1, 1, [1]);
+test(nit, 10, 1, [1, 2, 9, 10]);
+test(nit, 10, 5, [1, 2, 5, 9, 10]);
+test(nit, 11, 1, [1, 2, 10, 11]);
