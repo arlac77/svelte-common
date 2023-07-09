@@ -1,18 +1,23 @@
 /**
  * Pagination support store.
  * Pages go from 1 ... numberOfPages
+ * @param {Map|Array|Store} data
+ * @param {Object} options
+ * @param {number} [options.itemsPerPage]
  */
 export class Pagination {
   #subscriptions = new Set();
   #data;
   #unsubscribeData;
 
-  #itemsPerPage = 1;
+  #itemsPerPage = 20;
   #page = 1;
 
-  constructor(data, itemsPerPage = 20) {
+  constructor(data, options) {
     this.data = data;
-    this.itemsPerPage = itemsPerPage;
+    if (options.itemsPerPage) {
+      this.itemsPerPage = options.itemsPerPage;
+    }
   }
 
   set data(data) {
@@ -158,10 +163,13 @@ export function pageNavigation(elem, pg) {
  */
 export function* navigationItems(nunmberOfPages, currentPage) {
   const pageJumps = [
-    { maxPages: 10, side: 1, edge: 2 },
-    { maxPages: 100, side: 1, edge: 2, step: 10 },
-    { maxPages: 1000, side: 1, edge: 2, step: 100 },
-    { maxPages: 10000000, side: 1, edge: 2, step: 10000 }
+    { maxPages: 10,       side: 1, edge: 2 },
+    { maxPages: 100,      side: 1, edge: 2, step: 10 },
+    { maxPages: 1000,     side: 1, edge: 2, step: 100 },
+    { maxPages: 10000,    side: 1, edge: 2, step: 1000 },
+    { maxPages: 100000,   side: 1, edge: 2, step: 10000 },
+    { maxPages: 1000000,  side: 1, edge: 2, step: 100000 },
+    { maxPages: 10000000, side: 1, edge: 2, step: 1000000 }
   ];
 
   for (const j of pageJumps) {
@@ -175,9 +183,8 @@ export function* navigationItems(nunmberOfPages, currentPage) {
         ) {
           yield n;
         }
-      }    
+      }
       break;
     }
   }
-
 }

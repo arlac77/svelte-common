@@ -3,7 +3,7 @@ import { writable } from "svelte/store";
 import { Pagination, navigationItems } from "../src/pagination.mjs";
 
 test("Pagination set/get", t => {
-  const pg = new Pagination([1, 2, 3, 4, 5], 2);
+  const pg = new Pagination([1, 2, 3, 4, 5], { itemsPerPage: 2 });
 
   t.is(pg.page, 1);
   t.is(pg.itemsPerPage, 2);
@@ -29,7 +29,7 @@ test("Pagination set/get", t => {
 });
 
 test("Pagination set out of range", t => {
-  const pg = new Pagination([1, 2, 3, 4], 2);
+  const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2 });
 
   pg.page = 0;
   t.is(pg.page, 1);
@@ -39,7 +39,7 @@ test("Pagination set out of range", t => {
 });
 
 test("Pagination Array source", t => {
-  const pg = new Pagination([1, 2, 3, 4], 2);
+  const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2 });
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg], [1, 2]);
 });
@@ -52,7 +52,7 @@ test("Pagination Map source", t => {
       [2, 3],
       [3, 4]
     ]),
-    2
+    { itemsPerPage: 2 }
   );
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg], [1, 2]);
@@ -71,7 +71,7 @@ test("Pagination subscription source", t => {
       return () => {};
     }
   };
-  const pg = new Pagination(source, 2);
+  const pg = new Pagination(source, { itemsPerPage: 2 });
 
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg], [1, 2]);

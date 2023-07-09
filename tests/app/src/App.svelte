@@ -86,8 +86,6 @@
     }
   ];
 
-  const pg = new Pagination(entries, 8);
-
   async function logout() {
     alert("logout");
   }
@@ -161,6 +159,8 @@
 
   const sortBy = writable({ a: SORT_ASCENDING });
   const filterBy = writable({ a: "" });
+
+  const pg = new Pagination(entries, { itemsPerPage: 8, sortBy, filterBy });
 </script>
 
 <TopNav offset={42}>
