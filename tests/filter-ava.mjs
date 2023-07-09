@@ -91,6 +91,7 @@ test(ft, new Date(0), new Date(0), true);
 test(ft, true, true, true);
 test(ft, false, false, true);
 test(ft, false, true, false);
+test(ft, true, false, false);
 
 function fopt(t, l, m) {
   let key = "key";
