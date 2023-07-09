@@ -145,10 +145,10 @@ export class Pagination {
         a.innerText = innerText;
 
         if (targetPage < 1 || targetPage > np) {
-          a.disabled = true;
+          a.ariaDisabled = "true";
         } else {
           if (targetPage === this.page) {
-            a.disabled = true;
+            a.ariaDisabled = "true";
             a.classList.add("active");
             a.setAttribute("aria-current", "page");
           } else {
