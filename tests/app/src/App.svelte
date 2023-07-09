@@ -160,7 +160,7 @@
   const sortBy = writable({ a: SORT_ASCENDING });
   const filterBy = writable({ a: "" });
 
-  const pg = new Pagination(entries, { itemsPerPage: 8, sortBy, filterBy });
+  const pg = new Pagination(entries, { itemsPerPage: 8 });
 </script>
 
 <TopNav offset={42}>

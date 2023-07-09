@@ -1,3 +1,5 @@
+import { filter } from "./filter.mjs";
+
 /**
  * Pagination support store.
  * Pages go from 1 ... numberOfPages
@@ -9,15 +11,26 @@ export class Pagination {
   #subscriptions = new Set();
   #data;
   #unsubscribeData;
-
+  #filter;
   #itemsPerPage = 20;
   #page = 1;
 
   constructor(data, options) {
     this.data = data;
-    if (options?.itemsPerPage) {
-      this.itemsPerPage = options.itemsPerPage;
-    }
+
+    Object.assign(this, options);
+  }
+
+  set filter(filter)
+  {
+    this.#filter = filter;
+
+    this.#subscriptions.forEach(subscription => subscription(this));
+  }
+
+  get filter()
+  {
+    return this.#filter;
   }
 
   set data(data) {
@@ -73,10 +86,20 @@ export class Pagination {
   }
 
   get numberOfPages() {
-    return Math.ceil(
-      (Array.isArray(this.#data) ? this.#data.length : this.#data.size) /
-        this.itemsPerPage
-    );
+    let n;
+
+    if(this.filter) {
+      let data = Array.isArray(this.data)
+      ? this.#data
+      : [...this.#data.values()];
+      data = data.filter(this.filter);
+      n = data.length;
+    }
+    else {
+      n = Array.isArray(this.#data) ? this.#data.length : this.#data.size;
+    }
+
+    return Math.ceil(n / this.itemsPerPage);
   }
 
   get length() {
@@ -86,9 +109,13 @@ export class Pagination {
   *[Symbol.iterator]() {
     const n = this.page - 1;
 
-    const data = Array.isArray(this.data)
+    let data = Array.isArray(this.data)
       ? this.#data
       : [...this.#data.values()];
+
+    if(this.filter) {
+      data = data.filter(this.filter);
+    }
 
     for (const item of data.slice(
       n * this.itemsPerPage,

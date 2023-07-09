@@ -53,6 +53,23 @@ test("Pagination Array source", t => {
   t.deepEqual([...pg], [1, 2]);
 });
 
+test("Pagination Array source filter", t => {
+  const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2, filter: (i) => i >= 3});
+  let x;
+
+  t.is(pg.numberOfPages, 1);
+  t.deepEqual([...pg], [3, 4]);
+
+  pg.filter = undefined;
+
+  const unsubscribe = pg.subscribe(p => (x = p.numberOfPages));
+  t.is(x, 2);
+
+  t.is(pg.numberOfPages, 2);
+
+  unsubscribe();
+});
+
 test("Pagination Map source", t => {
   const pg = new Pagination(
     new Map([
