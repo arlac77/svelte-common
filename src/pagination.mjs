@@ -1,4 +1,3 @@
-import { filter } from "./filter.mjs";
 
 /**
  * Pagination support store.
