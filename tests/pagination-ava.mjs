@@ -2,6 +2,15 @@ import test from "ava";
 import { writable } from "svelte/store";
 import { Pagination, navigationItems } from "../src/pagination.mjs";
 
+test("Pagination wizjout optionsr", t => {
+  const pg = new Pagination([1, 2, 3, 4, 5]);
+  t.is(pg.page, 1);
+  t.is(pg.itemsPerPage, 20);
+  t.is(pg.length, 20);
+  t.is(pg.numberOfPages, 1);
+  t.deepEqual([...pg], [1, 2, 3, 4, 5]);
+});
+
 test("Pagination set/get", t => {
   const pg = new Pagination([1, 2, 3, 4, 5], { itemsPerPage: 2 });
 

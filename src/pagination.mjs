@@ -15,7 +15,7 @@ export class Pagination {
 
   constructor(data, options) {
     this.data = data;
-    if (options.itemsPerPage) {
+    if (options?.itemsPerPage) {
       this.itemsPerPage = options.itemsPerPage;
     }
   }
