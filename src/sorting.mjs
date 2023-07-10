@@ -83,7 +83,7 @@ export function sortable(th, store) {
 export function sorter(sortBy, getters) {
   if (sortBy) {
     for (const [key, value] of Object.entries(sortBy)) {
-      const getter = getters && getters[key] || getAttribute;
+      const getter = getters?.[key] || getAttribute;
 
       let rev = 1;
 
