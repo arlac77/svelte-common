@@ -11,6 +11,7 @@ export class Pagination {
   #data;
   #unsubscribeData;
   #filter;
+  #sorter;
   #itemsPerPage = 20;
   #page = 1;
 
@@ -30,6 +31,18 @@ export class Pagination {
   get filter()
   {
     return this.#filter;
+  }
+
+    set sorter(sorter)
+  {
+    this.#sorter = sorter;
+
+    this.#subscriptions.forEach(subscription => subscription(this));
+  }
+
+  get sorter()
+  {
+    return this.#sorter;
   }
 
   set data(data) {
@@ -114,6 +127,10 @@ export class Pagination {
 
     if(this.filter) {
       data = data.filter(this.filter);
+    }
+
+    if(this.sorter) {
+      data = data.sort(this.sorter);
     }
 
     for (const item of data.slice(

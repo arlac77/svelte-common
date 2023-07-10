@@ -161,6 +161,9 @@
   const filterBy = writable({ a: "" });
 
   const pg = new Pagination(entries, { itemsPerPage: 8 });
+
+  $: pg.filter = filter($filterBy);
+  $: pg.sorter = sorter($sortBy);
 </script>
 
 <TopNav offset={42}>
@@ -259,9 +262,7 @@
           <th id="e.f" use:sortable={sortBy}>col 5</th>
         </thead>
         <tbody>
-          {#each [...pg]
-            .filter(filter($filterBy))
-            .sort(sorter($sortBy)) as row, i (row.a)}
+          {#each [...pg] as row, i (row.a)}
             <tr>
               <td id="a{i}">{row.a}</td>
               <td id="b{i}"><DateTime id="datetime" date={row.b} /></td>
