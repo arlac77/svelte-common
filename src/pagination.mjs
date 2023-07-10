@@ -1,10 +1,11 @@
-
 /**
  * Pagination support store.
  * Pages go from 1 ... numberOfPages
  * @param {Map|Array|Store} data
  * @param {Object} options
  * @param {number} [options.itemsPerPage]
+ * @param {Function} [options.sorter]
+ * @param {Function} [options.filter]
  */
 export class Pagination {
   #subscriptions = new Set();
@@ -21,27 +22,23 @@ export class Pagination {
     Object.assign(this, options);
   }
 
-  set filter(filter)
-  {
+  set filter(filter) {
     this.#filter = filter;
 
     this.#subscriptions.forEach(subscription => subscription(this));
   }
 
-  get filter()
-  {
+  get filter() {
     return this.#filter;
   }
 
-    set sorter(sorter)
-  {
+  set sorter(sorter) {
     this.#sorter = sorter;
 
     this.#subscriptions.forEach(subscription => subscription(this));
   }
 
-  get sorter()
-  {
+  get sorter() {
     return this.#sorter;
   }
 
@@ -100,14 +97,13 @@ export class Pagination {
   get numberOfPages() {
     let n;
 
-    if(this.filter) {
+    if (this.filter) {
       let data = Array.isArray(this.data)
-      ? this.#data
-      : [...this.#data.values()];
+        ? this.#data
+        : [...this.#data.values()];
       data = data.filter(this.filter);
       n = data.length;
-    }
-    else {
+    } else {
       n = Array.isArray(this.#data) ? this.#data.length : this.#data.size;
     }
 
@@ -119,19 +115,17 @@ export class Pagination {
   }
 
   *[Symbol.iterator]() {
-    const n = this.page - 1;
+    let data = Array.isArray(this.data) ? this.#data : [...this.#data.values()];
 
-    let data = Array.isArray(this.data)
-      ? this.#data
-      : [...this.#data.values()];
-
-    if(this.filter) {
+    if (this.filter) {
       data = data.filter(this.filter);
     }
 
-    if(this.sorter) {
+    if (this.sorter) {
       data = data.sort(this.sorter);
     }
+
+    const n = this.page - 1;
 
     for (const item of data.slice(
       n * this.itemsPerPage,
@@ -169,7 +163,10 @@ export class Pagination {
             a.classList.add("active");
             a.setAttribute("aria-current", "page");
           } else {
-            a.onclick = () => (this.page = targetPage);
+            a.onclick = e => {
+              e.preventDefault();
+              this.page = targetPage;
+            };
           }
         }
         items.push(a);
@@ -206,12 +203,12 @@ export function pageNavigation(elem, pg) {
  */
 export function* navigationItems(nunmberOfPages, currentPage) {
   const pageJumps = [
-    { maxPages: 10,       side: 1, edge: 2 },
-    { maxPages: 100,      side: 1, edge: 2, step: 10 },
-    { maxPages: 1000,     side: 1, edge: 2, step: 100 },
-    { maxPages: 10000,    side: 1, edge: 2, step: 1000 },
-    { maxPages: 100000,   side: 1, edge: 2, step: 10000 },
-    { maxPages: 1000000,  side: 1, edge: 2, step: 100000 },
+    { maxPages: 10, side: 1, edge: 2 },
+    { maxPages: 100, side: 1, edge: 2, step: 10 },
+    { maxPages: 1000, side: 1, edge: 2, step: 100 },
+    { maxPages: 10000, side: 1, edge: 2, step: 1000 },
+    { maxPages: 100000, side: 1, edge: 2, step: 10000 },
+    { maxPages: 1000000, side: 1, edge: 2, step: 100000 },
     { maxPages: 10000000, side: 1, edge: 2, step: 1000000 }
   ];
 
