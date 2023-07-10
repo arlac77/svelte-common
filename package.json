@@ -7,7 +7,7 @@
   "exports": {
     ".": {
       "svelte": "./src/index.svelte",
-      "./src/common.css" : "./src/common.css"
+      "common.css" : "./src/common.css"
     }
   },
   "description": "common components and utils used in svelte apps",
