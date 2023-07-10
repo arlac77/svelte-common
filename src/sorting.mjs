@@ -30,7 +30,7 @@ export function toggleOrderBy(orderBy) {
  * @param {WritableStore} store keep in sync with sorting properties
  */
 export function sortable(th, store) {
-  const storeSubscription = store.subscribe(orderBy =>
+  const unsubscribe = store.subscribe(orderBy =>
     th.setAttribute(ARIA_SORT, orderBy[th.id] || SORT_NONE)
   );
 
@@ -67,7 +67,7 @@ export function sortable(th, store) {
 
   return {
     destroy() {
-      storeSubscription();
+      unsubscribe();
     }
   };
 }
