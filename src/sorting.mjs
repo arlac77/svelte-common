@@ -50,11 +50,9 @@ export function sortable(th, store) {
       let sort = peer.getAttribute(ARIA_SORT);
 
       if (sort) {
-        if (peer !== th) {
-          if (sort !== SORT_NONE) {
-            sort = SORT_NONE;
-            peer.setAttribute(ARIA_SORT, sort);
-          }
+        if (peer !== th && sort !== SORT_NONE) {
+          sort = SORT_NONE;
+          peer.setAttribute(ARIA_SORT, sort);
         }
 
         if (sort !== SORT_NONE) {
