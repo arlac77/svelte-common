@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "svelte-command": "^1.1.44",
-    "svelte-entitlement": "^1.2.58"
+    "svelte-entitlement": "^1.2.59"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^10.0.1",
