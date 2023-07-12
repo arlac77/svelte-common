@@ -15,7 +15,10 @@
     "component",
     "svelte",
     "vite",
-    "web"
+    "web",
+    "sorting",
+    "filtering",
+    "paginator"
   ],
   "contributors": [
     {
