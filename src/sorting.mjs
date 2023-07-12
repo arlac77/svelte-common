@@ -94,14 +94,10 @@ export function sorter(sortBy, getters) {
             let av = getter(a, key);
             let bv = getter(b, key);
 
-            if (av === undefined) {
-              return bv === undefined ? 0 : -rev;
-            }
-            if (bv === undefined) {
-              return rev;
-            }
-
             switch (typeof av) {
+              case "undefined":
+                return bv === undefined ? 0 : -rev;
+
               case "string":
                 switch (typeof bv) {
                   case "number":
@@ -111,6 +107,9 @@ export function sorter(sortBy, getters) {
                 }
             }
 
+            if (bv === undefined) {
+              return rev;
+            }
             if (av instanceof Date) {
               av = av.getTime();
             }
