@@ -163,6 +163,7 @@ export class Pagination {
 
         if (targetPage < 1 || targetPage > np) {
           a.ariaDisabled = "true";
+          a.tabIndex=-1;
         } else {
           if (targetPage === this.page) {
             a.ariaDisabled = "true";
