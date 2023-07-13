@@ -73,9 +73,15 @@ export class Pagination {
    * @param {number} n
    */
   set page(n) {
-    if (this.#page !== n && n >= 1 && n <= this.numberOfPages) {
-      this.#page = n;
-      this.#subscriptions.forEach(subscription => subscription(this));
+    if(n < 0) {
+      n = this.numberOfPages + n + 1;
+    }
+
+    if (this.#page !== n) {
+      if (n >= 1 && n <= this.numberOfPages) {
+        this.#page = n;
+        this.#subscriptions.forEach(subscription => subscription(this));
+      }
     }
   }
 
@@ -165,6 +171,7 @@ export class Pagination {
           } else {
             a.onclick = e => {
               e.preventDefault();
+              e.stopPropagation();
               this.page = targetPage;
             };
           }

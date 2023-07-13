@@ -1,5 +1,4 @@
 import test from "ava";
-import { writable } from "svelte/store";
 import { Pagination, navigationItems } from "../src/pagination.mjs";
 
 test("Pagination wizjout optionsr", t => {
@@ -44,6 +43,16 @@ test("Pagination set out of range", t => {
   t.is(pg.page, 1);
 
   pg.page = 77;
+  t.is(pg.page, 1);
+});
+
+test("Pagination set negative", t => {
+  const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2 });
+
+  pg.page = -1;
+  t.is(pg.page, 2);
+
+  pg.page = -2;
   t.is(pg.page, 1);
 });
 
