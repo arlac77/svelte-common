@@ -162,12 +162,12 @@ export class Pagination {
         a.innerText = innerText;
 
         if (targetPage < 1 || targetPage > np) {
-          a.ariaDisabled = "true";
+          a.setAttribute("aria-disabled", "true");
           a.tabIndex=-1;
         } else {
           if (targetPage === this.page) {
-            a.ariaDisabled = "true";
             a.classList.add("active");
+            a.setAttribute("aria-disabled", "true");
             a.setAttribute("aria-current", "page");
           } else {
             a.onclick = e => {
