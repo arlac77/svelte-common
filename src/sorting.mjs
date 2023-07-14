@@ -110,11 +110,12 @@ export function sorter(sortBy, getters) {
             if (bv === undefined) {
               return rev;
             }
-            if (av instanceof Date) {
-              av = av.getTime();
+
+            if(av[Symbol.toPrimitive]) {
+              av = av[Symbol.toPrimitive]('number');
             }
-            if (bv instanceof Date) {
-              bv = bv.getTime();
+            if(bv[Symbol.toPrimitive]) {
+              bv = bv[Symbol.toPrimitive]('number');
             }
 
             return av > bv ? rev : av == bv ? 0 : -rev;
