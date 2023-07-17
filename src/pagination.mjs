@@ -149,6 +149,16 @@ export class Pagination {
     const nav = document.createElement("nav");
     nav.setAttribute("aria-label", "pagination");
 
+    // TODO attach to nav ?
+    window.onkeyup = event => {
+      switch(event.key) {
+        case 'ArrowLeft': this.page = this.page - 1;
+        break;
+        case 'ArrowRight': this.page = this.page + 1;
+        break;
+      }
+    };
+
     this.subscribe(pg => {
       const items = [];
       const np = this.numberOfPages;
