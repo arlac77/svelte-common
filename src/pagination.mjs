@@ -147,10 +147,10 @@ export class Pagination {
    */
   get pageNavigationElement() {
     const nav = document.createElement("nav");
+    nav.setAttribute("tabindex", "0");
     nav.setAttribute("aria-label", "pagination");
 
-    // TODO attach to nav ?
-    window.onkeyup = event => {
+    nav.onkeyup = event => {
       switch(event.key) {
         case 'ArrowLeft': this.page = this.page - 1;
         break;
