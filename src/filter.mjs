@@ -15,21 +15,6 @@ function collectionOp(value, against, op) {
 }
 
 function allOp(value, against, op) {
-  switch (typeof against) {
-    case "object":
-      if (against instanceof Date) {
-        switch (typeof value) {
-          case "object":
-            if (value instanceof Date) {
-              return dateOp(value, against, op);
-            }
-            break;
-          case "string":
-            return dateOp(new Date(value), against, op);
-        }
-      }
-  }
-
   switch (typeof value) {
     case "object":
       if (value instanceof Date) {
@@ -54,6 +39,10 @@ function allOp(value, against, op) {
         case "number":
           return numberOp(value, against, op);
         case "object":
+          if (against instanceof Date) {
+            return dateOp(new Date(value), against, op);
+          }
+    
           if (against instanceof RegExp) {
             return against.test(value);
           }
@@ -65,7 +54,6 @@ function allOp(value, against, op) {
       if (against instanceof RegExp) {
         return against.test(value);
       }
-
       return numberOp(value, against, op);
     case "boolean":
       return value == against;
