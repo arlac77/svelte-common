@@ -78,20 +78,29 @@ test(ft, 4n, 5n, false);
 test(ft, /4/, 5n, false);
 test(ft, 6n, 6, true);
 test(ft, 7, 7n, true);
+test(ft, 8, undefined, false);
 
 test(ft, new Date(0), "xyz", false);
 test(ft, new Date(0), 0, false);
 test(ft, new Date(0), true, false);
+test(ft, new Date(0), undefined, false);
 test(ft, 47, new Date(0), false);
 test(ft, false, new Date(0), false);
 test(ft, /1970/, new Date(0), true);
 test(ft, "1970", new Date(0), true);
 test(ft, new Date(0), new Date(0), true);
 
+/*
+test.skip(ft, "", new Set(), false);
+test.only(ft, "", [], false);
+*/
+
 test(ft, true, true, true);
 test(ft, false, false, true);
 test(ft, false, true, false);
+test(ft, false, undefined, false);
 test(ft, true, false, false);
+test(ft, true, undefined, false);
 
 function fopt(t, l, m) {
   let key = "key";

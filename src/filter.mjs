@@ -4,6 +4,17 @@ function dateOp(a, b, op) {
   return numberOp(a.getTime(), b.getTime(), op);
 }
 
+function collectionOp(a, b, op) {
+  for (const v of a) {
+    const r = numberOp(v, b, op);
+    if (r) {
+      return r;
+    }
+  }
+
+  return false;
+}
+
 function numberOp(a, b, op) {
   switch (op) {
     case "!=":
@@ -33,8 +44,6 @@ export function filter(filterBy, getters) {
       return a => {
         const [av, op] = getAttributeAndOperator(a, key, getters);
 
-        // console.log("KEY", key, op, value, av);
-
         switch (typeof value) {
           case "bigint":
           case "number":
@@ -63,6 +72,10 @@ export function filter(filterBy, getters) {
 
         switch (typeof av) {
           case "object":
+            if (Array.isArray(av) || av instanceof Set) {
+              return collectionOp(av, value, op);
+            }
+
             return av.toString().match(value);
           case "string":
             return av.match(value);
