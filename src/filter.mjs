@@ -1,34 +1,80 @@
 import { getAttributeAndOperator } from "./attribute.mjs";
 
-function dateOp(a, b, op) {
-  return numberOp(a.getTime(), b.getTime(), op);
+function dateOp(value, against, op) {
+  return numberOp(value.getTime(), against.getTime(), op);
 }
 
-function collectionOp(a, b, op) {
-  for (const v of a) {
-    const r = numberOp(v, b, op);
-    if (r) {
-      return r;
+function collectionOp(value, against, op) {
+  for (const v of value) {
+    if (allOp(v, against, op)) {
+      return true;
     }
+    return false;
   }
 
   return false;
 }
 
-function numberOp(a, b, op) {
+function allOp(value, against, op) {
+  switch (typeof against) {
+    case "bigint":
+    case "number":
+      return numberOp(value, against, op);
+    case "string":
+      if (value instanceof Date) {
+        return dateOp(value, new Date(against), op);
+      }
+      break;
+    case "object":
+      if (against instanceof RegExp) {
+        return against.test(value);
+      }
+      if (against instanceof Date) {
+        switch (typeof value) {
+          case "object":
+            if (value instanceof Date) {
+              return dateOp(value, against, op);
+            }
+            break;
+          case "string":
+            return dateOp(new Date(value), against, op);
+        }
+      }
+  }
+
+  switch (typeof value) {
+    case "object":
+      if (Array.isArray(value) || value instanceof Set) {
+        return collectionOp(value, against, op);
+      }
+
+      return value.toString().match(against);
+    case "string":
+      return value.match(against);
+    case "bigint":
+    case "number":
+      return numberOp(value, against, op);
+    case "boolean":
+      return value == against;
+  }
+
+  return false;
+}
+
+function numberOp(value, against, op) {
   switch (op) {
     case "!=":
-      return a != b;
+      return value != against;
     case "=":
-      return a == b;
+      return value == against;
     case ">":
-      return a > b;
+      return value > against;
     case "<":
-      return a < b;
+      return value < against;
     case ">=":
-      return a >= b;
+      return value >= against;
     case "<=":
-      return a <= b;
+      return value <= against;
   }
 }
 
@@ -40,52 +86,10 @@ function numberOp(a, b, op) {
  */
 export function filter(filterBy, getters) {
   if (filterBy) {
-    const filters = Object.entries(filterBy).map(([key, value]) => {
+    const filters = Object.entries(filterBy).map(([key, against]) => {
       return a => {
-        const [av, op] = getAttributeAndOperator(a, key, getters);
-
-        switch (typeof value) {
-          case "bigint":
-          case "number":
-            return numberOp(av, value, op);
-          case "string":
-            if (av instanceof Date) {
-              return dateOp(av, new Date(value), op);
-            }
-            break;
-          case "object":
-            if (value instanceof RegExp) {
-              return value.test(av);
-            }
-            if (value instanceof Date) {
-              switch (typeof av) {
-                case "object":
-                  if (av instanceof Date) {
-                    return dateOp(av, value, op);
-                  }
-                  break;
-                case "string":
-                  return dateOp(new Date(av), value, op);
-              }
-            }
-        }
-
-        switch (typeof av) {
-          case "object":
-            if (Array.isArray(av) || av instanceof Set) {
-              return collectionOp(av, value, op);
-            }
-
-            return av.toString().match(value);
-          case "string":
-            return av.match(value);
-          case "bigint":
-          case "number":
-            return numberOp(av, value, op);
-          case "boolean":
-            return value == av;
-        }
-        return false;
+        const [value, op] = getAttributeAndOperator(a, key, getters);
+        return allOp(value, against, op);
       };
     });
 

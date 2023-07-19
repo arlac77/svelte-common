@@ -59,10 +59,12 @@ ft.title = (providedTitle = "filter", fv, pv, expected) =>
   `${providedTitle} ${fv} ${pv} ${expected}`.trim();
 
 test(ft, /a/, "abc", true);
+test(ft, /a/, undefined, false);
 test(ft, /a/, "b", false);
 test(ft, "a", "abc", true);
 test(ft, "a", "b", false);
 test(ft, "a", 1, false);
+test(ft, "a", undefined, false);
 test(ft, 1, 1, true);
 test(ft, 1.234, 1.234, true);
 test(ft, /1/, 1, true);
@@ -91,8 +93,8 @@ test(ft, "1970", new Date(0), true);
 test(ft, new Date(0), new Date(0), true);
 
 /*
-test.skip(ft, "", new Set(), false);
 test.only(ft, "", [], false);
+test.skip(ft, "", new Set(), false);
 */
 
 test(ft, true, true, true);
@@ -110,7 +112,7 @@ function fopt(t, l, m) {
   t.truthy(filter({ [key + "<"]: m })({ [key]: l }), `${m} < ${l}`);
   t.truthy(filter({ [key + ">"]: l })({ [key]: m }), `${l} > ${m}`);
   t.truthy(filter({ [key + ">="]: l })({ [key]: m }), `${l} >= ${m}`);
-//  t.truthy(filter({ [key + "<="]: l })({ [key]: m }), `${m} <= ${l}`);
+  //  t.truthy(filter({ [key + "<="]: l })({ [key]: m }), `${m} <= ${l}`);
 }
 
 fopt.title = (providedTitle = "filter op", l, m) =>
