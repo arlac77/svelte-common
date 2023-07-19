@@ -38,9 +38,13 @@ test("filter property path", t => {
   t.falsy(f({ a: { b: 0 } }));
 });
 
-test("filter property path []", t => {
+test("filter property path [] positive", t => {
   const f = filter({ "a[2] .c": 1 });
   t.truthy(f({ a: [0, 1, { c: 1 }] }));
+});
+
+test("filter property path [] negative", t => {
+  const f = filter({ "a[2] .c": 1 });
   t.falsy(f({ a: [0, 1] }));
 });
 
@@ -92,10 +96,17 @@ test(ft, /1970/, new Date(0), true);
 test(ft, "1970", new Date(0), true);
 test(ft, new Date(0), new Date(0), true);
 
-/*
-test.only(ft, "", [], false);
-test.skip(ft, "", new Set(), false);
-*/
+test(ft, 1, [], false);
+test(ft, 1, [1, 2, 3], true);
+
+test(ft, 2n, [], false);
+test(ft, 2n, [1, 2, 3], true);
+test(ft, "a", [], false);
+test(ft, "a", ["a", "b", "c"], true);
+test(ft, 1, new Set(), false);
+test(ft, 2n, new Set(), false);
+test(ft, "a", new Set(), false);
+test(ft, "a", new Set(["a", "b", "c"]), true);
 
 test(ft, true, true, true);
 test(ft, false, false, true);

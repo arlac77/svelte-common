@@ -210,6 +210,8 @@ export function getAttributeAndOperator(object, expression, getters = {}) {
         } else {
           if (object[token] !== undefined) {
             object = object[token];
+          } else {
+            return [undefined, op];
           }
         }
     }
