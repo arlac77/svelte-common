@@ -17,6 +17,27 @@ function collectionOp(value, against, op) {
 function allOp(value, against, op) {
   switch (typeof value) {
     case "object":
+      switch (typeof against) {
+        case "object":
+          if (value[Symbol.toPrimitive] && against[Symbol.toPrimitive]) {
+            return numberOp(
+              value[Symbol.toPrimitive]("number"),
+              against[Symbol.toPrimitive]("number"),
+              op
+            );
+          }
+          break;
+
+        case "number":
+          if (value[Symbol.toPrimitive]) {
+            return allOp(
+              value[Symbol.toPrimitive](typeof against),
+              against,
+              op
+            );
+          }
+      }
+
       if (value instanceof Date) {
         switch (typeof against) {
           case "string":
@@ -42,7 +63,7 @@ function allOp(value, against, op) {
           if (against instanceof Date) {
             return dateOp(new Date(value), against, op);
           }
-    
+
           if (against instanceof RegExp) {
             return against.test(value);
           }

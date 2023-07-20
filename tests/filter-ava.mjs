@@ -1,6 +1,23 @@
 import test from "ava";
 import { filter } from "../src/filter.mjs";
 
+class FixPoint {
+  value;
+  constructor(value) {
+    this.value = value;
+  }
+
+  [Symbol.toPrimitive](hint) {
+    switch (hint) {
+      case "number":
+        return this.value;
+
+      default:
+        return String(this.value);
+    }
+  }
+}
+
 test("filter string", t => {
   const f = filter({ a: "a" });
   t.falsy(f({ b: "abc" }));
@@ -85,6 +102,11 @@ test(ft, /4/, 5n, false);
 test(ft, 6n, 6, true);
 test(ft, 7, 7n, true);
 test(ft, 8, undefined, false);
+test(ft, new FixPoint(9), undefined, false);
+test(ft, new FixPoint(10), 10, true);
+test(ft, new FixPoint(11), new FixPoint(11), true);
+test(ft, new FixPoint(12), new FixPoint(11), false);
+test(ft, new FixPoint(13), "13", true);
 
 test(ft, new Date(0), "xyz", false);
 test(ft, new Date(0), 0, false);
