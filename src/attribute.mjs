@@ -143,7 +143,7 @@ export function setAttribute(object, name, value) {
 
 /**
  * Deliver attribute value.
- * The name may be a property path like 'a.b.c'.
+ * The name may be a property path like 'a.b.c' or a[2]
  * @param {Object} object
  * @param {string} name
  * @returns {any} value associated with the given property name
