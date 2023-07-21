@@ -86,6 +86,7 @@ test(ft, "a", "abc", true);
 test(ft, "a", "b", false);
 test(ft, "a", 1, false);
 test(ft, "a", undefined, false);
+
 test(ft, 1, 1, true);
 test(ft, 1.234, 1.234, true);
 test(ft, /1/, 1, true);
@@ -102,11 +103,15 @@ test(ft, /4/, 5n, false);
 test(ft, 6n, 6, true);
 test(ft, 7, 7n, true);
 test(ft, 8, undefined, false);
+
 test(ft, new FixPoint(9), undefined, false);
 test(ft, new FixPoint(10), 10, true);
 test(ft, new FixPoint(11), new FixPoint(11), true);
 test(ft, new FixPoint(12), new FixPoint(11), false);
 test(ft, new FixPoint(13), "13", true);
+test(ft, 14, new FixPoint(14), true);
+//test(ft, "15", new FixPoint(15), true);
+//test(ft, 16n, new FixPoint(16), true);
 
 test(ft, new Date(0), "xyz", false);
 test(ft, new Date(0), 0, false);
@@ -120,15 +125,37 @@ test(ft, new Date(0), new Date(0), true);
 
 test(ft, 1, [], false);
 test(ft, 1, [1, 2, 3], true);
-
 test(ft, 2n, [], false);
 test(ft, 2n, [1, 2, 3], true);
 test(ft, "a", [], false);
 test(ft, "a", ["a", "b", "c"], true);
+
 test(ft, 1, new Set(), false);
 test(ft, 2n, new Set(), false);
+test(ft, 2, new Set([1, 2, 3]), true);
 test(ft, "a", new Set(), false);
 test(ft, "a", new Set(["a", "b", "c"]), true);
+
+test(ft, 1, new Map(), false);
+test(ft, 2n, new Map(), false);
+test(
+  ft,
+  2,
+  new Map([
+    [1, 11],
+    [2, 22]
+  ]),
+  true
+);
+test(
+  ft,
+  "a",
+  new Map([
+    ["a", 11],
+    ["b", 22]
+  ]),
+  true
+);
 
 test(ft, true, true, true);
 test(ft, false, false, true);

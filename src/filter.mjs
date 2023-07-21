@@ -17,6 +17,13 @@ function collectionOp(value, against, op) {
 function allOp(value, against, op) {
   switch (typeof value) {
     case "object":
+      if (Array.isArray(value) || value instanceof Set) {
+        return collectionOp(value, against, op);
+      }
+      if (value instanceof Map) {
+        return collectionOp(value.keys(), against, op);
+      }
+
       switch (typeof against) {
         case "object":
           if (value[Symbol.toPrimitive] && against[Symbol.toPrimitive]) {
@@ -47,10 +54,6 @@ function allOp(value, against, op) {
               return dateOp(value, against, op);
             }
         }
-      }
-
-      if (Array.isArray(value) || value instanceof Set) {
-        return collectionOp(value, against, op);
       }
 
       return value.toString().match(against);
