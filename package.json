@@ -41,8 +41,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "svelte-command": "^1.1.46",
-    "svelte-entitlement": "^1.2.59"
+    "svelte-command": "^1.1.47",
+    "svelte-entitlement": "^1.2.60"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^10.0.1",
