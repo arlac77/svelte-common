@@ -66,11 +66,13 @@ test("filter property path [] negative", t => {
 });
 
 function ft(t, fv, pv, expected) {
+  const object = { a: pv };
+
   const f = filter({ a: fv });
   if (expected) {
-    t.truthy(f({ a: pv }));
+    t.truthy(f(object));
   } else {
-    t.falsy(f({ a: pv }));
+    t.falsy(f(object));
   }
 
   t.falsy(f({}));
