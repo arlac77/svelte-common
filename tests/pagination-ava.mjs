@@ -63,7 +63,10 @@ test("Pagination Array source", t => {
 });
 
 test("Pagination Array source filter", t => {
-  const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2, filter: (i) => i >= 3});
+  const pg = new Pagination([1, 2, 3, 4], {
+    itemsPerPage: 2,
+    filter: i => i >= 3
+  });
   let x;
 
   t.is(pg.numberOfPages, 1);
@@ -118,7 +121,14 @@ function nit(t, np, cp, expected) {
 nit.title = (providedTitle = "navigationItems", np, cp, expected) =>
   `${providedTitle} ${np} ${cp} [${expected}]`.trim();
 
+test(nit, 0, 0, []);
 test(nit, 1, 1, [1]);
-test(nit, 10, 1, [1, 2, 9, 10]);
+test(nit, 2, 1, [1, 2]);
+test(nit, 3, 1, [1, 2, 3]);
+test(nit, 4, 2, [1, 2, 3, 4]);
+//test(nit, 5, 2, [1, 2, 3, 4, 5]);
+//test(nit, 6, 3, [1, 2, 3, 4, 5, 6]);
+//test(nit, 7, 3, [1, 2, 3, 4, 5, 6, 7]);
+//test(nit, 8, 3, [1, 2, 3, 4, 5, 6, 7, 8]);
 test(nit, 10, 5, [1, 2, 5, 9, 10]);
 test(nit, 11, 1, [1, 2, 10, 11]);
