@@ -71,6 +71,14 @@ function allOp(value, against, op) {
             return against.test(value);
           }
 
+          if (against instanceof Map) {
+            for (const [k,v] of against) {
+              if (value.match(k) || value.match(v)) {
+                return true;
+              }
+            }
+          }
+    
           if (Array.isArray(against) || against instanceof Set) {
             for (const i of against) {
               if (value.match(i)) {
@@ -85,6 +93,14 @@ function allOp(value, against, op) {
     case "number":
       if (against instanceof RegExp) {
         return against.test(value);
+      }
+
+      if (against instanceof Map) {
+        for (const [k,v] of against) {
+          if (numberOp(value, k, op) || numberOp(value, v, op)) {
+            return true;
+          }
+        }
       }
 
       if (Array.isArray(against) || against instanceof Set) {
