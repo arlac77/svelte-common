@@ -70,6 +70,14 @@ function allOp(value, against, op) {
           if (against instanceof RegExp) {
             return against.test(value);
           }
+
+          if (Array.isArray(against) || against instanceof Set) {
+            for (const i of against) {
+              if (value.match(i)) {
+                return true;
+              }
+            }
+          }
       }
 
       return value.match(against);
@@ -78,6 +86,15 @@ function allOp(value, against, op) {
       if (against instanceof RegExp) {
         return against.test(value);
       }
+
+      if (Array.isArray(against) || against instanceof Set) {
+        for (const i of against) {
+          if (numberOp(value, i, op)) {
+            return true;
+          }
+        }
+      }
+
       return numberOp(value, against, op);
     case "boolean":
       return value == against;

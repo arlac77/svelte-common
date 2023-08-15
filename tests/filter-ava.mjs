@@ -138,6 +138,15 @@ test(ft, 2, new Set([1, 2, 3]), true);
 test(ft, "a", new Set(), false);
 test(ft, "a", new Set(["a", "b", "c"]), true);
 
+test(ft, new Set([1, 2, 3]), 2, true);
+test(ft, new Set([1, 2, 3]), 4, false);
+test(ft, [1, 2, 3], 2, true);
+test(ft, [1, 2, 3], 4, false);
+test(ft, new Set(["a", "b", "c"]), "b", true);
+test(ft, new Set(["a", "b", "c"]), "d", false);
+test(ft, ["a", "b", "c"], "b", true);
+test(ft, ["a", "b", "c"], "d", false);
+
 test(ft, 1, new Map(), false);
 test(ft, 2n, new Map(), false);
 test(
