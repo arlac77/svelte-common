@@ -219,7 +219,7 @@ export function pageNavigation(elem, pg) {
 
 /**
  * Generade actual sequence of page numbers to navigate to.
- * @param {number} nunmberOfPages
+ * @param {number} numberOfPages
  * @param {number} currentPage
  * @param {number} numberOfItems
  * @return {Iterator<number>}
@@ -254,10 +254,8 @@ export function* navigationItems(
       break;
     }
   }
+  
 /*
-
-
-
   const pageJumps = [
     { maxPages: 10, stepping: [1] },
     { maxPages: 100, stepping: [1, 10] },
