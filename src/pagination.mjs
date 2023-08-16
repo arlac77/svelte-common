@@ -153,12 +153,14 @@ export class Pagination {
     nav.setAttribute("aria-label", "pagination");
 
     nav.onkeyup = event => {
+      const step = (event.altKey ? 10 : 1);
+
       switch (event.key) {
         case "ArrowLeft":
-          this.page = this.page - 1;
+          this.page = this.page - step;
           break;
         case "ArrowRight":
-          this.page = this.page + 1;
+          this.page = this.page + step;
           break;
       }
     };
