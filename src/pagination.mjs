@@ -53,14 +53,14 @@ export class Pagination {
     if (data?.subscribe) {
       this.#unsubscribeData = data.subscribe(newData => {
         this.#data = newData;
-        if(this.page > this.numberOfPages) {
-          this.page  = this.numberOfPages
-        }  
+        if (this.page > this.numberOfPages) {
+          this.page = this.numberOfPages;
+        }
       });
     } else {
       this.#data = data;
-      if(this.page > this.numberOfPages) {
-        this.page  = this.numberOfPages
+      if (this.page > this.numberOfPages) {
+        this.page = this.numberOfPages;
       }
     }
 
@@ -159,7 +159,7 @@ export class Pagination {
     nav.setAttribute("aria-label", "pagination");
 
     nav.onkeyup = event => {
-      const step = (event.altKey ? 10 : 1);
+      const step = event.altKey ? 10 : 1;
 
       switch (event.key) {
         case "ArrowLeft":
@@ -262,8 +262,8 @@ export function* navigationItems(
       break;
     }
   }
-  
-/*
+
+  /*
   const pageJumps = [
     { maxPages: 10, stepping: [1] },
     { maxPages: 100, stepping: [1, 10] },
