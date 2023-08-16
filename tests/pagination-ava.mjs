@@ -1,7 +1,7 @@
 import test from "ava";
 import { Pagination, navigationItems } from "../src/pagination.mjs";
 
-test("Pagination wizjout optionsr", t => {
+test("Pagination wizjout options", t => {
   const pg = new Pagination([1, 2, 3, 4, 5]);
   t.is(pg.page, 1);
   t.is(pg.itemsPerPage, 20);
@@ -43,6 +43,16 @@ test("Pagination set out of range", t => {
   t.is(pg.page, 1);
 
   pg.page = 77;
+  t.is(pg.page, 1);
+});
+
+test("Pagination move page into range", t => {
+  const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2 });
+
+  pg.page = 2;
+  t.is(pg.page, 2);
+
+  pg.data = [1,2];
   t.is(pg.page, 1);
 });
 

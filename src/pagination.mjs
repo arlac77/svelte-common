@@ -53,9 +53,15 @@ export class Pagination {
     if (data?.subscribe) {
       this.#unsubscribeData = data.subscribe(newData => {
         this.#data = newData;
+        if(this.page > this.numberOfPages) {
+          this.page  = this.numberOfPages
+        }  
       });
     } else {
       this.#data = data;
+      if(this.page > this.numberOfPages) {
+        this.page  = this.numberOfPages
+      }
     }
 
     this.fireSubscriptions();
