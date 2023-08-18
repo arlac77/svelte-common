@@ -55,7 +55,7 @@
     "mf-styling": "^3.0.2",
     "npm-pkgbuild": "^11.10.12",
     "semantic-release": "^21.0.7",
-    "stylelint": "^15.10.2",
+    "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
     "svelte": "^4.2.0",
     "testcafe": "^3.2.0",
