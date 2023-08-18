@@ -161,9 +161,13 @@ test(
 );
 
 test(ft, new Set([1, 2, 3]), 2, true);
+test(ft, new Set([1, 2, 3]), "3", true);
 test(ft, new Set([1, 2, 3]), 4, false);
+test(ft, new Set([1, 2, 3]), "5", false);
 test(ft, [1, 2, 3], 2, true);
+test(ft, [1, 2, 3], "3", true);
 test(ft, [1, 2, 3], 4, false);
+test(ft, [1, 2, 3], "5", false);
 test(ft, new Set(["a", "b", "c"]), "b", true);
 test(ft, new Set(["a", "b", "c"]), "d", false);
 test(ft, ["a", "b", "c"], "b", true);
