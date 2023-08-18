@@ -237,33 +237,22 @@ export function* navigationItems(
   currentPage,
   numberOfItems = 7
 ) {
-  const pageJumps = [
-    { maxPages: 10, side: 1, edge: 2 },
-    { maxPages: 100, side: 1, edge: 2, step: 10 },
-    { maxPages: 1000, side: 1, edge: 2, step: 100 },
-    { maxPages: 10000, side: 1, edge: 2, step: 1000 },
-    { maxPages: 100000, side: 1, edge: 2, step: 10000 },
-    { maxPages: 1000000, side: 1, edge: 2, step: 100000 },
-    { maxPages: 10000000, side: 1, edge: 2, step: 1000000 }
-  ];
+  const edge = 2;
+  const side = 1;
+  const step = numberOfPages >= 100 ? Math.floor(numberOfPages / 10) : undefined;
 
-  for (const j of pageJumps) {
-    if (numberOfPages <= j.maxPages) {
-      for (let n = 1; n <= numberOfPages; n++) {
-        if (
-          n <= j.edge ||
-          n > numberOfPages - j.edge ||
-          n % j.step === 0 ||
-          (n < currentPage + j.side && n > currentPage - j.side)
-        ) {
-          yield n;
-        }
-      }
-      break;
+  for (let n = 1; n <= numberOfPages; n++) {
+    if (
+      n <= edge ||
+      n > numberOfPages - edge ||
+      n % step === 0 ||
+      (n < currentPage + side && n > currentPage - side)
+    ) {
+      yield n;
     }
   }
 
-  /*
+  /*  
   const pageJumps = [
     { maxPages: 10, stepping: [1] },
     { maxPages: 100, stepping: [1, 10] },
