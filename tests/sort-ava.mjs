@@ -102,9 +102,7 @@ test("sorter missing values", t => {
 });
 
 test("sorter with property path", t => {
-  const sort = sorter(
-    { "a.b": "ascending" }
-  );
+  const sort = sorter({ "a.b": "ascending" });
 
   t.is(sort({ a: { b: "a" } }, { a: { b: "b" } }), -1);
   t.is(sort({ a: { b: "a" } }, { a: { b: "a" } }), 0);
@@ -125,6 +123,31 @@ test("sorter with getter", t => {
   t.is(sort({ a: { b: "b" } }, { a: { b: "a" } }), 1);
 
   t.is(sort({ a: { b: "b" } }, {}), 1);
+});
+
+class FixPoint {
+  value;
+  constructor(value) {
+    this.value = value;
+  }
+
+  [Symbol.toPrimitive](hint) {
+    switch (hint) {
+      case "number":
+        return this.value;
+
+      default:
+        return String(this.value);
+    }
+  }
+}
+
+test("sorter toPrimitive ascending", t => {
+  const sort = sorter({ a: "ascending" });
+
+  t.is(sort({ a: new FixPoint(77) }, { a: new FixPoint(77) }), 0);
+  t.is(sort({ a: new FixPoint(78) }, { a: new FixPoint(77) }), 1);
+  t.is(sort({ a: new FixPoint(77) }, { a: new FixPoint(78) }), -1);
 });
 
 test("sorter null", t => {
