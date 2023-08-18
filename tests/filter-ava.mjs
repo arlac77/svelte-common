@@ -226,3 +226,4 @@ test(fopt, "7", 8);
 test(fopt, 9, "10");
 test(fopt, 11n, "12");
 test(fopt, "13", 14n);
+test(fopt, new FixPoint("15"), new FixPoint("16"));
