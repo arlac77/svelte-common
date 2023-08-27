@@ -45,9 +45,9 @@
     "svelte-entitlement": "^1.2.62"
   },
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/commit-analyzer": "^10.0.2",
     "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/release-notes-generator": "^11.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.5",
     "@sveltejs/vite-plugin-svelte": "^2.4.5",
     "ava": "^5.3.1",
     "c8": "^8.0.1",
