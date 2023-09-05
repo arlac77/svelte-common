@@ -108,12 +108,13 @@ test(ft, 8, undefined, false);
 
 test(ft, new FixPoint(9), undefined, false);
 test(ft, new FixPoint(10), 10, true);
-test(ft, new FixPoint(11), new FixPoint(11), true);
-test(ft, new FixPoint(12), new FixPoint(11), false);
-test(ft, new FixPoint(13), "13", true);
-test(ft, 14, new FixPoint(14), true);
-//test(ft, "15", new FixPoint(15), true);
-//test(ft, 16n, new FixPoint(16), true);
+test(ft, new FixPoint(11), 11n, true);
+test(ft, new FixPoint(12), new FixPoint(12), true);
+test(ft, new FixPoint(13), new FixPoint(12), false);
+test(ft, new FixPoint(14), "14", true);
+test(ft, 15, new FixPoint(15), true);
+test.skip(ft, "16", new FixPoint(16), true);
+test(ft, 17n, new FixPoint(17), true);
 
 test(ft, new Date(0), "xyz", false);
 test(ft, new Date(0), 0, false);

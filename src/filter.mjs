@@ -35,13 +35,10 @@ function allOp(value, against, op) {
           }
           break;
 
+        case "bigint":
         case "number":
           if (value[Symbol.toPrimitive]) {
-            return allOp(
-              value[Symbol.toPrimitive](typeof against),
-              against,
-              op
-            );
+            return allOp(value[Symbol.toPrimitive](typeof against), against, op);
           }
       }
 
@@ -72,13 +69,13 @@ function allOp(value, against, op) {
           }
 
           if (against instanceof Map) {
-            for (const [k,v] of against) {
+            for (const [k, v] of against) {
               if (value.match(k) || value.match(v)) {
                 return true;
               }
             }
           }
-    
+
           if (Array.isArray(against) || against instanceof Set) {
             for (const i of against) {
               if (value.match(i)) {
@@ -96,7 +93,7 @@ function allOp(value, against, op) {
       }
 
       if (against instanceof Map) {
-        for (const [k,v] of against) {
+        for (const [k, v] of against) {
           if (numberOp(value, k, op) || numberOp(value, v, op)) {
             return true;
           }
