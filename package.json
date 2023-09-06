@@ -41,7 +41,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "svelte-command": "^1.1.48",
+    "svelte-command": "^1.1.49",
     "svelte-entitlement": "^1.2.64"
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "ava": "^5.3.1",
     "c8": "^8.0.1",
     "documentation": "^14.0.2",
-    "mf-styling": "^3.0.4",
+    "mf-styling": "^3.0.5",
     "npm-pkgbuild": "^12.1.1",
     "semantic-release": "^21.1.1",
     "stylelint": "^15.10.3",
