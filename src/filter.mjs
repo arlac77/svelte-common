@@ -17,14 +17,14 @@ function collectionOp(value, against, op) {
 function allOp(value, against, op) {
   switch (typeof value) {
     case "object":
-      if (Array.isArray(value) || value instanceof Set) {
-        return collectionOp(value, against, op);
-      }
       if (value instanceof Map) {
         return collectionOp(value.keys(), against, op);
       }
+      if (value[Symbol.iterator]) {
+        return collectionOp(value, against, op);
+      }
 
-      switch (typeof against) {
+      switch (typeof against) {      
         case "object":
           if (value[Symbol.toPrimitive] && against[Symbol.toPrimitive]) {
             return numberOp(
@@ -76,7 +76,7 @@ function allOp(value, against, op) {
             }
           }
 
-          if (Array.isArray(against) || against instanceof Set) {
+          if (against[Symbol.iterator]) {
             for (const i of against) {
               if (value.match(i)) {
                 return true;
@@ -100,7 +100,7 @@ function allOp(value, against, op) {
         }
       }
 
-      if (Array.isArray(against) || against instanceof Set) {
+      if (against[Symbol.iterator]) {
         for (const i of against) {
           if (numberOp(value, i, op)) {
             return true;
