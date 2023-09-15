@@ -24,7 +24,7 @@ function allOp(value, against, op) {
         return collectionOp(value, against, op);
       }
 
-      switch (typeof against) {      
+      switch (typeof against) {
         case "object":
           if (value[Symbol.toPrimitive] && against[Symbol.toPrimitive]) {
             return numberOp(
@@ -38,7 +38,11 @@ function allOp(value, against, op) {
         case "bigint":
         case "number":
           if (value[Symbol.toPrimitive]) {
-            return allOp(value[Symbol.toPrimitive](typeof against), against, op);
+            return allOp(
+              value[Symbol.toPrimitive](typeof against),
+              against,
+              op
+            );
           }
       }
 
@@ -110,6 +114,18 @@ function allOp(value, against, op) {
 
       return numberOp(value, against, op);
     case "boolean":
+      switch (typeof against) {
+        case "object":
+          if (against[Symbol.iterator]) {
+            for (const i of against) {
+              if (allOp(value, i, op)) {
+                return true;
+              }
+            }
+          }
+          break;
+      }
+
       return value == against;
   }
 
