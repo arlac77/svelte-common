@@ -7,6 +7,10 @@ class FixPoint {
     this.value = value;
   }
 
+  toString() {
+    return String(this.value);
+  }
+
   [Symbol.toPrimitive](hint) {
     switch (hint) {
       case "number":
@@ -67,7 +71,6 @@ test("filter property path [] negative", t => {
 
 function ft(t, fv, pv, expected) {
   const object = { a: pv };
-
   const f = filter({ a: fv });
   if (expected) {
     t.truthy(f(object));
@@ -75,8 +78,8 @@ function ft(t, fv, pv, expected) {
     t.falsy(f(object));
   }
 
-  t.falsy(f({}));
-  t.falsy(f());
+  t.falsy(f({}), "empty");
+  t.falsy(f(), "undefined");
 }
 ft.title = (providedTitle = "filter", fv, pv, expected) =>
   `${providedTitle} ${fv} ${pv} ${expected}`.trim();
@@ -113,7 +116,7 @@ test(ft, new FixPoint(12), new FixPoint(12), true);
 test(ft, new FixPoint(13), new FixPoint(12), false);
 test(ft, new FixPoint(14), "14", true);
 test(ft, 15, new FixPoint(15), true);
-test.skip(ft, "16", new FixPoint(16), true);
+test(ft, "16", new FixPoint(16), true);
 test(ft, 17n, new FixPoint(17), true);
 
 test(ft, new Date(0), "xyz", false);
