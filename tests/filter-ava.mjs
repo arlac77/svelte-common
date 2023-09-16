@@ -236,7 +236,7 @@ function fopt(t, l, h) {
 }
 
 fopt.title = (providedTitle = "filter op", l, h) =>
-  `${providedTitle} ${l}<=${h} ${l}<${h} ${l}=${l} ${h}>${l} ${h}>=${l}`.trim();
+  `${providedTitle} ${l}<=${l} ${l}<=${h} ${l}<${h} ${l}=${l} ${h}>${l} ${h}>=${l} ${l}>=${l}`.trim();
 
 test(fopt, new Date("1995-12-15T03:24:00"), new Date("1995-12-16T03:24:00"));
 test(fopt, "1995-12-15T03:24:00", new Date("1995-12-16T03:24:00"));
@@ -249,4 +249,4 @@ test(fopt, "7", 8);
 test(fopt, 9, "10");
 test(fopt, 11n, "12");
 test(fopt, "13", 14n);
-test(fopt, new FixPoint("15"), new FixPoint("16"));
+test(fopt, new FixPoint(15), new FixPoint(16));
