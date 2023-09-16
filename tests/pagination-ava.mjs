@@ -18,10 +18,9 @@ test("Pagination set/get", t => {
   t.is(pg.length, 2);
   t.is(pg.numberOfPages, 3);
   t.deepEqual([...pg], [1, 2]);
+
   let x;
-
   const unsubscribe = pg.subscribe(p => (x = p.page));
-
   t.is(x, 1);
 
   pg.page = 2;
