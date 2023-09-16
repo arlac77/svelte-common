@@ -220,19 +220,23 @@ test(ft, false, undefined, false);
 test(ft, true, false, false);
 test(ft, true, undefined, false);
 
-function fopt(t, l, m) {
-  let key = "key";
+function fopt(t, l, h) {
+  const key = "key";
 
   t.truthy(filter({ [key]: l })({ [key]: l }), `${l} ${l}`);
   t.truthy(filter({ [key + "="]: l })({ [key]: l }), `${l} = ${l}`);
-  t.truthy(filter({ [key + "<"]: m })({ [key]: l }), `${m} < ${l}`);
-  t.truthy(filter({ [key + ">"]: l })({ [key]: m }), `${l} > ${m}`);
-  t.truthy(filter({ [key + ">="]: l })({ [key]: m }), `${l} >= ${m}`);
-  //  t.truthy(filter({ [key + "<="]: l })({ [key]: m }), `${m} <= ${l}`);
+
+  t.truthy(filter({ [key + ">"]: l })({ [key]: h }), `${l} > ${h}`);
+  t.truthy(filter({ [key + ">="]: l })({ [key]: h }), `${l} >= ${h}`);
+  t.truthy(filter({ [key + ">="]: l })({ [key]: l }), `${l} >= ${l}`);
+
+  t.truthy(filter({ [key + "<"]: h })({ [key]: l }), `${h} < ${l}`);
+  t.truthy(filter({ [key + "<="]: h })({ [key]: l }), `${h} <= ${l}`);
+  t.truthy(filter({ [key + "<="]: l })({ [key]: l }), `${l} <= ${l}`);
 }
 
-fopt.title = (providedTitle = "filter op", l, m) =>
-  `${providedTitle} ${l}<${m} ${l}=${l} ${m}>${l}`.trim();
+fopt.title = (providedTitle = "filter op", l, h) =>
+  `${providedTitle} ${l}<=${h} ${l}<${h} ${l}=${l} ${h}>${l} ${h}>=${l}`.trim();
 
 test(fopt, new Date("1995-12-15T03:24:00"), new Date("1995-12-16T03:24:00"));
 test(fopt, "1995-12-15T03:24:00", new Date("1995-12-16T03:24:00"));
