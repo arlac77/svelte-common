@@ -108,6 +108,9 @@ export class Pagination {
     return () => this.#subscriptions.delete(s);
   }
 
+  /**
+   * @return {number}
+   */
   get numberOfPages() {
     let n;
 
@@ -124,6 +127,11 @@ export class Pagination {
     return Math.ceil(n / this.itemsPerPage);
   }
 
+  /**
+   * Deliver items per page.
+   * @see {itemsPerPage}
+   * @return {number}
+   */
   get length() {
     return this.#itemsPerPage;
   }
