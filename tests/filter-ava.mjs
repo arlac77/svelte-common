@@ -184,6 +184,11 @@ test(ft, ["a", "b", "c"], "d", false);
 
 test(ft, 1, new Map(), false);
 test(ft, 2n, new Map(), false);
+test(ft, "a", new Map(), false);
+test(ft, ["b"], new Map(), false);
+test(ft, new Set("a"), new Map(), false);
+test(ft, new Map([["b",1]]), new Map(), false);
+
 test(
   ft,
   2,
