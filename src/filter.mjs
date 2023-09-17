@@ -26,6 +26,10 @@ function allOp(value, against, op) {
 
       switch (typeof against) {
         case "object":
+          if (against instanceof Date && value instanceof Date) {
+            return dateOp(value, against, op);
+          }
+
           if (value[Symbol.toPrimitive] && against[Symbol.toPrimitive]) {
             return numberOp(
               value[Symbol.toPrimitive]("number"),
@@ -38,25 +42,15 @@ function allOp(value, against, op) {
         case "bigint":
         case "number":
           if (value[Symbol.toPrimitive]) {
-            return allOp(
-              value[Symbol.toPrimitive](typeof against),
-              against,
-              op
-            );
+            return allOp(value[Symbol.toPrimitive]("number"), against, op);
+          }
+          break;
+
+        case "string":
+          if (value instanceof Date) {
+            return dateOp(value, new Date(against), op);
           }
       }
-
-      if (value instanceof Date) {
-        switch (typeof against) {
-          case "string":
-            return dateOp(value, new Date(against), op);
-          case "object":
-            if (against instanceof Date) {
-              return dateOp(value, against, op);
-            }
-        }
-      }
-
       return value.toString().match(against);
     case "string":
       switch (typeof against) {
