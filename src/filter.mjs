@@ -74,7 +74,7 @@ function allOp(value, against, op) {
 
           if (against instanceof Map) {
             for (const [k, v] of against) {
-              if (value.match(k) || value.match(v)) {
+              if (allOp(value, k, op) || allOp(value, v, op)) {
                 return true;
               }
             }
@@ -82,36 +82,41 @@ function allOp(value, against, op) {
 
           if (against[Symbol.iterator]) {
             for (const i of against) {
-              if (value.match(i)) {
+              if (allOp(value, i, op)) {
                 return true;
               }
             }
+            return false;
           }
       }
 
       return value.match(against);
     case "bigint":
     case "number":
-      if (against instanceof RegExp) {
-        return against.test(value);
-      }
-
-      if (against instanceof Map) {
-        for (const [k, v] of against) {
-          if (numberOp(value, k, op) || numberOp(value, v, op)) {
-            return true;
+      switch (typeof against) {
+        case "object":
+          if (against instanceof RegExp) {
+            return against.test(value);
           }
-        }
-      }
 
-      if (against[Symbol.iterator]) {
-        for (const i of against) {
-          if (numberOp(value, i, op)) {
-            return true;
+          if (against instanceof Map) {
+            for (const [k, v] of against) {
+              if (numberOp(value, k, op) || numberOp(value, v, op)) {
+                return true;
+              }
+            }
+            return false;
           }
-        }
-      }
 
+          if (against[Symbol.iterator]) {
+            for (const i of against) {
+              if (numberOp(value, i, op)) {
+                return true;
+              }
+            }
+            return false;
+          }
+      }
       return numberOp(value, against, op);
     case "boolean":
       switch (typeof against) {
