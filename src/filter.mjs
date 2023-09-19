@@ -16,7 +16,7 @@ function collectionOp(value, against, op) {
 
 function allOp(value, against, op) {
   switch (typeof value) {
-    case "object":
+    case "object":      
       if (value instanceof Map) {
         return collectionOp(value.keys(), against, op);
       }
@@ -50,10 +50,20 @@ function allOp(value, against, op) {
           if (value instanceof Date) {
             return dateOp(value, new Date(against), op);
           }
+          break;
+        case "boolean":
+          return numberOp(value ? true : false, against, op);
       }
+
+      if (against instanceof RegExp) {
+        return against.test(value.toString());
+      }
+
       return value.toString().match(against);
     case "string":
       switch (typeof against) {
+        case "boolean":
+          return numberOp(value.length !== 0, against, op);
         case "bigint":
         case "number":
           return numberOp(value, against, op);

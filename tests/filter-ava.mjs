@@ -87,7 +87,7 @@ function ft(t, fv, pv, expected) {
   t.falsy(f(), "undefined");
 }
 ft.title = (providedTitle = "filter", fv, pv, expected) =>
-  `${providedTitle} ${fv} ${pv} ${expected}`.trim();
+  `${providedTitle} ${fv} ${typeof pv === "string" ? '"'+pv+'"' : pv} ${expected}`.trim();
 
 test(ft, /a/, "abc", true);
 test(ft, /a/, undefined, false);
@@ -140,6 +140,10 @@ test(ft, 2n, [], false);
 test(ft, 2n, [1, 2, 3], true);
 test(ft, "a", [], false);
 test(ft, "a", ["a", "b", "c"], true);
+test(ft, false, [], false);
+test(ft, false, [false,false], true);
+test(ft, true, [], false);
+test(ft, true, [true,true], true);
 
 test(ft, 1, new Set(), false);
 test(ft, 2n, new Set(), false);
@@ -214,11 +218,19 @@ test(
 );
 
 test(ft, true, true, true);
+test(ft, true, {}, true);
+test(ft, true, new Date(), true);
+test(ft, true, "a", true);
+test(ft, true, "", false);
+test(ft, true, false, false);
+test(ft, true, undefined, false);
+test.skip(ft, true, null, false);
+
 test(ft, false, false, true);
 test(ft, false, true, false);
 test(ft, false, undefined, false);
-test(ft, true, false, false);
-test(ft, true, undefined, false);
+test.skip(ft, false, null, false);
+test(ft, false, "", true);
 
 function fopt(t, l, h) {
   const key = "key";
