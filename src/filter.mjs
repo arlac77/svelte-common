@@ -16,7 +16,7 @@ function collectionOp(value, against, op) {
 
 function allOp(value, against, op) {
   switch (typeof value) {
-    case "object":      
+    case "object":
       if (value instanceof Map) {
         return collectionOp(value.keys(), against, op);
       }
