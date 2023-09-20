@@ -78,6 +78,7 @@ test("Pagination Array source filter", t => {
   });
   let x;
 
+  t.is(pg.numberOfItems, 2);
   t.is(pg.numberOfPages, 1);
   t.deepEqual([...pg], [3, 4]);
 
@@ -101,6 +102,7 @@ test("Pagination Map source", t => {
     ]),
     { itemsPerPage: 2 }
   );
+  t.is(pg.numberOfItems, 4);
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg], [1, 2]);
 });
@@ -120,6 +122,7 @@ test("Pagination subscription source", t => {
   };
   const pg = new Pagination(source, { itemsPerPage: 2 });
 
+  t.is(pg.numberOfItems, 4);
   t.is(pg.numberOfPages, 2);
   t.deepEqual([...pg], [1, 2]);
 });
