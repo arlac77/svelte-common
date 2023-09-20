@@ -109,22 +109,25 @@ export class Pagination {
   }
 
   /**
+   * Total number of items (filtered).
+   * @return {number}
+   */
+  get numberOfItems() {
+    if (this.filter) {
+      const data = Array.isArray(this.data)
+        ? this.#data
+        : [...this.#data.values()];
+      return data.filter(this.filter).length;
+    }
+
+    return Array.isArray(this.#data) ? this.#data.length : this.#data.size;
+  }
+
+  /**
    * @return {number}
    */
   get numberOfPages() {
-    let n;
-
-    if (this.filter) {
-      let data = Array.isArray(this.data)
-        ? this.#data
-        : [...this.#data.values()];
-      data = data.filter(this.filter);
-      n = data.length;
-    } else {
-      n = Array.isArray(this.#data) ? this.#data.length : this.#data.size;
-    }
-
-    return Math.ceil(n / this.itemsPerPage);
+    return Math.ceil(this.numberOfItems / this.itemsPerPage);
   }
 
   /**
@@ -247,7 +250,8 @@ export function* navigationItems(
 ) {
   const edge = 2;
   const side = 1;
-  const step = numberOfPages >= 100 ? Math.floor(numberOfPages / 10) : undefined;
+  const step =
+    numberOfPages >= 100 ? Math.floor(numberOfPages / 10) : undefined;
 
   for (let n = 1; n <= numberOfPages; n++) {
     if (
