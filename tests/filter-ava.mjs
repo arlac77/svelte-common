@@ -244,6 +244,7 @@ function fopt(t, l, h) {
 
   t.truthy(filter({ [key]: l })({ [key]: l }), `${l} ${l}`);
   t.truthy(filter({ [key + "="]: l })({ [key]: l }), `${l} = ${l}`);
+  //t.falsy(filter({ [key + "!="]: l })({ [key]: l }), `${l} != ${l}`);
 
   t.truthy(filter({ [key + ">"]: l })({ [key]: h }), `${l} > ${h}`);
   t.truthy(filter({ [key + ">="]: l })({ [key]: h }), `${l} >= ${h}`);

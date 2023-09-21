@@ -48,10 +48,7 @@ function allOp(value, against, op) {
 
         case "bigint":
         case "number":
-          if (value[Symbol.toPrimitive]) {
-            return allOp(value[Symbol.toPrimitive]("number"), against, op);
-          }
-          break;
+          return allOp(value[Symbol.toPrimitive]("number"), against, op);
 
         case "string":
           if (value instanceof Date) {
@@ -145,7 +142,6 @@ function allOp(value, against, op) {
       return value == against;
   }
 
-  console.log("C", value, against);
   return false;
 }
 
