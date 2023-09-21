@@ -16,7 +16,14 @@ function collectionOp(value, against, op) {
 
 function allOp(value, against, op) {
   switch (typeof value) {
+    case "undefined":
+      return false;
+
     case "object":
+      if (value === null) {
+        return false;
+      }
+
       if (value instanceof Map) {
         return collectionOp(value.keys(), against, op);
       }
@@ -138,6 +145,7 @@ function allOp(value, against, op) {
       return value == against;
   }
 
+  console.log("C", value, against);
   return false;
 }
 
