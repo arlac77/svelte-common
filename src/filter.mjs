@@ -68,6 +68,10 @@ function allOp(value, against, op) {
       switch (typeof against) {
         case "boolean":
           return numberOp(value.length !== 0, against, op);
+        case "string":
+          if (!value.match(/^-?\d/)) {
+            break;
+          }
         case "bigint":
         case "number":
           return numberOp(value, against, op);

@@ -244,7 +244,7 @@ function fopt(t, l, h) {
 
   t.truthy(filter({ [key]: l })({ [key]: l }), `${l} ${l}`);
   t.truthy(filter({ [key + "="]: l })({ [key]: l }), `${l} = ${l}`);
-  //t.falsy(filter({ [key + "!="]: l })({ [key]: l }), `${l} != ${l}`);
+  t.falsy(filter({ [key + "!="]: l })({ [key]: l }), `${l} != ${l}`);
 
   t.truthy(filter({ [key + ">"]: l })({ [key]: h }), `${l} > ${h}`);
   t.truthy(filter({ [key + ">="]: l })({ [key]: h }), `${l} >= ${h}`);
@@ -266,7 +266,9 @@ test(fopt, 1, 2);
 test(fopt, 3, 4n);
 test(fopt, 5n, 6);
 test(fopt, "7", 8);
+test(fopt, "-7", 8);
 test(fopt, 9, "10");
 test(fopt, 11n, "12");
 test(fopt, "13", 14n);
+test(fopt, "-13", 14n);
 test(fopt, new FixPoint(15), new FixPoint(16));
