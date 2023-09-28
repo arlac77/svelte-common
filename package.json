@@ -63,8 +63,8 @@
     "vite-plugin-compression2": "^0.10.5"
   },
   "optionalDependencies": {
-    "mf-hosting-cloudflare": "^1.0.5",
-    "mf-hosting-frontend": "^2.2.1"
+    "mf-hosting-cloudflare": "^1.0.6",
+    "mf-hosting-frontend": "^2.2.3"
   },
   "repository": {
     "type": "git",
