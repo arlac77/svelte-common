@@ -219,6 +219,16 @@ test(
   true
 );
 
+test(
+  ft,
+  "a",
+  new Map([
+    [1, "a"],
+    [2, "b"]
+  ]),
+  true
+);
+
 test(ft, true, true, true);
 test(ft, true, {}, true);
 test(ft, true, new Date(), true);
