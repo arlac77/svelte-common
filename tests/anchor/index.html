@@ -109,7 +109,7 @@
         dy = OFFSET + event.y - rect.y;
       };
 
-      elem.ondrag = event => {
+      elem.ondragover = event => {
         elem.style.top = `${event.y - dy}px`;
         elem.style.left = `${event.x - dx}px`;
         if (path) {
@@ -121,7 +121,7 @@
     makeDraggable(anchor);
 
     function createMenu() {
-      const menu = document.createElement("X");
+      const menu = document.createElement("div");
 
       menu.innerHTML = `<ul class="menu">
       <li>Item 1</li>
@@ -136,7 +136,7 @@
     }
 
     function createSVG() {
-      const path = document.createElement("Y");
+      const path = document.createElement("div");
       path.innerHTML = '<svg width="10000" height="10000"><path/></svg>';
       return path.firstChild;
     }
