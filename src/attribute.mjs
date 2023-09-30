@@ -20,54 +20,87 @@
  * @yields {string}
  */
 export function* tokens(string) {
-  let isString = false;
-  let identifier = "";
-  let last;
+  let state, buffer;
 
   for (const c of string) {
     switch (c) {
       case "\t":
       case " ":
-        if (isString) {
-          identifier += c;
-        } else {
-          if (identifier.length) {
-            yield identifier;
-            identifier = "";
-          }
-          if (last) {
-            yield last;
-            last = undefined;
-          }
+        switch (state) {
+          case undefined:
+            break;
+          case "string":
+            buffer += c;
+            break;
+          case "identifier":
+            yield buffer;
+            buffer = "";
+            state = undefined;
+            break;
+          default:
+            yield state;
+            state = undefined;
         }
         break;
 
       case '"':
       case "'":
-        if (isString) {
-          yield identifier;
-          identifier = "";
-          isString = false;
-        } else {
-          isString = true;
+        switch (state) {
+          case undefined:
+            buffer = "";
+            state = "string";
+            break;
+          case "string":
+            yield buffer;
+            state = undefined;
+            break;
+          case "identifier":
+            yield buffer;
+            buffer = "";
+            state = "string";
+            break;
+          default:
+            yield state;
+            buffer = "";
+            state = "string";
         }
         break;
       case "!":
       case ">":
       case "<":
-        if (last) {
-          yield last;
+        switch (state) {
+          case undefined:
+            state = c;
+            break;
+          case "string":
+            buffer += c;
+            break;
+          case "identifier":
+            yield buffer;
+            state = c;
+            break;
+          default:
+            yield state;
+            state = c;
         }
-        last = c;
         break;
 
       case "=":
-        if (last) {
-          yield last + c;
-          last = undefined;
-          break;
+        switch (state) {
+          case undefined:
+            state = c;
+            break;
+          case "string":
+            buffer += c;
+            break;
+          case "identifier":
+            yield buffer;
+            state = c;
+            break;
+          default:
+            state += c;
         }
-
+        break;
       case ".":
       case "+":
       case "-":
@@ -77,30 +110,57 @@ export function* tokens(string) {
       case ")":
       case "[":
       case "]":
-        if (last) {
-          yield last;
-          last = undefined;
+        switch (state) {
+          case undefined:
+            state = c;
+            break;
+          case "string":
+            buffer += c;
+            break;
+          case "identifier":
+            yield buffer;
+            state = c;
+            break;
+          default:
+            yield state;
+            state = c;
         }
-        if (identifier.length) {
-          yield identifier;
-          identifier = "";
-        }
-        yield c;
         break;
       default:
-        if (last) {
-          yield last;
-          last = undefined;
+        switch (state) {
+          case undefined:
+            buffer = c;
+            state = "identifier";
+            break;
+          case "string":
+          case "identifier":
+            buffer += c;
+            break;
+          default:
+            if (
+              (c >= "a" && c <= "z") ||
+              (c >= "A" && c <= "Z") ||
+              (c >= "0" && c <= "9") || c === '_'
+            ) {
+              yield state;
+              state = "identifier";
+              buffer = c;
+            } else {
+              state += c;
+            }
         }
-        identifier += c;
     }
   }
 
-  if (identifier.length) {
-    yield identifier;
-  }
-  if (last) {
-    yield last;
+  switch (state) {
+    case undefined:
+      break;
+    case "string":
+    case "identifier":
+      yield buffer;
+      break;
+    default:
+      yield state;
   }
 }
 
