@@ -9,6 +9,7 @@ tt.title = (providedTitle = "token", input) =>
   `${providedTitle} ${input}`.trim();
 
 test(tt, " 'a'b\"c\" ", ["a", "b", "c"]);
+test(tt, " 'a\\\\\\n\\r' ", ["a\\\n\r"]);
 
 test(tt, "a< <= >= b>", ["a", "<", "<=", ">=", "b", ">"]);
 test(tt, "a=", ["a", "="]);
