@@ -44,6 +44,14 @@ export class Pagination {
     return this.#sorter;
   }
 
+  set _data(data) {
+    this.#data = data;
+    if (this.page > this.numberOfPages) {
+      this.page = this.numberOfPages;
+    }
+    this.fireSubscriptions();
+  }
+
   set data(data) {
     if (this.#unsubscribeData) {
       this.#unsubscribeData();
@@ -51,20 +59,10 @@ export class Pagination {
     }
 
     if (data?.subscribe) {
-      this.#unsubscribeData = data.subscribe(newData => {
-        this.#data = newData;
-        if (this.page > this.numberOfPages) {
-          this.page = this.numberOfPages;
-        }
-      });
+      this.#unsubscribeData = data.subscribe(newData => (this._data = newData));
     } else {
-      this.#data = data;
-      if (this.page > this.numberOfPages) {
-        this.page = this.numberOfPages;
-      }
+      this._data = data;
     }
-
-    this.fireSubscriptions();
   }
 
   get itemsPerPage() {
