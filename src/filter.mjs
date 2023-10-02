@@ -69,13 +69,21 @@ function allOp(value, against, op) {
         case "boolean":
           return numberOp(value.length !== 0, against, op);
         case "string":
+          if(value.length === 0) {
+            return true;
+          }
+    
           if (!value.match(/^-?\d/)) {
             break;
           }
         case "bigint":
         case "number":
-          return numberOp(value, against, op);
+          return value.length ? numberOp(value, against, op) : true;
         case "object":
+          if(value.length === 0) {
+            return true;
+          }
+    
           if (against instanceof Date) {
             return dateOp(new Date(value), against, op);
           }

@@ -98,6 +98,7 @@ test(ft, "a", "abc", true);
 test(ft, "a", "b", false);
 test(ft, "a", 1, false);
 test(ft, "a", undefined, false);
+test(ft, "a", "", true); // empty string matches
 
 test(ft, 1, 1, true);
 test(ft, 1.234, 1.234, true);
@@ -115,6 +116,7 @@ test(ft, /4/, 5n, false);
 test(ft, 6n, 6, true);
 test(ft, 7, 7n, true);
 test(ft, 8, undefined, false);
+test(ft, 8.1, "", true); // empty string matches
 
 test(ft, new FixPoint(9), undefined, false);
 test(ft, new FixPoint(10), 10, true);
@@ -127,6 +129,7 @@ test(ft, "16", new FixPoint(16), true);
 test(ft, 17n, new FixPoint(17), true);
 
 test(ft, new Date(0), "xyz", false);
+test(ft, new Date(0), "", true); // empty string matches
 test(ft, new Date(0), 0, false);
 test(ft, new Date(0), true, false);
 test(ft, new Date(0), undefined, false);
