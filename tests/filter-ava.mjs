@@ -98,7 +98,8 @@ test(ft, "a", "abc", true);
 test(ft, "a", "b", false);
 test(ft, "a", 1, false);
 test(ft, "a", undefined, false);
-test(ft, "a", "", true); // empty string matches
+test(ft, "", "a", true); // empty string matches
+test(ft, "", "1", true); // empty string matches
 
 test(ft, 1, 1, true);
 test(ft, 1.234, 1.234, true);

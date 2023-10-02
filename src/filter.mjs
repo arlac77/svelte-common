@@ -51,6 +51,10 @@ function allOp(value, against, op) {
           return allOp(value[Symbol.toPrimitive]("number"), against, op);
 
         case "string":
+          if (against.length === 0) {
+            return true;
+          }
+
           if (value instanceof Date) {
             return dateOp(value, new Date(against), op);
           }
@@ -69,10 +73,13 @@ function allOp(value, against, op) {
         case "boolean":
           return numberOp(value.length !== 0, against, op);
         case "string":
-          if(value.length === 0) {
+          if (
+            op === "=" &&
+            (against.length === 0 || value.indexOf(against) >= 0)
+          ) {
             return true;
           }
-    
+
           if (!value.match(/^-?\d/)) {
             break;
           }
@@ -80,10 +87,10 @@ function allOp(value, against, op) {
         case "number":
           return value.length ? numberOp(value, against, op) : true;
         case "object":
-          if(value.length === 0) {
+          if (value.length === 0) {
             return true;
           }
-    
+
           if (against instanceof Date) {
             return dateOp(new Date(value), against, op);
           }
