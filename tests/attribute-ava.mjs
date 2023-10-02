@@ -2,11 +2,18 @@ import test from "ava";
 import { tokens } from "../src/attribute.mjs";
 
 function tt(t, input, expected) {
-  t.deepEqual([...tokens(input)], expected);
+  try {
+    const result = [...tokens(input)];
+    t.deepEqual(result, expected);
+  } catch (e) {
+    t.deepEqual(e, expected);
+  }
 }
 
-tt.title = (providedTitle = "token", input) =>
-  `${providedTitle} ${input}`.trim();
+tt.title = (providedTitle = "token", input, expected) =>
+  `${providedTitle} ${input}${expected instanceof Error ? ' =>ERROR' : ''}`.trim();
+
+test(tt, '"a', new Error("unterminated string"));
 
 test(tt, " 'a'b\"c\" ", ["a", "b", "c"]);
 test(tt, " 'a\\\\\\n\\r' ", ["a\\\n\r"]);

@@ -23,17 +23,19 @@ export function* tokens(string) {
   let state, buffer;
 
   for (const c of string) {
-    if (state === "string-escaping") {
-      const esc = {
-        "\\": "\\",
-        t: "\t",
-        b: "\b",
-        r: "\r",
-        n: "\n"
-      };
-      buffer += esc[c];
-      state = "string";
-      continue;
+    switch (state) {
+      case "string-escaping":
+        const esc = {
+          "\\": "\\",
+          t: "\t",
+          b: "\b",
+          r: "\r",
+          n: "\n",
+          f: "\f"
+        };
+        buffer += esc[c];
+        state = "string";
+        continue;
     }
 
     switch (c) {
@@ -177,6 +179,7 @@ export function* tokens(string) {
     case undefined:
       break;
     case "string":
+      throw new Error("unterminated string");
     case "identifier":
       yield buffer;
       break;
