@@ -242,11 +242,18 @@ export function getAttribute(object, name) {
       case ">":
       case "<":
       case ".":
+      case "*":
       case "[":
       case "]":
         break;
 
       default:
+
+        // TODO: should loop over array actually getAttribute api should deliver iterators
+        if(Array.isArray(object)) {
+          object = object[0]
+        }
+
         if (object === undefined) {
           break;
         }
