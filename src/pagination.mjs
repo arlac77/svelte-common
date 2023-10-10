@@ -28,6 +28,7 @@ export class Pagination {
 
   set filter(filter) {
     this.#filter = filter;
+    this.recalibrateCurrentPage();
     this.fireSubscriptions();
   }
 
@@ -44,11 +45,15 @@ export class Pagination {
     return this.#sorter;
   }
 
-  set _data(data) {
-    this.#data = data;
+  recalibrateCurrentPage() {
     if (this.page > this.numberOfPages) {
       this.page = this.numberOfPages;
     }
+  }
+
+  set _data(data) {
+    this.#data = data;
+    this.recalibrateCurrentPage();
     this.fireSubscriptions();
   }
 
@@ -261,30 +266,4 @@ export function* navigationItems(
       yield n;
     }
   }
-
-  /*  
-  const pageJumps = [
-    { maxPages: 10, stepping: [1] },
-    { maxPages: 100, stepping: [1, 10] },
-    { maxPages: 1000, stepping: [1, 10, 100] },
-    { maxPages: 10000, stepping: [1, 100, 1000] },
-    { maxPages: 100000, stepping: [1, 1000, 10000] }
-  ];
-
-  for (const j of pageJumps) {
-    if (numberOfPages <= j.maxPages) {
-      yield 1;
-      for (const s of j.stepping) {
-        for (let n = currentPage - s; n < currentPage + s; n++) {
-          yield n;
-        }
-        yield currentPage;
-      }
-
-      yield numberOfPages;
-
-      break;
-    }
-  }
-  */
 }

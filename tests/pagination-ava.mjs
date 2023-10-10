@@ -1,7 +1,7 @@
 import test from "ava";
 import { Pagination, navigationItems } from "../src/pagination.mjs";
 
-test("Pagination wizjout options", t => {
+test("Pagination without options", t => {
   const pg = new Pagination([1, 2, 3, 4, 5]);
   t.is(pg.page, 1);
   t.is(pg.itemsPerPage, 20);
@@ -51,7 +51,12 @@ test("Pagination move page into range", t => {
   pg.page = 2;
   t.is(pg.page, 2);
 
-  pg.data = [1,2];
+  pg.data = [1, 2];
+  t.is(pg.page, 1);
+
+  pg.data = [1, 2, 3, 4];
+  pg.page = 2;
+  pg.filter = x => x < 2;
   t.is(pg.page, 1);
 });
 
@@ -145,5 +150,18 @@ test(nit, 8, 3, [1, 2, 3, 7, 8]);
 test(nit, 10, 5, [1, 2, 5, 9, 10]);
 test(nit, 11, 1, [1, 2, 10, 11]);
 test(nit, 100, 1, [1, 2, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99, 100]);
-test(nit, 1000, 1, [1, 2, 100, 200, 300, 400, 500, 600, 700, 800, 900, 999, 1000]);
-test(nit, 10000, 4511, [1, 2, 1000, 2000, 3000, 4000, 4511, 5000, 6000, 7000, 8000, 9000, 9999, 10000]);
+test(
+  nit,
+  1000,
+  1,
+  [1, 2, 100, 200, 300, 400, 500, 600, 700, 800, 900, 999, 1000]
+);
+test(
+  nit,
+  10000,
+  4511,
+  [
+    1, 2, 1000, 2000, 3000, 4000, 4511, 5000, 6000, 7000, 8000, 9000, 9999,
+    10000
+  ]
+);
