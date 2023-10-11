@@ -209,6 +209,7 @@ export class Pagination {
             a.onclick = e => {
               e.preventDefault();
               e.stopPropagation();
+              nav.focus();
               this.page = targetPage;
             };
           }
