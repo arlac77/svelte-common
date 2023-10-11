@@ -232,44 +232,8 @@ export function setAttribute(object, name, value) {
  * @param {string} name
  * @returns {any} value associated with the given property name
  */
-export function getAttribute(object, name) {
-  if (object?.[name] !== undefined) {
-    return object[name];
-  }
-
-  let predicateTokens;
-
-  for (const token of tokens(name)) {
-    switch (token) {
-      case ">":
-      case "<":
-      case ".":
-        break;
-      case "[":
-        predicateTokens = [];
-        break;
-      case "]":
-        // TODO: should loop over array actually getAttribute api should deliver iterators
-        if (Array.isArray(object)) {
-          object = object[0];
-        }
-
-        predicateTokens = undefined;
-        break;
-      case "*":
-        predicateTokens.push(token);
-        break;
-
-      default:
-        if (object === undefined) {
-          break;
-        }
-
-        object = object[token];
-    }
-  }
-
-  return object;
+export function getAttribute(object, expression) {
+  return getAttributeAndOperator(object, expression)[0];
 }
 
 /**
@@ -281,7 +245,6 @@ export function getAttribute(object, name) {
  */
 export function getAttributeAndOperator(object, expression, getters = {}) {
   let op = "=";
-
   let predicateTokens;
 
   for (const token of tokens(expression)) {
@@ -302,6 +265,10 @@ export function getAttributeAndOperator(object, expression, getters = {}) {
         // TODO: should loop over array actually getAttribute api should deliver iterators
         if (Array.isArray(object)) {
           object = object[0];
+        }
+        else {
+          if(object[Symbol.iterator])
+          object = [...object][0];
         }
 
         predicateTokens = undefined;
