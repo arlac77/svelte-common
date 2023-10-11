@@ -69,9 +69,9 @@ test("filter property path [] negative", t => {
   t.falsy(f({ a: [0, 1] }));
 });
 
-test.skip("filter property path [*] positive", t => {
+test("filter property path [*] positive", t => {
   const f = filter({ "a[*].c": 1 });
-  t.truthy(f({ a: [0, 1, { c: 1 }] }));
+  t.truthy(f({ a: [{ c: 1 },1,2] }));
 });
 
 function ft(t, fv, pv, expected) {
