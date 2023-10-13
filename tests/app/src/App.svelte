@@ -230,33 +230,39 @@
       <table>
         <thead>
           <th id="a" use:sortable={sortBy}
-            >col 1<label>
-              <input
-                id="filter-a"
-                bind:value={$filterBy.a}
-                placeholder="filter a"
-              /></label
+            >col 1<search
+              ><label>
+                <input
+                  id="filter-a"
+                  bind:value={$filterBy.a}
+                  placeholder="filter a"
+                /></label
+              ></search
             ></th
           >
           <th id="b" use:sortable={sortBy}
-            >col 2<label
-              ><input
-                id="filter-b"
-                type="date"
-                bind:value={$filterBy["b<"]}
-                placeholder="filter b"
-              /></label
+            >col 2<search
+              ><label
+                ><input
+                  id="filter-b"
+                  type="date"
+                  bind:value={$filterBy["b<"]}
+                  placeholder="filter b"
+                /></label
+              ></search
             ></th
           >
           <th id="c" use:sortable={sortBy}>col 3</th>
           <th
-            >col 4<label
-              ><input
-                id="filter-d"
-                type="number"
-                bind:value={$filterBy["d>"]}
-                placeholder="filter d>"
-              /></label
+            >col 4<search
+              ><label
+                ><input
+                  id="filter-d"
+                  type="number"
+                  bind:value={$filterBy["d>"]}
+                  placeholder="filter d>"
+                /></label
+              ></search
             ></th
           >
           <th id="e.f" use:sortable={sortBy}>col 5</th>
