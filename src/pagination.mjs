@@ -1,7 +1,7 @@
 /**
  * Pagination support store.
  * Pages go from 1 ... numberOfPages
- * @param {Map|Array|Store} data
+ * @param {Map|Set|Array|Store} data
  * @param {Object} options
  * @param {number} [options.itemsPerPage]
  * @param {Function} [options.sorter]
@@ -51,22 +51,22 @@ export class Pagination {
     }
   }
 
-  set _data(data) {
-    this.#data = data;
-    this.recalibrateCurrentPage();
-    this.fireSubscriptions();
-  }
-
   set data(data) {
     if (this.#unsubscribeData) {
       this.#unsubscribeData();
       this.#unsubscribeData = undefined;
     }
 
+    const d = data => {
+      this.#data = data;
+      this.recalibrateCurrentPage();
+      this.fireSubscriptions();
+    };
+
     if (data?.subscribe) {
-      this.#unsubscribeData = data.subscribe(newData => (this._data = newData));
+      this.#unsubscribeData = data.subscribe(newData => d(newData));
     } else {
-      this._data = data;
+      d(data);
     }
   }
 
@@ -155,10 +155,9 @@ export class Pagination {
 
     const n = this.page - 1;
 
-    yield *data.slice(
-      n * this.itemsPerPage,
-      (n + 1) * this.itemsPerPage
-    )[Symbol.iterator]();
+    yield* data
+      .slice(n * this.itemsPerPage, (n + 1) * this.itemsPerPage)
+      [Symbol.iterator]();
   }
 
   /**
