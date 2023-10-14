@@ -155,12 +155,10 @@ export class Pagination {
 
     const n = this.page - 1;
 
-    for (const item of data.slice(
+    yield *data.slice(
       n * this.itemsPerPage,
       (n + 1) * this.itemsPerPage
-    )) {
-      yield item;
-    }
+    )[Symbol.iterator]();
   }
 
   /**
