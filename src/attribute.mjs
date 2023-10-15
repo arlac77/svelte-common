@@ -265,10 +265,8 @@ export function getAttributeAndOperator(object, expression, getters = {}) {
         // TODO: should loop over array actually getAttribute api should deliver iterators
         if (Array.isArray(object)) {
           object = object[0];
-        }
-        else {
-          if(object[Symbol.iterator])
-          object = [...object][0];
+        } else {
+          if (object[Symbol.iterator]) object = [...object][0];
         }
 
         predicateTokens = undefined;
