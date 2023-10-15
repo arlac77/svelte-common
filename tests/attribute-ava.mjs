@@ -63,6 +63,6 @@ gat.title = (providedTitle = "getAttribute", expression, candidate, expected) =>
   }`.trim();
 
   test(gat, "a.b", { a: { b: 2 } }, 2);
-  test(gat, "a[*]", { a: [3] }, 3);
+  test(gat, "a [ * ]", { a: [3] }, 3);
   test(gat, "a[*]", { a: new Set([4]) }, 4);
   test(gat, "a[*].b", { a: [{ b: 5}] }, 5);

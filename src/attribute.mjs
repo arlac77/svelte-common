@@ -147,7 +147,7 @@ export function* tokens(string) {
             yield state;
             state = c;
         }
-        break;
+        break;          
       default:
         switch (state) {
           case undefined:
@@ -192,14 +192,14 @@ export function* tokens(string) {
  * Set Object attribute.
  * The name may be a property path like 'a.b.c'.
  * @param {Object} object
- * @param {string} name
+ * @param {string} expression
  * @param {any} value
  */
-export function setAttribute(object, name, value) {
+export function setAttribute(object, expression, value) {
   let lastObject = object;
   let lastKey;
 
-  for (const token of tokens(name)) {
+  for (const token of tokens(expression)) {
     switch (token) {
       case ">":
       case "<":
@@ -229,7 +229,7 @@ export function setAttribute(object, name, value) {
  * Deliver attribute value.
  * The name may be a property path like 'a.b.c' or a[2]
  * @param {Object} object
- * @param {string} name
+ * @param {string} expression
  * @returns {any} value associated with the given property name
  */
 export function getAttribute(object, expression) {
