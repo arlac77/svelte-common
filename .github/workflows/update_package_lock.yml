@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
         browser:
           - chrome
         node-version:
