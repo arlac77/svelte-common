@@ -5,6 +5,14 @@ name: Update package lock
 jobs:
   update_package_lock:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        browser:
+          - chrome
+        node-version:
+          - 20.9.0
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -13,6 +21,8 @@ jobs:
       - run: rm package-lock.json
       - run: npm install
       - run: npm test
+        env:
+          BROWSER: ${{ matrix.browser }}
       - uses: gr2m/create-or-update-pull-request-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
