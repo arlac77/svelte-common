@@ -55,7 +55,7 @@ jobs:
         with:
           node-version: 20.9.0
           cache: npm
-      - run: npm ci
+      - run: npm install
       - run: npx semantic-release
         env:
           CI: 'true'
