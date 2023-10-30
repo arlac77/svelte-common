@@ -27,7 +27,7 @@ jobs:
           cache: npm
       - run: npm install
       - run: npm test
-          env:
+        env:
           BROWSER: ${{ matrix.browser }}
       - uses: actions/upload-artifact@v3
         with:
