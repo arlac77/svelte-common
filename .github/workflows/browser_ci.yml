@@ -18,7 +18,7 @@ jobs:
         browser:
           - chrome
         node-version:
-          - 20.9.0
+          - 21.1.0
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
