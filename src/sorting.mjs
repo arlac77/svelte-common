@@ -1,4 +1,4 @@
-import { getAttribute } from "./attribute.mjs";
+import { getAttribute } from "pacc";
 
 export const SORT_NONE = "none";
 export const SORT_ASCENDING = "ascending";

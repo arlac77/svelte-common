@@ -1,4 +1,4 @@
-import { getAttributeAndOperator } from "./attribute.mjs";
+import { getAttributeAndOperator } from "pacc";
 
 function dateOp(value, against, op) {
   return numberOp(value.getTime(), against.getTime(), op);
