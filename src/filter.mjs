@@ -1,4 +1,12 @@
-import { getAttributeAndOperator } from "pacc";
+import {
+  getAttributeAndOperator,
+  EQUAL,
+  NOT_EQUAL,
+  LESS,
+  LESS_EQUAL,
+  GREATER,
+  GREATER_EQUAL
+} from "pacc";
 
 function dateOp(value, against, op) {
   return numberOp(value.getTime(), against.getTime(), op);
@@ -74,7 +82,7 @@ function allOp(value, against, op) {
           return numberOp(value.length !== 0, against, op);
         case "string":
           if (
-            op === "=" &&
+            op === EQUAL &&
             (against.length === 0 || value.indexOf(against) >= 0)
           ) {
             return true;
@@ -166,17 +174,17 @@ function allOp(value, against, op) {
 
 function numberOp(value, against, op) {
   switch (op) {
-    case "!=":
+    case NOT_EQUAL:
       return value != against;
-    case "=":
+    case EQUAL:
       return value == against;
-    case ">":
+    case GREATER:
       return value > against;
-    case "<":
+    case LESS:
       return value < against;
-    case ">=":
+    case GREATER_EQUAL:
       return value >= against;
-    case "<=":
+    case LESS_EQUAL:
       return value <= against;
   }
 }
