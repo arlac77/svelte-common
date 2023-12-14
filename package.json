@@ -54,7 +54,7 @@
     "c8": "^8.0.1",
     "documentation": "^14.0.2",
     "mf-styling": "^3.1.2",
-    "npm-pkgbuild": "^13.0.8",
+    "npm-pkgbuild": "^13.0.9",
     "semantic-release": "^22.0.12",
     "stylelint": "^16.0.2",
     "stylelint-config-standard": "^35.0.0",
