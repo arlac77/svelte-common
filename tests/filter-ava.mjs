@@ -136,7 +136,7 @@ test(ft, new Date(0), true, false);
 test(ft, new Date(0), undefined, false);
 test(ft, 47, new Date(0), false);
 test(ft, false, new Date(0), false);
-test(ft, /1970/, new Date(0), true);
+test(ft, /1970/, new Date(6*3600*1000), true);
 test(ft, "1970", new Date(0), true);
 test(ft, new Date(0), new Date(0), true);
 
