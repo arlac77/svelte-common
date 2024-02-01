@@ -45,6 +45,9 @@ export class Pagination {
     return this.#sorter;
   }
 
+  /**
+   * Enshure that current page lies inside 1 ... numberOfPages
+   */
   recalibrateCurrentPage() {
     if (this.page > this.numberOfPages) {
       this.page = this.numberOfPages;
