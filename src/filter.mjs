@@ -192,14 +192,13 @@ function numberOp(value, against, op) {
 /**
  * Generate filter function.
  * @param {Object} [filterBy]
- * @param {Object} [getters]
  * @returns {Function}
  */
-export function filter(filterBy, getters) {
+export function filter(filterBy) {
   if (filterBy) {
     const filters = Object.entries(filterBy).map(([key, against]) => {
       return a => {
-        const [value, op] = getAttributeAndOperator(a, key, getters);
+        const [value, op] = getAttributeAndOperator(a, key);
         return allOp(value, against, op);
       };
     });
