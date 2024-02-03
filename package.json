@@ -70,7 +70,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arlac77/svelte-common"
+    "url": "git+https://github.com/arlac77/svelte-common.git"
   },
   "bugs": {
     "url": "https://github.com/arlac77/svelte-common/issues"
