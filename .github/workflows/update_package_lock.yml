@@ -1,5 +1,5 @@
 name: Update package lock
-'on':
+on:
   schedule:
     - cron: 13 9 * * *
     - cron: 13 8 * * 6
@@ -35,4 +35,4 @@ jobs:
           body: bring lock in sync
           branch: package-lock
           labels: npm
-          commit-message: 'chore(deps): lock'
+          commit-message: "chore(deps): lock"
