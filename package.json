@@ -8,9 +8,9 @@
   "types": "./types/module.d.mjs",
   "exports": {
     ".": {
-      "types": "./types/module.d.mjs",
-      "default": "./src/module.mjs",
-      "svelte": "./src/index.svelte"
+      "default": "./src/index.svelte",
+      "svelte": "./src/index.svelte",
+      "types": "./types/module.d.mjs"
     },
     "./css": "./src/common.css"
   },
