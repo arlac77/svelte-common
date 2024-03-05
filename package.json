@@ -8,7 +8,7 @@
   "types": "./types/module.d.mjs",
   "exports": {
     ".": {
-      "default": "./src/index.svelte",
+      "default": "./src/module.mjs",
       "svelte": "./src/index.svelte",
       "types": "./types/module.d.mjs"
     },
