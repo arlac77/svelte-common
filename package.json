@@ -5,9 +5,11 @@
     "access": "public",
     "provenance": true
   },
+  "types": "./types/module.d.mjs",
   "exports": {
     ".": {
-      "default": "./src/index.svelte",
+      "types": "./types/module.d.mjs",
+      "default": "./src/module.mjs",
       "svelte": "./src/index.svelte"
     },
     "./css": "./src/common.css"

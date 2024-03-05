@@ -1,6 +1,6 @@
 import test from "ava";
 import { writable } from "svelte/store";
-import { keyPrefixStore } from "../src/util.mjs";
+import { keyPrefixStore } from "svelte-common";
 
 test("keyPrefixStore set/get", t => {
   let wso, kpso, kpfo;

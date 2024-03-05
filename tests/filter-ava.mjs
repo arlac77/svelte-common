@@ -1,5 +1,5 @@
 import test from "ava";
-import { filter } from "../src/filter.mjs";
+import { filter } from "svelte-common";
 
 class FixPoint {
   value;

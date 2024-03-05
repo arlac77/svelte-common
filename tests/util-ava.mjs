@@ -1,5 +1,5 @@
 import test from "ava";
-import { formatBytes, formatDuration } from "../src/util.mjs";
+import { formatBytes, formatDuration } from "svelte-common";
 
 test("formatBytes", t => {
   t.is(formatBytes(0), "0 Bytes");

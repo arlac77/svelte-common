@@ -1,5 +1,5 @@
 import test from "ava";
-import { Pagination, navigationItems } from "../src/pagination.mjs";
+import { Pagination, navigationItems } from "svelte-common";
 
 test("Pagination without options", t => {
   const pg = new Pagination([1, 2, 3, 4, 5]);
