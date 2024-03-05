@@ -7,4 +7,5 @@ build
 *.node
 .test
 dist
+types
 .tmp
