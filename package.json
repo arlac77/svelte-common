@@ -7,6 +7,7 @@
   },
   "exports": {
     ".": {
+      "default": "./src/index.svelte",
       "svelte": "./src/index.svelte"
     },
     "./css": "./src/common.css"
@@ -29,16 +30,17 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
-    "prepare": "vite build",
+    "prepare": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types -t esnext -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
     "start": "vite",
     "test": "npm run test:ava && npm run test:cafe",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*-cafe.mjs -s build/test --page-request-timeout 5000 --app-init-delay 8000 --app vite",
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
-    "lint": "npm run lint:css && npm run lint:docs",
+    "lint": "npm run lint:css && npm run lint:docs && npm run lint:tsc",
     "lint:docs": "documentation lint ./src/**/*.mjs",
     "lint:css": "stylelint ./src/*.css",
+    "lint:tsc": "tsc --allowJs --checkJs --noEmit -t esnext -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -61,6 +63,7 @@
     "stylelint-config-standard": "^36.0.0",
     "svelte": "^4.2.12",
     "testcafe": "^3.5.0",
+    "typescript": "^5.3.3",
     "vite": "^5.1.5",
     "vite-plugin-compression2": "^1.0.0"
   },
@@ -141,7 +144,8 @@
       "arlac77/template-cloudflare",
       "arlac77/template-css",
       "arlac77/template-npm-pkgbuild",
-      "arlac77/template-svelte-component"
+      "arlac77/template-svelte-component",
+      "arlac77/template-typescript"
     ]
   }
 }
