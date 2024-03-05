@@ -1,7 +1,6 @@
 name: Update package lock
 on:
   schedule:
-    - cron: 13 9 * * *
     - cron: 13 8 * * 6
   push:
     paths:
@@ -12,7 +11,6 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 20.9.0
           - 20.11.1
         browser:
           - chrome
