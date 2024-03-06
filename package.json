@@ -41,9 +41,10 @@
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme --section=API ./src/**/*.mjs",
-    "lint": "npm run lint:css && npm run lint:docs",
+    "lint": "npm run lint:css && npm run lint:docs && npm run lint:typescript",
     "lint:docs": "documentation lint ./src/**/*.mjs",
     "lint:css": "stylelint ./src/*.css",
+    "lint:typescript": "tsc --allowJs --checkJs --noEmit -t esnext -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
