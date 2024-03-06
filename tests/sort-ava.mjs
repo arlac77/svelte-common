@@ -1,5 +1,5 @@
 import test from "ava";
-import { toggleOrderBy, sorter } from "svelte-common";
+import { toggleOrderBy, sorter } from "../src/sorting.mjs";
 
 test("toggleOrderBy", t => {
   t.is(toggleOrderBy(), "none");
