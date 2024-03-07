@@ -34,7 +34,7 @@
   "scripts": {
     "prepare": "npm run prepare:vite && npm run prepare:typescript",
     "prepare:vite": "vite build",
-    "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types -t esnext -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
+    "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule -t esnext -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
     "start": "vite",
     "test": "npm run test:ava && npm run test:cafe",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*-cafe.mjs -s build/test --page-request-timeout 5000 --app-init-delay 8000 --app vite",
@@ -44,7 +44,7 @@
     "lint": "npm run lint:css && npm run lint:docs && npm run lint:typescript",
     "lint:docs": "documentation lint ./src/**/*.mjs",
     "lint:css": "stylelint ./src/*.css",
-    "lint:typescript": "tsc --allowJs --checkJs --noEmit -t esnext -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs",
+    "lint:typescript": "tsc --allowJs --checkJs --noEmit --resolveJsonModule -t esnext -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -61,7 +61,7 @@
     "c8": "^9.1.0",
     "documentation": "^14.0.3",
     "mf-styling": "^3.1.5",
-    "npm-pkgbuild": "^14.0.1",
+    "npm-pkgbuild": "^14.0.2",
     "semantic-release": "^23.0.2",
     "stylelint": "^16.2.1",
     "stylelint-config-standard": "^36.0.0",
