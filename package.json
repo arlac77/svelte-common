@@ -65,7 +65,7 @@
     "semantic-release": "^23.0.8",
     "stylelint": "^16.3.1",
     "stylelint-config-standard": "^36.0.0",
-    "svelte": "^4.2.14",
+    "svelte": "^4.2.15",
     "testcafe": "^3.5.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.9",
