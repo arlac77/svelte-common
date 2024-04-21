@@ -1,4 +1,5 @@
 import { getAttribute } from "pacc";
+import { writable } from "svelte/store";
 
 export const SORT_NONE = "none";
 export const SORT_ASCENDING = "ascending";
@@ -27,7 +28,7 @@ export function toggleOrderBy(orderBy) {
  * Add sortable toggle button to a th node.
  * Synchronizes store value with the nodes "aria-sort" attribute.
  * @param {Element} th the header node
- * @param {WritableStore} store keep in sync with sorting properties
+ * @param {writable} store keep in sync with sorting properties
  */
 export function sortable(th, store) {
   const unsubscribe = store.subscribe(orderBy =>

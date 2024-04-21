@@ -1,9 +1,12 @@
+import { readable } from "svelte/store";
+
 /**
  * Pagination support store.
  * Pages go from 1 ... numberOfPages
- * @param {Map|Set|Array|Store} data
+ * @param {Map|Set|Array|readable} data
  * @param {Object} options
  * @param {number} [options.itemsPerPage]
+ * @param {number} [options.page]
  * @param {Function} [options.sorter]
  * @param {Function} [options.filter]
  */
@@ -164,8 +167,8 @@ export class Pagination {
   }
 
   /**
-   * @see @link https://getbootstrap.com/docs/4.0/components/pagination
-   * @see @link https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination
+   * @see https://getbootstrap.com/docs/4.0/components/pagination
+   * @see https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination
    */
   get pageNavigationElement() {
     const nav = document.createElement("nav");

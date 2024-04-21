@@ -1,3 +1,5 @@
+import { writable } from "svelte/store";
+
 export const dateFormatter = new Intl.DateTimeFormat("default", {
   year: "numeric",
   month: "numeric",
@@ -39,10 +41,10 @@ export function formatDurationISO(seconds) {
       t = true;
     }
 
-    const n = Math.floor(seconds / d[0]);
+    const n = Math.floor(seconds / Number(d[0]));
     if (n > 0) {
       out += `${n}${d[1]}`;
-      seconds -= n * d[0];
+      seconds -= n * Number(d[0]);
     }
   }
 
@@ -60,10 +62,10 @@ const durations = [
 export function formatDuration(seconds) {
   const out = [];
   for (const d of durations) {
-    const n = Math.floor(seconds / d[0]);
+    const n = Math.floor(seconds / Number(d[0]));
     if (n > 0) {
       out.push(`${n}${d[1]}`);
-      seconds -= n * d[0];
+      seconds -= n * Number(d[0]);
     }
   }
 
@@ -100,9 +102,9 @@ function liveDuration(seconds) {
  * ```
  * { a: 1, b: 2 } -> { foo_a: 1 foo_b: 2 } // prefix: foo_
  * ```
- * @param {WriteableStore} store we derive from
+ * @param {writable} store we derive from
  * @param {string} prefix for each key
- * @returns {WriteableStore}
+ * @returns {writable}
  */
 export function keyPrefixStore(store, prefix) {
   const subscriptions = new Set();
