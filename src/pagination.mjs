@@ -248,7 +248,7 @@ export function pageNavigation(elem, pg) {
  * @param {number} numberOfPages
  * @param {number} currentPage
  * @param {number} numberOfItems
- * @return {Iterator<number>}
+ * @return {Iterable<number>}
  */
 export function* navigationItems(
   numberOfPages,
