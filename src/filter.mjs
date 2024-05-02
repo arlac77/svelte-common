@@ -131,7 +131,7 @@ function allOp(value, against, op) {
       switch (typeof against) {
         case "object":
           if (against instanceof RegExp) {
-            return against.test(value);
+            return against.test(String(value));
           }
 
           if (against instanceof Map) {
