@@ -17,12 +17,12 @@
   <td colspan="3">Server</td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td>Version</td>
   <td>{#if server?.version}{server.version}{:else}<div class="error">down</div>{/if}</td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td>Uptime</td>
   <td>
     {#if server?.uptime >= 0}
@@ -32,7 +32,7 @@
 </tr>
 {#each memSlots as { key, title }}
   <tr>
-    <td />
+    <td></td>
     <td>{title}</td>
     <td>{#if server?.memory}<Bytes value={server.memory[key]}/>{:else}<div class="error">down</div>{/if}</td>
   </tr>

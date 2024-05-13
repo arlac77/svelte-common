@@ -8,19 +8,19 @@
   <td colspan="3">Session</td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td>Username</td>
   <td>{session.username || ""}</td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td>Expiration</td>
   <td class={session.isValid ? "ok" : "error"}>
     <DateTime date={session.expirationDate} />
   </td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td>Entitlements</td>
   <td>
     <EntitlementBadges

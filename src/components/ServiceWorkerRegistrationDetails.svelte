@@ -4,12 +4,12 @@
 </script>
 
 <tr>
-  <td />
+  <td></td>
   <td>Scope</td>
   <td id="serviceWorkerScope">{serviceWorkerRegistration.scope}</td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td colspan="2">
     <CommandButton
       command={new Command(() => serviceWorkerRegistration.update(), {

@@ -11,7 +11,7 @@
   <td colspan="3">{description}</td>
 </tr>
 <tr>
-  <td />
+  <td></td>
   <td>Version</td>
   <td>{version}</td>
 </tr>
