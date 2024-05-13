@@ -176,7 +176,7 @@
           <a href="#!" class="dropdown-item" on:click|preventDefault={logout}>
             Logout
           </a>
-          <div role="none" class="dropdown-divider" />
+          <div role="none" class="dropdown-divider"></div>
           <a href="#!" class="dropdown-item">Profile</a>
           <a href="#!" class="dropdown-item">About</a>
           <a href="#!" class="dropdown-item">Setting 1</a>
@@ -282,7 +282,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2" use:pageNavigation={pg} />
+            <td colspan="2" use:pageNavigation={pg}></td>
           </tr>
         </tfoot>
       </table>
@@ -362,7 +362,7 @@
         description="a description"
       />
       <tr>
-        <td />
+        <td></td>
         <td>a new entry</td>
         <td>a value</td>
       </tr>
