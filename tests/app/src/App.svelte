@@ -185,8 +185,8 @@
     </li>
   </ul>
   <ul>
-    <li><a on:click={showModal}>Modal</a></li>
-    <li><a on:click={showAbout}>About</a></li>
+    <li><a on:click={showModal} tabindex="0" role="button">Modal</a></li>
+    <li><a on:click={showAbout} tabindex="0" role="button">About</a></li>
   </ul>
 </TopNav>
 <main>
