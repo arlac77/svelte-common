@@ -20,7 +20,12 @@
 
 <svelte:window on:keyup={handleKeyup} />
 
-<div on:click={handleOuterClick} bind:this={background}>
+<div
+  role="none"
+  on:click={handleOuterClick}
+  on:keyup={handleKeyup}
+  bind:this={background}
+>
   <div class="center modal">
     <div class="window">
       <slot />
