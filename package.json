@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "pacc": "^3.1.7",
-    "svelte-command": "^1.1.51",
+    "svelte-command": "^2.0.0",
     "svelte-entitlement": "^1.2.80"
   },
   "devDependencies": {
