@@ -17,7 +17,7 @@ const ARIA_SORT = "aria-sort";
 /**
  * Deliver next value in the order by cycle.
  * SORT_NONE -> SORT_ASCENDING -> SORT_DESCENDING -> SORT_NONE ...
- * @param {string} orderBy
+ * @param {string|null} [orderBy]
  * @returns {string} new order either SORT_NONE, SORT_ASCENDING or SORT_DESCENDING
  */
 export function toggleOrderBy(orderBy) {
