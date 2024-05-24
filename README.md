@@ -1,4 +1,4 @@
-[![Svelte v4](https://img.shields.io/badge/svelte-v4-orange.svg)](https://svelte.dev)
+[![Svelte v5](https://img.shields.io/badge/svelte-v5-orange.svg)](https://svelte.dev)
 [![npm](https://img.shields.io/npm/v/svelte-common.svg)](https://www.npmjs.com/package/svelte-common)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript\&label\&labelColor=blue\&color=555555)](https://typescriptlang.org)
