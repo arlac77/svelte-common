@@ -64,12 +64,12 @@
     "mf-styling": "^3.1.6",
     "npm-pkgbuild": "^15.3.19",
     "semantic-release": "^23.1.1",
-    "stylelint": "^16.6.0",
+    "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.0",
-    "svelte": "^5.0.0-next.142",
+    "svelte": "^5.0.0-next.143",
     "testcafe": "^3.6.0",
     "typescript": "^5.4.5",
-    "vite": "^5.2.11",
+    "vite": "^5.2.12",
     "vite-plugin-compression2": "^1.1.1"
   },
   "peerDependencies": {
