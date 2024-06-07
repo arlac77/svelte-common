@@ -77,7 +77,7 @@ export function sortable(th, store) {
  * Generate a sort function for a given sort-by set.
  * @param {Object|undefined} [sortBy]
  * @param {Object} [getters]
- * @return {Function|undefined} sorter
+ * @return {(function(any,any):number)|undefined} sorter
  */
 export function sorter(sortBy, getters) {
   if (sortBy) {
