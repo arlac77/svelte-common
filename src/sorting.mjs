@@ -102,6 +102,7 @@ export function sorter(sortBy, getters) {
               case "string":
                 switch (typeof bv) {
                   case "number":
+                    bv = String(bv);
                   case "string":
                     const r = av.localeCompare(bv);
                     return r ? r * rev : r;
@@ -112,11 +113,11 @@ export function sorter(sortBy, getters) {
               return rev;
             }
 
-            if(av[Symbol.toPrimitive]) {
-              av = av[Symbol.toPrimitive]('number');
+            if (av[Symbol.toPrimitive]) {
+              av = av[Symbol.toPrimitive]("number");
             }
-            if(bv[Symbol.toPrimitive]) {
-              bv = bv[Symbol.toPrimitive]('number');
+            if (bv[Symbol.toPrimitive]) {
+              bv = bv[Symbol.toPrimitive]("number");
             }
 
             return av > bv ? rev : av == bv ? 0 : -rev;
