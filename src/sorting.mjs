@@ -98,9 +98,8 @@ export function sorter(sortBy, getters) {
             switch (typeof av) {
               case "undefined":
                 return bv === undefined ? 0 : -rev;
-
               case "string":
-                switch (typeof bv) {
+                switch (typeof bv) {  
                   case "number":
                     bv = String(bv);
                   case "string":
@@ -116,8 +115,15 @@ export function sorter(sortBy, getters) {
             if (av[Symbol.toPrimitive]) {
               av = av[Symbol.toPrimitive]("number");
             }
+            else {
+              av = av.toString();
+            }
+
             if (bv[Symbol.toPrimitive]) {
               bv = bv[Symbol.toPrimitive]("number");
+            }
+            else {
+              bv = bv.toString();
             }
 
             return av > bv ? rev : av == bv ? 0 : -rev;

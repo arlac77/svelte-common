@@ -34,7 +34,6 @@ test("sorter date ascending", t => {
     ),
     0
   );
-
   t.is(
     sort(
       { a: new Date("July 20, 69 20:17:41 GMT+00:00") },
@@ -89,6 +88,23 @@ test("sorter bigint descending", t => {
   t.is(sort({ a: 7700000000000n }, { a: 7700000000000n }), 0);
   t.is(sort({ a: 7800000000000n }, { a: 7700000000000n }), -1);
   t.is(sort({ a: 7700000000000n }, { a: 7800000000000n }), 1);
+});
+
+test("sorter RegExp ascending", t => {
+  const sort = sorter({ a: "ascending" });
+
+  t.is(sort({ a: /a/ }, { a: /a/ }), 0);
+  t.is(sort({ a: /b/ }, { a: /a/ }), 1);
+  t.is(sort({ a: /a/ }, { a: /b/ }), -1);
+});
+
+test("sorter boolean ascending", t => {
+  const sort = sorter({ a: "ascending" });
+
+  t.is(sort({ a: true }, { a: true }), 0);
+  t.is(sort({ a: false }, { a: false }), 0);
+  t.is(sort({ a: true }, { a: false }), 1);
+  t.is(sort({ a: false }, { a: true }), -1);
 });
 
 test("sorter missing values", t => {
