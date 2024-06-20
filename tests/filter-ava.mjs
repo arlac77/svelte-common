@@ -71,7 +71,7 @@ test("filter property path [] negative", t => {
 
 test("filter property path [*] positive", t => {
   const f = filter({ "a[*].c": 1 });
-  t.truthy(f({ a: [{ c: 1 },1,2] }));
+  t.truthy(f({ a: [{ c: 1 }, 1, 2] }));
 });
 
 function ft(t, fv, pv, expected) {
@@ -92,9 +92,11 @@ ft.title = (providedTitle = "filter", fv, pv, expected) =>
   } ${expected}`.trim();
 
 test(ft, /a/, "abc", true);
+test(ft, /a/, /a/, true);
 test(ft, /a/, undefined, false);
 test(ft, /a/, "b", false);
 test(ft, "a", "abc", true);
+test(ft, "a", /a/, true);
 test(ft, "a", "b", false);
 test(ft, "a", 1, false);
 test(ft, "a", undefined, false);
@@ -102,6 +104,7 @@ test(ft, "", "a", true); // empty string matches
 test(ft, "", "1", true); // empty string matches
 
 test(ft, 1, 1, true);
+test(ft, 1, /1/, true);
 test(ft, 1.234, 1.234, true);
 test(ft, /1/, 1, true);
 test(ft, /1/, 1.234, true);
@@ -136,7 +139,7 @@ test(ft, new Date(0), true, false);
 test(ft, new Date(0), undefined, false);
 test(ft, 47, new Date(0), false);
 test(ft, false, new Date(0), false);
-test(ft, /1970/, new Date(6*3600*1000), true);
+test(ft, /1970/, new Date(6 * 3600 * 1000), true);
 test(ft, "1970", new Date(0), true);
 test(ft, new Date(0), new Date(0), true);
 

@@ -35,6 +35,9 @@ function allOp(value, against, op) {
       if (value instanceof Map) {
         return collectionOp(value.keys(), against, op);
       }
+      if (value instanceof RegExp) {
+        return value.test(against);
+      }
       if (value[Symbol.iterator]) {
         return collectionOp(value, against, op);
       }
