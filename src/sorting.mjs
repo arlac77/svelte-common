@@ -112,19 +112,8 @@ export function sorter(sortBy, getters) {
               return rev;
             }
 
-            if (av[Symbol.toPrimitive]) {
-              av = av[Symbol.toPrimitive]("number");
-            }
-            else {
-              av = av.toString();
-            }
-
-            if (bv[Symbol.toPrimitive]) {
-              bv = bv[Symbol.toPrimitive]("number");
-            }
-            else {
-              bv = bv.toString();
-            }
+            av = av[Symbol.toPrimitive] ? av[Symbol.toPrimitive]("number") : av.toString();
+            bv = bv[Symbol.toPrimitive] ? bv[Symbol.toPrimitive]("number") : bv.toString();
 
             return av > bv ? rev : av == bv ? 0 : -rev;
           };
