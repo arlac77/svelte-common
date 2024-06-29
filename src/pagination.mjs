@@ -123,7 +123,7 @@ export class Pagination {
    */
   get numberOfItems() {
     if (this.filter) {
-      const data = Array.isArray(this.data)
+      const data = Array.isArray(this.#data)
         ? this.#data
         : [...this.#data.values()];
       return data.filter(this.filter).length;
