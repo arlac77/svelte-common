@@ -251,6 +251,12 @@ test(ft, false, undefined, false);
 test(ft, false, null, false);
 test(ft, false, "", true);
 
+test(ft, fetch, fetch, false);
+test(ft, true, fetch, false);
+test(ft, fetch, true, false);
+test(ft, false, fetch, false);
+test(ft, fetch, false, false);
+
 test(ft, undefined, undefined, false);
 test(ft, undefined, null, false);
 test(ft, null, undefined, false);
