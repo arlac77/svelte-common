@@ -90,12 +90,17 @@ export class Pagination {
    * @param {number} n
    */
   set page(n) {
-    if (n < 0) {
-      n = this.numberOfPages + n + 1;
-    }
+    const numberOfPages = this.numberOfPages;
 
+    if (n < 0) {
+      n = numberOfPages + n + 1;
+    } else {
+      if (n > numberOfPages) {
+        n = numberOfPages;
+      }
+    }
     if (this.#page !== n) {
-      if (n >= 1 && n <= this.numberOfPages) {
+      if (n >= 1 && n <= numberOfPages) {
         this.#page = n;
         this.fireSubscriptions();
       }

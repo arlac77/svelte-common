@@ -38,11 +38,14 @@ test("Pagination set/get", t => {
 test("Pagination set out of range", t => {
   const pg = new Pagination([1, 2, 3, 4], { itemsPerPage: 2 });
 
+  pg.page = -5;
+  t.is(pg.page, 1);
+
   pg.page = 0;
   t.is(pg.page, 1);
 
   pg.page = 77;
-  t.is(pg.page, 1);
+  t.is(pg.page, 2);
 });
 
 test("Pagination move page into range", t => {
