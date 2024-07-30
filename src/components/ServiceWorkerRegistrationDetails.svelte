@@ -1,6 +1,6 @@
 <script>
   import { Command, CommandButton } from "svelte-command";
-  export let serviceWorkerRegistration;
+  let { serviceWorkerRegistration } = $props();
 </script>
 
 <tr>

@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  export let close;
+  let { close } = $props();
 
   let anchor;
   let content;

@@ -1,7 +1,7 @@
 <script>
   import { EntitlementBadges, Entitlement } from "svelte-entitlement";
   import DateTime from "./DateTime.svelte";
-  export let session;
+  let { session } = $props();
 </script>
 
 <tr>

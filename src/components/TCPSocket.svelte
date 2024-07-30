@@ -1,5 +1,5 @@
 <script>
-  export let socket;
+  let { socket } = $props();
 </script>
 
 {socket.host}:{socket.port}

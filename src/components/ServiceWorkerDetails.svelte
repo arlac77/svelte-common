@@ -1,5 +1,5 @@
 <script>
-  export let serviceWorker;
+  let { serviceWorker } = $props();
 </script>
 
 <tr>

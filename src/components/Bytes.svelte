@@ -1,6 +1,6 @@
 <script>
   import { formatBytes } from "../util.mjs";
-  export let value;
+  let { value } = $props();
 </script>
 
 <span>{formatBytes(value)}</span>

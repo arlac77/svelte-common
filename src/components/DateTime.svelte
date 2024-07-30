@@ -1,8 +1,8 @@
 <script>
   import { dateFormatter } from "../util.mjs";
-  export let date;
+  let { date } = $props();
 </script>
 
 {#if date}
-<time datetime={date.toISOString()}>{dateFormatter.format(date)}</time>
+  <time datetime={date.toISOString()}>{dateFormatter.format(date)}</time>
 {/if}

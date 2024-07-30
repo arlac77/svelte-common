@@ -2,7 +2,7 @@
   import Duration from "./Duration.svelte";
   import Bytes from "./Bytes.svelte";
 
-  export let server;
+  let { server } = $props();
 
   const memSlots = [
     { key: "external", title: "External" },

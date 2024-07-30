@@ -1,6 +1,6 @@
 <script>
   import TCPSocket from "./TCPSocket.svelte";
-  export let peer;
+  let { peer } = $props();
 </script>
 
 <div class="peer">

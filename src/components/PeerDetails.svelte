@@ -1,7 +1,6 @@
 <script>
   import Peer from "./Peer.svelte";
-
-  export let peers;
+  let { peers } = $props();
 </script>
 
 <tr>

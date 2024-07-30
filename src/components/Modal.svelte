@@ -1,5 +1,5 @@
 <script>
-  export let close;
+  let { close } = $props();
 
   let background;
 
@@ -18,12 +18,12 @@
   };
 </script>
 
-<svelte:window on:keyup={handleKeyup} />
+<svelte:window keyup={handleKeyup} />
 
 <div
   role="none"
-  on:click={handleOuterClick}
-  on:keyup={handleKeyup}
+  click={handleOuterClick}
+  keyup={handleKeyup}
   bind:this={background}
 >
   <div class="center modal">

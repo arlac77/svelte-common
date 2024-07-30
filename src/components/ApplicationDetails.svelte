@@ -1,7 +1,5 @@
 <script>
-  export let name;
-  export let version;
-  export let description;
+  let { name, version, description } = $props();
 </script>
 
 <tr>
