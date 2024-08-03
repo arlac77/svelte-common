@@ -1,7 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
   import { readable, writable } from "svelte/store";
-
   import {
     Bytes,
     DateTime,
@@ -173,7 +172,7 @@
       <Menue>
         <div slot="title" class="dropdown-trigger">User</div>
         <div slot="content" class="dropdown-menu dropdown-menu-sw">
-          <a href="#!" class="dropdown-item" on:click|preventDefault={logout}>
+          <a href="#!" class="dropdown-item" onclick={logout}>
             Logout
           </a>
           <div role="none" class="dropdown-divider"></div>
@@ -185,8 +184,8 @@
     </li>
   </ul>
   <ul>
-    <li><a on:click={showModal} tabindex="0" role="button">Modal</a></li>
-    <li><a on:click={showAbout} tabindex="0" role="button">About</a></li>
+    <li><a onclick={showModal} tabindex="0" role="button">Modal</a></li>
+    <li><a onclick={showAbout} tabindex="0" role="button">About</a></li>
   </ul>
 </TopNav>
 <main>
