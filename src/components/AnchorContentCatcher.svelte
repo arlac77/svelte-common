@@ -71,7 +71,7 @@
 <svg class="acc" width="10000" height="10000">
   <path bind:this={path} />
 </svg>
-<div bind:this={anchor} on:mouseleave={close} role="none">
+<div bind:this={anchor} onmouseleave={close} role="none">
   <slot name="anchor" />
 </div>
 <div bind:this={content}>
