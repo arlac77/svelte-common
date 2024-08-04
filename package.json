@@ -92,7 +92,7 @@
       "${install.dir}": "build/",
       "${install.dir}/anchor/": "tests/anchor/"
     },
-    "csp.script-src": "script-src https://unpkg.com/ 'unsave-inline' 'self';",
+    "csp.script-src": "script-src 'self' 'unsave-inline' https://unpkg.com/;",
     "example": true,
     "frontend": true
   },
