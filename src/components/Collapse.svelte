@@ -1,12 +1,13 @@
 <script>
-  let open = false;
+  let open = $state(false);
 
-  function toggle() {
+  function onclick(event) {
+    event.preventDefault();
     open = !open;
   }
 </script>
 
-<button on:click|preventDefault={toggle}>
+<button {onclick}>
   <slot />
 </button>
 {#if open}

@@ -1,19 +1,20 @@
 <script>
   import AnchorContentCatcher from "./AnchorContentCatcher.svelte";
 
-  let open = false;
+  let open = $state(false);
 
-  function hide() {
+  function close() {
     open = false;
   }
 
-  function show() {
+  function show(event) {
+    event.preventDefault();
     open = true;
   }
 </script>
 
 {#if open}
-  <AnchorContentCatcher close={hide}>
+  <AnchorContentCatcher {close}>
     <a href=" " slot="anchor">
       <slot name="title" />
     </a>
@@ -22,7 +23,7 @@
     </div>
   </AnchorContentCatcher>
 {:else}
-  <a href=" " on:click|preventDefault={show} on:mouseenter={show}>
+  <a href=" " onclick={show} onmouseenter={show}>
     <slot name="title" />
     <svg width="18" height="16">
       <path d="M6 7l6 6 6-6 2 2-8 8-8-8z" />
