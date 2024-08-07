@@ -44,8 +44,18 @@ function allOp(value, against, op) {
 
       switch (typeof against) {
         case "object":
-          if (against instanceof Date && value instanceof Date) {
-            return dateOp(value, against, op);
+          if (value instanceof Date) {
+            if (
+              Array.isArray(against) &&
+              against[0] instanceof Date &&
+              against[1] instanceof Date
+            ) {
+              return dateOp(value, against[0], GREATER_EQUAL) && dateOp(value, against[1], LESS_EQUAL);
+            }
+
+            if (against instanceof Date) {
+              return dateOp(value, against, op);
+            }
           }
 
           if (value[Symbol.toPrimitive] && against[Symbol.toPrimitive]) {

@@ -141,6 +141,10 @@ test(ft, 47, new Date(0), false);
 test(ft, false, new Date(0), false);
 test(ft, /1970/, new Date(6 * 3600 * 1000), true);
 test(ft, "1970", new Date(0), true);
+
+test(ft, [new Date(0), new Date(2000)], new Date(1000), true);
+test(ft, [new Date(1500), new Date(2000)], new Date(1000), false);
+
 test(ft, new Date(0), new Date(0), true);
 
 test(ft, 1, [], false);
