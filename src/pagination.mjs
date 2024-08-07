@@ -19,7 +19,7 @@ export class Pagination {
   #itemsPerPage = 20;
   #page = 1;
 
-  constructor(data, options) {
+  constructor(data=[], options) {
     this.data = data;
 
     Object.assign(this, options);
