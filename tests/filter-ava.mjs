@@ -94,6 +94,7 @@ ft.title = (providedTitle = "filter", fv, pv, expected) =>
 test(ft, /a/, "abc", true);
 test(ft, /a/, /a/, true);
 test(ft, /a/, undefined, false);
+test(ft, /a/, "", false);
 test(ft, /a/, "b", false);
 test(ft, "a", "abc", true);
 test(ft, "a", /a/, true);
@@ -102,6 +103,7 @@ test(ft, "a", 1, false);
 test(ft, "a", undefined, false);
 test(ft, "", "a", true); // empty string matches
 test(ft, "", "1", true); // empty string matches
+test(ft, "", "", true); // empty string matches
 
 test(ft, 1, 1, true);
 test(ft, 1, /1/, true);
@@ -133,7 +135,7 @@ test(ft, "16", new FixPoint(16), true);
 test(ft, 17n, new FixPoint(17), true);
 
 test(ft, new Date(0), "xyz", false);
-test(ft, new Date(0), "", true); // empty string matches
+test(ft, new Date(0), "", false);
 test(ft, new Date(0), 0, false);
 test(ft, new Date(0), true, false);
 test(ft, new Date(0), undefined, false);

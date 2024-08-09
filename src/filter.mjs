@@ -109,7 +109,7 @@ function allOp(value, against, op) {
           return value.length ? numberOp(value, against, op) : true;
         case "object":
           if (value.length === 0) {
-            return true;
+            return false;
           }
 
           if (against instanceof Date) {
