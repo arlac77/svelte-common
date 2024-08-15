@@ -15,11 +15,12 @@ export class Pagination {
   #data;
   #unsubscribeData;
   #filter;
+  #unsubscribeFilter;
   #sorter;
   #itemsPerPage = 20;
   #page = 1;
 
-  constructor(data=[], options) {
+  constructor(data = [], options) {
     this.data = data;
 
     Object.assign(this, options);
@@ -30,9 +31,22 @@ export class Pagination {
   }
 
   set filter(filter) {
-    this.#filter = filter;
-    this.recalibrateCurrentPage();
-    this.fireSubscriptions();
+    if (this.#unsubscribeFilter) {
+      this.#unsubscribeFilter();
+      this.#unsubscribeFilter = undefined;
+    }
+
+    const applyFilter = filter => {
+      this.#filter = filter;
+      this.recalibrateCurrentPage();
+      this.fireSubscriptions();
+    };
+
+    if (filter?.subscribe) {
+      this.#unsubscribeFilter = filter.subscribe(applyFilter);
+    } else {
+      applyFilter(filter);
+    }
   }
 
   get filter() {
