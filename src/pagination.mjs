@@ -17,6 +17,7 @@ export class Pagination {
   #filter;
   #unsubscribeFilter;
   #sorter;
+  #unsubscribeSorter;
   #itemsPerPage = 20;
   #page = 1;
 
@@ -54,8 +55,21 @@ export class Pagination {
   }
 
   set sorter(sorter) {
-    this.#sorter = sorter;
-    this.fireSubscriptions();
+    if (this.#unsubscribeSorter) {
+      this.#unsubscribeSorter();
+      this.#unsubscribeSorter = undefined;
+    }
+
+    const applySorter = sorter => {
+      this.#sorter = sorter;
+      this.fireSubscriptions();
+      };
+
+    if (sorter?.subscribe) {
+      this.#unsubscribeFilter = sorter.subscribe(applySorter);
+    } else {
+      applySorter(sorter);
+    }
   }
 
   get sorter() {
@@ -167,8 +181,19 @@ export class Pagination {
     return this.#itemsPerPage;
   }
 
+  get filteredItems()
+  {
+    let items = Array.isArray(this.#data) ? this.#data : [...this.#data.values()];
+
+    if (this.filter) {
+      return items.filter(this.filter);
+    }
+
+    return items;
+  }
+
   *[Symbol.iterator]() {
-    let data = Array.isArray(this.data) ? this.#data : [...this.#data.values()];
+    let data = Array.isArray(this.#data) ? this.#data : [...this.#data.values()];
 
     if (this.filter) {
       data = data.filter(this.filter);

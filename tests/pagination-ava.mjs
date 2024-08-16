@@ -8,6 +8,7 @@ test("Pagination without options", t => {
   t.is(pg.length, 20);
   t.is(pg.numberOfPages, 1);
   t.deepEqual([...pg], [1, 2, 3, 4, 5]);
+  t.deepEqual([...pg.filteredItems], [1, 2, 3, 4, 5]);
 });
 
 test("Pagination set/get", t => {
