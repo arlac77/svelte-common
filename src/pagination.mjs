@@ -6,7 +6,7 @@ import { readable } from "svelte/store";
  * @param {Map|Set|Array|readable} data
  * @param {Object} options
  * @param {number} [options.itemsPerPage]
- * @param {number} [options.page]
+ * @param {number} [options.page] current page
  * @param {Function} [options.sorter]
  * @param {Function} [options.filter]
  */
@@ -193,11 +193,7 @@ export class Pagination {
   }
 
   *[Symbol.iterator]() {
-    let data = Array.isArray(this.#data) ? this.#data : [...this.#data.values()];
-
-    if (this.filter) {
-      data = data.filter(this.filter);
-    }
+    let data = this.filteredItems;
 
     if (this.sorter) {
       data = data.sort(this.sorter);
