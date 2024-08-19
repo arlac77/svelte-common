@@ -63,7 +63,7 @@ export class Pagination {
     const applySorter = sorter => {
       this.#sorter = sorter;
       this.fireSubscriptions();
-      };
+    };
 
     if (sorter?.subscribe) {
       this.#unsubscribeFilter = sorter.subscribe(applySorter);
@@ -166,6 +166,15 @@ export class Pagination {
   }
 
   /**
+   *
+   * @param {number} page 1...
+   * @returns {[number,number]}
+   */
+  itemRangeOnPage(page) {
+    return [(this.page - 1) * this.itemsPerPage, this.page * this.itemsPerPage];
+  }
+
+  /**
    * @return {number}
    */
   get numberOfPages() {
@@ -181,9 +190,10 @@ export class Pagination {
     return this.#itemsPerPage;
   }
 
-  get filteredItems()
-  {
-    let items = Array.isArray(this.#data) ? this.#data : [...this.#data.values()];
+  get filteredItems() {
+    let items = Array.isArray(this.#data)
+      ? this.#data
+      : [...this.#data.values()];
 
     if (this.filter) {
       return items.filter(this.filter);
@@ -199,11 +209,7 @@ export class Pagination {
       data = data.sort(this.sorter);
     }
 
-    const n = this.page - 1;
-
-    yield* data
-      .slice(n * this.itemsPerPage, (n + 1) * this.itemsPerPage)
-      [Symbol.iterator]();
+    yield* data.slice(...this.itemRangeOnPage(this.page))[Symbol.iterator]();
   }
 
   /**
