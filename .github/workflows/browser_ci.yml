@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-          cache-dependency-path: "package-lock.json"
+          cache-dependency-path: package-lock.json
       - name: npm install
         run: npm cit
         env:
@@ -52,14 +52,21 @@ jobs:
       id-token: write
     steps:
       - name: install dependencies
-        run: |2
-                if [ ! -f /usr/bin/pacman ]
-                then
-                sudo apt-get update
-                sudo apt-get install ksh curl
-                wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-3_2.31-0/pacman-utils_5.2.2-3_amd64.deb
-                sudo apt-get install -f ./pacman-utils_5.2.2-3_amd64.deb
-                fi
+        run: >
+          if [ ! -f /usr/bin/pacman ]
+
+          then
+
+          sudo apt-get update
+
+          sudo apt-get install ksh curl
+
+          wget
+          https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-3_2.31-0/pacman-utils_5.2.2-3_amd64.deb
+
+          sudo apt-get install -f ./pacman-utils_5.2.2-3_amd64.deb
+
+          fi
       - name: checkout
         uses: actions/checkout@v4.1.7
       - name: prepare node
@@ -67,7 +74,7 @@ jobs:
         with:
           node-version: 22.6.0
           cache: npm
-          cache-dependency-path: "package-lock.json"
+          cache-dependency-path: package-lock.json
       - name: install
         run: npm ci
       - name: release
@@ -77,4 +84,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PKGBUILD_PUBLISH: ${{ secrets.PKGBUILD_PUBLISH }}
-          PKGEXT: ".pkg.tar.xz"
+          PKGEXT: .pkg.tar.xz
