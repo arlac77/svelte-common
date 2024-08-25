@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
   import Bytes from "./components/Bytes.svelte";
   import Duration from "./components/Duration.svelte";
   import DateTime from "./components/DateTime.svelte";
