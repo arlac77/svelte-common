@@ -257,8 +257,7 @@ export class Pagination {
           } else {
             a.onclick = e => {
               e.preventDefault();
-              e.stopPropagation();
-              nav.focus();
+              nav.focus({ focusVisible: true });
               this.page = targetPage;
             };
           }
@@ -304,7 +303,7 @@ export function* navigationItems(
   const edge = 2;
   const side = 1;
   const step =
-    numberOfPages >= 100 ? Math.floor(numberOfPages / 10) : undefined;
+    numberOfPages >= 80 ? Math.floor(numberOfPages / 10) : undefined;
 
   for (let n = 1; n <= numberOfPages; n++) {
     if (
