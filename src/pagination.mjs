@@ -109,12 +109,15 @@ export class Pagination {
   }
 
   set itemsPerPage(n) {
-    this.#itemsPerPage = n;
-    this.fireSubscriptions();
+    if (this.#itemsPerPage != n) {
+      this.#itemsPerPage = n;
+      this.fireSubscriptions();
+    }
   }
 
   /**
-   * Set current page
+   * Set current page.
+   * First page has number 1.
    * @param {number} n
    */
   set page(n) {
@@ -302,8 +305,7 @@ export function* navigationItems(
 ) {
   const edge = 2;
   const side = 1;
-  const step =
-    numberOfPages >= 80 ? Math.floor(numberOfPages / 10) : undefined;
+  const step = numberOfPages >= 80 ? Math.floor(numberOfPages / 10) : undefined;
 
   for (let n = 1; n <= numberOfPages; n++) {
     if (
