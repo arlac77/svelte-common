@@ -268,16 +268,17 @@ export class Pagination {
         items.push(a);
       };
 
-      add("<<", 1, "First Page");
-      add("<", this.page - 1, "Previous Page");
+      if (np > 1) {
+        add("<<", 1, "First Page");
+        add("<", this.page - 1, "Previous Page");
 
-      for (const n of navigationItems(np, this.page)) {
-        add(String(n), n);
+        for (const n of navigationItems(np, this.page)) {
+          add(String(n), n);
+        }
+
+        add(">", this.page + 1, "Next Page");
+        add(">>", np, "Last Page");
       }
-
-      add(">", this.page + 1, "Next Page");
-      add(">>", np, "Last Page");
-
       nav.replaceChildren(...items);
     });
 
