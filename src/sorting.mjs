@@ -27,11 +27,13 @@ export function toggleOrderBy(orderBy) {
 /**
  * Add sortable toggle button to a th node.
  * Synchronizes store value with the nodes "aria-sort" attribute.
- * @param {Element} th the header node
+ * Usable as svelte action function.
+ * @param {Element} th the header element
  * @param {writable} store keep in sync with sorting properties
+ * @return {Object} with destroy function
  */
 export function sortable(th, store) {
-  const unsubscribe = store.subscribe(orderBy =>
+  const destroy = store.subscribe(orderBy =>
     th.setAttribute(ARIA_SORT, orderBy[th.id] || SORT_NONE)
   );
 
@@ -67,9 +69,7 @@ export function sortable(th, store) {
   th.appendChild(button);
 
   return {
-    destroy() {
-      unsubscribe();
-    }
+    destroy
   };
 }
 
