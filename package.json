@@ -50,7 +50,7 @@
   "dependencies": {
     "pacc": "^3.1.8",
     "svelte-command": "^3.0.6",
-    "svelte-entitlement": "^2.0.5"
+    "svelte-entitlement": "^2.0.6"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.0",
