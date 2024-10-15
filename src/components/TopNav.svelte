@@ -1,9 +1,9 @@
 <script>
-  export let offset = 0;
-  export let tolerance = 0;
+  /** @type {{offset?: number, tolerance?: number, children?: import('svelte').Snippet}} */
+  let { offset = 0, tolerance = 0 } = $props();
 
-  let headerClass = "show";
-  let y = 0;
+  let headerClass = $state("show");
+  let y = $state(0);
   let lastY = 0;
 
   function deriveClass(y, dy) {
@@ -24,7 +24,7 @@
     return deriveClass(y, dy);
   }
 
-  $: headerClass = updateClass(y);
+  headerClass = updateClass(y);
 </script>
 
 <svelte:window bind:scrollY={y} />
