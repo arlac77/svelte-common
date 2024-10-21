@@ -1,4 +1,12 @@
 <script>
+  /**
+   * @typedef {Object} Props
+   * @property {import('svelte').Snippet} [children]
+   * @property {import('svelte').Snippet} [content]
+   */
+
+  /** @type {Props} */
+  let { children, content } = $props();
   let open = $state(false);
 
   function onclick(event) {
@@ -8,8 +16,8 @@
 </script>
 
 <button {onclick}>
-  <slot />
+  {@render children?.()}
 </button>
 {#if open}
-  <slot name="content" />
+  {@render content?.()}
 {/if}

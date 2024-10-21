@@ -1,5 +1,5 @@
 <script>
-  let { close } = $props();
+  let { close, children } = $props();
 
   let background;
 
@@ -28,7 +28,7 @@
 >
   <div class="center modal">
     <div class="window">
-      <slot />
+      {@render children?.()}
     </div>
   </div>
 </div>

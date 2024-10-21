@@ -1,6 +1,6 @@
 <script>
   /** @type {{offset?: number, tolerance?: number, children?: import('svelte').Snippet}} */
-  let { offset = 0, tolerance = 0 } = $props();
+  let { offset = 0, tolerance = 0, children } = $props();
 
   let headerClass = $state("show");
   let y = $state(0);
@@ -30,5 +30,5 @@
 <svelte:window bind:scrollY={y} />
 
 <nav class={headerClass}>
-  <slot />
+  {@render children?.()}
 </nav>
