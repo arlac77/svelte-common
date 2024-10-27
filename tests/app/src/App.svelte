@@ -191,10 +191,12 @@
 <main>
   <Collapse>
     Collapse
-    <ul id="collapse-content" slot="content" in:fade out:fade>
+    {#snippet content()}
+    <ul id="collapse-content"  in:fade out:fade>
       <li>1st.</li>
       <li>2nd.</li>
     </ul>
+    {/snippet}
   </Collapse>
 
   <Tabs>
