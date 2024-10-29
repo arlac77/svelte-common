@@ -36,7 +36,7 @@
     "prepare:vite": "vite build",
     "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule --target es2024 --lib es2024 --lib dom -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
     "start": "vite",
-    "test": "npm run test:ava && npm run test:cafe",
+    "test": "node --run test:ava && node --run test:cafe && npm run test:ava && npm run test:cafe",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*-cafe.mjs --esm -s build/test --page-request-timeout 5000 --app-init-delay 8000 --app vite",
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
