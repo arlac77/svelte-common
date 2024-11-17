@@ -3,7 +3,7 @@
 
   let background;
 
-  const handleKeyup = event => {
+  const onkeyup = event => {
     if (event.key === "Escape") {
       event.preventDefault();
       close();
@@ -18,7 +18,7 @@
   };
 </script>
 
-<svelte:window keyup={handleKeyup} />
+<svelte:window {onkeyup} />
 
 <div
   role="none"
