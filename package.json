@@ -34,17 +34,17 @@
   "scripts": {
     "prepare": "node --run prepare:vite && node --run prepare:typescript",
     "prepare:vite": "vite build",
-    "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule --target es2024 --lib es2024 --lib dom -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src/**/*.mjs",
+    "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule --target es2024 --lib es2024 --lib dom -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
     "start": "vite",
     "test": "node --run test:ava && node --run test:cafe",
     "test:cafe": "testcafe $BROWSER:headless tests/cafe/*-cafe.mjs --esm -s build/test --page-request-timeout 5000 --app-init-delay 8000 --app vite",
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
-    "docs": "documentation readme --section=API ./src/**/*.mjs",
+    "docs": "documentation readme --section=API ./src**/*.mjs",
     "lint": "node --run lint:css && node --run lint:docs && node --run lint:typescript",
-    "lint:docs": "documentation lint ./src/**/*.mjs",
-    "lint:css": "stylelint ./src/*.css",
-    "lint:typescript": "tsc --allowJs --checkJs --noEmit --resolveJsonModule --target es2024 --lib es2024 --lib dom -m esnext --module nodenext --moduleResolution nodenext ./src/**/*.mjs",
+    "lint:docs": "documentation lint ./src**/*.mjs",
+    "lint:css": "stylelint ./src**/*.css",
+    "lint:typescript": "tsc --allowJs --checkJs --noEmit --resolveJsonModule --target es2024 --lib es2024 --lib dom -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
