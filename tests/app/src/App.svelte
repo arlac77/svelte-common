@@ -183,8 +183,8 @@
     </li>
   </ul>
   <ul>
-    <li><a onclick={showModal} tabindex="0" role="button">Modal</a></li>
-    <li><a onclick={showAbout} tabindex="0" role="button">About</a></li>
+    <li><a href="." onclick={showModal} tabindex="0" role="button">Modal</a></li>
+    <li><a href="." onclick={showAbout} tabindex="0" role="button">About</a></li>
   </ul>
 </TopNav>
 <main>
