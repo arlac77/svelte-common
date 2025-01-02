@@ -11,3 +11,4 @@ pkg
 .stylelintrc.json
 vite.config.mts
 dist
+tsconfig.json
