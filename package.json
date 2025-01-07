@@ -66,14 +66,14 @@
     "semantic-release": "^24.2.1",
     "stylelint": "^16.12.0",
     "stylelint-config-standard": "^36.0.1",
-    "svelte": "^5.16.2",
+    "svelte": "^5.16.5",
     "testcafe": "^3.7.1",
     "typescript": "^5.7.2",
     "vite": "^6.0.7",
     "vite-plugin-compression2": "^1.3.3"
   },
   "peerDependencies": {
-    "svelte": "^5.16.2"
+    "svelte": "^5.16.5"
   },
   "optionalDependencies": {
     "mf-hosting-cloudflare": "^1.0.7",
