@@ -293,7 +293,7 @@ export function pageNavigation(elem, pg) {
 }
 
 /**
- * Generade actual sequence of page numbers to navigate to.
+ * Generate actual sequence of page numbers to navigate to.
  * @param {number} numberOfPages
  * @param {number} currentPage
  * @param {number} numberOfItems
