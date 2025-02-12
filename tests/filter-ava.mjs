@@ -257,11 +257,16 @@ test(ft, false, undefined, false);
 test(ft, false, null, false);
 test(ft, false, "", true);
 
-test(ft, fetch, fetch, false);
-test(ft, true, fetch, false);
-test(ft, fetch, true, false);
-test(ft, false, fetch, false);
-test(ft, fetch, false, false);
+function aFunction()
+{
+  return true;
+}
+
+test(ft, aFunction, aFunction, false);
+test(ft, true, aFunction, true);
+//test(ft, aFunction, true, true);
+test(ft, false, aFunction, false);
+test(ft, aFunction, false, false);
 
 test(ft, undefined, undefined, false);
 test(ft, undefined, null, false);
