@@ -300,33 +300,32 @@ export function pageNavigation(elem, pg) {
  * @return {Iterable<number>}
  */
 export function navigationItems(numberOfPages, currentPage, numberOfItems = 7) {
-  const items = new Set();
-
   if (numberOfPages === 0) {
-    return items;
+    return [];
   }
 
-  items.add(1);
-  items.add(currentPage);
-  items.add(numberOfPages);
+  const items = new Set();
 
   const spread = (n, sides) => {
     for (const side of sides) {
       if (items.size === numberOfItems) {
         return true;
       }
-      if (n - side > 1) {
+      if (n - side >= 1) {
         items.add(n - side);
-      } else if (n + side < numberOfPages) {
+      } 
+      if (n + side <= numberOfPages) {
         items.add(n + side);
       }
     }
     return false;
   };
 
+
   for (const sides of [
-    [1, 5, 25, 125, 625],
-    [2, 3, 4, 10, 50]
+    [0],
+    [1, 5, 25, 125, 625, 3125, 15625],
+    [2, 3, 4, 10, 50, 100, 500]
   ]) {
     if (
       spread(currentPage, sides) ||
