@@ -219,7 +219,7 @@ export class Pagination {
    * @see https://getbootstrap.com/docs/4.0/components/pagination
    * @see https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination
    */
-  get pageNavigationElement() {
+  pageNavigationElement(options) {
     const nav = document.createElement("nav");
     nav.setAttribute("tabindex", "0");
     nav.setAttribute("aria-label", "pagination");
@@ -287,19 +287,30 @@ export class Pagination {
 }
 
 export function pageNavigation(elem, pg) {
-  elem.replaceChildren(pg.pageNavigationElement);
+  elem.replaceChildren(pg.pageNavigationElement());
 
   // TODO destroy
 }
+
+export const defaultNavigationItemOptions = {
+  numberOfItems: 7,
+  spreads: [[0], [1, 5, 25, 125, 625, 3125, 15625], [2, 3, 4, 10, 50, 100, 500]]
+};
 
 /**
  * Generate actual sequence of page numbers to navigate to.
  * @param {number} numberOfPages
  * @param {number} currentPage
- * @param {number} numberOfItems
+ * @param {Object} options
+ * @param {Number} options.numberOfItems
+ * @param {Number[][]} options.spreads
  * @return {Iterable<number>}
  */
-export function navigationItems(numberOfPages, currentPage, numberOfItems = 7) {
+export function navigationItems(
+  numberOfPages,
+  currentPage,
+  options = defaultNavigationItemOptions
+) {
   if (numberOfPages === 0) {
     return [];
   }
@@ -308,12 +319,12 @@ export function navigationItems(numberOfPages, currentPage, numberOfItems = 7) {
 
   const spread = (n, sides) => {
     for (const side of sides) {
-      if (items.size === numberOfItems) {
+      if (items.size === options.numberOfItems) {
         return true;
       }
       if (n - side >= 1) {
         items.add(n - side);
-      } 
+      }
       if (n + side <= numberOfPages) {
         items.add(n + side);
       }
@@ -321,17 +332,8 @@ export function navigationItems(numberOfPages, currentPage, numberOfItems = 7) {
     return false;
   };
 
-
-  for (const sides of [
-    [0],
-    [1, 5, 25, 125, 625, 3125, 15625],
-    [2, 3, 4, 10, 50, 100, 500]
-  ]) {
-    if (
-      spread(currentPage, sides) ||
-      spread(1, sides) ||
-      spread(numberOfPages, sides)
-    ) {
+  for (const s of options.spreads) {
+    if (spread(currentPage, s) || spread(1, s) || spread(numberOfPages, s)) {
       break;
     }
   }
