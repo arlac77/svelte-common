@@ -299,23 +299,43 @@ export function pageNavigation(elem, pg) {
  * @param {number} numberOfItems
  * @return {Iterable<number>}
  */
-export function* navigationItems(
-  numberOfPages,
-  currentPage,
-  numberOfItems = 7
-) {
-  const edge = 2;
-  const side = 1;
-  const step = numberOfPages >= 80 ? Math.floor(numberOfPages / 10) : undefined;
+export function navigationItems(numberOfPages, currentPage, numberOfItems = 7) {
+  const items = new Set();
 
-  for (let n = 1; n <= numberOfPages; n++) {
+  if (numberOfPages === 0) {
+    return items;
+  }
+
+  items.add(1);
+  items.add(currentPage);
+  items.add(numberOfPages);
+
+  const spread = (n, sides) => {
+    for (const side of sides) {
+      if (items.size === numberOfItems) {
+        return true;
+      }
+      if (n - side > 1) {
+        items.add(n - side);
+      } else if (n + side < numberOfPages) {
+        items.add(n + side);
+      }
+    }
+    return false;
+  };
+
+  for (const sides of [
+    [1, 5, 25, 125, 625],
+    [2, 3, 4, 10, 50]
+  ]) {
     if (
-      n <= edge ||
-      n > numberOfPages - edge ||
-      n % step === 0 ||
-      (n < currentPage + side && n > currentPage - side)
+      spread(currentPage, sides) ||
+      spread(1, sides) ||
+      spread(numberOfPages, sides)
     ) {
-      yield n;
+      break;
     }
   }
+
+  return [...items].sort((a, b) => (a > b ? 1 : a < b ? -1 : 0));
 }
