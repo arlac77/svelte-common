@@ -123,6 +123,8 @@ export class Pagination {
   set page(n) {
     const numberOfPages = this.numberOfPages;
 
+    n = Math.floor(n);
+    
     if (n < 0) {
       n = numberOfPages + n + 1;
     } else {

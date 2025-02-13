@@ -34,6 +34,11 @@ test("Pagination set/get", t => {
   pg.page = 1;
 
   t.is(x, 2);
+
+
+  pg.page = 1.5;
+  t.is(pg.page, 1);
+
 });
 
 test("Pagination set out of range", t => {
