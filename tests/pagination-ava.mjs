@@ -35,10 +35,8 @@ test("Pagination set/get", t => {
 
   t.is(x, 2);
 
-
   pg.page = 1.5;
   t.is(pg.page, 1);
-
 });
 
 test("Pagination set out of range", t => {
@@ -141,50 +139,54 @@ test("Pagination subscription source", t => {
   t.deepEqual([...pg], [1, 2]);
 });
 
-function nit(t, np, cp, expected) {
-  t.deepEqual([...navigationItems(np, cp)], expected);
+function nit(t, np, cp, options, expected) {
+  t.deepEqual([...navigationItems(np, cp, options)], expected);
 }
-nit.title = (providedTitle = "navigationItems", np, cp, expected) =>
-  `${providedTitle} ${np} ${cp} [${expected}]`.trim();
+nit.title = (providedTitle = "navigationItems", np, cp, options, expected) =>
+  `${providedTitle} ${np} ${cp} ${
+    options ? "(" + options + ") " : " "
+  }[${expected}]`.trim();
 
-test(nit, 0, 0, []);
-test(nit, 1, 1, [1]);
-test(nit, 2, 1, [1, 2]);
-test(nit, 2, 2, [1, 2]);
+test(nit, 0, 0, undefined, []);
+test(nit, 1, 1, undefined, [1]);
+test(nit, 2, 1, undefined, [1, 2]);
+test(nit, 2, 2, undefined, [1, 2]);
 
-test(nit, 3, 1, [1, 2, 3]);
-test(nit, 3, 2, [1, 2, 3]);
-test(nit, 3, 3, [1, 2, 3]);
+test(nit, 3, 1, undefined, [1, 2, 3]);
+test(nit, 3, 2, undefined, [1, 2, 3]);
+test(nit, 3, 3, undefined, [1, 2, 3]);
 
-test(nit, 4, 1, [1, 2, 3, 4]);
-test(nit, 4, 2, [1, 2, 3, 4]);
-test(nit, 4, 3, [1, 2, 3, 4]);
-test(nit, 4, 4, [1, 2, 3, 4]);
+test(nit, 4, 1, undefined, [1, 2, 3, 4]);
+test(nit, 4, 2, undefined, [1, 2, 3, 4]);
+test(nit, 4, 3, undefined, [1, 2, 3, 4]);
+test(nit, 4, 4, undefined, [1, 2, 3, 4]);
 
-test(nit, 5, 1, [1, 2, 3, 4, 5]);
-test(nit, 5, 2, [1, 2, 3, 4, 5]);
-test(nit, 5, 3, [1, 2, 3, 4, 5]);
-test(nit, 5, 4, [1, 2, 3, 4, 5]);
-test(nit, 5, 5, [1, 2, 3, 4, 5]);
+test(nit, 5, 1, undefined, [1, 2, 3, 4, 5]);
+test(nit, 5, 2, undefined, [1, 2, 3, 4, 5]);
+test(nit, 5, 3, undefined, [1, 2, 3, 4, 5]);
+test(nit, 5, 4, undefined, [1, 2, 3, 4, 5]);
+test(nit, 5, 5, undefined, [1, 2, 3, 4, 5]);
 
-test(nit, 6, 1, [1, 2, 3, 4, 5, 6]);
-test(nit, 6, 2, [1, 2, 3, 4, 5, 6]);
-test(nit, 6, 3, [1, 2, 3, 4, 5, 6]);
-test(nit, 6, 4, [1, 2, 3, 4, 5, 6]);
-test(nit, 6, 5, [1, 2, 3, 4, 5, 6]);
-test(nit, 6, 6, [1, 2, 3, 4, 5, 6]);
+test(nit, 6, 1, undefined, [1, 2, 3, 4, 5, 6]);
+test(nit, 6, 2, undefined, [1, 2, 3, 4, 5, 6]);
+test(nit, 6, 3, undefined, [1, 2, 3, 4, 5, 6]);
+test(nit, 6, 4, undefined, [1, 2, 3, 4, 5, 6]);
+test(nit, 6, 5, undefined, [1, 2, 3, 4, 5, 6]);
+test(nit, 6, 6, undefined, [1, 2, 3, 4, 5, 6]);
 
-test(nit, 7, 1, [1, 2, 3, 4, 5, 6, 7]);
-test(nit, 7, 2, [1, 2, 3, 4, 5, 6, 7]);
-test(nit, 7, 3, [1, 2, 3, 4, 5, 6, 7]);
-test(nit, 7, 4, [1, 2, 3, 4, 5, 6, 7]);
-test(nit, 7, 5, [1, 2, 3, 4, 5, 6, 7]);
-test(nit, 7, 6, [1, 2, 3, 4, 5, 6, 7]);
-test(nit, 7, 7, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 1, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 2, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 3, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 4, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 5, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 6, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 7, undefined, [1, 2, 3, 4, 5, 6, 7]);
+test(nit, 7, 7, 5, [1, 2, 5, 6, 7]);
+test(nit, 7, 7, 3, [1, 6, 7]);
 
-test(nit, 8, 3, [1, 2, 3, 4, 6, 7, 8]);
-test(nit, 10, 5, [1, 2, 4, 5, 6, 9, 10]);
-test(nit, 11, 1, [1, 2, 3, 4, 6, 10, 11]);
-test(nit, 100, 1, [1, 2, 6, 26, 95, 99, 100]);
-test(nit, 1000, 1, [1, 2, 6, 26, 126, 626, 1000]);
-test(nit, 10000, 4511, [1, 4506, 4510, 4511, 4512, 4516, 10000]);
+test(nit, 8, 3, 7, [1, 2, 3, 4, 6, 7, 8]);
+test(nit, 10, 5, 7, [1, 2, 4, 5, 6, 9, 10]);
+test(nit, 11, 1, 7, [1, 2, 3, 4, 6, 10, 11]);
+test(nit, 100, 1, 7, [1, 2, 6, 26, 95, 99, 100]);
+test(nit, 1000, 1, 7, [1, 2, 6, 26, 126, 626, 1000]);
+test(nit, 10000, 4511, 7, [1, 4506, 4510, 4511, 4512, 4516, 10000]);

@@ -124,7 +124,7 @@ export class Pagination {
     const numberOfPages = this.numberOfPages;
 
     n = Math.floor(n);
-    
+
     if (n < 0) {
       n = numberOfPages + n + 1;
     } else {
@@ -171,7 +171,7 @@ export class Pagination {
   }
 
   /**
-   *
+   * Calculate item index range for a given page number.
    * @param {number} page 1...
    * @returns {[number,number]}
    */
@@ -295,7 +295,7 @@ export function pageNavigation(elem, pg) {
 }
 
 export const defaultNavigationItemOptions = {
-  numberOfItems: 7,
+  numberOfItems: 9,
   spreads: [[0], [1, 5, 25, 125, 625, 3125, 15625], [2, 3, 4, 10, 50, 100, 500]]
 };
 
@@ -303,25 +303,35 @@ export const defaultNavigationItemOptions = {
  * Generate actual sequence of page numbers to navigate to.
  * @param {number} numberOfPages
  * @param {number} currentPage
- * @param {Object} options
- * @param {Number} options.numberOfItems
- * @param {Number[][]} options.spreads
+ * @param {Object|number} optionsOrNumberOfItems
+ * @param {number} optionsOrNumberOfItems.numberOfItems
+ * @param {number[][]} optionsOrNumberOfItems.spreads
  * @return {Iterable<number>}
  */
-export function navigationItems(
-  numberOfPages,
-  currentPage,
-  options = defaultNavigationItemOptions
-) {
+export function navigationItems(numberOfPages, currentPage, optionsOrNumberOfItems) {
   if (numberOfPages === 0) {
     return [];
+  }
+
+  switch (typeof optionsOrNumberOfItems) {
+    case "number":
+      optionsOrNumberOfItems = Object.assign({}, defaultNavigationItemOptions, {
+        numberOfItems: optionsOrNumberOfItems
+      });
+      break;
+    case "undefined":
+      optionsOrNumberOfItems = defaultNavigationItemOptions;
+      break;
+
+    default:
+      optionsOrNumberOfItems = Object.assign({}, optionsOrNumberOfItems, defaultNavigationItemOptions);
   }
 
   const items = new Set();
 
   const spread = (n, sides) => {
     for (const side of sides) {
-      if (items.size === options.numberOfItems) {
+      if (items.size === optionsOrNumberOfItems.numberOfItems) {
         return true;
       }
       if (n - side >= 1) {
@@ -334,7 +344,7 @@ export function navigationItems(
     return false;
   };
 
-  for (const s of options.spreads) {
+  for (const s of optionsOrNumberOfItems.spreads) {
     if (spread(currentPage, s) || spread(1, s) || spread(numberOfPages, s)) {
       break;
     }
