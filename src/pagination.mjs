@@ -224,7 +224,7 @@ export class Pagination {
     nav.setAttribute("tabindex", "0");
     nav.setAttribute("aria-label", "pagination");
 
-    nav.onkeyup = event => {
+    nav.onkeydown = event => {
       const step = event.altKey ? 10 : 1;
 
       switch (event.key) {
