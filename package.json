@@ -65,7 +65,7 @@
     "npm-pkgbuild": "^17.5.1",
     "semantic-release": "^24.2.3",
     "stylelint": "^16.18.0",
-    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-standard": "^38.0.0",
     "svelte": "^5.25.7",
     "testcafe": "^3.7.2",
     "typescript": "^5.8.3",
