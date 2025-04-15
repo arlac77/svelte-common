@@ -54,7 +54,7 @@
     SORT_ASCENDING,
     SORT_DESCENDING
   } from "./sorting.mjs";
-  export { filter } from "./filter.mjs";
   export { Pagination, pageNavigation } from "./pagination.mjs";
   export { initializeServiceWorker } from "./service-worker.mjs";
+  export { filter } from "pacc";
 </script>
