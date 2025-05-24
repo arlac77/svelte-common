@@ -48,9 +48,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pacc": "^3.4.2",
+    "pacc": "^3.4.3",
     "svelte-command": "^3.0.33",
-    "svelte-entitlement": "^2.0.40"
+    "svelte-entitlement": "^2.0.42"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
