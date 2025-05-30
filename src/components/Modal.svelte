@@ -23,7 +23,7 @@
 <div
   role="none"
   click={handleOuterClick}
-  keyup={handleKeyup}
+  keyup={onkeyup}
   bind:this={background}
 >
   <div class="center modal">
