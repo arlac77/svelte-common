@@ -49,8 +49,8 @@
   },
   "dependencies": {
     "pacc": "^3.4.5",
-    "svelte-command": "^3.0.34",
-    "svelte-entitlement": "^2.0.43"
+    "svelte-command": "^3.0.35",
+    "svelte-entitlement": "^2.0.44"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
