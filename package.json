@@ -48,7 +48,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pacc": "^3.6.2",
+    "pacc": "^3.6.5",
     "svelte-command": "^3.0.35",
     "svelte-entitlement": "^2.0.46"
   },
@@ -64,7 +64,7 @@
     "mf-styling": "^3.2.13",
     "npm-pkgbuild": "^18.2.12",
     "semantic-release": "^24.2.7",
-    "stylelint": "^16.21.1",
+    "stylelint": "^16.22.0",
     "stylelint-config-standard": "^38.0.0",
     "svelte": "^5.36.5",
     "testcafe": "^3.7.2",
