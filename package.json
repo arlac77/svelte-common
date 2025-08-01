@@ -48,7 +48,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pacc": "^4.5.3",
+    "pacc": "^4.6.0",
     "svelte-command": "^3.0.37",
     "svelte-entitlement": "^2.0.47"
   },
