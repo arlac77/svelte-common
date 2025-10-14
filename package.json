@@ -67,10 +67,10 @@
     "semantic-release": "^24.2.9",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
-    "svelte": "^5.39.12",
+    "svelte": "^5.39.13",
     "testcafe": "^3.7.2",
     "typescript": "^5.9.3",
-    "vite": "^7.1.9",
+    "vite": "^7.1.10",
     "vite-plugin-compression2": "^2.3.0"
   },
   "peerDependencies": {
