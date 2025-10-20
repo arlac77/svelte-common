@@ -64,17 +64,17 @@
     "documentation": "^14.0.3",
     "mf-styling": "^3.2.13",
     "npm-pkgbuild": "^18.3.10",
-    "semantic-release": "^25.0.0",
+    "semantic-release": "^25.0.1",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1",
-    "svelte": "^5.40.1",
+    "svelte": "^5.41.0",
     "testcafe": "^3.7.2",
     "typescript": "^5.9.3",
-    "vite": "^7.1.10",
+    "vite": "^7.1.11",
     "vite-plugin-compression2": "^2.3.0"
   },
   "peerDependencies": {
-    "svelte": "^5.40.0"
+    "svelte": "^5.41.0"
   },
   "optionalDependencies": {
     "mf-hosting-cloudflare": "^1.0.8",
