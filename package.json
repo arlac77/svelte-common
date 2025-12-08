@@ -70,7 +70,7 @@
     "svelte": "^5.45.6",
     "testcafe": "^3.7.2",
     "typescript": "^5.9.3",
-    "vite": "^7.2.6",
+    "vite": "^7.2.7",
     "vite-plugin-compression2": "^2.4.0"
   },
   "peerDependencies": {
