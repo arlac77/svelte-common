@@ -5,7 +5,13 @@ bun.lockb
 build
 .DS_Store
 *.node
+/playwright/.auth/
 .test
 dist
 types
 .tmp
+.last-run.json
+/playwright-report/
+/test-results/
+/blob-report/
+/playwright/.cache/
