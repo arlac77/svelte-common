@@ -11,4 +11,11 @@ pkg
 .stylelintrc.json
 vite.config.mts
 dist
+playwright.config.js
 tsconfig.json
+.last-run.json
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
