@@ -28,7 +28,7 @@ export default defineConfig(async ({ command, mode }) => {
       svelte({
         compilerOptions: {
           dev: !production
-        },
+        }
       }),
       compression({
         algorithms: ["brotliCompress"],

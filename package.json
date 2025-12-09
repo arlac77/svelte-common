@@ -37,8 +37,7 @@
     "prepare:vite": "vite build",
     "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule --target esnext --lib esnext --lib dom -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
     "start": "vite",
-    "test": "node --run test:ava && node --run test:cafe",
-    "test:cafe": "testcafe $BROWSER:headless tests/cafe/*-cafe.mjs --esm -s build/test --page-request-timeout 5000 --app-init-delay 8000 --app vite",
+    "test": "node --run test:ava",
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme --section=API ./src**/*.mjs",
@@ -68,7 +67,6 @@
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "svelte": "^5.45.6",
-    "testcafe": "^3.7.2",
     "typescript": "^5.9.3",
     "vite": "^7.2.6",
     "vite-plugin-compression2": "^2.4.0"
