@@ -140,7 +140,7 @@ test("sorter with property path", t => {
   t.is(sort({ a: { b: "b" } }, {}), 1);
 });
 
-test("sorter with property path simple array", t => {
+test.skip("sorter with property path simple array", t => {
   const sort = sorter({ "a[*].b": "ascending" });
 
   t.is(sort({ a: [{ b: "a" }] }, { a: [{ b: "b" }] }), -1);

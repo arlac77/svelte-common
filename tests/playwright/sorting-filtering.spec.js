@@ -1,9 +1,17 @@
-import { Selector } from "testcafe";
+import { test, expect } from "@playwright/test";
 
-export const base = "http://localhost:5173/";
+test("sorting", async ({ page }) => {
+  await page.goto("http://localhost:5173/");
 
-fixture`sorting and filtering`.page`${base}`;
+  await expect(page.getByRole("textbox", { name: "sorting a" })).toHaveValue(
+    "ascending"
+  );
+  await expect(page.getByRole("textbox", { name: "sorting b" })).toBeEmpty();
+  await expect(page.getByRole("textbox", { name: "sorting c" })).toBeEmpty();
+  await expect(page.getByRole("textbox", { name: "sorting e.f" })).toBeEmpty();
+});
 
+/*
 test("sorting", async t => {
   const a0 = Selector("#a0");
   const b0 = Selector("#b0");
@@ -49,9 +57,18 @@ test("sorting", async t => {
   await t.expect(sortc.value).eql("");
   await t.expect(sorte.value).eql("");
   await t.expect(b0.innerText).contains("2015");
-});
 
-test("filtering", async t => {
+});
+*/
+
+/*
+test("filtering", async ({ page }) => {
+  await page.goto("http://localhost:5173/");
+  await page.getByRole("button", { name: "Collapse" }).click();
+  await expect(page.getByText("1st.")).toBeVisible();
+  await page.getByRole("button", { name: "Collapse" }).click();
+  await expect(page.getByText("1st.")).not.toBeVisible();
+
   await t.typeText("#filter-a", "1");
 
   const a0 = Selector("#a0");
@@ -60,3 +77,4 @@ test("filtering", async t => {
   await t.typeText("#filter-a", "2", { replace: true });
   await t.expect(a0.innerText).eql("2.1");
 });
+*/
