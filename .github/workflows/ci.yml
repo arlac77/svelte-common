@@ -28,12 +28,21 @@ jobs:
         uses: actions/setup-node@v6.1.0
         with:
           node-version: ${{ matrix.node-version }}
+      - name: install
+        run: npm ci
       - name: install playwright
         run: npx playwright install --with-deps
       - name: install npm
         run: npm cit
       - name: test and coverage
         run: npm run cover --if-present
+      - name: upload test report
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-report
+          path: ${{ github.workspace }}/playwright-report/**/*
+          retention-days: 30
+        if: ${{ !cancelled() }}
       - name: coveralls
         uses: coverallsapp/github-action@v2
         with:
@@ -42,13 +51,6 @@ jobs:
           path-to-lcov: build/coverage/lcov.info
           parallel: true
         continue-on-error: true
-      - name: upload test report
-        uses: actions/upload-artifact@v5
-        with:
-          name: test-report
-          path: ${{ github.workspace }}/playwright-report/**/*
-          retention-days: 30
-        if: ${{ !cancelled() }}
   release:
     needs:
       - test-node
