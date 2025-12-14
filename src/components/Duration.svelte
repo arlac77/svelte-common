@@ -1,5 +1,6 @@
 <script>
-  import { formatDuration, formatDurationISO } from "../util.mjs";
+  import { formatDurationISO } from "../util.mjs";
+  import { formatDuration } from "pacc";
   let { seconds } = $props();
 </script>
 

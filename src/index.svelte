@@ -40,7 +40,6 @@
   export {
     dateFormatter,
     formatBytes,
-    formatDuration,
     formatDurationISO,
     formatSecondsSinceEpoch,
     keyPrefixStore

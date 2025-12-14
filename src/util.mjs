@@ -51,27 +51,6 @@ export function formatDurationISO(seconds) {
   return out;
 }
 
-const durations = [
-  [604800, "w"],
-  [86400, "d"],
-  [3600, "h"],
-  [60, "m"],
-  [1, "s"]
-];
-
-export function formatDuration(seconds) {
-  const out = [];
-  for (const d of durations) {
-    const n = Math.floor(seconds / Number(d[0]));
-    if (n > 0) {
-      out.push(`${n}${d[1]}`);
-      seconds -= n * Number(d[0]);
-    }
-  }
-
-  return out.join(" ");
-}
-
 export function formatSecondsSinceEpoch(sse) {
   if (sse === undefined) {
     return "-";
@@ -81,7 +60,6 @@ export function formatSecondsSinceEpoch(sse) {
 
 /*
 import { readable } from 'svelte/store';
-
 
 function liveDuration(seconds) {
   const time = readable(new Date(), set => {
