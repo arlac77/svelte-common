@@ -40,7 +40,6 @@
   export {
     dateFormatter,
     formatBytes,
-    formatDurationISO,
     formatSecondsSinceEpoch,
     keyPrefixStore
   } from "./util.mjs";
