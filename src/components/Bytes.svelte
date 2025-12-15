@@ -1,5 +1,5 @@
 <script>
-  import { formatBytes } from "../util.mjs";
+  import { formatBytes } from "pacc";
   let { value } = $props();
 </script>
 

@@ -10,20 +10,6 @@ export const dateFormatter = new Intl.DateTimeFormat("default", {
   second: "2-digit"
 });
 
-export function formatBytes(bytes, decimals = 2) {
-  if (bytes === 0) return "0 Bytes";
-  if (bytes === 1) return "1 Byte";
-
-  const k = 1024;
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-  return (
-    parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + " " + byteSizes[i]
-  );
-}
-
-const byteSizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
 export function formatSecondsSinceEpoch(sse) {
   if (sse === undefined) {
     return "-";
