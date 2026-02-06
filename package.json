@@ -54,7 +54,7 @@
     "svelte-entitlement": "^2.0.64"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.1",
+    "@playwright/test": "^1.58.2",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/github": "^12.0.3",
@@ -67,7 +67,7 @@
     "documentation": "^14.0.3",
     "mf-styling": "^3.3.5",
     "npm-pkgbuild": "^20.4.2",
-    "playwright": "^1.58.1",
+    "playwright": "^1.58.2",
     "semantic-release": "^25.0.3",
     "stylelint": "^17.1.1",
     "stylelint-config-standard": "^40.0.0",
