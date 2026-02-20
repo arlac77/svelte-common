@@ -50,8 +50,8 @@
   },
   "dependencies": {
     "pacc": "^9.2.4",
-    "svelte-command": "^3.0.57",
-    "svelte-entitlement": "^2.0.66"
+    "svelte-command": "^3.0.59",
+    "svelte-entitlement": "^2.0.68"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
