@@ -73,7 +73,7 @@
     "stylelint-config-standard": "^40.0.0",
     "svelte": "^5.55.5",
     "typescript": "^6.0.3",
-    "vite": "^8.0.11",
+    "vite": "^8.0.12",
     "vite-plugin-compression2": "^2.5.3"
   },
   "peerDependencies": {
