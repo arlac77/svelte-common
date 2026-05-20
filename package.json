@@ -9,9 +9,9 @@
   "types": "./types/module.d.mjs",
   "exports": {
     ".": {
-      "svelte": "./src/index.svelte",
       "types": "./types/module.d.mjs",
-      "default": "./src/index.svelte"
+      "default": "./src/index.svelte",
+      "svelte": "./src/index.svelte"
     },
     "./css": "./src/common.css"
   },
@@ -71,7 +71,7 @@
     "semantic-release": "^25.0.3",
     "stylelint": "^17.12.0",
     "stylelint-config-standard": "^40.0.0",
-    "svelte": "^5.55.8",
+    "svelte": "^5.55.9",
     "typescript": "^6.0.3",
     "vite": "^8.0.13",
     "vite-plugin-compression2": "^2.5.3"
