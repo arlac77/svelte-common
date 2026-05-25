@@ -49,7 +49,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pacc": "^9.2.8",
+    "pacc": "^9.2.9",
     "svelte-command": "^3.0.63",
     "svelte-entitlement": "^2.0.72"
   },
