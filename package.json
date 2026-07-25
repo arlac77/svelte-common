@@ -71,7 +71,7 @@
     "semantic-release": "^25.0.8",
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0",
-    "svelte": "^5.56.7",
+    "svelte": "^5.56.8",
     "typescript": "^7.0.2",
     "vite": "^8.1.5",
     "vite-plugin-compression2": "^2.5.3"
