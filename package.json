@@ -49,9 +49,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "pacc": "^11.0.1",
+    "pacc": "^11.0.2",
     "svelte-command": "^3.0.67",
-    "svelte-entitlement": "^2.0.78"
+    "svelte-entitlement": "^2.0.79"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1",
@@ -67,7 +67,7 @@
     "documentation": "^14.0.3",
     "mf-styling": "^3.3.28",
     "npm-pkgbuild": "^20.8.9",
-    "playwright": "^1.62.0",
+    "playwright": "^1.62.1",
     "semantic-release": "^25.0.8",
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0",
