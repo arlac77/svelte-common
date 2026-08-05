@@ -68,7 +68,7 @@
     "mf-styling": "^3.3.29",
     "npm-pkgbuild": "^20.8.11",
     "playwright": "^1.62.1",
-    "semantic-release": "^25.0.8",
+    "semantic-release": "^25.0.9",
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0",
     "svelte": "^5.56.8",
