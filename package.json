@@ -66,7 +66,7 @@
     "c8": "^12.0.0",
     "documentation": "^14.0.3",
     "mf-styling": "^3.3.35",
-    "npm-pkgbuild": "^22.3.14",
+    "npm-pkgbuild": "^22.3.12",
     "playwright": "^1.65.1",
     "semantic-release": "^26.0.1",
     "stylelint": "^18.0.0",
